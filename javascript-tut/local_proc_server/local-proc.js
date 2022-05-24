@@ -1,8 +1,8 @@
 var express = require('express');
 var server = express();
 
-var htmlPath = 'D:/User_Files/Summer_Project/MarsRover/javascript-tut/local_proc_server/index.html';
-var jsPath = 'D:/User_Files/Summer_Project/MarsRover/javascript-tut/local_proc_server/primeOrNot.js';
+var htmlPath = '~/MarsRover/javascript-tut/local_proc_server/index.html';
+var jsPath = '~/MarsRover/javascript-tut/local_proc_server/primeOrNote.js';
 
 server.get('/', function(req, res) {
     res.sendFile(htmlPath);
