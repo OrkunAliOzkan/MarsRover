@@ -1,0 +1,8 @@
+.dist{
+    background-color: bisque;
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    top: 10%;
+    left: 38%;
+}
