@@ -1,8 +1,8 @@
 var express = require('express');
 var server = express();
 
-var htmlPath = 'home/ubuntu/MarsRover/javascript-tut/local_proc_server/index.html';
-var jsPath = 'home/ubuntu/MarsRover/javascript-tut/local_proc_server/primeOrNot.js';
+var htmlPath = '/home/ubuntu/MarsRover/javascript-tut/local_proc_server/index.html';
+var jsPath = '/home/ubuntu/MarsRover/javascript-tut/local_proc_server/primeOrNot.js';
 
 server.get('/', function(req, res) {
     res.sendFile(htmlPath);
