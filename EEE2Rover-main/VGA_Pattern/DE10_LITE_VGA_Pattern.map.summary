@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Tue Mar 09 14:15:32 2021
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : DE10_LITE_VGA_Pattern
+Top-level Entity Name : DE10_LITE_VGA_Pattern
+Family : MAX 10
+Total logic elements : 133
+    Total combinational functions : 120
+    Dedicated logic registers : 78
+Total registers : 78
+Total pins : 149
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 0

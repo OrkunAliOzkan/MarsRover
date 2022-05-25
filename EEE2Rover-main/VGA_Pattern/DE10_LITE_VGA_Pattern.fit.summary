@@ -1,0 +1,18 @@
+Fitter Status : Successful - Tue Mar 09 14:15:50 2021
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : DE10_LITE_VGA_Pattern
+Top-level Entity Name : DE10_LITE_VGA_Pattern
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Final
+Total logic elements : 136 / 49,760 ( < 1 % )
+    Total combinational functions : 121 / 49,760 ( < 1 % )
+    Dedicated logic registers : 78 / 49,760 ( < 1 % )
+Total registers : 78
+Total pins : 149 / 360 ( 41 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,677,312 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Total PLLs : 1 / 4 ( 25 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )
