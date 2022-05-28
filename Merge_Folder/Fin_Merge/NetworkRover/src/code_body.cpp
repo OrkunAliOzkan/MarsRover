@@ -3,6 +3,14 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include "code_body.h"
+
+#define PWMA    17
+#define PWMB    2
+#define AI1     14
+#define AI2     16
+#define BI1     4
+#define BI2     15
+#define STNDBY  4
 DynamicJsonDocument doc(1024);
 String URL = "http://54.242.65.190:8000/";
 fclass::fclass()
@@ -43,7 +51,7 @@ String fclass::HTTPGET()
     http.end();
     return soln;
 }
-/*Requirement for arduino is to get key*/
+
 /*void fclass::HTTPPOST()
 {
     HTTPClient http;
@@ -62,8 +70,97 @@ String fclass::HTTPGET()
     {
         Serial.println("Error on sending POST\n");
     }
+    http.end();
+}
 */
-//    http.end();
-//}
+
+void fclass::arm()
+{
+digitalWrite(STNDBY, HIGH);
+}
+
+void fclass::disarm()
+{
+digitalWrite(STNDBY, LOW);
+}
+
+void fclass::RightCW(int Speed)
+{
+int DutyRef = map(Speed,0,100,0,256);
+digitalWrite(AI1, LOW);
+digitalWrite(AI2, HIGH);
+analogWrite(PWMA, DutyRef);
+}
+
+void fclass::RightCCW(int Speed)
+{
+int DutyRef = map(Speed,0,100,0,256);
+digitalWrite(AI1,HIGH);
+digitalWrite(AI2,LOW);
+analogWrite(PWMA, DutyRef);
+}
+
+void fclass::LeftCW(int Speed)
+{
+int DutyRef = map(Speed,0,100,0,256);
+digitalWrite(BI1,HIGH);
+digitalWrite(BI1,LOW);
+analogWrite(PWMB, DutyRef);
+}
+
+void fclass::LeftCCW(int Speed)
+{
+int DutyRef = map(Speed,0,100,0,256);
+digitalWrite(BI1,HIGH);
+digitalWrite(BI2,LOW);
+analogWrite(PWMB, DutyRef);
+}
+
+void fclass::RightStop()
+{
+digitalWrite(AI1, LOW);
+digitalWrite(AI2, LOW);
+}
+
+void fclass::LeftStop()
+{
+digitalWrite(BI1, LOW);
+digitalWrite(BI2, LOW);
+}
+
+void fclass::RightTurn_Spot(unsigned long duration,int Speed)
+{
+RightCCW(Speed);
+LeftCW(Speed);
+delay(duration);
+RightStop();
+LeftStop();
+}
+
+void fclass::Forward(int duration,int Speed){
+LeftCCW(Speed);
+RightCW(Speed);
+delay(duration);
+RightStop();
+LeftStop();
+}
+
+void fclass::LeftTurn_Spot(unsigned long duration,int Speed)
+{
+LeftCW(Speed);
+RightCW(Speed);
+delay(duration);
+RightStop();
+LeftStop();
+}
+
+void fclass::Backward(unsigned long duration,int Speed)
+{
+LeftCCW(Speed);
+RightCCW(Speed);
+delay(duration);
+RightStop();
+LeftStop();
+}
 
 fclass code_body = fclass();

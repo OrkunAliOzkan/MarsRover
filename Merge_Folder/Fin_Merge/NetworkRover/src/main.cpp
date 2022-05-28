@@ -19,6 +19,7 @@
 // pin if Arduino board is used
 #define PWMB 2 // PWMB 
 #define CHB 1
+#define STNDBY 4
 
 const int CCW = 2; // do not change
 const int CW  = 1; // do not change
@@ -31,7 +32,7 @@ double motor2_strength = 0;
 //  Name of network
     #define WIFI_SSID       "Siva's iPhone"    
 //  Password
-    #define WIFI_PASSWORD  "sivashanth"   
+    #define WIFI_PASSWORD  "sivashanthf"   
 //  State mashine indicator
   bool isConnected = false;
   String in;
@@ -48,21 +49,20 @@ char key = ' ';
                                 CHB);
 */
 // for two motors with debug information
-Robojax_L298N_DC_motor robot(
-                                AIN1, 
-                                AIN2, 
-                                PWMA, 
-                                CHA, 
-                                BIN1, 
-                                BIN2, 
-                                PWMB, 
-                                CHB, 
-                                true);
+
 void setup() {
   Serial.begin(115200);
-  robot.begin();
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.println("Initializing");
+
+// Network pin assignment ouput
+  pinMode(PWMA,   OUTPUT);
+  pinMode(PWMB,   OUTPUT);
+  pinMode(AIN1,    OUTPUT);
+  pinMode(AIN2,    OUTPUT);
+  pinMode(BIN1,    OUTPUT);
+  pinMode(BIN2,    OUTPUT);
+  pinMode(STNDBY, OUTPUT);
 }
 
 
@@ -76,8 +76,8 @@ void loop() {
   Serial.println(round(motor1_strength));
   Serial.println(motor2_strength);
 
-    if (WiFi.status() == WL_CONNECTED || 
-        !isConnected) {
+    if (WiFi.status() == WL_CONNECTED){
+     //|| !isConnected) 
         Serial.println("Connected");
         //digitalWrite(LED, HIGH);
         isConnected = true;
@@ -88,30 +88,43 @@ void loop() {
         in = code_body.HTTPGET();
         //Serial.println("b");
 /////////////////////////////////////////////////////
-        if  ( (in == "w") || 
-              (in == "a") || 
-              (in == "s") || 
-              (in == "d") ||
-              (in == "W") || 
-              (in == "A") || 
-              (in == "S") || 
-              (in == "D"))
+// TODO: Make work with all input types
+        if  ( (in == "w") || (in == "W") || 
+              (in == "a") || (in == "A") || 
+              (in == "s") || (in == "S") || 
+              (in == "d") || (in == "D")
+            )
         {
-          key = in[0];
           Serial.flush();
+
+          //  Case not supported. Could pretty up l8r
+          if((in == "w") || (in == "W"))
+          {
+            code_body.Forward(100,50);
+          }
+          else if((in == "d") || (in == "D"))
+          {
+            code_body.Backward(100,50);
+          }
+          /*
           robot.rotate(motor1, motor1_strength, CW);
           robot.rotate(motor2, motor2_strength, CCW);
+          */
           delay(100);
-          //while (Serial.available()) {
-          //  key = Serial.read();
-          //delay(10);
-          //}
+          //while (Serial.available()) 
+          /*
+          {
+            key = Serial.read();
+          delay(10);
+          }
+          */
+
         }
-        //  If not WASD
+        //  If not WASD, do nothing
         else if(in == ".")
         {
-          robot.rotate(motor1, 0, CW);
-          robot.rotate(motor2, 0, CCW); 
+          //robot.rotate(motor1, 0, CW);
+          //robot.rotate(motor2, 0, CCW); 
         }
 /////////////////////////////////////////////////////
         delay(200);
