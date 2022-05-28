@@ -37,10 +37,6 @@ String fclass::HTTPGET()
         soln = character;
         Serial.println(payload);
         Serial.println(character);
-
-        //  Determine substring that contains char
-        //Serial.println(payload);
-        //Serial.println("a");
     }
     else
     {

@@ -30,9 +30,9 @@ double motor2_strength = 0;
 #define motor1 1 // left
 #define motor2 2 // right
 //  Name of network
-    #define WIFI_SSID       "Siva's iPhone"    
+    #define WIFI_SSID       "DESKTOP-4UGQK2B 0362"    
 //  Password
-    #define WIFI_PASSWORD  "sivashanthf"   
+    #define WIFI_PASSWORD  "Bt133+98"   
 //  State mashine indicator
   bool isConnected = false;
   String in;
@@ -66,26 +66,30 @@ void setup() {
 }
 
 
-void loop() {
+void loop() 
+{
 //  If desired to connect 
 //  and can, express as connected
     //Serial.println(WiFi.status());
-  motor1_strength = 70 * motor1_calibration;
-  motor2_strength = 70 * motor2_calibration;
-  Serial.println(motor1_strength);
-  Serial.println(round(motor1_strength));
-  Serial.println(motor2_strength);
+      Serial.println("x");
+  /*
+    Serial.println(motor1_strength);
+    Serial.println(round(motor1_strength));
+    Serial.println(motor2_strength);
+  */
 
-    if (WiFi.status() == WL_CONNECTED){
+    if ((WiFi.status() == WL_CONNECTED))
+    {
+      Serial.println("a");
      //|| !isConnected) 
         Serial.println("Connected");
         //digitalWrite(LED, HIGH);
         isConnected = true;
 
-        //  Body of code
-        //code_body.test_code();
-        //Serial.println("a");
+      //  Body of code
+      Serial.println("b");
         in = code_body.HTTPGET();
+      Serial.println("c");
         //Serial.println("b");
 /////////////////////////////////////////////////////
 // TODO: Make work with all input types
@@ -96,15 +100,16 @@ void loop() {
             )
         {
           Serial.flush();
+      Serial.println("d");
 
           //  Case not supported. Could pretty up l8r
           if((in == "w") || (in == "W"))
           {
-            code_body.Forward(100,50);
+            code_body.Forward(1000,50);
           }
           else if((in == "d") || (in == "D"))
           {
-            code_body.Backward(100,50);
+            code_body.Backward(1000,50);
           }
           /*
           robot.rotate(motor1, motor1_strength, CW);
@@ -118,8 +123,9 @@ void loop() {
           delay(10);
           }
           */
-
+      Serial.println("e");
         }
+
         //  If not WASD, do nothing
         else if(in == ".")
         {
@@ -127,7 +133,7 @@ void loop() {
           //robot.rotate(motor2, 0, CCW); 
         }
 /////////////////////////////////////////////////////
-        delay(200);
+        delay(2000);
     }
 
 //  If not connected, connect 
