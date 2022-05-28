@@ -20,6 +20,7 @@
     determine whether it is so
 */
 bool isConnected = false;
+String soln;
 //---------------------------------------
 void setup()
 {
