@@ -24,8 +24,6 @@ class fclass
         void ForwardR(  int Duration,int DutyCycle);
         void BackwardL( int Duration,int DutyCycle);
         void BackwardR( int Duration,int DutyCycle);
-        
-
 };
 
 extern fclass code_body;
