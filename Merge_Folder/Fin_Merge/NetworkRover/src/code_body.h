@@ -8,18 +8,23 @@ class fclass
         void test_code();
         String HTTPGET();
         //void HTTPPOST();
-        void arm();
-        void disarm();
-        void RightCW(int Speed);
-        void RightCCW(int Speed);
-        void LeftCW(int Speed);
-        void LeftCCW(int Speed);
-        void RightStop();
-        void LeftStop();
-        void RightTurn_Spot(unsigned long duration,int Speed);
-        void LeftTurn_Spot(unsigned long duration,int Speed);
-        void Forward(int duration,int Speed);
-        void Backward(unsigned long duration,int Speed);
+        void ARM();
+        void DISARM();
+        void RCW(       int DutyCycle);
+        void RCCW(      int DutyCycle);
+        void LCW(       int DutyCycle);
+        void LCCW(      int DutyCycle);
+        void RSTOP();
+        void LSTOP();
+        void Forward(   int Duration,int DutyCycle);
+        void Backward(  int Duration,int DutyCycle);
+        void SpinCW(    int Duration,int DutyCycle);
+        void SpinCCW(   int Duration,int DutyCycle);
+        void ForwardL(  int Duration,int DutyCycle);
+        void ForwardR(  int Duration,int DutyCycle);
+        void BackwardL( int Duration,int DutyCycle);
+        void BackwardR( int Duration,int DutyCycle);
+        
 
 };
 

@@ -6,11 +6,11 @@
 
 #define PWMA    17
 #define PWMB    2
-#define AI1     14
-#define AI2     16
-#define BI1     4
-#define BI2     15
-#define STNDBY  4
+#define AIN1    14
+#define AIN2    16
+#define BIN1    4
+#define BIN2    15
+#define STANDBY 32
 DynamicJsonDocument doc(1024);
 String URL = "http://54.242.65.190:8000/";
 fclass::fclass()
@@ -70,93 +70,126 @@ String fclass::HTTPGET()
 }
 */
 
-void fclass::arm()
+void fclass::ARM()
 {
-digitalWrite(STNDBY, HIGH);
+digitalWrite(STANDBY, HIGH);
 }
 
-void fclass::disarm()
+void fclass::DISARM()
 {
-digitalWrite(STNDBY, LOW);
+digitalWrite(STANDBY, LOW);
 }
 
-void fclass::RightCW(int Speed)
+void fclass::RCW(int DutyCycle)
 {
-int DutyRef = map(Speed,0,100,0,256);
-digitalWrite(AI1, LOW);
-digitalWrite(AI2, HIGH);
-analogWrite(PWMA, DutyRef);
+int Duty_8 = map(DutyCycle,0,100,0,256);
+digitalWrite(BIN1, HIGH);
+digitalWrite(BIN2, LOW);
+analogWrite(PWMB, Duty_8);
 }
 
-void fclass::RightCCW(int Speed)
+void fclass::RCCW(int DutyCycle)
 {
-int DutyRef = map(Speed,0,100,0,256);
-digitalWrite(AI1,HIGH);
-digitalWrite(AI2,LOW);
-analogWrite(PWMA, DutyRef);
+int Duty_8 = map(DutyCycle,0,100,0,256);
+digitalWrite(BIN1,LOW);
+digitalWrite(BIN2,HIGH);
+analogWrite(PWMB, Duty_8);
 }
 
-void fclass::LeftCW(int Speed)
+void fclass::LCW(int DutyCycle)
 {
-int DutyRef = map(Speed,0,100,0,256);
-digitalWrite(BI1,HIGH);
-digitalWrite(BI1,LOW);
-analogWrite(PWMB, DutyRef);
+int Duty_8 = map(DutyCycle,0,100,0,256);
+digitalWrite(AIN1,HIGH);
+digitalWrite(AIN2,LOW);
+analogWrite(PWMA, Duty_8);
 }
 
-void fclass::LeftCCW(int Speed)
+void fclass::LCCW(int DutyCycle)
 {
-int DutyRef = map(Speed,0,100,0,256);
-digitalWrite(BI1,HIGH);
-digitalWrite(BI2,LOW);
-analogWrite(PWMB, DutyRef);
+int Duty_8 = map(DutyCycle,0,100,0,256);
+digitalWrite(AIN1,LOW);
+digitalWrite(AIN2,HIGH);
+analogWrite(PWMA, Duty_8);
 }
 
-void fclass::RightStop()
+void fclass::RSTOP()
 {
-digitalWrite(AI1, LOW);
-digitalWrite(AI2, LOW);
+digitalWrite(AIN1, LOW);
+digitalWrite(AIN2, LOW);
 }
 
-void fclass::LeftStop()
+void fclass::LSTOP()
 {
-digitalWrite(BI1, LOW);
-digitalWrite(BI2, LOW);
+digitalWrite(BIN1, LOW);
+digitalWrite(BIN2, LOW);
 }
 
-void fclass::RightTurn_Spot(unsigned long duration,int Speed)
+void fclass::Forward(int Duration,int DutyCycle)
 {
-RightCCW(Speed);
-LeftCW(Speed);
-delay(duration);
-RightStop();
-LeftStop();
+LCCW(DutyCycle);
+RCW(DutyCycle);
+delay(Duration);
+LSTOP();
+RSTOP();
 }
 
-void fclass::Forward(int duration,int Speed){
-LeftCCW(Speed);
-RightCW(Speed);
-delay(duration);
-RightStop();
-LeftStop();
+void fclass::Backward(int Duration,int DutyCycle)
+{
+LCW(DutyCycle);
+RCCW(DutyCycle);
+delay(Duration);
+LSTOP();
+RSTOP();
 }
 
-void fclass::LeftTurn_Spot(unsigned long duration,int Speed)
+void fclass::SpinCW(int Duration,int DutyCycle)
 {
-LeftCW(Speed);
-RightCW(Speed);
-delay(duration);
-RightStop();
-LeftStop();
+RCCW(DutyCycle);
+LCCW(DutyCycle);
+delay(Duration);
+LSTOP();
+RSTOP();
 }
 
-void fclass::Backward(unsigned long duration,int Speed)
+void fclass::SpinCCW(int Duration,int DutyCycle)
 {
-LeftCCW(Speed);
-RightCCW(Speed);
-delay(duration);
-RightStop();
-LeftStop();
+LCW(DutyCycle);
+RCW(DutyCycle);
+delay(Duration);
+LSTOP();
+RSTOP();
+}
+
+void fclass::ForwardL(int Duration,int DutyCycle)
+{
+    RCW(DutyCycle);
+    delay(Duration);
+    LSTOP();
+    RSTOP();
+}
+
+void fclass::ForwardR(int Duration,int DutyCycle)
+{
+    LCCW(DutyCycle);
+    delay(Duration);
+    LSTOP();
+    RSTOP();
+}
+
+void fclass::BackwardL(int Duration,int DutyCycle)
+{
+    RCCW(DutyCycle);
+    delay(Duration);
+    LSTOP();
+    RSTOP();
+}
+
+void fclass::BackwardR(int Duration,int DutyCycle)
+{
+    LCW(DutyCycle);
+    delay(Duration);
+    LSTOP();
+    RSTOP();
 }
 
 fclass code_body = fclass();

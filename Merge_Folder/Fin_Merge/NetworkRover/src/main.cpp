@@ -6,21 +6,16 @@
 #include <SPI.h>
 #include "code_body.h"
 // motor 1 settings
-#define CHA 0
-// this pin must be PWM enabled 
-// pin if Arduino board is used
-#define PWMA 17 // PWMA 
-#define AIN1 14 // AIN1
-#define AIN2 16 //AIN2
-// motor 2 settings
-#define BIN1 4 //BIN1
-#define BIN2 15 //BIN2
-// this pin must be PWM enabled 
-// pin if Arduino board is used
-#define PWMB 2 // PWMB 
-#define CHB 1
-#define STNDBY 4
-
+#define CHA     0
+#define CHB     1
+#define PWMA    17
+#define PWMB    2
+#define AIN1    14
+#define AIN2    16
+#define BIN1    4
+#define BIN2    15
+#define STANDBY 32
+/////////////////////////////////////////////////////
 const int CCW = 2; // do not change
 const int CW  = 1; // do not change
 double motor1_calibration = 1;
@@ -30,41 +25,27 @@ double motor2_strength = 0;
 #define motor1 1 // left
 #define motor2 2 // right
 //  Name of network
-    #define WIFI_SSID       "DESKTOP-4UGQK2B 0362"    
+  #define WIFI_SSID       "DESKTOP-4UGQK2B 0362"    
 //  Password
-    #define WIFI_PASSWORD  "Bt133+98"   
+  #define WIFI_PASSWORD  "Bt133+98"   
 //  State mashine indicator
   bool isConnected = false;
   String in;
-  
-char key = ' ';
-/*Robojax_L298N_DC_motor robot(
-                                AIN1, 
-                                AIN2, 
-                                PWMA, 
-                                CHA,  
-                                BIN1, 
-                                BIN2, 
-                                PWMB, 
-                                CHB);
-*/
-// for two motors with debug information
-
+  char key = ' ';
+/////////////////////////////////////////////////////
 void setup() {
   Serial.begin(115200);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.println("Initializing");
-
 // Network pin assignment ouput
-  pinMode(PWMA,   OUTPUT);
-  pinMode(PWMB,   OUTPUT);
-  pinMode(AIN1,    OUTPUT);
-  pinMode(AIN2,    OUTPUT);
-  pinMode(BIN1,    OUTPUT);
-  pinMode(BIN2,    OUTPUT);
-  pinMode(STNDBY, OUTPUT);
+  pinMode(PWMA,     OUTPUT);
+  pinMode(PWMB,     OUTPUT);
+  pinMode(AIN1,     OUTPUT);
+  pinMode(AIN2,     OUTPUT);
+  pinMode(BIN1,     OUTPUT);
+  pinMode(BIN2,     OUTPUT);
+  pinMode(STANDBY,  OUTPUT);
 }
-
 
 void loop() 
 {
