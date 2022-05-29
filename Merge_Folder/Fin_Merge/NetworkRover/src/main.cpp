@@ -5,6 +5,7 @@
 #include "WiFi.h"
 #include <SPI.h>
 #include "code_body.h"
+#include "pid.h"
 // motor 1 settings
 #define CHA     0
 #define CHB     1
