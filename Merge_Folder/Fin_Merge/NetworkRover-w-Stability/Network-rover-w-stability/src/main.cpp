@@ -26,9 +26,9 @@ double motor2_strength = 0;
 #define motor2 2 // right
 /////////////////////////////////////////////////////////////
 //  Name of network
-    #define WIFI_SSID       "DESKTOP-4UGQK2B 0362"    
+    #define WIFI_SSID       "DESKTOP-4UGQK2B 0362"
 //  Password
-    #define WIFI_PASSWORD   "Bt133+98"   
+    #define WIFI_PASSWORD   "Bt133+98"
 //  State mashine indicator
     bool isConnected = false;
     String in;
@@ -63,7 +63,7 @@ void loop()
     {
         Serial.println("Connected");
         isConnected = true;
-      //  Body of code
+    //  Body of code
         in = code_body.HTTPGET();
         /////////////////////////////////////////////////////
         if  (
@@ -115,7 +115,7 @@ void loop()
             }
             delay(100);
         }
-        //  If not WASD, do nothing
+    //  If not WASD, do nothing
         else if(in == ".")
         {
             /*TODO: What to do here?*/

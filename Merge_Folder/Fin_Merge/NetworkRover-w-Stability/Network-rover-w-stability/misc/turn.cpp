@@ -16,9 +16,7 @@ void setup()
 
 void loop()
 {
-  /*
-    The setpoint is the angle in mind.
-  */
+  //  The setpoint is the angle in mind.
   double inc = pid.calculate(0, angle);
   printf("-----------------------------\n");
   printf( "angle:% 7.3f\tinc:% 7.3f\nLeft:% 7.3f\tRight:% 7.3f\n", 

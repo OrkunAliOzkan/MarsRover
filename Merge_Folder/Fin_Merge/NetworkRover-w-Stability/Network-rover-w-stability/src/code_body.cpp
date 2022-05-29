@@ -34,10 +34,14 @@ String fclass::HTTPGET()
         String payload = http.getString();
         deserializeJson(doc, payload);
         JsonObject obj = doc.as<JsonObject>();
-        String character = (doc[F("key")]);
-        soln = character;
+        String angle = (doc[F("ang")]);
+        String magnitude = (doc[F("mag")]);
+        String 
+        soln = angle;
+        soln += " ";
+        soln += magnitude;
         Serial.println(payload);
-        Serial.println(character);
+        Serial.println(soln);
     }
     else
     {
