@@ -5,7 +5,7 @@
 #include <SPI.h>
 #include "code_body.h"  //  Client code + motion
 #include "pid.h"        // PID controller
-/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 // motor 1 settings
 #define CHA     0
 #define CHB     1
@@ -24,23 +24,23 @@ double motor1_strength = 0;
 double motor2_strength = 0;
 #define motor1 1 // left
 #define motor2 2 // right
-/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 //  Name of network
-  #define WIFI_SSID       "DESKTOP-4UGQK2B 0362"    
+    #define WIFI_SSID       "DESKTOP-4UGQK2B 0362"    
 //  Password
-  #define WIFI_PASSWORD  "Bt133+98"   
+    #define WIFI_PASSWORD   "Bt133+98"   
 //  State mashine indicator
-  bool isConnected = false;
-  String in;
-  char key = ' ';
-/////////////////////////////////////////////////////
+    bool isConnected = false;
+    String in;
+    char key = ' ';
+/////////////////////////////////////////////////////////////
 double inc;
 double angle = 7;
 double legacyAngle = angle;
 double left_proportion = 0.5;
 double right_proportion = 0.5;
 PID pid = PID(0.1, 100, -100, 0.1, 0.01, 0.5);
-/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 void setup()
 {
     Serial.begin(115200);
@@ -94,7 +94,7 @@ void loop()
                   right_proportion *= abs(angle/legacyAngle);
                 }
                 /////////////////////////////////////////////
-                if((in == "w") || (in == "W"))
+                if      ((in == "w") || (in == "W"))
                 {
                     code_body.Forward
                     (
@@ -103,7 +103,7 @@ void loop()
                         100*right_proportion
                     );
                 }
-                else if((in == "w") || (in == "W"))
+                else if ((in == "w") || (in == "W"))
                 {
                     code_body.Backward
                     (
@@ -123,8 +123,7 @@ void loop()
         /////////////////////////////////////////////////////
         delay(2000);
     }
-//  If not connected, connect 
-//  and express as not connected
+//  If not connected, connect and express as not connected
     if (WiFi.status() != WL_CONNECTED) {
         Serial.println(".");
         delay(1000);
