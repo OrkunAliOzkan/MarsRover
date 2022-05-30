@@ -8,8 +8,9 @@ function primeOrNot(){
         } else if (num==2){
             return -1;
         } else {
-            const rootnum = Math.sqrt(num);
+            const rootnum = Math.sqrt(num) + 1;
             for(let d=2; d<rootnum; d++){
+                console.log(num , "%", d, num % d)
                 if(num%d==0){
                     return d;
                 }
