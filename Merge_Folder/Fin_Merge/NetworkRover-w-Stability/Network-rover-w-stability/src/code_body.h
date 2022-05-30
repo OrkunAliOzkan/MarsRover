@@ -8,6 +8,7 @@ class fclass
         void test_code();
         String HTTPGET();
         //void HTTPPOST();
+        //////////////////////////////////////////////////////////////////////
         void ARM();
         void DISARM();
         void RCW(       int DutyCycle);
@@ -24,6 +25,16 @@ class fclass
         void ForwardR(  int Duration, int DutyCycleLeft, int DutyCycleRight);
         void BackwardL( int Duration, int DutyCycleLeft, int DutyCycleRight);
         void BackwardR( int Duration, int DutyCycleLeft, int DutyCycleRight);
+        //////////////////////////////////////////////////////////////////////
+        int convTwosComp(int b);
+        void mousecam_reset();
+        int mousecam_init();
+        void mousecam_write_reg(int reg, int val);
+        int mousecam_read_reg(int reg);
+        void mousecam_read_motion(struct MD *p);
+        int mousecam_frame_capture(byte *pdata);
+        char asciiart(int k);
+        //////////////////////////////////////////////////////////////////////
 };
 
 extern fclass code_body;
