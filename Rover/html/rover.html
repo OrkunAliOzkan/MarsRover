@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Mars Rover | Command Centre</title>
+
+    <link rel = "stylesheet" type = "text/css" href = "../css/rover.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/keyboard.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <section class = "header">
+        <nav>
+            <a href="home.html"><img src="../images/team.png"></a>
+            <div class="nav-link-wrapper" id="navLinks">
+
+                <i class="fa fa-times" onclick="hideMenu()"></i>              
+                <ul>
+                    <li> <a href="home.html">HOME</a> </li>
+                    <li> <a href="members.html">MEMBERS</a> </li>
+                    <li> <a href="rover.html">ROVER</a> </li>
+                    <li> <a href="specification.html">SPECIFICATION</a> </li>
+                </ul>            
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </section>
+    
+    <div class="keyboard">
+        <form id = "data_input">
+            <div class="keyboard_keys">
+                <button onmousedown="startUP()" onmouseup="endUP()" id="upButton" type="submit" class="keyboard_key">
+                    <i class="material-icons">arrow_circle_up</i>
+                    <p id="counterUP"></p>
+                </button>
+                <button onmousedown="startLEFT()" onmouseup="endLEFT()" id="leftButton" type="submit" class="keyboard_key">
+                    <i class="material-icons">arrow_circle_left</i>
+                    <p id="counterLEFT"></p>
+                </button>
+                <button onmousedown="startDOWN()" onmouseup="endDOWN()" id="downButton" type="submit" class="keyboard_key">
+                    <i class="material-icons">arrow_circle_down</i>
+                    <p id="counterDOWN"></p>
+                </button>
+                <button onmousedown="startRIGHT()" onmouseup="endRIGHT()" id="rightButton" type="submit" class="keyboard_key">
+                    <i class="material-icons">arrow_circle_right</i>
+                    <p id="counterRIGHT"></p>
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    
+    <script src="../js/holdButton.js"></script>
+</body>
+
+</html>
