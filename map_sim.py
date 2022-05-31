@@ -13,22 +13,22 @@ from matplotlib.patches import Polygon
 arena_x = 360
 arena_y = 240
 
-aliens_count = 4
+aliens_count = random.randint(3, 6)
 raycount = 20
 ray_jump = 5 #initial ray distance for each point
 ultrasound_jump = 1
 alien_radius = 6
 FOV = 70
-friction = 1.1
-acceleration = 0.2
-max_vel = 10
+deceleration = 1.2 #fraction
+acceleration = 0.2 #addition
+max_vel = 7
 turn_speed = 3
 max_turn = 20
-#walls_count = 40
 
 running = True
 manual = True
 simulated = True
+web_control = False
 
 warnings.filterwarnings("ignore")
 mpl.rcParams['toolbar'] = 'None'
@@ -38,6 +38,33 @@ colours_list = ['lime', 'blue', 'magenta', 'yellow', 'red', 'cyan']
 
 def sim_noise (input, uncertainty):
 	return input*random.gauss(1, uncertainty)
+
+def input_interface ():
+	joystick = [0, 0]######
+	if not web_control:
+		move_input = ""
+		if keyboard.is_pressed('space'):#######
+			joystick = [70, 70] #For debugging. FPV. X & Y in circle, max each of 100, max 45deg of ~70.7 (100/sqrt(2)).
+		elif keyboard.is_pressed('shift'):##########
+			joystick = [-70, -70]##########
+		elif keyboard.is_pressed('control'):##########
+			joystick = [-100, 0]#############
+		if joystick == [0, 0]:
+			if keyboard.is_pressed('w'):
+				move_input += 'w'
+			if keyboard.is_pressed('a'):
+				move_input += 'a'
+			if keyboard.is_pressed('s'):
+				move_input += 's'
+			if keyboard.is_pressed('d'):
+				move_input += 'd'
+		else:
+			move_input = str(joystick)
+	else:
+		#web input goes here
+		pass
+	return move_input
+
 
 def position_interface (): #translating world to internal model
 	if simulated:
@@ -82,10 +109,10 @@ class Ray ():
 		plt.figure(self.map_num)
 		if self.type == 'ray':
 			self.line, = plt.plot([self.coords[0][0], self.coords[0][-1]], #only plot first and last point
-								   [self.coords[1][0], self.coords[1][-1]], color='lightblue', alpha=0.2, lw=3, zorder=1, marker='o')
+								   [self.coords[1][0], self.coords[1][-1]], color='lightblue', alpha=0.2, lw=3, zorder=6, marker='o')
 		else: #ultrasound
 			self.line, = plt.plot([self.coords[0][0], self.coords[0][-1]], #only plot first and last point
-								   [self.coords[1][0], self.coords[1][-1]], color='blue', alpha=0.3, lw=5, zorder=1, marker='o')
+								   [self.coords[1][0], self.coords[1][-1]], color='blue', alpha=0.3, lw=5, zorder=6, marker='o')
 
 	def ray_collide (self, head):
 		point = np.asarray(head)
@@ -146,23 +173,13 @@ class Ultrasound (Ray):
 		self.reading_prev = 0
 		self.reading = 0
 
+class Radar_Object ():
 
-# class Wall_Segment ():
-
-# 	def __init__ (self, edge, i):
-# 		self.edge = edge
-# 		if self.edge == 0:
-# 			self.position = [3, (i%6)*50] #[x, y]
-# 		elif self.edge == 1:
-# 			self.position = [(i%9)*50, 3]
-# 		elif self.edge == 2:
-# 			self.position = [(i%9)*50, 242]
-# 		elif self.edge == 3:
-# 			self.position = [362, (i%6)*50]
-# 		if self.edge == 1 or self.edge == 2:
-# 			self.shape = patches.Rectangle([self.position[0] - 60, self.position[1] - 5], 60, 5, color="gray", zorder=1)
-# 		else:
-# 			self.shape = patches.Rectangle([self.position[0] - 5, self.position[1] - 50], 5, 50, color="gray", zorder=1)
+	def __init__ (self):
+		self.position = [random.randint(30, arena_x-30), random.randint(30, arena_y-30)]
+		plt.figure(2)
+		self.scatter = plt.scatter(self.position[0], self.position[1], color="whitesmoke", marker='s', s=200, zorder=5)
+		self.scatter = plt.scatter(self.position[0], self.position[1], color="gray", marker='o', s=140, zorder=6)
 
 class Wall ():
 
@@ -184,10 +201,10 @@ class Wall ():
 		if simulated:
 			plt.figure(2)
 			self.line, = plt.plot([self.coords[0][0], self.coords[0][-1]], #only plot first and last point
-								   [self.coords[1][0], self.coords[1][-1]], color='gray', lw=7, zorder=1)
+								   [self.coords[1][0], self.coords[1][-1]], color='gray', lw=7, zorder=6)
 		plt.figure(1)
 		self.line, = plt.plot([self.coords[0][0], self.coords[0][-1]], #only plot first and last point
-								   [self.coords[1][0], self.coords[1][-1]], color='gray', lw=7, zorder=1)
+								   [self.coords[1][0], self.coords[1][-1]], color='gray', lw=7, zorder=6)
 
 class Alien ():
 
@@ -203,9 +220,9 @@ class Alien ():
 			self.position = [random.randint(arena_x/2, arena_x-20), random.randint(arena_y/2, arena_y-20)]
 		self.colour = colours_list[i]
 		plt.figure(2)
-		self.scatter = plt.scatter(self.position[0], self.position[1], color=self.colour, alpha=1, zorder=3)
+		self.scatter = plt.scatter(self.position[0], self.position[1], color=self.colour, alpha=1, zorder=10)
 		plt.figure(1)
-		self.scatter = plt.scatter(self.position[0], self.position[1], color=self.colour, alpha=0, zorder=3)
+		self.scatter = plt.scatter(self.position[0], self.position[1], color=self.colour, alpha=0, zorder=10)
 
 class Rover ():
 
@@ -214,15 +231,6 @@ class Rover ():
 		self.turn = 0 	#turning accumulated
 		self.edge = 0 ##########
 		self.position = [25, 25]
-		# self.edge = random.randint(0, 3) #irl the rover would be placed on one of the edges or corners
-		# if self.edge == 0:
-		# 	self.position = [random.randint(10, 40), random.randint(10, 230)] #[x, y]
-		# elif self.edge == 1:
-		# 	self.position = [random.randint(10, 350), random.randint(10, 40)]
-		# elif self.edge == 2:
-		# 	self.position = [random.randint(10, 350), random.randint(190, 230)]
-		# elif self.edge == 3:
-		# 	self.position = [random.randint(310, 350), random.randint(10, 230)]
 		self.coords = [[self.position[0] - 9, self.position[1] - 10],	#dimensions of the rover
 					   [self.position[0] + 9, self.position[1] - 10],
 					   [self.position[0] + 9, self.position[1] + 10],
@@ -231,7 +239,7 @@ class Rover ():
 		#self.rotation = random.randint(0, 360) 	#intial random rotation
 		#for i in range(4):
 		#	self.coords[i] = self.rotate(self.coords[i], self.rotation)
-		self.shape = Polygon(np.asarray(self.coords), closed=False, color="gray", alpha=0.8, zorder=2)
+		self.shape = Polygon(np.asarray(self.coords), closed=False, color="gray", alpha=0.8, zorder=9)
 
 	def rotate (self, point, dr):	#for rotating each point on the shape about the rover centre
 		theta = np.radians(dr)
@@ -257,25 +265,42 @@ class Rover ():
 				self.coords[i] = self.rotate(self.coords[i], dr)
 		self.shape.set_xy(self.coords) #update shape
 
-	def movement (self):	#allows for simulated acceleration and friction
-		if keyboard.is_pressed('w') or keyboard.is_pressed('up arrow'):
-			self.vel = self.vel + acceleration if self.vel < max_vel else max_vel 		#capped velocity
-		elif keyboard.is_pressed('s') or keyboard.is_pressed('down arrow'):
-			self.vel = self.vel - acceleration if self.vel > -max_vel else -max_vel
-		else:
-			self.vel = self.vel / friction if abs(self.vel) > 0.05 else 0
-		if keyboard.is_pressed('a') or keyboard.is_pressed('left arrow'):
-			if self.vel >= 0:
-				self.turn = self.turn - turn_speed if self.turn > -max_turn else -max_turn
+	def movement (self):	#allows for simulated acceleration and deceleration
+		move_input = input_interface()
+		if '[' in move_input: #joystick
+			X = int(move_input.split('[')[1].split(',')[0])
+			Y = int(move_input.split(',')[1].split(']')[0])
+			if Y > 0:
+				self.vel = self.vel + Y/100 if self.vel < Y/10 else Y/10 		#capped, fine-tuned velocity
+				self.vel = self.vel / deceleration if self.vel < 0 else self.vel		#reverse braking
 			else:
-				self.turn = self.turn + turn_speed if self.turn < max_turn else max_turn 	# reverse turn direction when reversing
-		elif keyboard.is_pressed('d') or keyboard.is_pressed('right arrow'):
+				self.vel = self.vel + Y/100 if self.vel > Y/10 else Y/10 		#capped, fine-tuned velocity
+				self.vel = self.vel / deceleration if self.vel > 0 else self.vel		#braking
 			if self.vel >= 0:
-				self.turn = self.turn + turn_speed if self.turn < max_turn else max_turn
+				self.turn = self.turn + X/100 if self.turn > X/5 else X/5 	#joystick positions used instead of max_vel
 			else:
-				self.turn = self.turn - turn_speed if self.turn > -max_turn else -max_turn
-		else:
-			self.turn = self.turn / (friction+0.3) if abs(self.turn) > 0.01 else 0
+				self.turn = self.turn - X/100 if self.turn < X/5 else X/5
+		else:	#WASD
+			if 'w' in move_input:
+				self.vel = self.vel + acceleration if self.vel < max_vel else max_vel 		#capped velocity
+				self.vel = self.vel / deceleration if self.vel < 0 else self.vel		#reverse braking
+			elif 's' in move_input:
+				self.vel = self.vel - acceleration if self.vel > -max_vel else -max_vel
+				self.vel = self.vel / deceleration if self.vel > 0 else self.vel		#braking
+			else:
+				self.vel = self.vel / deceleration if abs(self.vel) > 0.05 else 0 		#Handles WASD and joystick
+			if 'a' in move_input:
+				if self.vel >= 0:
+					self.turn = self.turn - turn_speed if self.turn > -max_turn else -max_turn
+				else:
+					self.turn = self.turn + turn_speed if self.turn < max_turn else max_turn 	# reverse turn direction when reversing
+			elif 'd' in move_input:
+				if self.vel >= 0:
+					self.turn = self.turn + turn_speed if self.turn < max_turn else max_turn
+				else:
+					self.turn = self.turn - turn_speed if self.turn > -max_turn else -max_turn
+			else:
+				self.turn = self.turn / (deceleration+0.3) if abs(self.turn) > 0.01 else 0 	#Handles WASD and joystick
 		self.update(self.vel, self.turn) #vel is just delta distance
 
 	def physical_position_rotation (self): #drive input doesn't exactly translate to output
@@ -352,6 +377,7 @@ def run ():
 			angle = (FOV/(raycount+1))*(i+1) - FOV/2 	#spread rays
 			rays.append(Ray(rover.position, rover.rotation, angle, ray_jump, 2))
 		ultrasound = Ultrasound(rover.position, rover.rotation, ultrasound_jump, 2)
+		radar_object = Radar_Object()
 		ax2.add_patch(sim_rover.shape)
 	camera_visual = []	#visual FOV representation
 	camera_visual.append(Ray(rover.position, rover.rotation, -FOV/2, 450, 1))
