@@ -1,7 +1,5 @@
+import random, warnings, time, keyboard
 import numpy as np
-import random
-import warnings
-import keyboard
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -68,7 +66,7 @@ def input_interface ():
 
 def position_interface (): #translating world to internal model
 	if simulated:
-		vel = sim_noise(sim_rover.vel, 0.3)	# using drive input to estimate distance covered and steering
+		vel = sim_noise(sim_rover.vel, 0.1)	# using drive input to estimate distance covered and steering
 		return vel
 	else:
 		#real data goes here
@@ -76,7 +74,7 @@ def position_interface (): #translating world to internal model
 
 def rotation_interface (): #translating world to internal model
 	if simulated:
-		turn = sim_noise(sim_rover.turn, 0.1)
+		turn = sim_noise(sim_rover.turn, 0.05)
 		return turn
 	else:
 		#real data goes here
@@ -89,9 +87,27 @@ def vision_interface (): #receive camera data
 			object = viewing[i][0]
 			distance = viewing[i][1]
 			angle = viewing[i][2]
-			viewing_noisy.append([object, sim_noise(distance, 0.001*np.sqrt(distance)), 
+			viewing_noisy.append([object, sim_noise(distance, 0.0001*np.sqrt(distance)), 
 								  sim_noise(angle, 0.0001*np.sqrt(angle))]) #angle is much more accurate than distance
 		return viewing_noisy
+	else:
+		#real data goes here
+		pass
+
+def radar_interface (): #receive radar data
+	if simulated:
+		if time.time() - radar_object.last_scan < 0.5:	#if not enough time elapsed
+			return 0
+		else:
+			radar_object.last_scan = time.time()	#Update time
+			radar_bulb_pos = np.asarray(radar.position)
+			radar_fan_pos = np.asarray(radar_object.position)
+			distance = np.linalg.norm(radar_fan_pos - radar_bulb_pos)
+			if distance > 60:
+				return 0
+			else:
+				probability = ((60-distance) + 20) / 100	#map 60cm->0cm as 20%->80%
+				return probability
 	else:
 		#real data goes here
 		pass
@@ -176,10 +192,54 @@ class Ultrasound (Ray):
 class Radar_Object ():
 
 	def __init__ (self):
+		self.last_scan = time.time()
 		self.position = [random.randint(30, arena_x-30), random.randint(30, arena_y-30)]
 		plt.figure(2)
-		self.scatter = plt.scatter(self.position[0], self.position[1], color="whitesmoke", marker='s', s=200, zorder=5)
-		self.scatter = plt.scatter(self.position[0], self.position[1], color="gray", marker='o', s=140, zorder=6)
+		self.scatter1 = plt.scatter(self.position[0], self.position[1], color="whitesmoke", marker='s', s=200, alpha=0.5, zorder=5)
+		self.scatter2 = plt.scatter(self.position[0], self.position[1], color="gray", marker='o', s=140, alpha=0.5, zorder=6)
+
+class Radar ():
+
+	def __init__ (self):
+		self.position = [rover.position[0], rover.position[1] + 40] #centre of bulb is in front of the rover
+		self.guesses = [[],[]]	#coords, probabilities
+		self.weighted_sum_pos = [0, 0]	#total to be added to (x, y)
+		self.probability_sum = 0 		#for averaging
+		self.avg_object_pos = [0, 0]	#where we think the object is (x, y)
+		self.radar_confidence = 0 	#overall probability (ignores several skirting scans)
+		plt.figure(2)
+		self.scatter1 = plt.scatter(self.position[0], self.position[1], color="red", s=5000, alpha=0.1, zorder=3)
+		self.scatter2 = plt.scatter(self.position[0], self.position[1], color="red", s=70, alpha=0.3, zorder=4)
+		plt.figure(1)
+		self.scatter_guesses = plt.scatter([], [], color="whitesmoke", s=40, alpha=0, zorder=3)
+		self.scatter_avg1 = plt.scatter([], [], color="whitesmoke", marker='s', s=200, alpha=0.5, zorder=5)
+		self.scatter_avg2 = plt.scatter([], [], color="gray", marker='o', s=140, alpha=0.5, zorder=6)
+
+	def move (self, rover_pos, rover_rot):
+		self.position[0] = rover_pos[0] + 40*np.sin(np.radians(rover_rot))
+		self.position[1] = rover_pos[1] + 40*np.cos(np.radians(rover_rot))
+		plt.figure(2)
+		self.scatter1.set_offsets([self.position[0], self.position[1]])
+		self.scatter2.set_offsets([self.position[0], self.position[1]])
+
+	def triangulate (self):
+		self.scan_probability = radar_interface()
+		if self.scan_probability != 0:	#valid scan
+			self.weighted_sum_pos[0] += self.position[0]*self.scan_probability	#x
+			self.weighted_sum_pos[1] += self.position[1]*self.scan_probability	#y
+			self.probability_sum += self.scan_probability
+			self.avg_object_pos[0] = self.weighted_sum_pos[0] / self.probability_sum #x
+			self.avg_object_pos[1] = self.weighted_sum_pos[1] / self.probability_sum #y
+			self.guesses[0].append([self.position[0], self.position[1]])
+			self.guesses[1].append(self.scan_probability)
+			if self.scan_probability > self.radar_confidence:	#new max probability
+				self.radar_confidence = self.scan_probability	#max probability is overall probability
+		if self.guesses[0] != []:
+			self.scatter_guesses.set_offsets(self.guesses[0])	#plot guesses
+			self.scatter_guesses.set_alpha(self.guesses[1])		#opacities = probabilites
+			self.scatter_avg1.set_offsets(self.avg_object_pos)	#plot object
+			self.scatter_avg2.set_offsets(self.avg_object_pos)
+
 
 class Wall ():
 
@@ -358,7 +418,7 @@ def clear ():
 
 
 def run ():
-	global sim_map, arena_map, sim_rover, rover, ax1, ax2, viewing, aliens, walls
+	global sim_map, arena_map, sim_rover, rover, ax1, ax2, viewing, aliens, walls, radar_object, radar
 	rover = Rover()
 	arena_map = Map("Arena Map", 1)
 	arena_map.map_axis()
@@ -378,6 +438,7 @@ def run ():
 			rays.append(Ray(rover.position, rover.rotation, angle, ray_jump, 2))
 		ultrasound = Ultrasound(rover.position, rover.rotation, ultrasound_jump, 2)
 		radar_object = Radar_Object()
+		radar = Radar()
 		ax2.add_patch(sim_rover.shape)
 	camera_visual = []	#visual FOV representation
 	camera_visual.append(Ray(rover.position, rover.rotation, -FOV/2, 450, 1))
@@ -395,6 +456,9 @@ def run ():
 				ray.cast(sim_rover.position, sim_rover.rotation)	#shoot rays until object
 				us_distance = ultrasound.cast(sim_rover.position, sim_rover.rotation)######
 		#rover.estimate_position_rotation()
+			radar.move(sim_rover.position, sim_rover.rotation)
+			if rover.vel != 0: #only triangulate when moving, to avoid building up duplicate stray points
+				radar.triangulate()
 		for i in range(2):
 			camera_visual[i].draw(rover.position, rover.rotation)
 		rover.vision()
