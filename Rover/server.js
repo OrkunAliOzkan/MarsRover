@@ -3,24 +3,27 @@ var server = express();
 
 server.use(express.static(__dirname ));
 
+// const path = require('path');
+// const htmlPath = path.resolve('../client/index.html');
+
 server.get('/', function(req, res) {
-    res.sendFile('/home/ubuntu/website/html/home.html');
+    res.sendFile(`${__dirname}/html/home.html`);
 });
 
 server.get('/home.html', function(req, res) {
-    res.sendFile('/home/ubuntu/website/html/home.html');
+    res.sendFile(`${__dirname}/html/home.html`);
 });
 
 server.get('/rover.html', function(req, res) {
-    res.sendFile('/home/ubuntu/website/html/rover.html');
+    res.sendFile(`${__dirname}/html/rover.html`);
 });
 
 server.get('/members.html', function(req, res) {
-    res.sendFile('/home/ubuntu/website/html/members.html');
+    res.sendFile(`${__dirname}/html/members.html`);
 });
 
 server.get('/specification.html', function(req, res) {
-    res.sendFile('/home/ubuntu/website/html/specification.html');
+    res.sendFile(`${__dirname}/html/specification.html`);
 });
 
 
