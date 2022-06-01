@@ -99,8 +99,8 @@ class Map ():
 		plt.style.use('Solarize_Light2')
 		plt.rcParams.update({'axes.facecolor':'sandybrown'})
 		plt.title('Simulated Map')
-		plt.ylim([0, 240])
-		plt.xlim([0, 360])
+		plt.ylim([0, arena_y])
+		plt.xlim([0, arena_x])
 		ax = plt.subplot(111)
 		plt.grid(color='lightgray', lw=0.5)
 		self.aliens_count = random.randint(3, 6)
@@ -144,6 +144,7 @@ def run ():
 		except: pass
 		ax.add_patch(rover.shape)
 		plt.pause(0.001)
+
 
 
 if __name__ == "__main__":

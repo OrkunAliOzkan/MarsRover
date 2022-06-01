@@ -1,6 +1,7 @@
 from cv2 import magnitude
 import numpy as np
 import os
+
 def waypoint_cmd(rx, ry, wx, wy):
     dx = wx - rx
     dy = wy - ry

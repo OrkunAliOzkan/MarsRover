@@ -1,11 +1,9 @@
-// taken from https://www.cssscript.com/touch-joystick-controller/ 
-// joystickcontroller is !!NOT OUR OWN WORK!!
 class JoystickController
 {
 	// stickID: ID of HTML element (representing joystick) that will be dragged
 	// maxDistance: maximum amount joystick can move in any direction
 	// deadzone: joystick must move at least this amount from origin to register value change
-	constructor( stickID, maxDistance, deadzone, socket )
+	constructor( stickID, maxDistance, deadzone )
 	{
 		this.id = stickID;
 		let stick = document.getElementById(stickID);
@@ -72,7 +70,6 @@ class JoystickController
 
 			// move stick image to new position
 		    stick.style.transform = `translate3d(${xPosition}px, ${yPosition}px, 0px)`;
-            socket.emit("stickmove", {d: distance, a: angle});
 
 			// deadzone adjustment
 			const distance2 = (distance < deadzone) ? 0 : maxDistance / (maxDistance - deadzone) * (distance - deadzone);
@@ -110,57 +107,11 @@ class JoystickController
 	}
 }
 
-const getMap = (canvas) => {
-    const ctx = canvas.getContext('2d')
+// let joystick1 = new JoystickController("stick", 64, 8);
 
-    const renderBackground = () => {
-        ctx.fillStyle = "#c1440e";
-        ctx.fillRect(0, 0, 1200, 1200);
-    };
+// function loop()
+// {
+// 	requestAnimationFrame(loop);
+// }
 
-    const makeSquare = (x, y, color) => {
-        ctx.fillStyle = color;
-        ctx.fillRect(x, y, 20, 20);
-    };
-    
-    return { renderBackground, makeSquare };
-};
-
-const getClickCoordinates = (element, ev) => {
-    const { top, left } = element.getBoundingClientRect();
-    const { clientX, clientY } = ev;
-    return {
-        x: clientX - left,
-        y: clientY - top
-    };
-};
-
-(() => {
-    const sock = io();
-    const canvas = document.querySelector("#map");
-
-    const {renderBackground, makeSquare} = getMap(canvas);
-
-    renderBackground();
-    makeSquare(100, 100, "blue");
-
-    const onClick = (e) => {
-        const { x, y } = getClickCoordinates(canvas, e);
-        sock.emit('waypoint', { x, y });
-    };
-
-    sock.on('waypoint', ({ x, y }) => makeSquare(x-10, y-10))
-
-    let joystick1 = new JoystickController("stick", 64, 8, sock);
-
-    function loop()
-    {
-        requestAnimationFrame(loop);
-    }
-
-    loop();
-
-    canvas.addEventListener('click', onClick)
-    
-})();
-
+// loop();

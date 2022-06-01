@@ -5,7 +5,19 @@
     </head>
     <body>
         <h1>Map:</h1>
-        <canvas id="map" height="2337" width="3555"></canvas>
+
+        <div id="parent">
+            <div id="map-wrapper">
+                <canvas id="map" height="1200" width="1200"></canvas>
+            </div>
+            <div style="border: 1px solid blue; width: 128px; position: absolute; left:1400px; top:1000px;">
+                <img src="joystick/images/joystick-base.png"/>
+                <div id="stick" style="position: absolute; left:32px; top:32px;">
+                    <img src="joystick/images/joystick-blue.png"/>		
+                </div>
+            </div>
+        </div>
+
     </body>
     <script src="/socket.io/socket.io.js"></script>
     <script src="client.js"></script>
