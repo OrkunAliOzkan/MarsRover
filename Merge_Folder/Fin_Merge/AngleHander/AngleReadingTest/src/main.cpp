@@ -9,6 +9,35 @@
 #include <cmath>
 #include <vector>
 /////////////////////////////////////////////////////////////////
+//  Optical flow sensor parameters
+#define PIN_SS                  5 //slave select/chip select (ESP32 pin number)
+#define PIN_MISO                19 //output data from mouse sensor (ESP32 pin number)
+#define PIN_MOSI                23 //input data to mouse sensor (ESP32 pin number)
+#define PIN_SCK                 18 //synchronous clock (ESP32 pin number)
+#define PIN_MOUSECAM_RESET      35 //reset (ESP32 pin number)
+#define PIN_MOUSECAM_CS         5 //chip select (ESP32 pin number again)
+#define ADNS3080_PIXEL_SUM      0x06
+#define ADNS3080_PIXELS_X       30 //constant for x-axis pixel count 
+#define ADNS3080_PIXELS_Y       30 //constant for y-axis pixel count 
+#define ADNS3080_PIXEL_BURST    0x40 
+#define ADNS3080_MOTION_BURST   0x50
+#define ADNS3080_FRAME_CAPTURE  0x13 //read and write
+
+int total_x_OFS = 0; //initialises actual total x-displacement from starting/reset position 
+int total_y_OFS = 0; //initialises actual total y-displacement from starting/reset position 
+
+int total_x1_OFS = 0; //total x displacement before applying scale factor
+int total_y1_OFS = 0; //total y displacement before applying scale factor
+
+int x_OFS = 0;
+int y_OFS = 0;
+
+int a_OFS = 0;
+int b_OFS = 0;
+
+int distance_x_OFS = 0;
+int distance_y_OFS = 0;
+/////////////////////////////////////////////////////////////////
 #define PWMA 17
 #define PWMB 2
 #define AIN1 14
@@ -68,6 +97,23 @@ void setup()
 /* PD controller declaration */
   pid_init(&pid);
   pid_set_gains(&pid, 0, 0, 0);
+/////////////////////////////////////////////////////////////////
+  pinMode(PIN_SS,OUTPUT); //sets the pin as an output pin
+  pinMode(PIN_MISO,INPUT); //sets the pin as an input pin
+  pinMode(PIN_MOSI,OUTPUT); //sets the pin as an output pin
+  pinMode(PIN_SCK,OUTPUT); //sets the pin as an output pin
+
+  SPI.begin();
+  SPI.setClockDivider(SPI_CLOCK_DIV32); //sets SPI clock to 1/32 of the ESP32's clock
+  SPI.setDataMode(SPI_MODE3); //in SPI mode 3, data is sampled on the falling edge and shifted out on the rising edge
+  SPI.setBitOrder(MSBFIRST);
+
+
+  if(code_body.mousecam_init()==-1)
+  {
+    Serial.println("Mouse cam failed to init");
+    while(1);
+  }
 }
 
 void loop()
@@ -89,10 +135,25 @@ void loop()
   y = (analogRead(YJOY))/4 - 512;
 /////////////////////////////////////////////////////////////////
 //  Readings
-code_body.readings( counter_input,
-                    &compass,
-                    &angle,
-                    &headingDegrees);
+code_body.readings(
+                        counter_input, 
+                        &compass, 
+                        &angle, 
+                        &headingDegrees,
+                        &distance_x_OFS,
+                        &distance_y_OFS,
+                        &total_x1_OFS,
+                        &total_y1_OFS,
+                        &total_x_OFS,
+                        &total_y_OFS
+                        );
+/*
+x_OFS;
+y_OFS;
+a_OFS;
+b_OFS;
+*/
+
   /*
   compass.read();
   x_comp = compass.getX();
