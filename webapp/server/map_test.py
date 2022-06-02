@@ -1,6 +1,7 @@
 from cv2 import magnitude
 import numpy as np
 import os
+import sys
 
 from timeit import default_timer as timer
 
@@ -21,3 +22,6 @@ print("hello world")
 #     start = 
 #     f.write("hello world\n")
 # f.close()
+
+# while True:
+#     sys.stdin.read()

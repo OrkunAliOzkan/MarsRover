@@ -9,6 +9,10 @@ app.use(express.static(`${__dirname}/../client`));
 const socketio = require('socket.io');
 const io = socketio(server); 
 
+// method 1
+const {PythonShell} = require('python-shell');
+let pyshell = new PythonShell('map_test.py');
+
 io.on('connection', (sock) => {
     console.log("Client connected");
 
@@ -30,19 +34,13 @@ server.listen(3000,'0.0.0.0', () => {
     console.log('Server is running on port 3000')
 });
 
-// method 1
-// const {PythonShell} = require('python-shell');
 
-// PythonShell.run('map_test.py', null, (err) => {
-//     if (err) throw err;
-//     console.log("finished");
+// method 2
+// const {spawn} = require('child_process');
+// const python = spawn('python', ['map_sim.py']);
+// python.stdout.on('data', (data) => {
+//     console.log(`Python printed this to console: ${data}`);
 // })
-
-const {spawn} = require('child_process');
-const python = spawn('python', ['map_sim.py']);
-python.stdout.on('data', (data) => {
-    console.log(`Python printed this to console: ${data}`);
-})
-python.on('close', (code) => {
-    console.log(`Python process exited with code ${code}`)
-})
+// python.on('close', (code) => {
+//     console.log(`Python process exited with code ${code}`)
+// })
