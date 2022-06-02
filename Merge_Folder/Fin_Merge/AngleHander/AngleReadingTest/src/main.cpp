@@ -26,25 +26,28 @@ int speedB = 0;
   std::vector<float> desired_polar      = {0, 0};
   std::vector<float> desired_cartesian  = {0, 0};
 /////////////////////////////////////////////////////////////////
+//  PID intance declaration
 pid_ctrl_t pid;
 
+//  Rovers displacement
 float x = 0;
 float y = 0;
 
+//  parameters used in PID
 float perpendicular_distance = 0;
 float adjustment_angle = 0;
 float magnitude = 0;
 float projection_magnitude = 0;
-
 float orthogonal = 0;
 std::vector<float> projection = {0, 0};
 std::vector<float> actual = {0, 0};
 /////////////////////////////////////////////////////////////////
+//  Compass readings and parameters
 QMC5883LCompass compass;
-int x_comp, y_comp;
-float angle;
-float headingDegrees;
-#define DECLINATIONANGLE 0.483 * /*(PI / 180)*/
+int x_comp = 0, y_comp = 0;
+float angle = 0;
+float headingDegrees = 0;
+#define DECLINATIONANGLE 0.483 /* * (PI / 180) */
 int counter_input = 0;
 /////////////////////////////////////////////////////////////////
 void setup()
@@ -61,9 +64,8 @@ void setup()
   pinMode(BIN2, OUTPUT);
   pinMode(XJOY, INPUT);
   pinMode(YJOY, INPUT);
-  //  TODO: Get the desired polar data from HTTP.GET in the loop
 
-/* PD controller. */
+/* PD controller declaration */
   pid_init(&pid);
   pid_set_gains(&pid, 0, 0, 0);
 }
