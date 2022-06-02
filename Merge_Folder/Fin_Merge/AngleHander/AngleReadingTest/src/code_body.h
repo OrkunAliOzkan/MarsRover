@@ -36,11 +36,11 @@ class fclass
 
 struct MD
 {
- byte motion;
- char dx, dy;
- byte squal;
- word shutter;
- byte max_pix;
+    byte motion;
+    char dx, dy;
+    byte squal;
+    word shutter;
+    byte max_pix;
 };
 
 extern fclass code_body;

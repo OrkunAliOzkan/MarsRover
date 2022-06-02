@@ -13,7 +13,7 @@
 #define BIN2 15
 #define XJOY 27
 #define YJOY 26
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define PIN_SS                            5 
 #define PIN_MISO                          19 
 #define PIN_MOSI                          23 
@@ -26,7 +26,7 @@
 #define ADNS3080_PIXEL_BURST              0x40 
 #define ADNS3080_MOTION_BURST             0x50
 #define ADNS3080_FRAME_CAPTURE            0x13 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DECLINATIONANGLE 0.483 /* * (PI / 180)   FIXME: Isn't this in rad?*/
 
 //int speedA = 0;
@@ -72,7 +72,7 @@ void fclass::readings(int counter_input,
                                 int *total_y
                                 )
 {
-    if((counter_input % 2) == 0)
+    //if((counter_input % 2) == 0)
     {
     //  Compass readings
         compass->read();
@@ -83,7 +83,7 @@ void fclass::readings(int counter_input,
         *headingDegrees = ((*angle) * (180/M_PI));
         //Serial.println(*headingDegrees);
     }
-    if((counter_input % 2) != 0)
+    //if((counter_input % 2) != 0)
     {
         int val = mousecam_read_reg(ADNS3080_PIXEL_SUM);
         MD md;
@@ -94,8 +94,8 @@ void fclass::readings(int counter_input,
         *distance_x = convTwosComp(md.dx);
         total_x1 = total_x1 + *distance_x;
         total_y1 = total_y1 + *distance_y;
-        *total_x = *total_x1/157; 
-        *total_y = *total_y1/157;
+        *total_x = *total_x1/4.95; 
+        *total_y = *total_y1/4.95;
     }
 }
 

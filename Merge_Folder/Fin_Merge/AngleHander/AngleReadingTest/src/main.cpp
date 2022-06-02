@@ -148,6 +148,8 @@ void loop()
   y = (analogRead(YJOY))/4 - 512;
 /////////////////////////////////////////////////////////////////
 //  Readings
+/*
+*/
 code_body.readings(
                         counter_input, 
                         &compass, 
