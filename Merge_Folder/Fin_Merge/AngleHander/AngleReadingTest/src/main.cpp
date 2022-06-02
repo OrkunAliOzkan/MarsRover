@@ -29,12 +29,6 @@ int total_y_OFS = 0; //initialises actual total y-displacement from starting/res
 int total_x1_OFS = 0; //total x displacement before applying scale factor
 int total_y1_OFS = 0; //total y displacement before applying scale factor
 
-int x_OFS = 0;
-int y_OFS = 0;
-
-int a_OFS = 0;
-int b_OFS = 0;
-
 int distance_x_OFS = 0;
 int distance_y_OFS = 0;
 /////////////////////////////////////////////////////////////////
