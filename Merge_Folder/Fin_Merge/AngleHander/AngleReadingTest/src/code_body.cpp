@@ -2,6 +2,7 @@
 #include <SPI.h>
 #include <vector>
 #include <HTTPClient.h>
+#include "QMC5883LCompass.h"
 #include "code_body.h"
 
 #define PWMA 17
@@ -43,6 +44,28 @@ float fclass::vector_multiply(std::vector<float> x, std::vector<float> y)
     }
 
     return soln;
+}
+
+void fclass::readings(int counter_input, 
+                                QMC5883LCompass *compass, 
+                                float *angle, 
+                                float *headingDegrees)
+{
+    if((counter_input % 2) == 0)
+    {
+    //  Compass readings
+        compass->read();
+        float x_comp = compass->getX();
+        float y_comp = compass->getY();    
+        delay(50);  
+        *angle = code_body.computeAngle(x_comp, y_comp);
+        *headingDegrees = ((*angle) * (180/M_PI));
+        //Serial.println(*headingDegrees);
+    }
+    if((counter_input % 2) != 0)
+    {
+    //  TODO: Optical flow sensor readings
+    }
 }
 
 
