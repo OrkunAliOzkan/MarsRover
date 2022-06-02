@@ -10,24 +10,39 @@
 #include <vector>
 /////////////////////////////////////////////////////////////////
 //  Optical flow sensor parameters
-#define PIN_SS                  5 //slave select/chip select (ESP32 pin number)
-#define PIN_MISO                19 //output data from mouse sensor (ESP32 pin number)
-#define PIN_MOSI                23 //input data to mouse sensor (ESP32 pin number)
-#define PIN_SCK                 18 //synchronous clock (ESP32 pin number)
-#define PIN_MOUSECAM_RESET      35 //reset (ESP32 pin number)
-#define PIN_MOUSECAM_CS         5 //chip select (ESP32 pin number again)
+//slave select/chip select (ESP32 pin number)
+  #define PIN_SS                  5 
+//output data from mouse sensor (ESP32 pin number)
+  #define PIN_MISO                19 
+//input data to mouse sensor (ESP32 pin number)
+  #define PIN_MOSI                23 
+//synchronous clock (ESP32 pin number)
+  #define PIN_SCK                 18 
+//reset (ESP32 pin number)
+  #define PIN_MOUSECAM_RESET      35 
+//chip select (ESP32 pin number again)
+  #define PIN_MOUSECAM_CS         5 
 #define ADNS3080_PIXEL_SUM      0x06
-#define ADNS3080_PIXELS_X       30 //constant for x-axis pixel count 
-#define ADNS3080_PIXELS_Y       30 //constant for y-axis pixel count 
-#define ADNS3080_PIXEL_BURST    0x40 
-#define ADNS3080_MOTION_BURST   0x50
-#define ADNS3080_FRAME_CAPTURE  0x13 //read and write
+//constant for x-axis pixel count 
+  #define ADNS3080_PIXELS_X       30 
+//constant for y-axis pixel count 
+  #define ADNS3080_PIXELS_Y       30 
+//  Quick access registers that store pixel data
+  #define ADNS3080_PIXEL_BURST    0x40 
+//  Quick access registers that store motion data
+  #define ADNS3080_MOTION_BURST   0x50
+//read and write
+  #define ADNS3080_FRAME_CAPTURE  0x13 
 
-int total_x_OFS = 0; //initialises actual total x-displacement from starting/reset position 
-int total_y_OFS = 0; //initialises actual total y-displacement from starting/reset position 
+//initialises actual total x-displacement from starting position 
+int total_x_OFS = 0; 
+//initialises actual total y-displacement from starting position 
+int total_y_OFS = 0; 
 
-int total_x1_OFS = 0; //total x displacement before applying scale factor
-int total_y1_OFS = 0; //total y displacement before applying scale factor
+//total x displacement before applying scale factor
+int total_x1_OFS = 0; 
+ //total y displacement before applying scale factor
+int total_y1_OFS = 0;
 
 int distance_x_OFS = 0;
 int distance_y_OFS = 0;
@@ -73,6 +88,7 @@ float headingDegrees = 0;
 #define DECLINATIONANGLE 0.483 /* * (PI / 180) */
 int counter_input = 0;
 /////////////////////////////////////////////////////////////////
+
 void setup()
 {
   Serial.begin(115200);
@@ -98,8 +114,11 @@ void setup()
   pinMode(PIN_SCK,OUTPUT); //sets the pin as an output pin
 
   SPI.begin();
-  SPI.setClockDivider(SPI_CLOCK_DIV32); //sets SPI clock to 1/32 of the ESP32's clock
-  SPI.setDataMode(SPI_MODE3); //in SPI mode 3, data is sampled on the falling edge and shifted out on the rising edge
+  //sets SPI clock to 1/32 of the ESP32's clock
+  SPI.setClockDivider(SPI_CLOCK_DIV32); 
+  //in SPI mode 3, data is sampled on the 
+  //falling edge and shifted out on the rising edge
+  SPI.setDataMode(SPI_MODE3); 
   SPI.setBitOrder(MSBFIRST);
 
 
@@ -141,24 +160,6 @@ code_body.readings(
                         &total_x_OFS,
                         &total_y_OFS
                         );
-/*
-x_OFS;
-y_OFS;
-a_OFS;
-b_OFS;
-*/
-
-  /*
-  compass.read();
-  x_comp = compass.getX();
-  y_comp = compass.getY();
-
-  delay(50);
-
-  angle = code_body.computeAngle(x_comp, y_comp);
-  headingDegrees = angle * 180/M_PI;
-  Serial.println(headingDegrees);
-  */
 /////////////////////////////////////////////////////////////////
 //    Compute magnitude (avg to be more exact)
   magnitude = y / sin(angle);
@@ -240,12 +241,6 @@ b_OFS;
     if (speedA > 255) {speedA = 255;}
     if (speedB > 0) {speedB = 0;}
   }
-
-  //  if (x < 40 && y < 40)
-  //  {
-  //    speedA = 0;
-  //    speedB = 0; 
-  //  }
 
   if (speedA < 10) 
   {
