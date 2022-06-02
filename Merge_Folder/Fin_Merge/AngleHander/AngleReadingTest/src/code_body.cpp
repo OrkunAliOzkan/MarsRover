@@ -33,11 +33,14 @@ double fclass::computeAngle(int x, int y)
     return angle;
 }
 
-float fclass::vector_multiply(vector<float> x, vector<float> y);
+float fclass::vector_multiply(std::vector<float> x, std::vector<float> y)
 {
     //  It is known that x is actually a transpose
     float soln;
-    soln += (x[0]*y[0] + x[1]*y[1]);
+    for(int i = 0; i < x.size(); i++)
+    {
+        soln += (x[i]*y[i]);
+    }
 
     return soln;
 }

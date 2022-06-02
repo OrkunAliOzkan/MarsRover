@@ -6,7 +6,7 @@ class fclass
     public:
         fclass();
         double computeAngle(int x, int y);
-        float vector_multiply(vector<float> x, vector<float> y);
+        float vector_multiply(std::vector<float> x, std::vector<float> y);
 };
 
 extern fclass code_body;

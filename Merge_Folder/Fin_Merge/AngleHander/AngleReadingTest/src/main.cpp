@@ -23,6 +23,9 @@ int speedB = 0;
 ///////////////////////////////////////////////////////////////////
 pid_ctrl_t pid;
 
+float x = 0;
+float y = 0;
+
 float previous_angle = 0;
 float requested_angle = 0;
 
@@ -30,9 +33,9 @@ float perpendicular_distance = 0;
 float adjustment_angle = 0;
 
 float orthogonal = 0;
-vector<float> projection = 0;
-vector<float> actual = 0;
-vector<float> desired = 0;
+std::vector<float> projection = {0, 0};
+std::vector<float> actual = {0, 0};
+std::vector<float> desired = {0, 0};
 
 
 float acutal_angular_velocity = 0;
@@ -74,8 +77,8 @@ void loop()
 //  Input readings
 if((counter_input % 2) == 0)
 {
-  float x = (analogRead(XJOY))/4;
-  float y = (analogRead(YJOY))/4;
+  x = (analogRead(XJOY))/4;
+  y = (analogRead(YJOY))/4;
 
 //if joystick's y-axis potentiometer output is low, go forward
   if(y < 400) 
@@ -133,8 +136,10 @@ if((counter_input % 2) == 0)
   //Serial.println(y);
   analogWrite(PWMA, speedA);
   analogWrite(PWMB, speedB);
-  }
+}
 ///////////////////////////////////////////////////////////////////
+if((counter_input % 2) != 0)
+{
 //  Compass readings
   compass.read();
   x_comp = compass.getX();
@@ -148,20 +153,82 @@ if((counter_input % 2) == 0)
 ///////////////////////////////////////////////////////////////////
 //  Compute perpendicular distance from the desired trjectory
   //  Compute projeciton
-  orthogonal = vector_multiply(actual, desired);
+  orthogonal = code_body.vector_multiply(actual, desired);
 
   perpendicular_distance = sqrt((actual[0] * actual[0]) + 
                                 (actual[1] * actual[1]));
 
   for(int i = 0; i < desired.size(); i++)
   {
-    projection[i] = desired[i] - (orthogonal/perpendicular_distance)(actual[i]);
+    projection[i] = desired[i] - ((orthogonal/perpendicular_distance)*(actual[i]));
   }
 
   adjustment_angle = pid_process(&pid, perpendicular_distance);
 ///////////////////////////////////////////////////////////////////
-//  Utilising the adjustment angles
-TODO: place code from joystick input, and execute!
+  //  Utilising the adjustment angles
+  //  TODO: place code from joystick input, and execute!
+  x = 1023 * sin(adjustment_angle * (PI/180));
+  y = 1023 * cos(adjustment_angle * (PI/180));
+
+//if joystick's y-axis potentiometer output is low, go forward
+  if(y < 400) 
+  {
+    digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
+    digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
+    speedA = map(y, 400, 0, 0, 255);
+    speedB = map(y, 400, 0, 0, 255);
+  }
+
+//if joystick's x-axis potentiometer output is high, go backwards
+  else if (y > 700) 
+  {
+    digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW);
+    digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH);
+    speedA = map(y, 700, 1023, 0, 255);
+    speedB = map(y, 700, 1023, 0, 255);
+  }
+
+  else 
+  {
+    speedA = 0; speedB = 0;
+  }
+
+  if(x < 400)
+  {
+    int XMAP = map(x, 400, 0, 0, 255);
+    speedA = speedA - XMAP;
+    speedB = speedB + XMAP;
+    if (speedA < 0) {speedA = 0;}
+    if (speedB > 255) {speedB = 255;}
+  }
+
+  if(x > 700)
+  {
+    int XMAP = map(x, 700, 1023, 0, 255);
+    speedA = speedA + XMAP;
+    speedB = speedB - XMAP;
+    if (speedA > 255) {speedA = 255;}
+    if (speedB > 0) {speedB = 0;}
+  }
+
+  //  if (x < 40 && y < 40)
+  //  {
+  //    speedA = 0;
+  //    speedB = 0; 
+  //  }
+
+  if (speedA < 10) 
+  {
+    speedA = 0;
+  }
+
+  if (speedB < 10) 
+  {
+    speedB = 0;
+  }
+  //Serial.println(y);
+  analogWrite(PWMA, speedA);
+  analogWrite(PWMB, speedB);
 ///////////////////////////////////////////////////////////////////
 /*
   We know angle and also motors PWM. One can
@@ -169,9 +236,6 @@ TODO: place code from joystick input, and execute!
     //motor_pwm = pid_process(&pid, error);
 */
 //  Control readings
-if((counter_input % 2) != 0)
-{
-  
 }
 ///////////////////////////////////////////////////////////////////
     counter_input++;
