@@ -105,7 +105,7 @@ code_body.readings( counter_input,
   Serial.println(headingDegrees);
   */
 /////////////////////////////////////////////////////////////////
-//    Compute magnitude (avg)
+//    Compute magnitude (avg to be more exact)
   magnitude = y / sin(angle);
   magnitude += x / cos(angle);
   magnitude /= 2;
