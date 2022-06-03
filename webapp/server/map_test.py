@@ -1,4 +1,3 @@
-from cv2 import magnitude
 import numpy as np
 import os
 import sys
@@ -13,15 +12,26 @@ def waypoint_cmd(rx, ry, wx, wy):
     return (magnitude, angle)
 
 print("hello world")
-# f = open("demo.txt", "a")
-# f.write("hello world\n")
-# f.close()
 
-# count = 0
-# while count < 3: 
-#     start = 
-#     f.write("hello world\n")
-# f.close()
-
+# buff = ''
 # while True:
-#     sys.stdin.read()
+#     ch = sys.stdin.read(1)
+#     if ch == '\n':
+#         if buff == "q": break
+#         print(buff)
+#         buff = ''
+#     else:
+#         buff += ch
+
+for line in sys.stdin:
+    if line.rstrip() == "q": 
+        break
+    print("received\n")
+
+# f = open("out.txt", "a")
+# f.write("helloworld\n")
+# for line in sys.stdin:
+#     if line == "q": 
+#         break
+#     sys.stdout.write("received \n")
+# f.close()

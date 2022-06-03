@@ -65,15 +65,20 @@ class JoystickController
 
 		    const xDiff = event.clientX - self.dragStart.x;
 		    const yDiff = event.clientY - self.dragStart.y;
-		    const angle = Math.atan2(yDiff, xDiff);
+		    let angle = Math.atan2(yDiff, xDiff);
 			const distance = Math.min(maxDistance, Math.hypot(xDiff, yDiff));
 			const xPosition = distance * Math.cos(angle);
 			const yPosition = distance * Math.sin(angle);
 
 			// move stick image to new position
 		    stick.style.transform = `translate3d(${xPosition}px, ${yPosition}px, 0px)`;
+			angle = -1 * angle - Math.PI / 2;
+			if (angle < -1 * Math.PI) {
+				angle = 2 * Math.PI + angle;
+			}
+			console.log(`distance : ${distance}, angle: ${angle}`);
             socket.emit("stickmove", {d: distance, a: angle});
-
+			
 			// deadzone adjustment
 			const distance2 = (distance < deadzone) ? 0 : maxDistance / (maxDistance - deadzone) * (distance - deadzone);
 		    const xPosition2 = distance2 * Math.cos(angle);
@@ -82,6 +87,7 @@ class JoystickController
 		    const yPercent = parseFloat((yPosition2 / maxDistance).toFixed(4));
 		    
 		    self.value = { x: xPercent, y: yPercent };
+
 		  }
 
 		function handleUp(event) 

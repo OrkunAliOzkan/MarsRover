@@ -112,23 +112,22 @@ class Map ():
 def keys ():
 	if keyboard.is_pressed('w') or keyboard.is_pressed('up arrow'):
 		rover.update(2, 0)
+		print('w')
 	if keyboard.is_pressed('a') or keyboard.is_pressed('left arrow'):
 		rover.update(0, -10)
+		print('a')
 	if keyboard.is_pressed('s') or keyboard.is_pressed('down arrow'):
 		rover.update(-2, 0)
+		print('s')
 	if keyboard.is_pressed('d') or keyboard.is_pressed('right arrow'):
 		rover.update(0, 10)
+		print('d')
 
 def clear ():
 	try:
 		plt.close()
-	except:
-		pass
-	try:
-		map.__del__(self)
-		map_fig.__del__(self)
-	except:
-		pass
+	except Exception as e:
+		print(e)
 
 
 def run ():
@@ -144,6 +143,9 @@ def run ():
 		except: pass
 		ax.add_patch(rover.shape)
 		plt.pause(0.001)
+		if keyboard.is_pressed('escape'):
+			clear()
+			quit()
 
 
 
