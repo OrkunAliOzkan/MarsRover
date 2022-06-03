@@ -3,14 +3,6 @@ import os
 import sys
 
 from timeit import default_timer as timer
-
-def waypoint_cmd(rx, ry, wx, wy):
-    dx = wx - rx
-    dy = wy - ry
-    magnitude = np.sqrt(dx ** 2 + dy ** 2)
-    angle = np.arctan(dy/dx)
-    return (magnitude, angle)
-
 print("hello world")
 
 # buff = ''

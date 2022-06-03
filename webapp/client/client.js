@@ -66,7 +66,7 @@ class JoystickController
 		    const xDiff = event.clientX - self.dragStart.x;
 		    const yDiff = event.clientY - self.dragStart.y;
 		    let angle = Math.atan2(yDiff, xDiff);
-			const distance = Math.min(maxDistance, Math.hypot(xDiff, yDiff));
+			let distance = Math.min(maxDistance, Math.hypot(xDiff, yDiff));
 			const xPosition = distance * Math.cos(angle);
 			const yPosition = distance * Math.sin(angle);
 
@@ -76,6 +76,8 @@ class JoystickController
 			if (angle < -1 * Math.PI) {
 				angle = 2 * Math.PI + angle;
 			}
+			angle = angle / Math.PI * 180;
+			distance = distance * 8;
 			console.log(`distance : ${distance}, angle: ${angle}`);
             socket.emit("stickmove", {d: distance, a: angle});
 			

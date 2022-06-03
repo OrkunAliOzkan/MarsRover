@@ -40,14 +40,14 @@ io.on('connection', (sock) => {
     sock.on('waypoint', ({ x, y }) => {
         io.emit('waypoint', { x, y });
         console.log(`waypoint placed at x: ${x}, y: ${y}`);
-        io.emit('ntop', { x, y });
+        io.emit('ntop', `W,${x},${y}`);
         // pyshell.send(`W,${x},${y}`);
     });
     
     sock.on('stickmove', ({d, a}) => {
         console.log(`joystick at distance: ${d}, angle: ${a}`)
+        io.emit('ntop', `J,${d},${a}`);
         // pyshell.send(`J,${d},${a}`);
-        io.emit('ntop', {x, y});
     });
 
     sock.on('pton', (s) => {
