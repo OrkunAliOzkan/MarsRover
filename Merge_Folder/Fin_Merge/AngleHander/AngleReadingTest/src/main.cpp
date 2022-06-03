@@ -144,8 +144,8 @@ void loop()
   desired_cartesian[1] = desired_polar[0]*cos(desired_polar[1]);
 /////////////////////////////////////////////////////////////////
 //  Input readings
-  x = (analogRead(XJOY))/4 - 512;
-  y = (analogRead(YJOY))/4 - 512;
+  x = ((analogRead(XJOY))/4) - 512;
+  y = ((analogRead(YJOY))/4) - 512;
 /////////////////////////////////////////////////////////////////
 //  Readings
 /*
@@ -190,6 +190,9 @@ code_body.readings(
   adjustment_angle = pid_process(&pid, perpendicular_distance);
 /////////////////////////////////////////////////////////////////
 //  Utilising the adjustment angles
+  Serial.println("----------------");
+  Serial.println(adjustment_angle);
+  Serial.println("----------------");
   x = magnitude*sin(
                   (headingDegrees + adjustment_angle) * (PI/180)
                   );
@@ -208,8 +211,8 @@ code_body.readings(
   {
     digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
     digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-    speedA = map(y, 400, 0, 0, 255);
-    speedB = map(y, 400, 0, 0, 255);
+    speedA = map(y, -112, -512, 0, 255);
+    speedB = map(y, -112, -512, 0, 255);
   }
 
 //if joystick's x-axis potentiometer output is high, go backwards
@@ -217,8 +220,8 @@ code_body.readings(
   {
     digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW);
     digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH);
-    speedA = map(y, 700, 1023, 0, 255);
-    speedB = map(y, 700, 1023, 0, 255);
+    speedA = map(y, 188, 511, 0, 255);
+    speedB = map(y, 188, 511, 0, 255);
   }
 
   else 
@@ -228,7 +231,7 @@ code_body.readings(
 
   if(x < -112)
   {
-    int XMAP = map(x, 400, 0, 0, 255);
+    int XMAP = map(x, -112, -512, 0, 255);
     speedA = speedA - XMAP;
     speedB = speedB + XMAP;
     if (speedA < 0) {speedA = 0;}
@@ -237,7 +240,7 @@ code_body.readings(
 
   if(x > 188)
   {
-    int XMAP = map(x, 700, 1023, 0, 255);
+    int XMAP = map(x, 188, 511, 0, 255);
     speedA = speedA + XMAP;
     speedB = speedB - XMAP;
     if (speedA > 255) {speedA = 255;}

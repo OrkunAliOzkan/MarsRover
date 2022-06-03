@@ -88,7 +88,7 @@ void fclass::readings(int counter_input,
         int val = mousecam_read_reg(ADNS3080_PIXEL_SUM);
         MD md;
         mousecam_read_motion(&md);
-        delay(300);
+        delay(100);
 
         *distance_y = convTwosComp(md.dy);
         *distance_x = convTwosComp(md.dx);

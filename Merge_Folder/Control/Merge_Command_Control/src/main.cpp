@@ -9,9 +9,9 @@
 //  Password
 //    #define WIFI_PASSWORD   "abcdefghe"     
 //  Name of network
-    #define WIFI_SSID       "NOWTVII8F7"    
+    #define WIFI_SSID       "SIVA_LAPTOP"    
 //  Password
-    #define WIFI_PASSWORD   "smuqjz6jYsNW"     
+    #define WIFI_PASSWORD   "SIVASHANTH"     
 /*  
     This code is a state mashine
     connecting when not and doing 
