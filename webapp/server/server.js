@@ -9,7 +9,7 @@ app.use(express.static(`${__dirname}/../client`));
 const socketio = require('socket.io');
 const io = socketio(server); 
 
-app.get("rover-request", (req, res) => {
+app.get("/rover-request", (req, res) => {
     console.log("Rover wants command");
 });
 
