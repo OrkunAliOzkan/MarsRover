@@ -129,7 +129,6 @@ def clear ():
 	except Exception as e:
 		print(e)
 
-
 def run ():
 	global sim_map, rover, ax
 	clear()
@@ -146,8 +145,6 @@ def run ():
 		if keyboard.is_pressed('escape'):
 			clear()
 			quit()
-
-
 
 if __name__ == "__main__":
 	run()

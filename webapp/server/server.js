@@ -48,9 +48,9 @@ io.on('connection', (sock) => {
         // pyshell.send(`W,${x},${y}`);
     });
     
-    sock.on('stickmove', ({d, a}) => {
-        console.log(`joystick at distance: ${d}, angle: ${a}`)
-        io.emit('ntop', `J,${d},${a}`);
+    sock.on('stickmove', ({ x, y }) => {
+        console.log(`joystick at x: ${x}, y: ${y}`)
+        io.emit('ntop', `J,${x},${y}`);
         // pyshell.send(`J,${d},${a}`);
     });
 

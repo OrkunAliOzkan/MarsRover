@@ -72,14 +72,14 @@ class JoystickController
 
 			// move stick image to new position
 		    stick.style.transform = `translate3d(${xPosition}px, ${yPosition}px, 0px)`;
-			angle = -1 * angle - Math.PI / 2;
-			if (angle < -1 * Math.PI) {
-				angle = 2 * Math.PI + angle;
-			}
-			angle = angle / Math.PI * 180;
-			distance = distance * 8;
-			console.log(`distance : ${distance}, angle: ${angle}`);
-            socket.emit("stickmove", {d: distance, a: angle});
+			// angle = -1 * angle - Math.PI / 2;
+			// if (angle < -1 * Math.PI) {
+			// 	angle = 2 * Math.PI + angle;
+			// }
+			// angle = angle / Math.PI * 180;
+			// distance = distance * 8;
+			// console.log(`distance : ${distance}, angle: ${angle}`);
+            // socket.emit("stickmove", {d: distance, a: angle});
 			
 			// deadzone adjustment
 			const distance2 = (distance < deadzone) ? 0 : maxDistance / (maxDistance - deadzone) * (distance - deadzone);
@@ -89,7 +89,10 @@ class JoystickController
 		    const yPercent = parseFloat((yPosition2 / maxDistance).toFixed(4));
 		    
 		    self.value = { x: xPercent, y: yPercent };
-
+			const x_data = xPercent * 512;
+			const y_data = yPercent * -512;
+			console.log(x_data, y_data);
+			socket.emit("stickmove", {x: x_data, y: y_data});
 		  }
 
 		function handleUp(event) 
