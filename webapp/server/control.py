@@ -20,8 +20,8 @@ class RoverHTTP(BaseHTTPRequestHandler):
                             time.localtime(time.time()))
 
         self.wfile.write(bytes('{"time": "'+ date_ + 
-                                '", "ang": "'+ ANG + 
-				'", "mag": "'+ MAG +
+                                '", "ang": "'+ angle + 
+				'", "mag": "'+ magnitude +
                                 '"}', "utf-8"))
 #########################################################
     def do_POST(self):
@@ -40,6 +40,9 @@ print("Server active...")
 server.serve_forever()
 server.server_close()
 print("Server inactive...")
+
+magnitude = 0
+angle = 0
 
 @sio.on('ntop')
 def on_message(data):
