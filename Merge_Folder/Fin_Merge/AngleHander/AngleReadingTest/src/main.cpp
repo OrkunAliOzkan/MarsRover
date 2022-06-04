@@ -8,6 +8,7 @@
 #include <Wire.h>
 #include <cmath>
 #include <vector>
+#include "WiFi.h"
 /////////////////////////////////////////////////////////////////
 //  Optical flow sensor parameters
 //slave select/chip select (ESP32 pin number)
@@ -19,7 +20,7 @@
 //synchronous clock (ESP32 pin number)
   #define PIN_SCK                 18 
 //reset (ESP32 pin number)
-  #define PIN_MOUSECAM_RESET      35 
+  #define PIN_MOUSECAM_RESET      32 ////changed from 35! 
 //chip select (ESP32 pin number again)
   #define PIN_MOUSECAM_CS         5 
 #define ADNS3080_PIXEL_SUM      0x06
@@ -46,6 +47,23 @@ int total_y1_OFS = 0;
 
 int distance_x_OFS = 0;
 int distance_y_OFS = 0;
+/////////////////////////////////////////////////////////////////
+//  Name of network
+    //#define WIFI_SSID       "NOWTVII8F7"    
+//  Password
+    //#define WIFI_PASSWORD   "smuqjz6jYsNW"     
+//  Name of network
+    #define WIFI_SSID       "SIVA_LAPTOP"    
+//  Password
+    #define WIFI_PASSWORD   "SIVASHANTH"     
+/*  
+    This code is a state mashine
+    connecting when not and doing 
+    nothing when connected. 
+    This indicator is used to 
+    determine whether it is so
+*/
+std::vector<float> read_cartesian = {0, 0};
 /////////////////////////////////////////////////////////////////
 #define PWMA 17
 #define PWMB 2
@@ -79,6 +97,8 @@ float projection_magnitude = 0;
 float orthogonal = 0;
 std::vector<float> projection = {0, 0};
 std::vector<float> actual = {0, 0};
+float x_adj = 0;
+float y_adj = 0;
 /////////////////////////////////////////////////////////////////
 //  Compass readings and parameters
 QMC5883LCompass compass;
@@ -87,6 +107,7 @@ float angle = 0;
 float headingDegrees = 0;
 #define DECLINATIONANGLE 0.483 /* * (PI / 180) */
 int counter_input = 0;
+float AzimuthFromCompass = 0;
 /////////////////////////////////////////////////////////////////
 
 void setup()
@@ -127,6 +148,9 @@ void setup()
     Serial.println("Mouse cam failed to init");
     while(1);
   }
+
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.println("Initializing");
 }
 
 void loop()
@@ -136,23 +160,24 @@ void loop()
     TODO: Merge the input from HTTP request to get what is my
     desired displacement, from magnitude and angle.
 */
-  //  magnitude and angle
+  //  desired magnitude and angle of joystick input
   desired_polar[0] = 10;
   desired_polar[1] = 30;
   //  x & y
-  desired_cartesian[0] = desired_polar[0]*sin(desired_polar[1]);
-  desired_cartesian[1] = desired_polar[0]*cos(desired_polar[1]);
+  desired_cartesian[0] = desired_polar[0]*sin(desired_polar[1] * PI/180);
+  desired_cartesian[1] = desired_polar[0]*cos(desired_polar[1] * PI/180);
 /////////////////////////////////////////////////////////////////
 //  Input readings
-  x = ((analogRead(XJOY))/4) - 512;
-  y = ((analogRead(YJOY))/4) - 512;
+  x = (analogRead(XJOY))/4 - 512;
+  y = (analogRead(YJOY))/4 - 512;
 /////////////////////////////////////////////////////////////////
 //  Readings
 /*
 */
+//#if 0
 code_body.readings(
                         counter_input, 
-                        &compass, 
+                        compass, 
                         &angle, 
                         &headingDegrees,
                         &distance_x_OFS,
@@ -162,14 +187,13 @@ code_body.readings(
                         &total_x_OFS,
                         &total_y_OFS
                         );
+
 /////////////////////////////////////////////////////////////////
-//    Compute magnitude (avg to be more exact)
-  magnitude = y / sin(angle);
-  magnitude += x / cos(angle);
-  magnitude /= 2;
+//    Compute magnitude
+  magnitude = sqrt((x*x) + (y*y));
 /////////////////////////////////////////////////////////////////
 //  Compute perpendicular distance from the desired trjectory
-  //  Compute projeciton
+  //  Compute projection
   orthogonal = code_body.vector_multiply(
                                         actual, 
                                         desired_cartesian
@@ -190,13 +214,10 @@ code_body.readings(
   adjustment_angle = pid_process(&pid, perpendicular_distance);
 /////////////////////////////////////////////////////////////////
 //  Utilising the adjustment angles
-  Serial.println("----------------");
-  Serial.println(adjustment_angle);
-  Serial.println("----------------");
-  x = magnitude*sin(
+  x_adj = magnitude*sin(
                   (headingDegrees + adjustment_angle) * (PI/180)
                   );
-  y = magnitude*cos(
+  y_adj = magnitude*cos(
                   (headingDegrees + adjustment_angle) * (PI/180)
                   );
   /*
@@ -206,45 +227,51 @@ code_body.readings(
   Serial.println("-------------");
   */
 
+//#else
 //if joystick's y-axis potentiometer output is low, go forward
-  if(y < -112) 
+  if(y_adj < -112) 
   {
     digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
     digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-    speedA = map(y, -112, -512, 0, 255);
-    speedB = map(y, -112, -512, 0, 255);
+    speedA = map(y_adj, -112, -512, 0, 255);
+    speedB = map(y_adj, -112, -512, 0, 255);
+    Serial.println("y < -112");
   }
 
 //if joystick's x-axis potentiometer output is high, go backwards
-  else if (y > 188) 
+  else if (y_adj > 188) 
   {
     digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW);
     digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH);
-    speedA = map(y, 188, 511, 0, 255);
-    speedB = map(y, 188, 511, 0, 255);
+    speedA = map(y_adj, 188, 511, 0, 255);
+    speedB = map(y_adj, 188, 511, 0, 255);
+    Serial.println("y > 188");
   }
 
   else 
   {
     speedA = 0; speedB = 0;
+    Serial.println("speed = 0");
   }
 
-  if(x < -112)
+  if(x_adj < -112)
   {
-    int XMAP = map(x, -112, -512, 0, 255);
+    int XMAP = map(x_adj, -112, -512, 0, 255);
     speedA = speedA - XMAP;
     speedB = speedB + XMAP;
     if (speedA < 0) {speedA = 0;}
     if (speedB > 255) {speedB = 255;}
+    Serial.println("x < -112");
   }
 
-  if(x > 188)
+  if(x_adj > 188)
   {
-    int XMAP = map(x, 188, 511, 0, 255);
+    int XMAP = map(x_adj, 188, 511, 0, 255);
     speedA = speedA + XMAP;
     speedB = speedB - XMAP;
     if (speedA > 255) {speedA = 255;}
     if (speedB > 0) {speedB = 0;}
+    Serial.println("x > 188");
   }
 
   if (speedA < 10) 
@@ -256,10 +283,21 @@ code_body.readings(
   {
     speedB = 0;
   }
-  //Serial.println(y);
+  
   analogWrite(PWMA, speedA);
   analogWrite(PWMB, speedB);
 /////////////////////////////////////////////////////////////////
   counter_input++;
   delay(100);
+Serial.println("magnitude = " + String(magnitude));
+Serial.println("x = " + String(x));
+Serial.println("y = " + String(y));
+Serial.println("x_adj =" + String(x_adj));
+Serial.println("y_adj =" + String(y_adj));
+
+Serial.println("angle = " + String(angle));
+Serial.println("adjustment angle = " + String(adjustment_angle));
+Serial.println("heading_degrees = " + String(headingDegrees));
+
+//  #endif
 }

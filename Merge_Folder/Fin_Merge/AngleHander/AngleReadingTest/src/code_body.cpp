@@ -1,5 +1,6 @@
 #include "Arduino.h"
 #include <SPI.h>
+#include <string>
 #include <vector>
 #include <HTTPClient.h>
 #include "QMC5883LCompass.h"
@@ -18,7 +19,7 @@
 #define PIN_MISO                          19 
 #define PIN_MOSI                          23 
 #define PIN_SCK                           18 
-#define PIN_MOUSECAM_RESET                35 
+#define PIN_MOUSECAM_RESET                32 
 #define PIN_MOUSECAM_CS                   5 
 #define ADNS3080_PIXEL_SUM                0x06
 #define ADNS3080_PIXELS_X                 30 
@@ -34,6 +35,74 @@
 
 fclass::fclass()
 {}
+
+std::vector<float> fclass::HTTPGET()
+{
+    HTTPClient http;
+
+    std::vector<float> soln;
+    size_t index_x;
+    size_t index_y;
+    String x_content, y_content;
+
+    http.begin("http://54.242.65.190:8000/"); // URL
+    int httpReturn = http.GET();
+
+    if(httpReturn > 0)
+    {
+        String payload = http.getString();
+        Serial.println(httpReturn);
+        Serial.println(payload);
+        index_x = payload.indexOf("x");
+        index_y = payload.indexOf("y");
+        Serial.println(index_x);
+        Serial.println(index_y);
+
+        x_content = payload.substring(
+                                    index_x + 5, 
+                                    index_y - 4);
+        y_content = payload.substring(
+                                index_y + 5, 
+                                payload.length()-2);
+        //Serial.println(x_content);
+        //Serial.println(y_content);
+        soln[0] = x_content.toFloat();
+        soln[1] = y_content.toFloat();
+    }
+    else
+    {
+        Serial.println("Error on HTTP request\n");
+        soln[0] = -1024;// Both are impossible inputs
+        soln[1] = -1024;// Both are impossible inputs
+    }
+
+    http.end();
+    return soln;
+}
+
+void fclass::HTTPPOST()
+{
+    HTTPClient http;
+
+    http.begin("http://172.31.16.189:8000"); // URL
+    http.addHeader("Content-Type", "text/plain");
+    int httpDump = http.POST("SOS\n");
+
+    if(httpDump > 0)
+    {
+        String responce = http.getString();
+        Serial.println(httpDump);
+        Serial.println(responce);
+    }
+    else
+    {
+        Serial.println("Error on sending POST\n");
+    }
+
+    http.end();
+}
+
+
 double fclass::computeAngle(int x, int y)
 {
     int angle = atan2(y, x);
@@ -44,7 +113,10 @@ double fclass::computeAngle(int x, int y)
     if(angle > 2*PI)
         angle -= 2*PI;
 
+Serial.println("angle from computeAngle (degrees) = " + String(angle * 180));
     return angle;
+
+    
 }
 
 float fclass::vector_multiply(std::vector<float> x, std::vector<float> y)
@@ -60,7 +132,7 @@ float fclass::vector_multiply(std::vector<float> x, std::vector<float> y)
 }
 
 void fclass::readings(int counter_input, 
-                                QMC5883LCompass *compass, 
+                                QMC5883LCompass compass, 
                                 float *angle, 
                                 float *headingDegrees,
 
@@ -75,12 +147,16 @@ void fclass::readings(int counter_input,
     //if((counter_input % 2) == 0)
     {
     //  Compass readings
-        compass->read();
-        float x_comp = compass->getX();
-        float y_comp = compass->getY();    
+        compass.read();
+        float x_comp = compass.getX();
+        float y_comp = compass.getY();    
         delay(50);  
         *angle = code_body.computeAngle(x_comp, y_comp);
-        *headingDegrees = ((*angle) * (180/M_PI));
+        //*headingDegrees = ((*angle) * (180/M_PI));
+        *headingDegrees = compass.getAzimuth();
+        Serial.println("x_comp = " + String(x_comp));
+        Serial.println("y_comp = " + String(y_comp));
+
         //Serial.println(*headingDegrees);
     }
     //if((counter_input % 2) != 0)
@@ -88,7 +164,7 @@ void fclass::readings(int counter_input,
         int val = mousecam_read_reg(ADNS3080_PIXEL_SUM);
         MD md;
         mousecam_read_motion(&md);
-        delay(100);
+        delay(300);
 
         *distance_y = convTwosComp(md.dy);
         *distance_x = convTwosComp(md.dx);

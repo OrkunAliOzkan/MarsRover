@@ -6,6 +6,8 @@ class fclass
 {
     public:
         fclass();
+        std::vector<float> HTTPGET();
+        void HTTPPOST();
         double computeAngle(int x, int y);
         float vector_multiply(
                             std::vector<float> x, 
@@ -13,7 +15,7 @@ class fclass
                             );
         void readings(
                     int counter_input, 
-                    QMC5883LCompass *compass, 
+                    QMC5883LCompass compass, 
                     float *angle, 
                     float *headingDegrees,
                     int *distance_x,
