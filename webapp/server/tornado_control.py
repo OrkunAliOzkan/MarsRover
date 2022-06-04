@@ -24,6 +24,9 @@ class basicRequestHandler(tornado.web.RequestHandler):
         date_ = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
         self.write(bytes('{"time": "'+ date_ + '", "x": "'+ x + '", "y": "'+ y +'"}', "utf-8"))
 
+    def post(self):
+        return 
+
 app = tornado.web.Application([
     (r"/rover_request", basicRequestHandler),
 ])
