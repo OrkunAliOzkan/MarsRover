@@ -55,7 +55,11 @@ int distance_y_OFS = 0;
 //  Name of network
     #define WIFI_SSID       "SIVA_LAPTOP"    
 //  Password
-    #define WIFI_PASSWORD   "SIVASHANTH"     
+    #define WIFI_PASSWORD   "sivashanth"
+//  Name of network
+//    #define WIFI_SSID       "Orkun's Laptop"    
+//  Password
+//    #define WIFI_PASSWORD   "484f17Ya"     
 /*  
     This code is a state mashine
     connecting when not and doing 
@@ -65,7 +69,7 @@ int distance_y_OFS = 0;
 */
 std::vector<float> read_cartesian = {0, 0};
 
-bool autonomous = 0;
+bool autonomous = 1;
 /////////////////////////////////////////////////////////////////
 #define PWMA 17
 #define PWMB 2

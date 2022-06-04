@@ -40,7 +40,7 @@ std::vector<float> fclass::HTTPGET()
 {
     HTTPClient http;
 
-    std::vector<float> soln;
+    std::vector<float> soln = {0, 0};
     size_t index_x;
     size_t index_y;
     String x_content, y_content;
@@ -58,16 +58,20 @@ std::vector<float> fclass::HTTPGET()
         Serial.println(index_x);
         Serial.println(index_y);
 
+        Serial.println("-----------------------");
         x_content = payload.substring(
                                     index_x + 5, 
                                     index_y - 4);
+        Serial.println(x_content);
         y_content = payload.substring(
                                 index_y + 5, 
                                 payload.length()-2);
-        //Serial.println(x_content);
-        //Serial.println(y_content);
+        Serial.println(y_content);
+        Serial.println(x_content.toFloat());
+        Serial.println("-----------------------");
         soln[0] = x_content.toFloat();
         soln[1] = y_content.toFloat();
+        Serial.println("-----------------------");
     }
     else
     {
@@ -147,7 +151,8 @@ void fclass::readings(          int counter_input,
     //  Compass readings
         compass.read();      
         *headingDegrees = compass.getAzimuth();
-        delay(50); //??
+        
+        delay(100); //??
 
         //Serial.println(*headingDegrees);
     }
