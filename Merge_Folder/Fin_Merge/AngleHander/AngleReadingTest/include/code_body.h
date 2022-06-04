@@ -16,7 +16,6 @@ class fclass
         void readings(
                     int counter_input, 
                     QMC5883LCompass compass, 
-                    float *angle, 
                     float *headingDegrees,
                     int *distance_x,
                     int *distance_y,

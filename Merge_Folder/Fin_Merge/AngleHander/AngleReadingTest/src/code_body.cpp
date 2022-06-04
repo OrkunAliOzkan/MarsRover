@@ -131,11 +131,9 @@ float fclass::vector_multiply(std::vector<float> x, std::vector<float> y)
     return soln;
 }
 
-void fclass::readings(int counter_input, 
+void fclass::readings(          int counter_input, 
                                 QMC5883LCompass compass, 
-                                float *angle, 
                                 float *headingDegrees,
-
                                 int *distance_x,
                                 int *distance_y,
                                 int *total_x1,
@@ -147,20 +145,15 @@ void fclass::readings(int counter_input,
     //if((counter_input % 2) == 0)
     {
     //  Compass readings
-        compass.read();
-        float x_comp = compass.getX();
-        float y_comp = compass.getY();    
-        delay(50);  
-        *angle = code_body.computeAngle(x_comp, y_comp);
-        //*headingDegrees = ((*angle) * (180/M_PI));
+        compass.read();      
         *headingDegrees = compass.getAzimuth();
-        Serial.println("x_comp = " + String(x_comp));
-        Serial.println("y_comp = " + String(y_comp));
+        delay(50); //??
 
         //Serial.println(*headingDegrees);
     }
     //if((counter_input % 2) != 0)
     {
+    //  Optical sensor readings
         int val = mousecam_read_reg(ADNS3080_PIXEL_SUM);
         MD md;
         mousecam_read_motion(&md);
