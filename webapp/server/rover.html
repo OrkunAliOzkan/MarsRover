@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form id="Form1">
+        <h2>Enter a number to test if it is Prime</h2>
+            <!-- this is a comment: br tag is for line break-->
+            <label for="num1">Input number:</label><br>
+            <input type="text" id="num1" name="num1"><br>
+            <input type="button" value="Check!" onclick="send()">
+        </form>
+    </body>
+    <script>
+        function send() {
+            console.log("sent")
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:3001/rover_request", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            data = {
+                time : "sometime",
+                x : 12,
+                y : 24
+            }
+            xhr.send(JSON.stringify(data));
+        }
+    </script>
+</html>

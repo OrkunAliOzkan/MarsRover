@@ -1,6 +1,8 @@
 import socketio
 import tornado.web
 import tornado.ioloop
+import tornado.escape
+import json
 
 import time
 
@@ -25,6 +27,9 @@ class basicRequestHandler(tornado.web.RequestHandler):
         self.write(bytes('{"time": "'+ date_ + '", "x": "'+ x + '", "y": "'+ y +'"}', "utf-8"))
 
     def post(self):
+        data = tornado.escape.json_decode(self.request.body)
+        print(data)
+        self.write("received")
         return 
 
 app = tornado.web.Application([
