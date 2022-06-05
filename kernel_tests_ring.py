@@ -46,9 +46,6 @@ def avg_horiz ():
 	r_sum_x = gauss[0]*r_ring[(count_input+1)%7] + gauss[1]*r_ring[(count_input+2)%7] + gauss[2]*r_ring[(count_input+3)%7] + gauss[3]*r_ring[(count_input+4)%7] + gauss[4]*r_ring[(count_input+5)%7] + gauss[5]*r_ring[(count_input+6)%7] + gauss[6]*r_ring[(count_input+7)%7]
 	g_sum_x = gauss[0]*g_ring[(count_input+1)%7] + gauss[1]*g_ring[(count_input+2)%7] + gauss[2]*g_ring[(count_input+3)%7] + gauss[3]*g_ring[(count_input+4)%7] + gauss[4]*g_ring[(count_input+5)%7] + gauss[5]*g_ring[(count_input+6)%7] + gauss[6]*g_ring[(count_input+7)%7]
 	b_sum_x = gauss[0]*b_ring[(count_input+1)%7] + gauss[1]*b_ring[(count_input+2)%7] + gauss[2]*b_ring[(count_input+3)%7] + gauss[3]*b_ring[(count_input+4)%7] + gauss[4]*b_ring[(count_input+5)%7] + gauss[5]*b_ring[(count_input+6)%7] + gauss[6]*b_ring[(count_input+7)%7]
-	# r_sum_x = gauss[0]*r_ring[0] + gauss[1]*r_ring[1] + gauss[2]*r_ring[2] + gauss[3]*r_ring[3] + gauss[4]*r_ring[4] + gauss[5]*r_ring[5] + gauss[6]*r_ring[6]
-	# g_sum_x = gauss[0]*g_ring[0] + gauss[1]*g_ring[1] + gauss[2]*g_ring[2] + gauss[3]*g_ring[3] + gauss[4]*g_ring[4] + gauss[5]*g_ring[5] + gauss[6]*g_ring[6]
-	# b_sum_x = gauss[0]*b_ring[0] + gauss[1]*b_ring[1] + gauss[2]*b_ring[2] + gauss[3]*b_ring[3] + gauss[4]*b_ring[4] + gauss[5]*b_ring[5] + gauss[6]*b_ring[6]
 	r_blur_x = r_sum_x / 64
 	g_blur_x = g_sum_x / 64
 	b_blur_x = b_sum_x / 64
