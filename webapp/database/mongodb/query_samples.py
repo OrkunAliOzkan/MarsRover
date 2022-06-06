@@ -12,8 +12,15 @@ stargroup = db.reviews.aggregate(
     [
         {
             '$group': {
-                '_id': '$rating'
+                '_id': '$rating',
+                'count': { '$sum':1 }
             }
+        },
+        {
+            '$sort': {'_id':1 }
         }
     ]
 )
+
+for group in stargroup:
+    print(group)
