@@ -9,6 +9,9 @@
 #include <cmath>
 #include <vector>
 #include "WiFi.h"
+
+#include "soc/soc.h"
+#include "soc/rtc_cntl_reg.h"
 /////////////////////////////////////////////////////////////////
 //  Optical flow sensor parameters
 //slave select/chip select (ESP32 pin number)
@@ -49,25 +52,24 @@ int distance_x_OFS = 0;
 int distance_y_OFS = 0;
 /////////////////////////////////////////////////////////////////
 //  Name of network
-    //#define WIFI_SSID       "NOWTVII8F7"    
+//    #define WIFI_SSID       "NOWTVII8F7"    
 //  Password
-    //#define WIFI_PASSWORD   "smuqjz6jYsNW"     
+//    #define WIFI_PASSWORD   "smuqjz6jYsNW"     
 //  Name of network
-    #define WIFI_SSID       "SIVA_LAPTOP"    
+//      #define WIFI_SSID       "SIVA_LAPTOP"    
 //  Password
-    #define WIFI_PASSWORD   "sivashanth"
+//      #define WIFI_PASSWORD   "sivashanth"
 //  Name of network
 //    #define WIFI_SSID       "Orkun's Laptop"    
 //  Password
-//    #define WIFI_PASSWORD   "484f17Ya"     
-/*  
-    This code is a state mashine
-    connecting when not and doing 
-    nothing when connected. 
-    This indicator is used to 
-    determine whether it is so
-*/
+//    #define WIFI_PASSWORD   "484f17Ya" 
+//  Name of network
+    #define WIFI_SSID       "bet-hotspot"    
+//  Password
+    #define WIFI_PASSWORD   "helloworld" 
 std::vector<float> read_cartesian = {0, 0};
+
+String post_data = "";
 
 bool autonomous = 1;
 /////////////////////////////////////////////////////////////////
@@ -95,9 +97,10 @@ pid_ctrl_t pid;
 float x = 0;
 float y = 0;
 
-float adjustment_angle = 0;
+float steering_angle = 0;
 float initialAngle = 0;
 //  parameters used in PID
+float magnitude = 0;
 
 std::vector<float> adjustmentVector = {0, 0};
 std::vector<float> requiredVector = {0, 0};
@@ -109,6 +112,8 @@ QMC5883LCompass compass;
 #define DECLINATIONANGLE 0.483 /* * (PI / 180) */
 int counter_input = 0;
 float headingDegrees = 0;
+/////////////////////////////////////////////////////////////////
+String lines = "---------------------------------------------------------------------";
 /////////////////////////////////////////////////////////////////
 
 void setup()
@@ -153,6 +158,10 @@ void setup()
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.println("Initializing");
 
+
+  // in setup()
+  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
+
     compass.read();      
     initialAngle = compass.getAzimuth();
     delay(50); //??
@@ -172,19 +181,16 @@ void loop()
     /*
     //  Manual joystick input readings
       read_cartesian[0] = (analogRead(XJOY))/4 - 512;
-      read_cartesian[1] = (analogRead(YJOY))/4 - 512;
+      read_cartesian[1] = -1*((analogRead(YJOY))/4 - 512);
     */
     //  Digital joystick readings
       read_cartesian = code_body.HTTPGET();
   
     //  DESIRED x and y
-    x = read_cartesian[0] / 512;
-    y = read_cartesian[1] / 512;
+    x = read_cartesian[0];
+    y = read_cartesian[1];
   /////////////////////////////////////////////////////////////////////////
   //  Readings
-  /*
-  */
-  //#if 0
   code_body.readings(
                           counter_input, 
                           compass, 
@@ -196,60 +202,99 @@ void loop()
                           &total_x_OFS,
                           &total_y_OFS
                           );
-
   /////////////////////////////////////////////////////////////////
+    desired_cartesian[0] = x - total_x_OFS;
+    desired_cartesian[1] = y - total_y_OFS;
+    magnitude = sqrt(
+                      (desired_cartesian[0] * desired_cartesian[0]) + 
+                      (desired_cartesian[1] * desired_cartesian[1])
+                    );
 
-
-    adjustment_angle = pid_process(&pid, adjustmentVector[0]);
-    /*
-    */
-    adjustment_angle = (pid_process(&pid, adjustmentVector[0]));
-
-    currentVector[0] = (!autonomous) ? (0) : sin(headingDegrees - initialAngle);
-    currentVector[1] = (!autonomous) ? (0) : cos(headingDegrees - initialAngle);
-
+    currentVector[1] = (magnitude / 2) * cos(headingDegrees - initialAngle);
+    currentVector[0] = (magnitude / 2) * sin(headingDegrees - initialAngle);
   /////////////////////////////////////////////////////////////////
-  //  Utilising the adjustment angles
-    adjustmentVector[0] = 512 * (x - currentVector[0]); 
-    adjustmentVector[1] = 512 * (y - currentVector[1]); 
-    
-    /*
-    Serial.println("-------------");
-    Serial.println(x);
-    Serial.println(y);
-    Serial.println("-------------");
-    */
+  //  Utilising the adjustment angles System is absolute, not relative
 
-  //#else
-  //if joystick's y-axis potentiometer output is low, go forward
-    if(adjustmentVector[1] < -112) 
+    adjustmentVector[0] = (desired_cartesian[0] - currentVector[0]); 
+    adjustmentVector[1] = (desired_cartesian[1] - currentVector[1]); 
+
+    steering_angle = pid_process(&pid, adjustmentVector[0]);
+
+    adjustmentVector[0] *= (sin(steering_angle)); 
+    adjustmentVector[1] *= (cos(steering_angle)); 
+  
+/*
+    Serial.println("---------------------------------------------------------------------");
+    Serial.println("x = " + String(x));
+    Serial.println("y = " + String(y));
+    Serial.println("adjustmentVector[0] =" + String(adjustmentVector[0]));
+    Serial.println("adjustmentVector[1] =" + String(adjustmentVector[1]));
+    Serial.println("currentVector[0] =" + String(currentVector[0]));
+    Serial.println("currentVector[1] =" + String(currentVector[1]));
+    Serial.println("desired_cartesian[0] =" + String(desired_cartesian[0]));
+    Serial.println("desired_cartesian[1] =" + String(desired_cartesian[1]));
+    Serial.println("adjustment angle = " + String(steering_angle));
+    Serial.println("heading_degrees = " + String(headingDegrees));
+    Serial.println("total_x_OFS = " + String(total_x_OFS));
+    Serial.println("total_y_OFS = " + String(total_y_OFS));
+    Serial.println("---------------------------------------------------------------------");
+*/
+
+/*
+    post_data = lines;
+    post_data += "\n";
+    post_data += ("x = " + String(x));
+    post_data += "\n";
+    post_data += ("y = " + String(y));
+    post_data += "\n";
+    post_data += ("adjustmentVector[0] =" + String(adjustmentVector[0]));
+    post_data += "\n";
+    post_data += ("adjustmentVector[1] =" + String(adjustmentVector[1]));
+    post_data += "\n";
+    post_data += ("currentVector[0] =" + String(currentVector[0]));
+    post_data += "\n";
+    post_data += ("currentVector[1] =" + String(currentVector[1]));
+    post_data += "\n";
+    post_data += ("desired_cartesian[0] =" + String(desired_cartesian[0]));
+    post_data += "\n";
+    post_data += ("desired_cartesian[1] =" + String(desired_cartesian[1]));
+    post_data += "\n";
+    post_data += ("adjustment angle = " + String(steering_angle));
+    post_data += "\n";
+    post_data += ("heading_degrees = " + String(headingDegrees));
+    post_data += "\n";
+    post_data += ("total_x_OFS = " + String(total_x_OFS));
+    post_data += "\n";
+    post_data += ("total_y_OFS = " + String(total_y_OFS));
+    post_data += "\n";
+    post_data += lines;
+    post_data += "\n";
+*/
+
+  //if joystick's y-axis potentiometer output is high, go forward
+    if(adjustmentVector[1] > 50) 
     {
       digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
       digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-      speedA = map(adjustmentVector[1], -112, -512, 0, 255);
-      speedB = map(adjustmentVector[1], -112, -512, 0, 255);
-      Serial.println("y < -112");
+      speedA = map(adjustmentVector[1], 50, 512, 0, 255); 
+      speedB = map(adjustmentVector[1], 50, 512, 0, 255);
+      Serial.println("y > 112");
     }
 
-  //if joystick's x-axis potentiometer output is high, go backwards
-    else if (adjustmentVector[1] > 188) 
+  //if joystick's x-axis potentiometer output is low, go backwards
+    else if (adjustmentVector[1] < -50) 
     {
       digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW);
       digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH);
-      speedA = map(adjustmentVector[1], 188, 511, 0, 255);
-      speedB = map(adjustmentVector[1], 188, 511, 0, 255);
-      Serial.println("y > 188");
+      speedA = map(adjustmentVector[1], -50, -511, 0, 255);
+      speedB = map(adjustmentVector[1], -50, -511, 0, 255);
+      Serial.println("y < -188");
     }
 
-    else 
+      Serial.println("now x");
+    if(adjustmentVector[0] < -50)
     {
-      speedA = 0; speedB = 0;
-      Serial.println("speed = 0");
-    }
-
-    if(adjustmentVector[0] < -112)
-    {
-      int XMAP = map(adjustmentVector[0], -112, -512, 0, 255);
+      int XMAP = map(adjustmentVector[0], -50, -512, 0, 255);
       speedA = speedA - XMAP;
       speedB = speedB + XMAP;
       if (speedA < 0) {speedA = 0;}
@@ -257,9 +302,9 @@ void loop()
       Serial.println("x < -112");
     }
 
-    if(adjustmentVector[0] > 188)
+    else if(adjustmentVector[0] > 35)
     {
-      int XMAP = map(adjustmentVector[0], 188, 511, 0, 255);
+      int XMAP = map(adjustmentVector[0], 50, 511, 0, 255);
       speedA = speedA + XMAP;
       speedB = speedB - XMAP;
       if (speedA > 255) {speedA = 255;}
@@ -267,39 +312,28 @@ void loop()
       Serial.println("x > 188");
     }
 
-    if (speedA < 10) 
+    if (speedA < 50) 
     {
       speedA = 0;
     }
 
-    if (speedB < 10) 
+    if (speedB < 50) 
     {
       speedB = 0;
     }
 
     analogWrite(PWMA, speedA);
     analogWrite(PWMB, speedB);
+    delay(50);
   /////////////////////////////////////////////////////////////////
     counter_input++;
-    delay(100);
-//  Serial.println("magnitude = " + String(magnitude));
-  Serial.println("x = " + String(x));
-  Serial.println("y = " + String(y));
-  Serial.println("adjustmentVector[0] =" + String(adjustmentVector[0]));
-  Serial.println("adjustmentVector[1] =" + String(adjustmentVector[1]));
-
-  Serial.println("adjustment angle = " + String(adjustment_angle));
-  Serial.println("heading_degrees = " + String(headingDegrees));
-
-  //  #endif
+    delay(50);
   }
-//  If not connected, connect 
-//  and express as not connected
+//  If not connected, connect and express as not connected
   if (WiFi.status() != WL_CONNECTED) 
   {
       Serial.println(".");
-      //digitalWrite(LED, 
-      //            !digitalRead(LED));
       delay(1000);
   }
+  code_body.HTTPPOST(post_data);
 }

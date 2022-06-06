@@ -50,11 +50,11 @@ OVER SAMPLE RATIO (OSR)
   
 */
 
-
-
 #include "Arduino.h"
 #include "QMC5883LCompass.h"
 #include <Wire.h>
+
+#define DECLINATIONANGLE 0.483
 
 QMC5883LCompass::QMC5883LCompass() {
 }
@@ -329,7 +329,7 @@ int QMC5883LCompass::_get(int i){
 	@return int azimuth
 **/
 int QMC5883LCompass::getAzimuth(){
-	int a = atan2( getY(), getX() ) * 180.0 / PI;
+	int a = (atan2( getY(), getX() ) * 180.0 / PI) - DECLINATIONANGLE;
 	return a < 0 ? 360 + a : a;
 }
 

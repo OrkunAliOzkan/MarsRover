@@ -2,12 +2,14 @@
 #define code_body_h
 #include <vector>
 
+//#define numChars 1024;
+
 class fclass
 {
     public:
         fclass();
         std::vector<float> HTTPGET();
-        void HTTPPOST();
+        void HTTPPOST(String receivedChars);
         double computeAngle(int x, int y);
         float vector_multiply(
                             std::vector<float> x, 

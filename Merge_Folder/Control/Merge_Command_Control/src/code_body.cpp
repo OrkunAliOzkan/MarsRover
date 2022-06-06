@@ -11,11 +11,12 @@ void fclass::test_code()
     Serial.println("hello\n");
 }
 
-void fclass::HTTPGET()
+String fclass::HTTPGET()
 {
     HTTPClient http;
 
-    http.begin("ec2-54-242-65-190.compute-1.amazonaws.com"); // URL
+    String payload = "";
+    http.begin("http://172.31.16.189:8000/"); // URL
     int httpReturn = http.GET();
 
     if(httpReturn > 0)
@@ -30,15 +31,16 @@ void fclass::HTTPGET()
     }
 
     http.end();
+    return payload;
 }
 
-void fclass::HTTPPOST()
+void fclass::HTTPPOST(const char receivedChars[1024])
 {
     HTTPClient http;
 
-    http.begin("ec2-54-242-65-190.compute-1.amazonaws.com"); // URL
-    http.addHeader("Content-Type", "text/plain");
-    int httpDump = http.POST("SOS\n");
+    http.begin("http://172.31.16.189:8000/"); // URL
+    http.addHeader("Content-Type", "application/json");
+    int httpDump = http.POST(receivedChars);
 
     if(httpDump > 0)
     {

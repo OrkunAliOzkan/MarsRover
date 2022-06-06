@@ -29,12 +29,17 @@
 #define ADNS3080_FRAME_CAPTURE            0x13 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DECLINATIONANGLE 0.483 /* * (PI / 180)   FIXME: Isn't this in rad?*/
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//int numChars = 1024;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //int speedA = 0;
 //int speedB = 0;
 
 fclass::fclass()
 {}
+
+String URL = "http://146.169.174.8:3001/rover_request";
 
 std::vector<float> fclass::HTTPGET()
 {
@@ -45,7 +50,7 @@ std::vector<float> fclass::HTTPGET()
     size_t index_y;
     String x_content, y_content;
 
-    http.begin("http://54.242.65.190:8000/"); // URL
+    http.begin(URL); // URL
     int httpReturn = http.GET();
 
     if(httpReturn > 0)
@@ -58,39 +63,40 @@ std::vector<float> fclass::HTTPGET()
         Serial.println(index_x);
         Serial.println(index_y);
 
-        Serial.println("-----------------------");
+        //Serial.println("-----------------------");
         x_content = payload.substring(
                                     index_x + 5, 
                                     index_y - 4);
-        Serial.println(x_content);
+        //Serial.println(x_content);
         y_content = payload.substring(
                                 index_y + 5, 
                                 payload.length()-2);
-        Serial.println(y_content);
-        Serial.println(x_content.toFloat());
-        Serial.println("-----------------------");
+        //Serial.println(y_content);
+        //Serial.println(x_content.toFloat());
+        //Serial.println("-----------------------");
         soln[0] = x_content.toFloat();
         soln[1] = y_content.toFloat();
-        Serial.println("-----------------------");
+        //Serial.println("-----------------------");
     }
     else
     {
         Serial.println("Error on HTTP request\n");
-        soln[0] = -1024;// Both are impossible inputs
-        soln[1] = -1024;// Both are impossible inputs
+        soln[0] = 0;// Both are impossible inputs
+        soln[1] = 0;// Both are impossible inputs
     }
 
     http.end();
     return soln;
 }
 
-void fclass::HTTPPOST()
+void fclass::HTTPPOST(String receivedChars)
 {
+       // an array to store the received data
     HTTPClient http;
-
-    http.begin("http://172.31.16.189:8000"); // URL
+    Serial.println(receivedChars);
+    http.begin(URL); // URL
     http.addHeader("Content-Type", "text/plain");
-    int httpDump = http.POST("SOS\n");
+    int httpDump = http.POST(receivedChars);
 
     if(httpDump > 0)
     {
@@ -149,13 +155,13 @@ void fclass::readings(          int counter_input,
     //if((counter_input % 2) == 0)
     {
     //  Compass readings
-        compass.read();      
+        compass.read(); 
+        Serial.println("a");     
+        Serial.println(compass.getAzimuth());     
         *headingDegrees = compass.getAzimuth();
-        
-        delay(100); //??
-
-        //Serial.println(*headingDegrees);
+        delay(300); //??
     }
+    Serial.println("I LIVE BITCH");
     //if((counter_input % 2) != 0)
     {
     //  Optical sensor readings
@@ -166,10 +172,12 @@ void fclass::readings(          int counter_input,
 
         *distance_y = convTwosComp(md.dy);
         *distance_x = convTwosComp(md.dx);
-        total_x1 = total_x1 + *distance_x;
-        total_y1 = total_y1 + *distance_y;
-        *total_x = *total_x1/4.95; 
+        *total_x1 = *total_x1 + *distance_x;
+        *total_y1 = *total_y1 + *distance_y;
+        *total_x = *total_x1/4.95;
+        Serial.println(*total_x); 
         *total_y = *total_y1/4.95;
+        Serial.println(*total_y);
     }
 }
 
