@@ -25,7 +25,7 @@ mission_data.insert_one(mission)
 ######
 
 # Collection 2
-targets = client.missions.targets
+targets = db.targets
 
 target0 = {
     "tid": 2,
@@ -48,6 +48,12 @@ target1 = {
 # INSERT INTO COLLECTION #
 targets.insert_one(target0)
 ######
+
+"""
+This is a 'normalised' model rather than an 'embedded' model
+In an embedded model all the related elements are in the same document
+Just one document for all details of a mission, rather than separate documents for each target etc.
+"""
 
 
 ### Query Data ###

@@ -8,3 +8,12 @@ db = client.business
 fivestar = db.reviews.find_one({'rating': 5})
 pprint(fivestar)
 
+stargroup = db.reviews.aggregate(
+    [
+        {
+            '$group': {
+                '_id': '$rating'
+            }
+        }
+    ]
+)

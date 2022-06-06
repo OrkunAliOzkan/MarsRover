@@ -21,6 +21,16 @@ def on_message(data):
     sio.emit('pton', 'received')
 
 class basicRequestHandler(tornado.web.RequestHandler):
+    def set_default_headers(self):
+        print("Headers Set")
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        self.set_header("Access-Control-Allow-Headers", "access-control-allow-origin,authorization,content-type") 
+
+    def options(self):
+        self.set_status(204)
+
     def get(self):
         print("Requested")
         date_ = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
