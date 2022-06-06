@@ -24,3 +24,15 @@ stargroup = db.reviews.aggregate(
 
 for group in stargroup:
     print(group)
+
+conditions = {'_id': fivestar.get('_id')}
+updated_contents = {'$inc': {'likes': 666},  
+                    '$set': {'cuisine': "Chinese", 'name': "Sha Xian Xiao Chi", 'rating': 69}
+                    }
+
+result = db.reviews.update_one(conditions, updated_contents)
+print("Number of documents modified: " + str(result.modified_count))
+
+updated = db.reviews.find_one({'_id': fivestar.get('_id')})
+print("The updated document:")
+pprint(updated)
