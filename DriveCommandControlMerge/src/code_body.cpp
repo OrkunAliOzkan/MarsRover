@@ -39,7 +39,7 @@
 fclass::fclass()
 {}
 
-String URL = "http://146.169.174.8:3001/rover_request";
+String URL = "http://54.152.50.122:3001/rover_request";
 
 std::vector<float> fclass::HTTPGET()
 {

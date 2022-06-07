@@ -64,9 +64,13 @@ int distance_y_OFS = 0;
 //  Password
 //    #define WIFI_PASSWORD   "484f17Ya" 
 //  Name of network
-    #define WIFI_SSID       "bet-hotspot"    
+//   #define WIFI_SSID       "bet-hotspot"    
 //  Password
-    #define WIFI_PASSWORD   "helloworld" 
+//   #define WIFI_PASSWORD   "helloworld" 
+//  Name of network
+    #define WIFI_SSID       "CommunityFibre10Gb_003D7"    
+//  Password
+    #define WIFI_PASSWORD   "gxqxs3c3fs" 
 std::vector<float> read_cartesian = {0, 0};
 
 String post_data = "";
@@ -118,7 +122,7 @@ String lines = "----------------------------------------------------------------
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(9600);
   Wire.begin();
   compass.init();
 
@@ -164,7 +168,7 @@ void setup()
 
     compass.read();      
     initialAngle = compass.getAzimuth();
-    delay(50); //??
+    delay(10); //??
 }
 
 void loop()
@@ -203,7 +207,7 @@ void loop()
                           &total_y_OFS
                           );
   /////////////////////////////////////////////////////////////////
-    desired_cartesian[0] = x - total_x_OFS;
+    /*desired_cartesian[0] = x - total_x_OFS;
     desired_cartesian[1] = y - total_y_OFS;
     magnitude = sqrt(
                       (desired_cartesian[0] * desired_cartesian[0]) + 
@@ -221,7 +225,7 @@ void loop()
     steering_angle = pid_process(&pid, adjustmentVector[0]);
 
     adjustmentVector[0] *= (sin(steering_angle)); 
-    adjustmentVector[1] *= (cos(steering_angle)); 
+    adjustmentVector[1] *= (cos(steering_angle)); */
   
 /*
     Serial.println("---------------------------------------------------------------------");
@@ -270,62 +274,70 @@ void loop()
     post_data += "\n";
 
   //if joystick's y-axis potentiometer output is high, go forward
-    if(adjustmentVector[1] > 50) 
+    if(y > 50) 
     {
       digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
       digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-      speedA = map(adjustmentVector[1], 50, 512, 0, 255); 
-      speedB = map(adjustmentVector[1], 50, 512, 0, 255);
-      Serial.println("y > 112");
+      speedA = map(y, 50, 512, 0, 255); 
+      speedB = map(y, 50, 512, 0, 255);
+      Serial.println("y > 50");
+      post_data += "\n";
+      post_data += ("y > 50");
     }
 
   //if joystick's x-axis potentiometer output is low, go backwards
-    else if (adjustmentVector[1] < -50) 
+    else if (y < -50) 
     {
       digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW);
       digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH);
-      speedA = map(adjustmentVector[1], -50, -511, 0, 255);
-      speedB = map(adjustmentVector[1], -50, -511, 0, 255);
-      Serial.println("y < -188");
+      speedA = map(y, -50, -512, 0, 255);
+      speedB = map(y, -50, -512, 0, 255);
+      Serial.println("y < -50");
+      post_data += "\n";
+      post_data += ("y < -50");
     }
 
       Serial.println("now x");
-    if(adjustmentVector[0] < -50)
+    if(x < -50)
     {
-      int XMAP = map(adjustmentVector[0], -50, -512, 0, 255);
+      int XMAP = map(x, -50, -512, 0, 255);
       speedA = speedA - XMAP;
       speedB = speedB + XMAP;
       if (speedA < 0) {speedA = 0;}
       if (speedB > 255) {speedB = 255;}
-      Serial.println("x < -112");
+      Serial.println("x < -50");
+      post_data += "\n";
+      post_data += ("x < -50");
     }
 
-    else if(adjustmentVector[0] > 35)
+    else if(x > 50)
     {
-      int XMAP = map(adjustmentVector[0], 50, 511, 0, 255);
+      int XMAP = map(x, 50, 512, 0, 255);
       speedA = speedA + XMAP;
       speedB = speedB - XMAP;
       if (speedA > 255) {speedA = 255;}
-      if (speedB > 0) {speedB = 0;}
-      Serial.println("x > 188");
+      if (speedB < 0) {speedB = 0;}
+      Serial.println("x > 50");
+       post_data += "\n";
+      post_data += ("x > 50");
     }
 
-    if (speedA < 50) 
+    if (speedA <= 50) 
     {
       speedA = 0;
     }
 
-    if (speedB < 50) 
+    if (speedB <= 50) 
     {
       speedB = 0;
     }
 
     analogWrite(PWMA, speedA);
     analogWrite(PWMB, speedB);
-    delay(50);
+    delay(10);
   /////////////////////////////////////////////////////////////////
     counter_input++;
-    delay(50);
+    delay(10);
   }
 //  If not connected, connect and express as not connected
   if (WiFi.status() != WL_CONNECTED) 
