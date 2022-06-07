@@ -129,6 +129,36 @@ Serial.println("angle from computeAngle (degrees) = " + String(angle * 180));
     
 }
 
+void fclass::RotateDegrees(int angle_rotate, QMC5883LCompass compass)
+
+{
+    compass.read();
+    int headingDegrees = compass.getAzimuth();
+    //both wheels clockwise = ACW rover rotation
+    while(angle_rotate < 0 && compass.getAzimuth() > headingDegrees + angle_rotate) 
+    {
+      digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW
+      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+    }
+    
+    // both wheels anticlockwise = CW rover rotation
+    while(angle_rotate > 0 && compass.getAzimuth() < headingDegrees + angle_rotate)
+    {
+      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_ACW
+      digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_ACW
+    }
+}
+
+
+
+void fclass::Brake(int *speedA, int *speedB)
+{
+    digitalWrite(AIN1, LOW); digitalWrite(AIN2, LOW);
+    digitalWrite(BIN1, LOW); digitalWrite(BIN2, LOW);
+    speedA = 0;
+    speedB = 0;
+}
+
 float fclass::vector_multiply(std::vector<float> x, std::vector<float> y)
 {
     //  It is known that x is actually a transpose
@@ -141,7 +171,7 @@ float fclass::vector_multiply(std::vector<float> x, std::vector<float> y)
     return soln;
 }
 
-void fclass::readings(          int counter_input, 
+void fclass::readings( 
                                 QMC5883LCompass compass, 
                                 float *headingDegrees,
                                 int *distance_x,

@@ -77,6 +77,16 @@ String post_data = "";
 
 bool autonomous = 1;
 /////////////////////////////////////////////////////////////////
+  float A_x;
+  float A_y;
+  float B_x;
+  float B_y;
+  float curr;
+
+  float displacement = 0;
+  float desiredDisplacement = 0;
+  double desired_angle = 0;
+/////////////////////////////////////////////////////////////////
 #define PWMA 17
 #define PWMB 2
 #define AIN1 14
@@ -100,8 +110,10 @@ pid_ctrl_t pid;
 //  Rovers displacement from optical flow sensor
 float x = 0;
 float y = 0;
+float x_previous = 0;
+float y_previous = 0;
 
-float steering_angle = 0;
+//float steering_angle = 0;
 float initialAngle = 0;
 //  parameters used in PID
 float magnitude = 0;
@@ -176,27 +188,16 @@ void loop()
   if (WiFi.status() == WL_CONNECTED)
   {
   /////////////////////////////////////////////////////////////////
-  /*
-      TODO: Merge the input from HTTP request to get what is my
-      desired displacement, from magnitude and angle.
-
-  /////////////////////////////////////////////////////////////////
-  //  Input readings
-    /*
-    //  Manual joystick input readings
-      read_cartesian[0] = (analogRead(XJOY))/4 - 512;
-      read_cartesian[1] = -1*((analogRead(YJOY))/4 - 512);
-    */
     //  Digital joystick readings
       read_cartesian = code_body.HTTPGET();
-  
     //  DESIRED x and y
-    x = read_cartesian[0];
-    y = read_cartesian[1];
+      x = read_cartesian[0];
+      y = read_cartesian[1];
+
+      desired_angle = atan2((double)y, (double)x);
   /////////////////////////////////////////////////////////////////////////
   //  Readings
   code_body.readings(
-                          counter_input, 
                           compass, 
                           &headingDegrees,
                           &distance_x_OFS,
@@ -207,7 +208,14 @@ void loop()
                           &total_y_OFS
                           );
   /////////////////////////////////////////////////////////////////
-    /*desired_cartesian[0] = x - total_x_OFS;
+  if((x == x_previous) && (y == y_previous))
+  {
+    code_body.Brake(&speedA, &speedB);
+    code_body.RotateDegrees((int)desired_angle, compass);
+  }
+  /////////////////////////////////////////////////////////////////
+    /*
+    desired_cartesian[0] = x - total_x_OFS;
     desired_cartesian[1] = y - total_y_OFS;
     magnitude = sqrt(
                       (desired_cartesian[0] * desired_cartesian[0]) + 
@@ -226,7 +234,6 @@ void loop()
 
     adjustmentVector[0] *= (sin(steering_angle)); 
     adjustmentVector[1] *= (cos(steering_angle)); */
-  
 /*
     Serial.println("---------------------------------------------------------------------");
     Serial.println("x = " + String(x));
@@ -243,95 +250,44 @@ void loop()
     Serial.println("total_y_OFS = " + String(total_y_OFS));
     Serial.println("---------------------------------------------------------------------");
 */
-
-    post_data = lines;
-    post_data += "\n";
-    post_data += ("x = " + String(x));
-    post_data += "\n";
-    post_data += ("y = " + String(y));
-    post_data += "\n";
-    post_data += ("adjustmentVector[0] =" + String(adjustmentVector[0]));
-    post_data += "\n";
-    post_data += ("adjustmentVector[1] =" + String(adjustmentVector[1]));
-    post_data += "\n";
-    post_data += ("currentVector[0] =" + String(currentVector[0]));
-    post_data += "\n";
-    post_data += ("currentVector[1] =" + String(currentVector[1]));
-    post_data += "\n";
-    post_data += ("desired_cartesian[0] =" + String(desired_cartesian[0]));
-    post_data += "\n";
-    post_data += ("desired_cartesian[1] =" + String(desired_cartesian[1]));
-    post_data += "\n";
-    post_data += ("adjustment angle = " + String(steering_angle));
-    post_data += "\n";
-    post_data += ("heading_degrees = " + String(headingDegrees));
-    post_data += "\n";
-    post_data += ("total_x_OFS = " + String(total_x_OFS));
-    post_data += "\n";
-    post_data += ("total_y_OFS = " + String(total_y_OFS));
-    post_data += "\n";
-    post_data += lines;
-    post_data += "\n";
-
-  //if joystick's y-axis potentiometer output is high, go forward
-    if(y > 50) 
+    post_data = lines + 
+          "\n" + 
+          ("x = " + String(x)) + 
+          "\n" + 
+          ("y = " + String(y)) + 
+          "\n" + 
+          ("heading_degrees = " + String(headingDegrees)) + 
+          "\n" + 
+          ("total_x_OFS = " + String(total_x_OFS)) + 
+          "\n" + 
+          ("total_y_OFS = " + String(total_y_OFS)) + 
+          "\n" + 
+          lines + 
+          "\n";
+    //if joystick's y-axis potentiometer output is high, go forward
+    //("adjustmentVector[0] =" + String(adjustmentVector[0])) + "\n" + ("adjustmentVector[1] =" + String(adjustmentVector[1])) + "\n" + ("currentVector[0] =" + String(currentVector[0])) + "\n" + ("currentVector[1] =" + String(currentVector[1])) + "\n" + ("desired_cartesian[0] =" + String(desired_cartesian[0])) + "\n" + ("desired_cartesian[1] =" + String(desired_cartesian[1])) + "\n" + ("adjustment angle = " + String(steering_angle)) + "\n" + 
+    /////////////////////////////////////////////////////////////////
+    displacement =        sqrt(pow(total_x_OFS - A_x, 2) + pow(total_y_OFS - A_y, 2));
+    desiredDisplacement = sqrt(pow(B_x - A_x, 2) + pow(B_y - A_y, 2));
+    if(displacement == desiredDisplacement)
     {
-      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
-      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-      speedA = map(y, 50, 512, 0, 255); 
-      speedB = map(y, 50, 512, 0, 255);
-      Serial.println("y > 50");
-      post_data += "\n";
-      post_data += ("y > 50");
+      code_body.Brake(&speedA, &speedB);
     }
-
-  //if joystick's x-axis potentiometer output is low, go backwards
-    else if (y < -50) 
+    else if(displacement > desiredDisplacement)
     {
       digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW);
       digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH);
-      speedA = map(y, -50, -512, 0, 255);
-      speedB = map(y, -50, -512, 0, 255);
-      Serial.println("y < -50");
-      post_data += "\n";
-      post_data += ("y < -50");
+      speedA = 128;
+      speedA = 128;
     }
-
-      Serial.println("now x");
-    if(x < -50)
+    else
     {
-      int XMAP = map(x, -50, -512, 0, 255);
-      speedA = speedA - XMAP;
-      speedB = speedB + XMAP;
-      if (speedA < 0) {speedA = 0;}
-      if (speedB > 255) {speedB = 255;}
-      Serial.println("x < -50");
-      post_data += "\n";
-      post_data += ("x < -50");
+      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
+      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
+      speedA = 255;
+      speedB = 255;
     }
-
-    else if(x > 50)
-    {
-      int XMAP = map(x, 50, 512, 0, 255);
-      speedA = speedA + XMAP;
-      speedB = speedB - XMAP;
-      if (speedA > 255) {speedA = 255;}
-      if (speedB < 0) {speedB = 0;}
-      Serial.println("x > 50");
-       post_data += "\n";
-      post_data += ("x > 50");
-    }
-
-    if (speedA <= 50) 
-    {
-      speedA = 0;
-    }
-
-    if (speedB <= 50) 
-    {
-      speedB = 0;
-    }
-
+    /////////////////////////////////////////////////////////////////
     analogWrite(PWMA, speedA);
     analogWrite(PWMB, speedB);
     delay(10);
@@ -345,5 +301,7 @@ void loop()
       Serial.println(".");
       delay(1000);
   }
+  x_previous = x;
+  y_previous = y;
   code_body.HTTPPOST(post_data);
 }

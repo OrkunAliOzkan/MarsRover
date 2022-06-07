@@ -11,12 +11,13 @@ class fclass
         std::vector<float> HTTPGET();
         void HTTPPOST(String receivedChars);
         double computeAngle(int x, int y);
+        void RotateDegrees(int angle_rotate, QMC5883LCompass compass);
+        void Brake(int *speedA, int *speedB);
         float vector_multiply(
                             std::vector<float> x, 
                             std::vector<float> y
                             );
         void readings(
-                    int counter_input, 
                     QMC5883LCompass compass, 
                     float *headingDegrees,
                     int *distance_x,
