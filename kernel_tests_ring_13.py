@@ -6,14 +6,14 @@ pixels = np.array(img)
 
 gauss = [1, 6, 28, 89, 205, 338, 400, 338, 205, 89, 28, 6, 1]
 
-r_ring = [0 for i in range(13)]		#13 pixels
+r_ring = [0 for i in range(13)]	#13 pixels
 g_ring = [0 for i in range(13)]
 b_ring = [0 for i in range(13)]
 count_input = 0
 
-horiz_ring_r = np.zeros(shape=(7681))	#12 rows + 1 pixel
-horiz_ring_g = np.zeros(shape=(7681))
-horiz_ring_b = np.zeros(shape=(7681))
+horiz_ring_r = [0 for i in range(7681)]	#12 rows + 1 pixel
+horiz_ring_g = [0 for i in range(7681)]
+horiz_ring_b = [0 for i in range(7681)]
 count_horiz = 0
 
 final = np.zeros(shape=(480, 640, 3))	#after all operations
@@ -33,7 +33,7 @@ def pre_assignments ():
 def input_ring ():
 	global count_input
 	if count_input == 12: count_input = 0 	# % 13
-	else: count_input += 1
+	else: count_input = count_input + 1
 	r_ring[count_input] = red		#new values come in
 	g_ring[count_input] = green
 	b_ring[count_input] = blue
@@ -41,7 +41,7 @@ def input_ring ():
 def horiz_ring ():
 	global count_horiz
 	if count_horiz == 7680: count_horiz = 0 	# % 7681
-	else: count_horiz += 1
+	else: count_horiz = count_horiz + 1
 
 def avg_horiz ():
 	global  r_sum_x, g_sum_x, b_sum_x, r_blur_x, g_blur_x, b_blur_x
@@ -49,9 +49,9 @@ def avg_horiz ():
 	g_sum_x = 0
 	b_sum_x = 0
 	for i in range(13):
-		r_sum_x += gauss[i]*r_ring[(count_input+i)%13]
-		g_sum_x += gauss[i]*g_ring[(count_input+i)%13]
-		b_sum_x += gauss[i]*b_ring[(count_input+i)%13]
+		r_sum_x = r_sum_x + gauss[i]*r_ring[(count_input+i) % 13]
+		g_sum_x = g_sum_x + gauss[i]*g_ring[(count_input+i) % 13]
+		b_sum_x = b_sum_x + gauss[i]*b_ring[(count_input+i) % 13]
 	r_blur_x = r_sum_x / 1734
 	g_blur_x = g_sum_x / 1734
 	b_blur_x = b_sum_x / 1734
@@ -62,9 +62,9 @@ def avg_vert ():
 	g_sum_y = 0
 	b_sum_y = 0
 	for i in range(13):
-		r_sum_y += gauss[i]*horiz_ring_r[(count_horiz+(640*i))%7681]
-		g_sum_y += gauss[i]*horiz_ring_g[(count_horiz+(640*i))%7681]
-		b_sum_y += gauss[i]*horiz_ring_b[(count_horiz+(640*i))%7681]
+		r_sum_y = r_sum_y + gauss[i]*horiz_ring_r[(count_horiz+(640*i)) % 7681]
+		g_sum_y = g_sum_y + gauss[i]*horiz_ring_g[(count_horiz+(640*i)) % 7681]
+		b_sum_y = b_sum_y + gauss[i]*horiz_ring_b[(count_horiz+(640*i)) % 7681]
 	r_blur_y = r_sum_y / 1734
 	g_blur_y = g_sum_y / 1734
 	b_blur_y = b_sum_y / 1734
