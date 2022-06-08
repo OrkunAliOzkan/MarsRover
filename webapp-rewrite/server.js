@@ -4,9 +4,38 @@ const express = require('express');
 const app = express();
 
 const server = http.createServer(app);
-app.use(express.static(`${__dirname}`));
-// app.use(express.static(`${__dirname}/../client/css`));
-// app.use(express.static(`${__dirname}/../client/images`));
+
+(() => {
+    app.use(express.static(`${__dirname}`));
+
+    app.get('/', function(req, res) {
+        res.sendFile(`${__dirname}/html/home.html`);
+    });
+
+    app.get('/home.html', function(req, res) {
+        res.sendFile(`${__dirname}/html/home.html`);
+    });
+
+    app.get('/rover.html', function(req, res) {
+        res.sendFile(`${__dirname}/html/rover.html`);
+    });
+
+    app.get('/members.html', function(req, res) {
+        res.sendFile(`${__dirname}/html/members.html`);
+    });
+
+    app.get('/specification.html', function(req, res) {
+        res.sendFile(`${__dirname}/html/specification.html`);
+    });
+
+    app.on('error', (err) => {
+        console.error(err)
+    });
+
+    app.listen(3000,'0.0.0.0', () => {
+        console.log('Server is running on port 3000')
+    });
+})();
 
 // // method 2
 // const {spawn} = require('child_process');
@@ -28,10 +57,6 @@ var current_console = 0;
 //     } 
 // }
 
-app.get("/", (req, res) => {
-    res.sendFile(`${__dirname}/client/html/home.html`)
-})
-
 const socketio = require('socket.io');
 const io = socketio(server); 
 
@@ -45,14 +70,6 @@ io.on('connection', (sock) => {
         // pyshell.send(`W,${x},${y}`);
     });
     
-});
-
-server.on('error', (err) => {
-    console.error(err)
-});
-
-server.listen(3000,'0.0.0.0', () => {
-    console.log('Server is running on port 3000')
 });
 
 const data = {
