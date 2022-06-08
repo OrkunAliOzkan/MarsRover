@@ -37,15 +37,14 @@ const server = http.createServer(app);
     });
 })();
 
-// // method 2
-// const {spawn} = require('child_process');
-// const python = spawn('python', ['map_sim.py']);
-// python.stdout.on('data', (data) => {
-//     console.log(`Python printed this to console: ${data}`);
-// })
-// python.on('close', (code) => {
-//     console.log(`Python process exited with code ${code}`)
-// })
+const {spawn} = require('child_process');
+const map_sim = spawn('python', ['map_sim.py']);
+map_sim.stdout.on('data', (data) => {
+    console.log(`Python printed this to console: ${data}`);
+})
+map_sim.on('close', (code) => {
+    console.log(`Simulation ended with code ${code}`)
+})
 
 var current_console = 0;
 // 0 - javascript printed last

@@ -1,7 +1,6 @@
 Instructions:
     Installation:
-        npm install express
-        npm install socket.io
+        npm install
 
     Run the server:
         node server.js
