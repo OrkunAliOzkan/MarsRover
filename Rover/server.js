@@ -1,6 +1,8 @@
 var express = require('express');
 var server = express();
 
+console.log(__dirname);
+
 server.use(express.static(__dirname ));
 
 // const path = require('path');
