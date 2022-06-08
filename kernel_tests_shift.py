@@ -13,7 +13,7 @@ r_buff = [0 for i in range(4)]	#4 pixels
 g_buff = [0 for i in range(4)]
 b_buff = [0 for i in range(4)]
 
-horiz_r_buff = [0 for i in range(1921)]	#6 rows + 1 pixel
+horiz_r_buff = [0 for i in range(1921)]	#3 rows + 1 pixel
 horiz_g_buff = [0 for i in range(1921)]
 horiz_b_buff = [0 for i in range(1921)]
 
@@ -45,38 +45,30 @@ def horiz_buffer ():
 		horiz_r_buff[i] = horiz_r_buff[i-1]	#move rows in delay line
 		horiz_g_buff[i] = horiz_g_buff[i-1]
 		horiz_b_buff[i] = horiz_b_buff[i-1]
+	horiz_r_buff[0] = r_blur_x	#writes to newest row of horiz
+	horiz_g_buff[0] = g_blur_x
+	horiz_b_buff[0] = b_blur_x
 
 
 def avg_horiz ():
 	global  r_sum_x, g_sum_x, b_sum_x, r_blur_x, g_blur_x, b_blur_x
-	r_sum_x = 0
-	g_sum_x = 0
-	b_sum_x = 0
-	for i in range(4):
-		r_sum_x = r_sum_x + r_buff[i]
-		g_sum_x = g_sum_x + g_buff[i]
-		b_sum_x = b_sum_x + b_buff[i]
+	r_sum_x = r_buff[0] + r_buff[1] + r_buff[2] + r_buff[3]
+	g_sum_x = g_buff[0] + g_buff[1] + g_buff[2] + g_buff[3]
+	b_sum_x = b_buff[0] + b_buff[1] + b_buff[2] + b_buff[3]
 	r_blur_x = r_sum_x / 4
 	g_blur_x = g_sum_x / 4
 	b_blur_x = b_sum_x / 4
 
 def avg_vert ():
 	global r_sum_y, g_sum_y, b_sum_y, r_blur_y, g_blur_y, b_blur_y
-	r_sum_y = 0
-	g_sum_y = 0
-	b_sum_y = 0
-	for i in range(4):
-		r_sum_y = r_sum_y + horiz_r_buff[i*640]
-		g_sum_y = g_sum_y + horiz_g_buff[i*640]
-		b_sum_y = b_sum_y + horiz_b_buff[i*640]
+	r_sum_y = horiz_r_buff[0] + horiz_r_buff[640] + horiz_r_buff[1280] + horiz_r_buff[1920]
+	g_sum_y = horiz_g_buff[0] + horiz_g_buff[640] + horiz_g_buff[1280] + horiz_g_buff[1920]
+	b_sum_y = horiz_b_buff[0] + horiz_b_buff[640] + horiz_b_buff[1280] + horiz_b_buff[1920]
 	r_blur_y = r_sum_y / 4
 	g_blur_y = g_sum_y / 4
 	b_blur_y = b_sum_y / 4
 
 def post_assignments ():
-	horiz_r_buff[0] = r_blur_x	#writes to newest row of horiz
-	horiz_g_buff[0] = g_blur_x
-	horiz_b_buff[0] = b_blur_x
 	final[y, x, 0] = r_blur_y	#writes to current row of final
 	final[y, x, 1] = g_blur_y
 	final[y, x, 2] = b_blur_y
@@ -101,7 +93,7 @@ for i in range(480):
 			horiz_buffer()
 			post_assignments()
 
-out_blur = Image.fromarray(np.asarray(final).astype(np.uint8))
-out_blur.save("out.png")
+out = Image.fromarray(np.asarray(final).astype(np.uint8))
+out.save("out_blur.png")
 
 print(f"Elapsed: {time.time() - start}")

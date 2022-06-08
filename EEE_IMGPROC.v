@@ -203,6 +203,7 @@ processing img_processing (
 	.blue(blue),
 	.sop(sop),
 	.packet_video(packet_video),
+	.in_valid(in_valid),
 	.x(x),
 	.y(y),
 
