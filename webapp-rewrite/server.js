@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 
 (() => {
-    app.use(express.static(`${__dirname}`));
+    app.use(express.static(`${__dirname}/client`));
 
     app.get('/', function(req, res) {
         res.sendFile(`${__dirname}/html/home.html`);
