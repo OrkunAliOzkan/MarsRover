@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Map:</h1>
+
+        <div id="parent">
+            <div id="map-wrapper">
+                <canvas id="map" height="1000" width="1000"></canvas>
+            </div>
+            <div style="border: 1px solid blue; width: 128px; position: absolute; left:1400px; top:1000px;">
+                <img src="joystick/images/joystick-base.png"/>
+                <div id="stick" style="position: absolute; left:32px; top:32px;">
+                    <img src="joystick/images/joystick-blue.png"/>		
+                </div>
+            </div>
+        </div>
+
+        <h2>Test renderer</h2>
+        <form action="/render-test" method="post" id="form1">
+            <!-- this is a comment: br tag is for line break-->
+            <label for="num1">Rover X:</label><br>
+            <input type="text" id="rover-x" name="num1"><br>
+
+            <label for="num1">Rover Y:</label><br>
+            <input type="text" id="rover-y" name="num1"><br>
+
+            <label for="num1">Rover Angle:</label><br>
+            <input type="text" id="rover-angle" name="num1"><br>
+
+            <label for="num1">Alien X:</label><br>
+            <input type="text" id="alien-x" name="num1"><br>
+
+            <label for="num1">Alien Y:</label><br>
+            <input type="text" id="alien-y" name="num1"><br>
+
+            <label for="num1">Alien Colour:</label><br>
+            <input type="text" id="alien-colour" name="num1"><br>
+
+            <input type="button" value="Send" id="sender"><br>
+        </form>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="test_client.js"></script>
+</html>

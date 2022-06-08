@@ -173,6 +173,26 @@ const getClickCoordinates = (element, ev) => {
     loop();
 
     canvas.addEventListener('click', onClick)
+
+    const button = document.querySelector("#sender")
+    button.addEventListener('click', () => {
+        const rX = Math.floor(document.querySelector("#rover-x").value);
+        const rY = Math.floor(document.querySelector("#rover-y").value);
+        const rA = Math.floor(document.querySelector("#rover-angle").value);
+        const aX = Math.floor(document.querySelector("#alien-x").value);
+        const aY = Math.floor(document.querySelector("#alien-y").value);
+        const aC = Math.floor(document.querySelector("#alien-colour").value);
+        const data = {
+            rover_x: rX,
+            rover_y: rY,
+            rover_angle: rA,
+            alien_x: aX,
+            alien_y: aY,
+            alien_colour: aC
+        }
+        sock.emit('update', data);
+        console.log("clicked");
+    })
     
 })();
 

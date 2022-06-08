@@ -9,15 +9,6 @@ app.use(express.static(`${__dirname}/../client`));
 const socketio = require('socket.io');
 const io = socketio(server); 
 
-// // method 2
-// const {spawn} = require('child_process');
-// const python = spawn('python', ['map_sim.py']);
-// python.stdout.on('data', (data) => {
-//     console.log(`Python printed this to console: ${data}`);
-// })
-// python.on('close', (code) => {
-//     console.log(`Python process exited with code ${code}`)
-// })
 
 io.on('connection', (sock) => {
     console.log("Client connected");
@@ -35,9 +26,32 @@ io.on('connection', (sock) => {
         // pyshell.send(`J,${d},${a}`);
     });
 
-    sock.on('pton', (s) => {
-        console.log(`Python out: ${s}`);
+    sock.on('update', (data) => {
+        console.log('update received');
+        console.log(data);
+        rover_data = {
+            name: "rover",
+            colour: "N",
+            pos : {
+                x: data.rover_x,
+                y: data.rover_y
+            },
+            angle: data.rover_angle
+        }
+
+        alien_data = {
+            name: "alien",
+            colour: data.alien_colour,
+            pos : {
+                x: data.rover_x,
+                y: data.rover_y
+            },
+        }
+
+        io.emit('rover-update', rover_data);
+        io.emit('alien-update', alien_data);
     });
+
 });
 
 server.on('error', (err) => {
