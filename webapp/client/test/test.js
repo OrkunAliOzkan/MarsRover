@@ -1,16 +1,22 @@
 canvas = document.getElementById('mapCanvas');
 ctx = canvas.getContext("2d");
+
 var rover = new Image();
 var flag = new Image();
+
 const alienRadius = 10;
-const buildingRadius = 20;
-rover.onload = initRover;
+const buildingRadius = 20
+
 rover.src = "tank.png";   // load image
 flag.src = "flag.png";
 
 function initRover(){
     ctx.drawImage(rover, 0, canvas.height - 160);
 }
+
+rover.onload = initRover;
+
+var state;
 
 function drawRover(roverEntity) {
     //if(rx != roverEntity.posX || ry != roverEntity.posY) {
@@ -37,15 +43,6 @@ function drawAlien(alienEntity) {
 function drawBuilding(buildingEntity) {
     //if(ax != alienEntity.posX || ay != alienEntity.posY) {
         ctx.beginPath();
-        for (let i = 0; i < 12; i++){
-            ctx.arc(buildingEntity.posX, buildingEntity.posY, buildingRadius, 0, 2 * Math.PI / 12 * (i + 1), false);
-            let colour = i % 2 ? "white" : "black"
-            ctx.fillStyle = colour;
-            ctx.fill();
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = colour;
-            ctx.stroke();
-        }
         ctx.arc(buildingEntity.posX, buildingEntity.posY, buildingRadius, 0, 2 * Math.PI, false);
         ctx.fillStyle = "grey";
         ctx.fill();
@@ -55,10 +52,9 @@ function drawBuilding(buildingEntity) {
     //}
 }
 
-function updatePosition(entity) {
-    console.log("Got into update?")
+function redrawCanvas(entity) {
+    console.log("redraw");
     //var entityData = JSON.parse(entity);
-    var entityData = entity;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawRover(entity.rover);
     for (let i = 0; i < entity.alien.length; i = i+1){
@@ -79,20 +75,63 @@ const getClickCoordinates = (element, ev) => {
     };
 };
 
-var state;
-
 (() => {
     const sock = io();
+
     const onClick = (e) => {
         console.log("onClick");
-        updatePosition(state);
         const { x, y } = getClickCoordinates(canvas, e);
-        ctx.drawImage(flag, x, y - flag.height);
         sock.emit('waypoint', { x, y });
     };
+    canvas.addEventListener('click', onClick)
+
     sock.on('update', (data) => {
-        updatePosition(data);
+        redrawCanvas(data);
         state = data;
     });
-    canvas.addEventListener('click', onClick)
+
+    sock.on('waypoint', ({x, y}) => {
+        redrawCanvas(state);
+        ctx.drawImage(flag, x, y - flag.height);
+    });
+
 })();
+
+state = {
+    "rover": {
+        "posX": 100,
+        "posY": 100,
+        "angle": 75  
+    },
+    "alien": [
+        {
+            "colour": "red",
+            "posX": 50,
+            "posY": 70
+        },
+        {
+            "colour": "blue",
+            "posX": 150,
+            "posY": 70
+        },
+        {
+            "colour": "green",
+            "posX": 250,
+            "posY": 70
+        } 
+    ],
+    "building": [
+        {
+            "posX": 50,
+            "posY": 170
+        },
+        {
+            "posX": 150,
+            "posY": 170
+        },
+        {
+            "posX": 250,
+            "posY": 170
+        } 
+    ]
+}
