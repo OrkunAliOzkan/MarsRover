@@ -60,17 +60,17 @@ int distance_y_OFS = 0;
 //  Password
 //      #define WIFI_PASSWORD   "sivashanth"
 //  Name of network
-//    #define WIFI_SSID       "Orkun's Laptop"    
+    #define WIFI_SSID       "Orkun's Laptop"    
 //  Password
-//    #define WIFI_PASSWORD   "484f17Ya" 
+    #define WIFI_PASSWORD   "484f17Ya" 
 //  Name of network
 //   #define WIFI_SSID       "bet-hotspot"    
 //  Password
 //   #define WIFI_PASSWORD   "helloworld" 
 //  Name of network
-    #define WIFI_SSID       "CommunityFibre10Gb_003D7"    
+//    #define WIFI_SSID       "CommunityFibre10Gb_003D7"    
 //  Password
-    #define WIFI_PASSWORD   "gxqxs3c3fs" 
+//    #define WIFI_PASSWORD   "gxqxs3c3fs" 
 std::vector<float> read_cartesian = {0, 0};
 
 String post_data = "";
@@ -134,7 +134,7 @@ String lines = "----------------------------------------------------------------
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Wire.begin();
   compass.init();
 
@@ -208,11 +208,16 @@ void loop()
                           &total_y_OFS
                           );
   /////////////////////////////////////////////////////////////////
-  if((x == x_previous) && (y == y_previous))
+  if((x != x_previous) && (y != y_previous))
   {
     code_body.Brake(&speedA, &speedB);
     code_body.RotateDegrees((int)desired_angle, compass);
+    A_x = total_x_OFS;
+    A_y = total_y_OFS;
+    B_x = x;
+    B_y = y;
   }
+  Serial.println("hello");
   /////////////////////////////////////////////////////////////////
     /*
     desired_cartesian[0] = x - total_x_OFS;
@@ -232,40 +237,11 @@ void loop()
 
     steering_angle = pid_process(&pid, adjustmentVector[0]);
 
-    adjustmentVector[0] *= (sin(steering_angle)); 
-    adjustmentVector[1] *= (cos(steering_angle)); */
-/*
-    Serial.println("---------------------------------------------------------------------");
-    Serial.println("x = " + String(x));
-    Serial.println("y = " + String(y));
-    Serial.println("adjustmentVector[0] =" + String(adjustmentVector[0]));
-    Serial.println("adjustmentVector[1] =" + String(adjustmentVector[1]));
-    Serial.println("currentVector[0] =" + String(currentVector[0]));
-    Serial.println("currentVector[1] =" + String(currentVector[1]));
-    Serial.println("desired_cartesian[0] =" + String(desired_cartesian[0]));
-    Serial.println("desired_cartesian[1] =" + String(desired_cartesian[1]));
-    Serial.println("adjustment angle = " + String(steering_angle));
-    Serial.println("heading_degrees = " + String(headingDegrees));
-    Serial.println("total_x_OFS = " + String(total_x_OFS));
-    Serial.println("total_y_OFS = " + String(total_y_OFS));
-    Serial.println("---------------------------------------------------------------------");
-*/
-    post_data = lines + 
-          "\n" + 
-          ("x = " + String(x)) + 
-          "\n" + 
-          ("y = " + String(y)) + 
-          "\n" + 
-          ("heading_degrees = " + String(headingDegrees)) + 
-          "\n" + 
-          ("total_x_OFS = " + String(total_x_OFS)) + 
-          "\n" + 
-          ("total_y_OFS = " + String(total_y_OFS)) + 
-          "\n" + 
-          lines + 
-          "\n";
+    adjustmentVector[0] *= (cos(steering_angle)); 
+    adjustmentVector[1] *=(sin(steering_angle)); 
+    */
+      //Serial.println(post_data);
     //if joystick's y-axis potentiometer output is high, go forward
-    //("adjustmentVector[0] =" + String(adjustmentVector[0])) + "\n" + ("adjustmentVector[1] =" + String(adjustmentVector[1])) + "\n" + ("currentVector[0] =" + String(currentVector[0])) + "\n" + ("currentVector[1] =" + String(currentVector[1])) + "\n" + ("desired_cartesian[0] =" + String(desired_cartesian[0])) + "\n" + ("desired_cartesian[1] =" + String(desired_cartesian[1])) + "\n" + ("adjustment angle = " + String(steering_angle)) + "\n" + 
     /////////////////////////////////////////////////////////////////
     displacement =        sqrt(pow(total_x_OFS - A_x, 2) + pow(total_y_OFS - A_y, 2));
     desiredDisplacement = sqrt(pow(B_x - A_x, 2) + pow(B_y - A_y, 2));
@@ -277,8 +253,8 @@ void loop()
     {
       digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW);
       digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH);
-      speedA = 128;
-      speedA = 128;
+      speedA = 64;
+      speedB = 64;
     }
     else
     {
@@ -292,8 +268,32 @@ void loop()
     analogWrite(PWMB, speedB);
     delay(10);
   /////////////////////////////////////////////////////////////////
-    counter_input++;
-    delay(10);
+  x_previous = x;
+  y_previous = y;
+  post_data = lines ;
+  post_data += "\n" ;
+  post_data += ("x = " + String(x)) ;
+  post_data += "\n" ;
+  post_data += ("y = " + String(y)) ;
+  post_data += "\n" ;
+  post_data += ("total_x_OFS = " + String(total_x_OFS)) ;
+  post_data += "\n" ;
+  post_data += ("total_y_OFS = " + String(total_y_OFS)) ;
+  post_data += "\n";
+  post_data += "headingDegrees: " + String(headingDegrees) ;
+  post_data += "\n";
+  post_data += "displacement: " + String(displacement) ;
+  post_data += "\n";
+  post_data += "desiredDisplacement: " + String(desiredDisplacement) ;
+  post_data += "\n" ;
+  post_data += "initialAngle: " + String(initialAngle) ;
+  post_data += "\n" ;
+  post_data += lines ;
+  post_data += "\n";
+
+  code_body.HTTPPOST(post_data);
+  counter_input++;
+  delay(10);
   }
 //  If not connected, connect and express as not connected
   if (WiFi.status() != WL_CONNECTED) 
@@ -301,7 +301,4 @@ void loop()
       Serial.println(".");
       delay(1000);
   }
-  x_previous = x;
-  y_previous = y;
-  code_body.HTTPPOST(post_data);
 }

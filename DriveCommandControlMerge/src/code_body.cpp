@@ -30,8 +30,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DECLINATIONANGLE 0.483 /* * (PI / 180)   FIXME: Isn't this in rad?*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//int numChars = 1024;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //int speedA = 0;
 //int speedB = 0;
@@ -39,7 +37,7 @@
 fclass::fclass()
 {}
 
-String URL = "http://54.152.50.122:3001/rover_request";
+String URL = "http://146.169.162.1:3001/rover_request";
 
 std::vector<float> fclass::HTTPGET()
 {
@@ -135,18 +133,27 @@ void fclass::RotateDegrees(int angle_rotate, QMC5883LCompass compass)
     compass.read();
     int headingDegrees = compass.getAzimuth();
     //both wheels clockwise = ACW rover rotation
-    while(angle_rotate < 0 && compass.getAzimuth() > headingDegrees + angle_rotate) 
+    while((angle_rotate < 0) && 
+    (headingDegrees > 0.9*(angle_rotate)) && 
+    (headingDegrees < 1.1*(angle_rotate)))
     {
       digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW
       digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+
+        compass.read();
+        headingDegrees = compass.getAzimuth();
     }
     
     // both wheels anticlockwise = CW rover rotation
-    while(angle_rotate > 0 && compass.getAzimuth() < headingDegrees + angle_rotate)
+    /*
+    while((angle_rotate > 0) && (headingDegrees < angle_rotate))
     {
       digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_ACW
       digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_ACW
-    }
+
+        compass.read();
+        headingDegrees = compass.getAzimuth();
+    }*/
 }
 
 
@@ -209,6 +216,7 @@ void fclass::readings(
         *total_y = *total_y1/4.95;
         Serial.println(*total_y);
     }
+    Serial.println("I LIVE BITCH 2");
 }
 
 int fclass::convTwosComp(int b)
