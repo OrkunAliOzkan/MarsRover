@@ -1,6 +1,10 @@
 canvas = document.getElementById('mapCanvas');
 ctx = canvas.getContext("2d");
 
+function toRadians(degrees) {
+    return Math.PI / 180 * degrees;
+}
+
 var rover = new Image();
 var flag = new Image();
 
@@ -11,7 +15,7 @@ rover.src = "tank.png";   // load image
 flag.src = "flag.png";
 
 function initRover(){
-    ctx.drawImage(rover, 0, canvas.height - 160);
+    drawRover({"posX": 0, "posY": canvas.height - 160, "angle": 0});
 }
 
 rover.onload = initRover;
@@ -19,37 +23,43 @@ rover.onload = initRover;
 var state;
 
 function drawRover(roverEntity) {
-    //if(rx != roverEntity.posX || ry != roverEntity.posY) {
-        ctx.translate( roverEntity.posX + rover.width/2, roverEntity.posY + rover.height/2);
-        ctx.rotate(roverEntity.angle * Math.PI / 180);
-        ctx.drawImage(rover, -rover.width/2, -rover.width/2);
-        ctx.rotate(-1 * roverEntity.angle * Math.PI / 180);        
-        ctx.translate( -1 * roverEntity.posX - rover.width/2, -1 * roverEntity.posY - rover.height/2);
-    //}
+    ctx.translate( roverEntity.posX + rover.width/2, roverEntity.posY + rover.height/2);
+    ctx.rotate(roverEntity.angle * Math.PI / 180);
+    ctx.drawImage(rover, -rover.width/2, -rover.width/2, rover.width/2, rover.width/2);
+    ctx.rotate(-1 * roverEntity.angle * Math.PI / 180);        
+    ctx.translate( -1 * roverEntity.posX - rover.width/2, -1 * roverEntity.posY - rover.height/2);
 }
 
 function drawAlien(alienEntity) {
-    //if(ax != alienEntity.posX || ay != alienEntity.posY) {
-        ctx.beginPath();
-        ctx.arc(alienEntity.posX, alienEntity.posY, alienRadius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = alienEntity.colour;
-        ctx.fill();
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = '#003300';
-        ctx.stroke();
-    //}
+    ctx.beginPath();
+    ctx.arc(alienEntity.posX, alienEntity.posY, alienRadius, 0, 2 * Math.PI, false);
+    ctx.fillStyle = alienEntity.colour;
+    ctx.fill();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = '#003300';
+    ctx.stroke();
+}
+
+function toRadians(degrees) {
+    return Math.PI / 180 * degrees;
 }
 
 function drawBuilding(buildingEntity) {
-    //if(ax != alienEntity.posX || ay != alienEntity.posY) {
+    for (let i = 0; i < 12; i++){
+        ctx.fillStyle = i % 2 == 0 ? "black": "white";
         ctx.beginPath();
-        ctx.arc(buildingEntity.posX, buildingEntity.posY, buildingRadius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = "grey";
+        ctx.moveTo(buildingEntity.posX,buildingEntity.posY);
+        ctx.arc(buildingEntity.posX, buildingEntity.posY, buildingRadius, i * 2 * Math.PI / 12, (i+1) * 2 * Math.PI / 12, false);
+        ctx.lineTo(buildingEntity.posX,buildingEntity.posY);
+        ctx.closePath();
         ctx.fill();
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = "grey";
-        ctx.stroke();
-    //}
+    }
+    ctx.fillStyle = "grey";
+    ctx.beginPath();
+    ctx.moveTo(buildingEntity.posX,buildingEntity.posY);
+    ctx.arc(buildingEntity.posX, buildingEntity.posY, buildingRadius - 5, 0, 360, false);
+    ctx.closePath();
+    ctx.fill();
 }
 
 function redrawCanvas(entity) {
@@ -57,10 +67,10 @@ function redrawCanvas(entity) {
     //var entityData = JSON.parse(entity);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawRover(entity.rover);
-    for (let i = 0; i < entity.alien.length; i = i+1){
+    for (let i = 0; i < entity.alien.length; i++){
         drawAlien(entity.alien[i]);
     }
-    for (let i = 0; i < entity.alien.length; i = i+1){
+    for (let i = 0; i < entity.alien.length; i++){
         drawBuilding(entity.building[i]);
     }
     //requestAnimationFrame(updatePosition)
@@ -91,6 +101,7 @@ const getClickCoordinates = (element, ev) => {
     });
 
     sock.on('waypoint', ({x, y}) => {
+        console.log("waypoint");
         redrawCanvas(state);
         ctx.drawImage(flag, x, y - flag.height);
     });

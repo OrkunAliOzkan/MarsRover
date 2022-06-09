@@ -17,7 +17,6 @@ def echo():
         command = sys.stdin.readline().split('\n')[0]
         sys.stdout.write(command)
         sys.stdout.flush()
-
 x = 0
 y = 0
 

@@ -30,7 +30,7 @@ server.listen(3000,'0.0.0.0', () => {
 
 //--------Initialising Python Control Script--------//
 const {spawn} = require('child_process');
-const control_script = spawn('python', ['main.py']);
+const control_script = spawn('python', ['map_sim.py']);
 print("Control Script started", 0)
 
 control_script.stdout.on('data', (data) => {
@@ -52,7 +52,6 @@ io.on('connection', (sock) => {
         print(`waypoint placed at x: ${x}, y: ${y}`, 0);
         control_script.stdin.write(`W,${x},${y}\n`);
     });
-
 });
 
 var state = {

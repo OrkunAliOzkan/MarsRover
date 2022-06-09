@@ -8,8 +8,8 @@ from matplotlib.patches import Polygon
 
 #parameters
 
-arena_x = 360
-arena_y = 240
+arena_x = 356
+arena_y = 234
 
 aliens_count = random.randint(3, 6)
 raycount = 20
@@ -387,6 +387,16 @@ class Rover ():
 			object.scatter.set_alpha(1)			#make viewing objects visible
 		self.viewing = []
 
+
+class Waypoint():
+
+	def __init__(self, x, y):
+		self.position = [x, y]
+		plt.figure(2)
+		self.scatter = plt.scatter(self.position[0], self.position[1], marker="*", alpha=1, zorder=10)
+		plt.figure(1)
+		self.scatter = plt.scatter(self.position[0], self.position[1], marker="*", alpha=1, zorder=10)
+
 class Map ():
 
 	def __init__ (self, title, num):
@@ -421,6 +431,7 @@ def run ():
 	global sim_map, arena_map, sim_rover, rover, ax1, ax2, viewing, aliens, walls, radar_object, radar
 	rover = Rover()
 	arena_map = Map("Arena Map", 1)
+	waypoint = Waypoint(200, 200)
 	arena_map.map_axis()
 	if simulated:
 		sim_rover = Rover()		#instantiations
