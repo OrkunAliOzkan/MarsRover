@@ -1,52 +1,56 @@
 import sys
 import time
 import threading
+import os
+import json
+
 import tornado.web
 import tornado.ioloop
 import tornado.escape
 
-def main():
+def nprint(output):
+    sys.stdout.write(output + '\n')
+    sys.stdout.flush()
+
+def echo():
     while True:
         command = sys.stdin.readline().split('\n')[0]
         sys.stdout.write(command)
         sys.stdout.flush()
 
-# class basicRequestHandler(tornado.web.RequestHandler):
-#     # def set_default_headers(self):
-#     #     print("Headers Set")
-#     #     self.set_header("Access-Control-Allow-Origin", "*")
-#     #     self.set_header("Access-Control-Allow-Headers", "x-requested-with")
-#     #     self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
-#     #     self.set_header("Access-Control-Allow-Headers", "access-control-allow-origin,authorization,content-type") 
+x = 0
+y = 0
 
-#     # def options(self):
-#     #     print("preflight")
-#     #     self.set_status(204)
+class pageHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render("../client/test/tornado_test.html")
 
-#     def get(self):
-#         print("Get Request Received")
-#         date_ = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
-#         self.set_status(200)
-#         data = '{"time": "'+ date_ + '", "x": "'+ str(x) + '", "y": "'+ str(y) +'"}'
-#         print(data)
-#         self.write(bytes(data, "utf-8"))
-#         print("Get Request Serviced")
+class roverHandler(tornado.web.RequestHandler):
+    def get(self):
+        nprint("Get Request Received")
+        date_ = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
+        self.set_status(200)
+        data = '{"time": "'+ date_ + '", "x": "'+ str(x) + '", "y": "'+ str(y) +'"}'
+        nprint(data)
+        self.write(bytes(data, "utf-8"))
+        nprint("Get Request Serviced")
 
-#     def post(self):
-#         # data = tornado.escape.json_decode(self.request.body)
-#         print("Post Request Received")
-#         data = str(self.request.body)
-#         data = data.replace(r'\n', '\n')
-#         print(data)
-#         self.set_status(200)
-#         print("Post Request Serviced") 
+    def post(self):
+        # data = tornado.escape.json_decode(self.request.body)
+        nprint("Post Request Received")
+        data = str(self.request.body)
+        data = data.replace(r'\n', '\n')
+        nprint(data)
+        self.set_status(200)
+        nprint("Post Request Serviced") 
 
-# app = tornado.web.Application([
-#     (r"/rover_request", basicRequestHandler),
-# ])
+app = tornado.web.Application([
+    (r"/", roverHandler),
+    (r"/test", pageHandler)
+])
 
+app.listen(3001)
+nprint("Python servicing rover on port 3001")
+tornado.ioloop.IOLoop.current().start()
 
-# app.listen(3001)
-# print("Python servicing rover on port 3001")
-# tornado.ioloop.IOLoop.current().start()
-threading.Thread(target=main).start()
+# threading.Thread(target=echo).start()

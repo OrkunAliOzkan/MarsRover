@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Testing Tornado</title>
+    </head>
+    <body>
+        <h2>Testing Tornado Python HTTP Server</h2>
+        <form action="/render-test" method="post" id="form1">
+            <!-- this is a comment: br tag is for line break-->
+            <label for="num1">Get:</label><br>
+            <input type="text" id="rover-x" name="num1"><br>
+            <input type="button" value="Get" id="get"><br>
+
+            <label for="num1">Post:</label><br>
+            <input type="text" id="rover-y" name="num1"><br>
+            <input type="button" value="Post" id="post"><br>
+        </form>
+    </body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var url = "http://localhost:3001";
+        (() => {
+            const getter = document.querySelector("#get")
+            getter.addEventListener('click', () => {
+                // const rX = Math.floor(document.querySelector("#rover-x").value);
+                // const rY = Math.floor(document.querySelector("#rover-y").value);
+                console.log("get");
+                axios.get(url).then(data=>console.log(data)).catch(err=>console.log(error));
+            })
+            const poster = document.querySelector("#post")
+            poster.addEventListener('click', () => {
+                console.log("post");
+                axios.post(url, "Hello World and stuff").then(data=>console.log(data)).catch(err=>console.log(error));
+            })
+        })();
+    </script>
+</html>
