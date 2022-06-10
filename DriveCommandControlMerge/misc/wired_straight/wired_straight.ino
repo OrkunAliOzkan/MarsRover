@@ -1,5 +1,5 @@
 #include <SPI.h>
-#include <PID_v1.h>
+//#include <PID_v1.h>
 #include <Wire.h>
 
 #define RADIUS 144
@@ -143,15 +143,15 @@ void OpticalFlowSensorReadings(MD md,int * distance_x,int * distance_y,int * tot
   *total_y = *total_y1/4.95;
   Serial.println("Dy: " + String(*distance_y));
   Serial.println("Dx: " + String(*distance_x));
-  Serial.println("Total y: " + String(*total_x));
-  Serial.println("Total x: " + String(*total_y));
+  Serial.println("Total y: " + String(*total_y));
+  Serial.println("Total x: " + String(*total_x));
 }
 /////////////////////////////////////////////////////////////////
 //  Turning PID control parameters
-double Turning_Setpoint, Turning_Input, Turning_Output;
+//double Turning_Setpoint, Turning_Input, Turning_Output;
 
 //Specify the turning PID's links and initial tuning parameters
-PID TurningPID(&Turning_Input, &Turning_Output, &Turning_Setpoint,0,0,0, DIRECT);
+//PID TurningPID(&Turning_Input, &Turning_Output, &Turning_Setpoint,0,0,0, DIRECT);
 
 //  Driving PID control parameters
 double Driving_Setpoint;
@@ -161,6 +161,7 @@ double old_error;
 long currT = 0;
 long prevT = 0;
 float deltaT = 0;
+float pterm = 0;
 float integralterm = 0;
 float derivativeterm = 0;
 float Kp = 0.1;
@@ -169,7 +170,7 @@ float Kd = 0.02;
 int arrived;
 
 //Specify the driving PID's links and initial tuning parameters //P,I,D
-PID DrivingPID(&error, &Driving_Output, &Driving_Setpoint,0.33,0,0, DIRECT);
+//PID DrivingPID(&error, &Driving_Output, &Driving_Setpoint,0.33,0,0, DIRECT);
 /////////////////////////////////////////////////////////////////
 
 void setup()
@@ -177,8 +178,8 @@ void setup()
   Serial.begin(115200);
   Driving_Setpoint = 0;
   //turn the PID on
-  TurningPID.SetMode(AUTOMATIC);
-  DrivingPID.SetMode(AUTOMATIC);
+//  TurningPID.SetMode(AUTOMATIC);
+//  DrivingPID.SetMode(AUTOMATIC);
   Wire.begin();
 /////////////////////////////////////////////////////////////////
   pinMode(PWMA, OUTPUT);
@@ -219,12 +220,12 @@ void setup()
 
 void loop()
 {  
-//  //  Server input
-//  //B = {0, 512};
-//  delayMicroseconds(10);
-//  if(NeedToRotate)
-//  {
-//    //  Rotate
+  //  Server input
+  //B = {0, 512};
+  delayMicroseconds(10);
+  if(NeedToRotate)
+  {
+    //  Rotate
 //    OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
 //    if(CURR_x - beginingRotationX == RADIUS*angle)
 //    {
@@ -240,56 +241,62 @@ void loop()
 //      analogWrite(PWMA, Turning_Output);  //  TODO: See if mapping works
 //      analogWrite(PWMB, Turning_Output);
 //    } 
-//  }
-//  else
-//  {
-//    if (!arrived) {
-//      //  Not need to rotate
-//      OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
-//      currT = micros();
-//      deltaT = ((float) (currT-prevT))/1.0e6;
-//      prevT = currT;
-//
-//      // controller
-//      error = CURR_x - A_x;
-//      integralterm = integralterm + (error*deltaT);
-//      derivativeterm = (error - old_error)/deltaT;
-//      Driving_Output = (error * Kp) + (integralterm * Ki) + (derivativeterm * Kd); //0.3 is good, 0.33 decent
-//      //PWM_offset = map(abs(Driving_Output), 0, 1000, 0, 255); 
-//      
-//      
-//      MotorSpeedA += Driving_Output;
-//      MotorSpeedB -= Driving_Output;
-//      
-//      if (MotorSpeedA < 100) {MotorSpeedA = 100;}
-//      if (MotorSpeedA > 255) {MotorSpeedA = 255;}
-//      
-//      if (MotorSpeedB < 100) {MotorSpeedB = 100;}
-//      if (MotorSpeedB > 255) {MotorSpeedB = 255;}
-//      
-//      if ((CURR_y - B_y < 10) && (CURR_y - B_y > -10)) 
-//      {
-//        arrived = 1;
-//      }
-//      
-//      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
-//      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-//      analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
-//      analogWrite(PWMB, MotorSpeedB);
-//      
-//      Serial.println();
-//      //Serial.println("Absolute Error at end: " + String(deltaT));
-//      
-//      old_error = error;
-//      Serial.println("Drive output: " + String(Driving_Output));
-//      Serial.println("MotorSpeedA: " + String(MotorSpeedA));
-//      Serial.println("MotorSpeedB: " + String(MotorSpeedB));
-//      Serial.println("CURR_x: " + String(CURR_x));
-//      Serial.println("CURR_y: " + String(CURR_y));
-//      Serial.println("Error: " + String(error));
-//    };
-//  }
-  OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
+  }
+  else
+  {
+    if (!arrived) {
+      //  Not need to rotate
+      OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
+      currT = micros();
+      deltaT = ((float) (currT-prevT))/1.0e-6;
+      prevT = currT;
+
+      // controller
+      error = CURR_x - A_x;
+      
+      pterm = (error * Kp);
+      integralterm = integralterm + (error*deltaT);
+      derivativeterm = (error - old_error)/deltaT;
+      Driving_Output = pterm + (integralterm * Ki) + (derivativeterm * Kd); //0.3 is good, 0.33 decent
+      //PWM_offset = map(abs(Driving_Output), 0, 1000, 0, 255); 
+      
+      old_error = error;
+      
+      MotorSpeedA += Driving_Output;
+      MotorSpeedB -= Driving_Output;
+      
+      if (MotorSpeedA < 100) {MotorSpeedA = 100;}
+      if (MotorSpeedA > 255) {MotorSpeedA = 255;}
+      
+      if (MotorSpeedB < 100) {MotorSpeedB = 100;}
+      if (MotorSpeedB > 255) {MotorSpeedB = 255;}
+      
+      if ((CURR_y - B_y < 10) && (CURR_y - B_y > -10)) 
+      {
+        arrived = 1;
+      }
+      
+      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
+      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
+      analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
+      analogWrite(PWMB, MotorSpeedB);
+      
+      Serial.println();
+      //Serial.println("Absolute Error at end: " + String(deltaT));
+      
+      
+      Serial.println("P term: " + String(pterm));
+      Serial.println("I term: " + String(integralterm));
+      Serial.println("D term: " + String(derivativeterm));
+      Serial.println("Drive output: " + String(Driving_Output));
+      Serial.println("MotorSpeedA: " + String(MotorSpeedA));
+      Serial.println("MotorSpeedB: " + String(MotorSpeedB));
+      Serial.println("CURR_x: " + String(CURR_x));
+      Serial.println("CURR_y: " + String(CURR_y));
+      Serial.println("Error: " + String(error));
+    };
+  }
+//OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
 //  Serial.println("CURR_x: " + String(CURR_x));
 //  Serial.println("CURR_y: " + String(CURR_y));
 }
