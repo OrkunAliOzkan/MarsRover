@@ -4,10 +4,6 @@ import threading
 import os
 import json
 
-import tornado.web
-import tornado.ioloop
-import tornado.escape
-
 def nprint(output):
     sys.stdout.write(output + '\n')
     sys.stdout.flush()
@@ -17,6 +13,13 @@ def echo():
         command = sys.stdin.readline().split('\n')[0]
         sys.stdout.write(command)
         sys.stdout.flush()
+
+threading.Thread(target=echo).start()
+
+import tornado.web
+import tornado.ioloop
+import tornado.escape
+
 x = 0
 y = 0
 
@@ -51,5 +54,3 @@ app = tornado.web.Application([
 app.listen(3001)
 nprint("Python servicing rover on port 3001")
 tornado.ioloop.IOLoop.current().start()
-
-# threading.Thread(target=echo).start()

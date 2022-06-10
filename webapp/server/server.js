@@ -28,6 +28,8 @@ server.listen(3000,'0.0.0.0', () => {
     print('Server is running on port 3000', 0)
 });
 
+//--------Serve Rover--------//
+
 //--------Initialising Python Control Script--------//
 const {spawn} = require('child_process');
 const control_script = spawn('python', ['map_sim.py']);
