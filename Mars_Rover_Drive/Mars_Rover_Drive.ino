@@ -1,7 +1,5 @@
 #include <SPI.h>
-//#include <PID_v1.h>
 #include <Wire.h>
-
 #define RADIUS 144
 /////////////////////////////////////////////////////////////////
 //  Optical flow sensor parameters
@@ -37,11 +35,12 @@
 #define BIN2 15
 /////////////////////////////////////////////////////////////////
 //  Optical Flow Sensor parameters
-int distance_x = 0; //motion dx
-int distance_y = 0; //motion dy
-
-int total_x1 = 0; //prescaling x displacement
-int total_y1 = 0; //prescaling y displacement
+int distance_x = 0; // motion dx
+int distance_y = 0; // motion dy
+int total_x1 = 0; // prescaling x displacement
+int total_y1 = 0; // prescaling y displacement
+int TOTAL_PATH_x1 = 0; // postscaling x displacement
+int TOTAL_PATH_y1 = 0; // postscaling y displacement
 
 struct MD
 {
@@ -61,19 +60,13 @@ double A_y = 0;
 double B_x = 0;
 double B_y = 500;
 
-int CURR_x = 0;
-int CURR_y = 0;
+int TOTAL_PATH_x = 0;
+int TOTAL_PATH_y = 0;
 
-int beginingRotationX = 0;
-float angle = (0)* PI/180;     // Angle offset by, from server
-int PID_speed = 0;   // PID output
-int PWM_offset = 0;  // Mapping output
+int MotorSpeedA = 0; //  Final input to motors
+int MotorSpeedB = 0; //  Final input to motors
 
-int MotorSpeedA = 178; //  Final input to motors
-int MotorSpeedB = 178; //  Final input to motors
-
-bool NeedToRotate = 0;//  Informed by server
-
+int Bang_Constant = 128;
 /////////////////////////////////////////////////////////////////
 //  Functions
 int convTwosComp(int b)
@@ -85,7 +78,6 @@ int convTwosComp(int b)
     }
     return b;
 }
-
 void mousecam_reset() //reset procedure = set reset high, followed by set reset low
 {
     digitalWrite(PIN_MOUSECAM_RESET,HIGH);
@@ -93,7 +85,6 @@ void mousecam_reset() //reset procedure = set reset high, followed by set reset 
     digitalWrite(PIN_MOUSECAM_RESET,LOW);
     delay(35); // 35ms from reset to functional
 }
-
 int mousecam_init() //initialisation procedure
 {
     pinMode(PIN_MOUSECAM_RESET,OUTPUT);
@@ -102,7 +93,6 @@ int mousecam_init() //initialisation procedure
     mousecam_reset();
     return 1;
 }
-
 void mousecam_write_reg(int *reg, int *val) //write to mouse sensor's register 
 {
     digitalWrite(PIN_MOUSECAM_CS, LOW); //activate serial port
@@ -111,7 +101,6 @@ void mousecam_write_reg(int *reg, int *val) //write to mouse sensor's register
     digitalWrite(PIN_MOUSECAM_CS,HIGH); //deactivate serial port
     delayMicroseconds(50); //required wait time
 }
-
 void mousecam_read_motion(struct MD *p)
 {
     digitalWrite(PIN_MOUSECAM_CS, LOW); //activate serial port
@@ -127,7 +116,6 @@ void mousecam_read_motion(struct MD *p)
     digitalWrite(PIN_MOUSECAM_CS,HIGH); //deactivate serial port
     delayMicroseconds(5); //necessary wait time
 }
-
 void OpticalFlowSensorReadings(MD md,int * distance_x,int * distance_y,int * total_x1,int * total_y1, int * total_x, int * total_y)
 {
   //  Optical sensor readings
@@ -141,45 +129,37 @@ void OpticalFlowSensorReadings(MD md,int * distance_x,int * distance_y,int * tot
   
   *total_x = *total_x1/4.95;
   *total_y = *total_y1/4.95;
-  Serial.println("Dy: " + String(*distance_y));
-  Serial.println("Dx: " + String(*distance_x));
-  Serial.println("Total y: " + String(*total_y));
-  Serial.println("Total x: " + String(*total_x));
+//  Serial.println("Dy: " + String(*distance_y));
+//  Serial.println("Dx: " + String(*distance_x));
+//  Serial.println("Total y: " + String(*total_y));
+//  Serial.println("Total x: " + String(*total_x));
 }
+
 /////////////////////////////////////////////////////////////////
-//  Turning PID control parameters
-//double Turning_Setpoint, Turning_Input, Turning_Output;
-
-//Specify the turning PID's links and initial tuning parameters
-//PID TurningPID(&Turning_Input, &Turning_Output, &Turning_Setpoint,0,0,0, DIRECT);
-
-//  Driving PID control parameters
-double Driving_Setpoint;
-double Driving_Output;
-double error;
-double old_error;
+int error = 0; 
+bool Rot_Ctrl = 0;//  Informed by server
+int arrived = 0;
+/////////////////////////////////////////////////////////////////
+// PID Variables
+int angular_error = 0;
+int angular_error_prev = 0;
+int pTerm;
+int iTerm;
+int dTerm;
+float Kp = 2;
+float Ki = 0.05;
+float Kd = 0;
 long currT = 0;
 long prevT = 0;
-float deltaT = 0;
-float pterm = 0;
-float integralterm = 0;
-float derivativeterm = 0;
-float Kp = 0.1;
-float Ki = 0.1;
-float Kd = 0.02;
-int arrived;
+long deltaT = 0;
 
-//Specify the driving PID's links and initial tuning parameters //P,I,D
-//PID DrivingPID(&error, &Driving_Output, &Driving_Setpoint,0.33,0,0, DIRECT);
+int output;
+float angle = PI/180 * 0;
+
 /////////////////////////////////////////////////////////////////
-
 void setup()
 {
   Serial.begin(115200);
-  Driving_Setpoint = 0;
-  //turn the PID on
-//  TurningPID.SetMode(AUTOMATIC);
-//  DrivingPID.SetMode(AUTOMATIC);
   Wire.begin();
 /////////////////////////////////////////////////////////////////
   pinMode(PWMA, OUTPUT);
@@ -208,97 +188,95 @@ void setup()
     while(1);
   }
 /////////////////////////////////////////////////////////////////
-  OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
-  beginingRotationX = CURR_x;
+OpticalFlowSensorReadings(md, &distance_x, &distance_y, &total_x1, &total_y1,  &TOTAL_PATH_x,  &TOTAL_PATH_y);
 /////////////////////////////////////////////////////////////////
  
   delay(5000);
-  // initial conditions
-  old_error = CURR_x - A_x;
-  arrived = 0;
 }
 
 void loop()
 {  
-  //  Server input
-  //B = {0, 512};
-  delayMicroseconds(10);
-  if(NeedToRotate)
+  if(Rot_Ctrl)
   {
     //  Rotate
-//    OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
-//    if(CURR_x - beginingRotationX == RADIUS*angle)
-//    {
-//      NeedToRotate = 0;
-//    }
-//    else 
-//    {
-//      Turning_Setpoint = RADIUS*angle;
-//      Turning_Input = CURR_x - beginingRotationX;
-//      TurningPID.Compute();
-//      digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  
-//      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-//      analogWrite(PWMA, Turning_Output);  //  TODO: See if mapping works
-//      analogWrite(PWMB, Turning_Output);
-//    } 
-  }
-  else
-  {
-    if (!arrived) {
-      //  Not need to rotate
-      OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
-      currT = micros();
-      deltaT = ((float) (currT-prevT))/1.0e-6;
-      prevT = currT;
+    OpticalFlowSensorReadings(md, &distance_x, &distance_y, &total_x1, &total_y1, &TOTAL_PATH_x, &TOTAL_PATH_y);
+    error = (TOTAL_PATH_x - RADIUS*angle);
+    pTerm = Kp * error;
+    
+    output = pTerm;
 
-      // controller
-      error = CURR_x - A_x;
-      
-      pterm = (error * Kp);
-      integralterm = integralterm + (error*deltaT);
-      derivativeterm = (error - old_error)/deltaT;
-      Driving_Output = pterm + (integralterm * Ki) + (derivativeterm * Kd); //0.3 is good, 0.33 decent
-      //PWM_offset = map(abs(Driving_Output), 0, 1000, 0, 255); 
-      
-      old_error = error;
-      
-      MotorSpeedA += Driving_Output;
-      MotorSpeedB -= Driving_Output;
-      
-      if (MotorSpeedA < 100) {MotorSpeedA = 100;}
-      if (MotorSpeedA > 255) {MotorSpeedA = 255;}
-      
-      if (MotorSpeedB < 100) {MotorSpeedB = 100;}
-      if (MotorSpeedB > 255) {MotorSpeedB = 255;}
-      
-      if ((CURR_y - B_y < 10) && (CURR_y - B_y > -10)) 
-      {
+    Serial.println("error: " + String(error));
+    Serial.println("output: " + String(output));
+    Serial.println("TOTAL_PATH_x: " + String(TOTAL_PATH_x));
+
+    output = abs(output);
+    if(error <= 0)
+    {
+      digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
+      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+    }
+    else
+    {
+      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
+      digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
+    }
+    
+    //output = abs(output);
+    if (output > 255) {
+      output = 255;
+    }
+    else if (output < 0) {
+      output = 0;
+    }
+    
+    analogWrite(PWMA, output);  //  TODO: See if mapping works
+    analogWrite(PWMB, output);
+  } else if (!arrived) {
+    //  Rotate
+    OpticalFlowSensorReadings(md, &distance_x, &distance_y, &total_x1, &total_y1, &TOTAL_PATH_x, &TOTAL_PATH_y);
+    currT = micros();
+    
+    deltaT = ((float) (currT-prevT))/1.0e-6;
+    prevT = currT;
+
+    // controller
+    angular_error = (TOTAL_PATH_x - RADIUS*angle);
+    pTerm = (angular_error * Kp);
+    iTerm = iTerm + (angular_error*deltaT);
+    dTerm = (angular_error - angular_error_prev)/deltaT;
+    output = pTerm + (iTerm * Ki) + (dTerm * Kd); //0.3 is good, 0.33 decent
+
+    Serial.println();
+    Serial.println("Angular Error: " + String(angular_error));
+    Serial.println("Output: " + String(output));
+    Serial.println("TOTAL_PATH_x: " + String(TOTAL_PATH_x));
+    Serial.println("TOTAL_PATH_y: " + String(TOTAL_PATH_y));
+
+    //output = abs(output);
+    {
+      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CW  // ACW Rover
+      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CCW
+    }
+
+    //output = abs(output);
+    MotorSpeedA = Bang_Constant + output;
+    MotorSpeedB = Bang_Constant - output;
+    
+    if (MotorSpeedA < 0) {MotorSpeedA = 0;}
+    if (MotorSpeedA > 255) {MotorSpeedA = 255;}
+    
+    if (MotorSpeedB < 0) {MotorSpeedB = 0;}
+    if (MotorSpeedB > 255) {MotorSpeedB = 255;}
+
+    if ((TOTAL_PATH_y - B_y < 10) && (TOTAL_PATH_y - B_y > -10)) 
+    {
         arrived = 1;
         MotorSpeedA = 0;
         MotorSpeedB = 0;
-      }
-      
-      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
-      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-      analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
-      analogWrite(PWMB, MotorSpeedB);
-      
-      Serial.println();
-      //Serial.println("Absolute Error at end: " + String(deltaT));
-      
-      
-      Serial.println("P term: " + String(pterm));
-      Serial.println("I term: " + String(integralterm));
-      Serial.println("D term: " + String(derivativeterm));
-      Serial.println("Drive output: " + String(Driving_Output));
-      Serial.println("MotorSpeedA: " + String(MotorSpeedA));
-      Serial.println("MotorSpeedB: " + String(MotorSpeedB));
-      Serial.println("CURR_x: " + String(CURR_x));
-      Serial.println("CURR_y: " + String(CURR_y));
-      Serial.println("Error: " + String(error));
-    };
+    }
+    Serial.println("MotorSpeedA: " + String(MotorSpeedA));
+    Serial.println("MotorSpeedB: " + String(MotorSpeedB));
+    analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
+    analogWrite(PWMB, MotorSpeedB);    
   }
-//OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
-//  Serial.println("CURR_x: " + String(CURR_x));
-//  Serial.println("CURR_y: " + String(CURR_y));
 }

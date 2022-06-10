@@ -1,5 +1,4 @@
 #include <SPI.h>
-//#include <PID_v1.h>
 #include <Wire.h>
 
 #define RADIUS 144
@@ -211,7 +210,6 @@ void setup()
   OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
   beginingRotationX = CURR_x;
 /////////////////////////////////////////////////////////////////
- 
   delay(5000);
   // initial conditions
   old_error = CURR_x - A_x;
@@ -222,83 +220,56 @@ void loop()
 {  
   //  Server input
   //B = {0, 512};
-  delayMicroseconds(10);
-  if(NeedToRotate)
-  {
-    //  Rotate
-//    OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
-//    if(CURR_x - beginingRotationX == RADIUS*angle)
-//    {
-//      NeedToRotate = 0;
-//    }
-//    else 
-//    {
-//      Turning_Setpoint = RADIUS*angle;
-//      Turning_Input = CURR_x - beginingRotationX;
-//      TurningPID.Compute();
-//      digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  
-//      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-//      analogWrite(PWMA, Turning_Output);  //  TODO: See if mapping works
-//      analogWrite(PWMB, Turning_Output);
-//    } 
-  }
-  else
-  {
-    if (!arrived) {
-      //  Not need to rotate
-      OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
-      currT = micros();
-      deltaT = ((float) (currT-prevT))/1.0e-6;
-      prevT = currT;
+  if (!arrived) {
+    //  Not need to rotate
+    OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
+    currT = micros();
+    deltaT = ((float) (currT - prevT))/1.0e-6;
+    prevT = currT;
 
-      // controller
-      error = CURR_x - A_x;
-      
-      pterm = (error * Kp);
-      integralterm = integralterm + (error*deltaT);
-      derivativeterm = (error - old_error)/deltaT;
-      Driving_Output = pterm + (integralterm * Ki) + (derivativeterm * Kd); //0.3 is good, 0.33 decent
-      //PWM_offset = map(abs(Driving_Output), 0, 1000, 0, 255); 
-      
-      old_error = error;
-      
-      MotorSpeedA += Driving_Output;
-      MotorSpeedB -= Driving_Output;
-      
-      if (MotorSpeedA < 100) {MotorSpeedA = 100;}
-      if (MotorSpeedA > 255) {MotorSpeedA = 255;}
-      
-      if (MotorSpeedB < 100) {MotorSpeedB = 100;}
-      if (MotorSpeedB > 255) {MotorSpeedB = 255;}
-      
-      if ((CURR_y - B_y < 10) && (CURR_y - B_y > -10)) 
-      {
-        arrived = 1;
-        MotorSpeedA = 0;
-        MotorSpeedB = 0;
-      }
-      
-      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
-      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-      analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
-      analogWrite(PWMB, MotorSpeedB);
-      
-      Serial.println();
-      //Serial.println("Absolute Error at end: " + String(deltaT));
-      
-      
-      Serial.println("P term: " + String(pterm));
-      Serial.println("I term: " + String(integralterm));
-      Serial.println("D term: " + String(derivativeterm));
-      Serial.println("Drive output: " + String(Driving_Output));
-      Serial.println("MotorSpeedA: " + String(MotorSpeedA));
-      Serial.println("MotorSpeedB: " + String(MotorSpeedB));
-      Serial.println("CURR_x: " + String(CURR_x));
-      Serial.println("CURR_y: " + String(CURR_y));
-      Serial.println("Error: " + String(error));
-    };
-  }
-//OpticalFlowSensorReadings(md,&distance_x,&distance_y,&total_x1,&total_y1,&CURR_x,&CURR_y);
-//  Serial.println("CURR_x: " + String(CURR_x));
-//  Serial.println("CURR_y: " + String(CURR_y));
+    // controller
+    error = CURR_y - B_y;
+    
+    pterm = (error * Kp);
+    integralterm = integralterm + (error*deltaT);
+    derivativeterm = (error - old_error)/deltaT;
+    Driving_Output = pterm + (integralterm * Ki) + (derivativeterm * Kd); //0.3 is good, 0.33 decent
+    //PWM_offset = map(abs(Driving_Output), 0, 1000, 0, 255); 
+    
+    old_error = error;
+    
+    MotorSpeedA += Driving_Output;
+    MotorSpeedB -= Driving_Output;
+    
+    if (MotorSpeedA < 100) {MotorSpeedA = 100;}
+    if (MotorSpeedA > 255) {MotorSpeedA = 255;}
+    
+    if (MotorSpeedB < 100) {MotorSpeedB = 100;}
+    if (MotorSpeedB > 255) {MotorSpeedB = 255;}
+    
+    if ((CURR_y - B_y < 10) && (CURR_y - B_y > -10)) 
+    {
+      arrived = 1;
+      MotorSpeedA = 0;
+      MotorSpeedB = 0;
+    }
+    
+    digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
+    digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
+    analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
+    analogWrite(PWMB, MotorSpeedB);
+    
+    Serial.println();
+    //Serial.println("Absolute Error at end: " + String(deltaT));
+    
+    Serial.println("P term: " + String(pterm));
+    Serial.println("I term: " + String(integralterm));
+    Serial.println("D term: " + String(derivativeterm));
+    Serial.println("Drive output: " + String(Driving_Output));
+    Serial.println("MotorSpeedA: " + String(MotorSpeedA));
+    Serial.println("MotorSpeedB: " + String(MotorSpeedB));
+    Serial.println("CURR_x: " + String(CURR_x));
+    Serial.println("CURR_y: " + String(CURR_y));
+    Serial.println("Error: " + String(error));
+`};
 }
