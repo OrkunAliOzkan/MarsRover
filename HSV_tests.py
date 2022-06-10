@@ -2,31 +2,31 @@ import numpy as np
 from PIL import Image
 
 
-img = Image.open('image.png')
+img = Image.open('wheel2.png')
 pixels = np.array(img)
 
 final = np.zeros(shape=(480, 640, 3))	#after all operations
 
 def pre_assignments ():
-	global red, green, blue
+	global red, green, blue, grey
 	red = int(pixels[y, x, 0])	#aliases for input
 	green = int(pixels[y, x, 1])
 	blue = int(pixels[y, x, 2])
+	grey = red/4 + green/2 + blue/4
 
 def HSV_conversion ():
-	global hue, sat, val, RGB_max
+	global Hue, Sat, Val, RGB_max
 	RGB_max = red if (red > green and red > blue) else green if (green > blue) else blue
 	RGB_min = red if (red < green and red < blue) else green if (green < blue) else blue
 	RGB_diff = RGB_max - RGB_min if (RGB_max-RGB_min != 0) else 1
-	val = RGB_max
-	sat = 0 if val == 0 else (100 * RGB_diff) / RGB_max
-	hue_diff = green-blue if (RGB_max == red) else 2+(blue-red) if (RGB_max == green) else 4+(red-green)
-	hue = ((60 * hue_diff) / RGB_diff) % 360
+	Val = RGB_max
+	Sat = 0 if Val == 0 else (100 * RGB_diff) / RGB_max
+	Hue = (60*(green-blue)/RGB_diff) % 360 if (RGB_max == red) else (120+(60*(blue-red)/RGB_diff)) % 360 if (RGB_max == green) else (240+(60*(red-green)/RGB_diff)) % 360
 
 def post_assignments ():
-	final[y, x, 0] = RGB_max if RGB_max == red else 0
-	final[y, x, 1] = RGB_max if RGB_max == green else 0
-	final[y, x, 2] = RGB_max if RGB_max == blue else 0
+	final[y, x, 0] = red if (Hue>100 and Hue < 155) else grey
+	final[y, x, 1] = green if (Hue>100 and Hue < 155) else grey
+	final[y, x, 2] = blue if (Hue>100 and Hue < 155) else grey
 
 x = 0
 y = 0
