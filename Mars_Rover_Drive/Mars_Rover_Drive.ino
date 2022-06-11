@@ -34,14 +34,6 @@
 #define BIN1 4
 #define BIN2 15
 /////////////////////////////////////////////////////////////////
-//  Optical Flow Sensor parameters
-int distance_x = 0; // motion dx
-int distance_y = 0; // motion dy
-int total_x1 = 0; // prescaling x displacement
-int total_y1 = 0; // prescaling y displacement
-int TOTAL_PATH_x1 = 0; // postscaling x displacement
-int TOTAL_PATH_y1 = 0; // postscaling y displacement
-
 struct MD
 {
  byte motion;
@@ -50,8 +42,15 @@ struct MD
  word shutter;
  byte max_pix;
 };
-
 MD md;
+/////////////////////////////////////////////////////////////////
+//  Optical Flow Sensor parameters
+int distance_x = 0; // motion dx
+int distance_y = 0; // motion dy
+int total_x1 = 0; // prescaling x displacement
+int total_y1 = 0; // prescaling y displacement
+int TOTAL_PATH_x1 = 0; // postscaling x displacement
+int TOTAL_PATH_y1 = 0; // postscaling y displacement
 /////////////////////////////////////////////////////////////////
 //  Drive parameters
 double A_x = 0;
@@ -152,10 +151,8 @@ float Kd = 0;
 long currT = 0;
 long prevT = 0;
 long deltaT = 0;
-
 int output;
 float angle = PI/180 * 0;
-
 /////////////////////////////////////////////////////////////////
 void setup()
 {

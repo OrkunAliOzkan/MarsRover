@@ -3,17 +3,16 @@
 #include <string>
 #include <vector>
 #include <HTTPClient.h>
-#include "QMC5883LCompass.h"
 #include "code_body.h"
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define PWMA 17
 #define PWMB 2
 #define AIN1 14
 #define AIN2 16
 #define BIN1 4
 #define BIN2 15
-#define XJOY 27
-#define YJOY 26
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define RADIUS 12.2
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define PIN_SS                            5 
 #define PIN_MISO                          19 
@@ -30,23 +29,19 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DECLINATIONANGLE 0.483 /* * (PI / 180)   FIXME: Isn't this in rad?*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//int speedA = 0;
-//int speedB = 0;
-
 fclass::fclass()
 {}
 
-String URL = "http://146.169.162.1:3001/rover_request";
-
+String URL = "http://146.169.170.159:3001/";
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 std::vector<float> fclass::HTTPGET()
 {
     HTTPClient http;
 
     std::vector<float> soln = {0, 0};
-    size_t index_x;
-    size_t index_y;
-    String x_content, y_content;
+    size_t index_angle;
+    size_t index_magnitude;
+    String angle_content, magnitude_content;
 
     http.begin(URL); // URL
     int httpReturn = http.GET();
@@ -56,24 +51,24 @@ std::vector<float> fclass::HTTPGET()
         String payload = http.getString();
         Serial.println(httpReturn);
         Serial.println(payload);
-        index_x = payload.indexOf("x");
-        index_y = payload.indexOf("y");
-        Serial.println(index_x);
-        Serial.println(index_y);
+        index_angle = payload.indexOf("a");
+        index_magnitude = payload.lastIndexOf("m");
+        Serial.println(index_angle);
+        Serial.println(index_magnitude);
 
         //Serial.println("-----------------------");
-        x_content = payload.substring(
-                                    index_x + 5, 
-                                    index_y - 4);
+        angle_content = payload.substring(
+                                    index_angle + 5, 
+                                    index_magnitude - 4);
         //Serial.println(x_content);
-        y_content = payload.substring(
-                                index_y + 5, 
+        magnitude_content = payload.substring(
+                                index_magnitude + 5, 
                                 payload.length()-2);
         //Serial.println(y_content);
         //Serial.println(x_content.toFloat());
         //Serial.println("-----------------------");
-        soln[0] = x_content.toFloat();
-        soln[1] = y_content.toFloat();
+        soln[0] = angle_content.toFloat();
+        soln[1] = magnitude_content.toFloat();
         //Serial.println("-----------------------");
     }
     else
@@ -110,115 +105,55 @@ void fclass::HTTPPOST(String receivedChars)
     http.end();
 }
 
-
-double fclass::computeAngle(int x, int y)
+void fclass::OFS_Cartesian
+            (            
+            MD md, 
+            int * prescaled_tx, 
+            int * prescaled_ty, 
+            int * total_x, 
+            int * total_y
+            )
 {
-    int angle = atan2(y, x);
-    angle += DECLINATIONANGLE;
-    
-    if(angle < 0) 
-        angle += 2*PI; 
-    if(angle > 2*PI)
-        angle -= 2*PI;
+  //  Optical sensor readings
+  mousecam_read_motion(&md);
 
-Serial.println("angle from computeAngle (degrees) = " + String(angle * 180));
-    return angle;
+  *prescaled_tx += convTwosComp(md.dx);
+  *prescaled_ty += convTwosComp(md.dy);
 
-    
+  *total_x = *prescaled_tx / 4.95;
+  *total_y = *prescaled_ty / 4.95;
+
+  //Serial.println("Dy: " + String(convTwosComp(md.dy)));
+  //Serial.println("Dx: " + String(convTwosComp(md.dx)));
+  //Serial.println("Total y: " + String(*total_y));
+  //Serial.println("Total x: " + String(*total_x));
+  //Serial.println();
+}
+/*
+void fclass::OFS_Angular(
+                MD md, 
+                float * total_x, 
+                float * total_y, 
+                float* abs_theta
+                )
+{
+      //  Optical sensor readings
+      // delay(1);
+        code_body.mousecam_read_motion(&md);
+      // theta += d_theta 
+        *abs_theta += (code_body.convTwosComp(md.dx) / 4.95) / RADIUS ;
+        float d_r = code_body.convTwosComp(md.dy) / 4.95;
+        *total_x += d_r * sin(*abs_theta);
+        *total_y += d_r * cos(*abs_theta);
+        //Serial.println("dr: " + String(d_r));
+        //Serial.println("d_theta: "+ String((code_body.convTwosComp(md.dx) / 4.95) / RADIUS));
+        //Serial.println("Angle: " + String(*abs_theta));
+        //Serial.println("Total y: " + String(*total_y));
+        //Serial.println("Total x: " + String(*total_x));
 }
 
-void fclass::RotateDegrees(int angle_rotate, QMC5883LCompass compass)
-
-{
-    compass.read();
-    int headingDegrees = compass.getAzimuth();
-    //both wheels clockwise = ACW rover rotation
-    while((angle_rotate < 0) && 
-    (headingDegrees > 0.9*(angle_rotate)) && 
-    (headingDegrees < 1.1*(angle_rotate)))
-    {
-      digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW
-      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-
-        compass.read();
-        headingDegrees = compass.getAzimuth();
-    }
-    
-    // both wheels anticlockwise = CW rover rotation
-    /*
-    while((angle_rotate > 0) && (headingDegrees < angle_rotate))
-    {
-      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_ACW
-      digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_ACW
-
-        compass.read();
-        headingDegrees = compass.getAzimuth();
-    }*/
-}
-
-
-
-void fclass::Brake(int *speedA, int *speedB)
-{
-    digitalWrite(AIN1, LOW); digitalWrite(AIN2, LOW);
-    digitalWrite(BIN1, LOW); digitalWrite(BIN2, LOW);
-    speedA = 0;
-    speedB = 0;
-}
-
-float fclass::vector_multiply(std::vector<float> x, std::vector<float> y)
-{
-    //  It is known that x is actually a transpose
-    float soln;
-    for(int i = 0; i < x.size(); i++)
-    {
-        soln += (x[i]*y[i]);
-    }
-
-    return soln;
-}
-
-void fclass::readings( 
-                                QMC5883LCompass compass, 
-                                float *headingDegrees,
-                                int *distance_x,
-                                int *distance_y,
-                                int *total_x1,
-                                int *total_y1,
-                                int *total_x,
-                                int *total_y
-                                )
-{
-    //if((counter_input % 2) == 0)
-    {
-    //  Compass readings
-        compass.read(); 
-        Serial.println("a");     
-        Serial.println(compass.getAzimuth());     
-        *headingDegrees = compass.getAzimuth();
-        delay(300); //??
-    }
-    Serial.println("I LIVE BITCH");
-    //if((counter_input % 2) != 0)
-    {
-    //  Optical sensor readings
-        int val = mousecam_read_reg(ADNS3080_PIXEL_SUM);
-        MD md;
-        mousecam_read_motion(&md);
-        delay(300);
-
-        *distance_y = convTwosComp(md.dy);
-        *distance_x = convTwosComp(md.dx);
-        *total_x1 = *total_x1 + *distance_x;
-        *total_y1 = *total_y1 + *distance_y;
-        *total_x = *total_x1/4.95;
-        Serial.println(*total_x); 
-        *total_y = *total_y1/4.95;
-        Serial.println(*total_y);
-    }
-    Serial.println("I LIVE BITCH 2");
-}
-
+void fclass::determineAngle();
+*/
 int fclass::convTwosComp(int b)
 {
     //Convert from 2's complement
@@ -253,17 +188,6 @@ void fclass::mousecam_write_reg(int *reg, int *val) //write to mouse sensor's re
     SPI.transfer(*val); //data to write to sensor's register
     digitalWrite(PIN_MOUSECAM_CS,HIGH); //deactivate serial port
     delayMicroseconds(50); //required wait time
-}
-
-int fclass::mousecam_read_reg(int reg) //read from mouse sensor's register
-{
-    digitalWrite(PIN_MOUSECAM_CS, LOW); //activate serial port
-    SPI.transfer(reg); ///address of register to read from sensor's register
-    delayMicroseconds(75);
-    int ret = SPI.transfer(0xff);
-    digitalWrite(PIN_MOUSECAM_CS,HIGH); //deactivate serial port
-    delayMicroseconds(1);
-    return ret; //value read from register
 }
 
 void fclass::mousecam_read_motion(struct MD *p)

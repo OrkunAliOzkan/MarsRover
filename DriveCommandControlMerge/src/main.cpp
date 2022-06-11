@@ -1,17 +1,13 @@
 #include <Arduino.h>
 #include <SPI.h>
-#include <Adafruit_BusIO_Register.h>
-#include "QMC5883LCompass.h"
 #include "code_body.h"
-#include "PID.h"  //  https://github.com/cvra/pid
-#include <Adafruit_BusIO_Register.h>
 #include <Wire.h>
-#include <cmath>
 #include <vector>
 #include "WiFi.h"
+#include <Adafruit_BusIO_Register.h>
 
-#include "soc/soc.h"
-#include "soc/rtc_cntl_reg.h"
+//#include "soc/soc.h"
+//#include "soc/rtc_cntl_reg.h"
 /////////////////////////////////////////////////////////////////
 //  Optical flow sensor parameters
 //slave select/chip select (ESP32 pin number)
@@ -38,18 +34,7 @@
 //read and write
   #define ADNS3080_FRAME_CAPTURE  0x13 
 
-//initialises actual total x-displacement from starting position 
-int total_x_OFS = 0; 
-//initialises actual total y-displacement from starting position 
-int total_y_OFS = 0; 
-
-//total x displacement before applying scale factor
-int total_x1_OFS = 0; 
- //total y displacement before applying scale factor
-int total_y1_OFS = 0;
-
-int distance_x_OFS = 0;
-int distance_y_OFS = 0;
+  #define RADIUS 144 
 /////////////////////////////////////////////////////////////////
 //  Name of network
 //    #define WIFI_SSID       "NOWTVII8F7"    
@@ -60,9 +45,13 @@ int distance_y_OFS = 0;
 //  Password
 //      #define WIFI_PASSWORD   "sivashanth"
 //  Name of network
-    #define WIFI_SSID       "Orkun's Laptop"    
+//    #define WIFI_SSID       "Orkun's Laptop"    
 //  Password
-    #define WIFI_PASSWORD   "484f17Ya" 
+//    #define WIFI_PASSWORD   "484f17Ya"
+//  Name of network
+    #define WIFI_SSID       "bet-hotspot"    
+//  Password
+    #define WIFI_PASSWORD   "helloworld"
 //  Name of network
 //   #define WIFI_SSID       "bet-hotspot"    
 //  Password
@@ -71,21 +60,6 @@ int distance_y_OFS = 0;
 //    #define WIFI_SSID       "CommunityFibre10Gb_003D7"    
 //  Password
 //    #define WIFI_PASSWORD   "gxqxs3c3fs" 
-std::vector<float> read_cartesian = {0, 0};
-
-String post_data = "";
-
-bool autonomous = 1;
-/////////////////////////////////////////////////////////////////
-  float A_x;
-  float A_y;
-  float B_x;
-  float B_y;
-  float curr;
-
-  float displacement = 0;
-  float desiredDisplacement = 0;
-  double desired_angle = 0;
 /////////////////////////////////////////////////////////////////
 #define PWMA 17
 #define PWMB 2
@@ -93,69 +67,80 @@ bool autonomous = 1;
 #define AIN2 16
 #define BIN1 4
 #define BIN2 15
-#define XJOY 27
-#define YJOY 26
-
-int speedA = 0;
-int speedB = 0;
 /////////////////////////////////////////////////////////////////
-//  HTTP readings
-  //  {MAG, ANGLE} or (X, Y)
-  std::vector<float> desired_polar      = {0, 0};
-  std::vector<float> desired_cartesian  = {0, 0};
+//  Optical Flow Sensor parameters
+int prescaled_tx = 0;
+int prescaled_ty = 0;
+int totalpath_x_int = 0; // prescaling x displacement
+int totalpath_y_int = 0; // prescaling y displacement
 /////////////////////////////////////////////////////////////////
-//  PID intance declaration
-pid_ctrl_t pid;
+//  Drive parameters
+double A_x = 0; // TODO: Define at end of movement
+double A_y = 0; // TODO: Define at end of movement
 
-//  Rovers displacement from optical flow sensor
-float x = 0;
-float y = 0;
-float x_previous = 0;
-float y_previous = 0;
+double B_x = 0;
+double B_y = 750;
 
-//float steering_angle = 0;
-float initialAngle = 0;
-//  parameters used in PID
-float magnitude = 0;
+int MotorSpeedA = 0; //  Final input to motors
+int MotorSpeedB = 0; //  Final input to motors
 
-std::vector<float> adjustmentVector = {0, 0};
-std::vector<float> requiredVector = {0, 0};
-std::vector<float> currentVector = {0, 0};
-
+int Bang_Constant = 128;  //  TODO: Map to function of choosing
 /////////////////////////////////////////////////////////////////
-//  Compass readings and parameters
-QMC5883LCompass compass;
-#define DECLINATIONANGLE 0.483 /* * (PI / 180) */
-int counter_input = 0;
-float headingDegrees = 0;
+float error = 0; 
+float error_prev = 0;
+bool Rot_Ctrl = 0;//  Informed by server
+int arrived = 0;
+int turning_arrived = 0;
 /////////////////////////////////////////////////////////////////
-String lines = "---------------------------------------------------------------------";
+float abs_theta = 0;
+float totalpath_x_flt = 0; // postscaling x displacement
+float totalpath_y_flt = 0; // postscaling y displacement
 /////////////////////////////////////////////////////////////////
+// PID Variables
+float angular_error = 0;
+float angular_error_prev = 0;
+float pTerm;
+float iTerm;
+float dTerm;
 
+float Kp = 2.5;
+float Ki = 0;
+float Kd = 0.05;
+
+long currT = 0;
+long prevT = 0;
+float deltaT = 0;
+
+float Kp_turning = 2;
+float Ki_turning = 0.2;
+float Kd_turning = 0.2;
+
+
+int output;
+float angle = PI/180 * 0;
+
+MD md;
+/////////////////////////////////////////////////////////////////
+String post_data = "";
+std::vector<float> read_cartesian;
+/////////////////////////////////////////////////////////////////
 void setup()
 {
   Serial.begin(115200);
   Wire.begin();
-  compass.init();
-
+/////////////////////////////////////////////////////////////////
   pinMode(PWMA, OUTPUT);
   pinMode(PWMB, OUTPUT);
   pinMode(AIN1, OUTPUT);
   pinMode(AIN2, OUTPUT);
   pinMode(BIN1, OUTPUT);
   pinMode(BIN2, OUTPUT);
-  pinMode(XJOY, INPUT);
-  pinMode(YJOY, INPUT);
-
-/* PD controller declaration */
-  pid_init(&pid);
-  pid_set_gains(&pid, 0, 0, 0);
 /////////////////////////////////////////////////////////////////
-  pinMode(PIN_SS,OUTPUT); //sets the pin as an output pin
-  pinMode(PIN_MISO,INPUT); //sets the pin as an input pin
-  pinMode(PIN_MOSI,OUTPUT); //sets the pin as an output pin
-  pinMode(PIN_SCK,OUTPUT); //sets the pin as an output pin
-
+  pinMode(PIN_SS,OUTPUT); //(CHIP SELECT)
+  pinMode(PIN_MISO,INPUT); //(MASTER IN, SLAVE OUT)
+  pinMode(PIN_MOSI,OUTPUT); //(MASTER OUT, SLAVE IN)
+  pinMode(PIN_SCK,OUTPUT); //(CLOCK)
+/////////////////////////////////////////////////////////////////
   SPI.begin();
   //sets SPI clock to 1/32 of the ESP32's clock
   SPI.setClockDivider(SPI_CLOCK_DIV32); 
@@ -163,142 +148,183 @@ void setup()
   //falling edge and shifted out on the rising edge
   SPI.setDataMode(SPI_MODE3); 
   SPI.setBitOrder(MSBFIRST);
-
-
+/////////////////////////////////////////////////////////////////
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.println("Initializing");
+/////////////////////////////////////////////////////////////////
   if(code_body.mousecam_init()==-1)
   {
-    Serial.println("Mouse cam failed to init");
+    //Serial.println("Mouse cam failed to init");
     while(1);
   }
 
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  Serial.println("Initializing");
-
-
-  // in setup()
-  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
-
-    compass.read();      
-    initialAngle = compass.getAzimuth();
-    delay(10); //??
+  delay(3000);
+  turning_arrived = 1;
+  arrived = 1;
 }
 
+bool command_received = 1;
 void loop()
 {
-  if (WiFi.status() == WL_CONNECTED)
-  {
-  /////////////////////////////////////////////////////////////////
-    //  Digital joystick readings
-      read_cartesian = code_body.HTTPGET();
-    //  DESIRED x and y
-      x = read_cartesian[0];
-      y = read_cartesian[1];
-
-      desired_angle = atan2((double)y, (double)x);
-  /////////////////////////////////////////////////////////////////////////
-  //  Readings
-  code_body.readings(
-                          compass, 
-                          &headingDegrees,
-                          &distance_x_OFS,
-                          &distance_y_OFS,
-                          &total_x1_OFS,
-                          &total_y1_OFS,
-                          &total_x_OFS,
-                          &total_y_OFS
-                          );
-  /////////////////////////////////////////////////////////////////
-  if((x != x_previous) && (y != y_previous))
-  {
-    code_body.Brake(&speedA, &speedB);
-    code_body.RotateDegrees((int)desired_angle, compass);
-    A_x = total_x_OFS;
-    A_y = total_y_OFS;
-    B_x = x;
-    B_y = y;
-  }
-  Serial.println("hello");
-  /////////////////////////////////////////////////////////////////
-    /*
-    desired_cartesian[0] = x - total_x_OFS;
-    desired_cartesian[1] = y - total_y_OFS;
-    magnitude = sqrt(
-                      (desired_cartesian[0] * desired_cartesian[0]) + 
-                      (desired_cartesian[1] * desired_cartesian[1])
-                    );
-
-    currentVector[1] = (magnitude / 2) * cos(headingDegrees - initialAngle);
-    currentVector[0] = (magnitude / 2) * sin(headingDegrees - initialAngle);
-  /////////////////////////////////////////////////////////////////
-  //  Utilising the adjustment angles System is absolute, not relative
-
-    adjustmentVector[0] = (desired_cartesian[0] - currentVector[0]); 
-    adjustmentVector[1] = (desired_cartesian[1] - currentVector[1]); 
-
-    steering_angle = pid_process(&pid, adjustmentVector[0]);
-
-    adjustmentVector[0] *= (cos(steering_angle)); 
-    adjustmentVector[1] *=(sin(steering_angle)); 
-    */
-      //Serial.println(post_data);
-    //if joystick's y-axis potentiometer output is high, go forward
-    /////////////////////////////////////////////////////////////////
-    displacement =        sqrt(pow(total_x_OFS - A_x, 2) + pow(total_y_OFS - A_y, 2));
-    desiredDisplacement = sqrt(pow(B_x - A_x, 2) + pow(B_y - A_y, 2));
-    if(displacement == desiredDisplacement)
+    if (WiFi.status() == WL_CONNECTED)
     {
-      code_body.Brake(&speedA, &speedB);
-    }
-    else if(displacement > desiredDisplacement)
-    {
-      digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW);
-      digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH);
-      speedA = 64;
-      speedB = 64;
-    }
-    else
-    {
-      digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH);
-      digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW);
-      speedA = 255;
-      speedB = 255;
-    }
-    /////////////////////////////////////////////////////////////////
-    analogWrite(PWMA, speedA);
-    analogWrite(PWMB, speedB);
-    delay(10);
-  /////////////////////////////////////////////////////////////////
-  x_previous = x;
-  y_previous = y;
-  post_data = lines ;
-  post_data += "\n" ;
-  post_data += ("x = " + String(x)) ;
-  post_data += "\n" ;
-  post_data += ("y = " + String(y)) ;
-  post_data += "\n" ;
-  post_data += ("total_x_OFS = " + String(total_x_OFS)) ;
-  post_data += "\n" ;
-  post_data += ("total_y_OFS = " + String(total_y_OFS)) ;
-  post_data += "\n";
-  post_data += "headingDegrees: " + String(headingDegrees) ;
-  post_data += "\n";
-  post_data += "displacement: " + String(displacement) ;
-  post_data += "\n";
-  post_data += "desiredDisplacement: " + String(desiredDisplacement) ;
-  post_data += "\n" ;
-  post_data += "initialAngle: " + String(initialAngle) ;
-  post_data += "\n" ;
-  post_data += lines ;
-  post_data += "\n";
+        /////////////////////////////////////////////////////////////////
+        if (turning_arrived && arrived) 
+        {
+            read_cartesian = code_body.HTTPGET();
+            angle = read_cartesian[0] / 180 * PI;
+            B_y = read_cartesian[1];
+            turning_arrived = 0;
+            arrived = 0;
+        }
+        /////////////////////////////////////////////////////////////////////////
+        if (command_received) 
+        {  
+            if(!turning_arrived)
+            {
+                //  Rotate
+                code_body.OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
+                error = (totalpath_x_int - RADIUS*angle);
+                currT = micros();
+                deltaT = ((float) (currT-prevT))/1.0e6;
+                prevT = currT;
 
-  code_body.HTTPPOST(post_data);
-  counter_input++;
-  delay(10);
-  }
-//  If not connected, connect and express as not connected
-  if (WiFi.status() != WL_CONNECTED) 
-  {
-      Serial.println(".");
-      delay(1000);
-  }
+                //    error = (abs(error) < 10) ? ( (error > 0) ? (15) : (-15) ) : (error);
+                //    error = (abs(totalpath_x_int - RADIUS*angle) < 5) ? (0) : (error);
+
+                pTerm = error;
+                //    iTerm += (error * deltaT);
+                //    Serial.println("before shit");
+                //    dTerm = (error - error_prev)/deltaT;
+                //    Serial.println("avoid shit");
+                output = Kp_turning * pTerm;
+                error_prev = error;
+
+
+                post_data +=("-------------------------------------------------------");
+                post_data += "\n";
+                post_data +=("B_y: " + String(B_y));
+                post_data += "\n";
+                post_data +=("angle: " + String(angle));
+                post_data += "\n";
+                post_data +=("deltaT: " + String(deltaT));
+                post_data += "\n";
+                post_data +=("P: " + String(pTerm * Kp_turning));
+                post_data += "\n";
+                post_data +=("I: " + String(iTerm * Ki_turning));
+                post_data += "\n";
+                post_data +=("D: " + String(dTerm * Kd_turning));
+                post_data += "\n";
+                post_data +=("error: " + String(error));
+                post_data += "\n";
+                post_data +=("output: " + String(output));
+                post_data += "\n";
+                post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+                post_data += "\n";
+                post_data += "\n";
+                output = abs(output);
+
+                if (error <= 0)
+                {
+                    digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
+                    digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+                }
+                else
+                {
+                    digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
+                    digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
+                }
+
+                output = abs(output);
+                if (abs(error) < 3)
+                {
+                    turning_arrived = 1; 
+                    output = 0; 
+                    post_data += ("Stopped");
+                    prevT = 0;
+                    pTerm = 0;
+                    iTerm = 0;
+                    dTerm = 0;
+                } 
+                else if (output > 255) 
+                {
+                    output = 255;
+                }
+                else if (output < 38) 
+                {
+                    output = 38;
+                }
+
+                analogWrite(PWMA, output);  //  TODO: See if mapping works
+                analogWrite(PWMB, output);
+            } 
+            else if (!arrived && turning_arrived) {
+                //  Straight
+                code_body.OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
+                currT = micros();
+
+                deltaT = ((float) (currT-prevT))/1.0e6;
+                prevT = currT;
+
+                // controller
+                angular_error = (totalpath_x_int - RADIUS*angle);
+                pTerm = (angular_error);
+                iTerm += (angular_error*deltaT);
+                //    dTerm = (angular_error - angular_error_prev)/deltaT;
+                output = pTerm * Kp + iTerm * Ki; //0.3 is good, 0.33 decent
+
+                angular_error_prev = angular_error;
+
+                post_data +=("Angular Error: " + String(angular_error));
+                post_data += "\n";
+                post_data +=("Output: " + String(output));
+                post_data += "\n";
+                post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+                post_data += "\n";
+                post_data +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+                post_data += "\n";
+                //output = abs(output);
+
+                {
+                    digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CW  // ACW Rover
+                    digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CCW
+                }
+
+                //output = abs(output);
+                MotorSpeedA = Bang_Constant + output;
+                MotorSpeedB = Bang_Constant - output;
+
+                if (MotorSpeedA < 0) {MotorSpeedA = 0;}
+                if (MotorSpeedA > 255) {MotorSpeedA = 255;}
+
+                if (MotorSpeedB < 0) {MotorSpeedB = 0;}
+                if (MotorSpeedB > 255) {MotorSpeedB = 255;}
+
+                if ((totalpath_y_int - B_y < 10) && (totalpath_y_int - B_y > -10)) 
+                {
+                    arrived = 1;
+                    MotorSpeedA = 0;
+                    MotorSpeedB = 0;
+
+                }
+
+                post_data +=("MotorSpeedA: " + String(MotorSpeedA));
+                post_data += "\n";
+                post_data +=("MotorSpeedB: " + String(MotorSpeedB));
+                post_data += "\n";
+                post_data +=("-------------------------------------------------------");
+
+                analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
+                analogWrite(PWMB, MotorSpeedB);    
+            }
+
+            //code_body.HTTPPOST(post_data);
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////
+    //  If not connected, connect and express as not connected
+    if (WiFi.status() != WL_CONNECTED) 
+    {
+        delay(1000);
+    }
 }

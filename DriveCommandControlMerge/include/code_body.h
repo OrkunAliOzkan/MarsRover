@@ -4,29 +4,36 @@
 
 //#define numChars 1024;
 
+struct MD
+{
+    byte motion;
+    char dx, dy;
+    byte squal;
+    word shutter;
+    byte max_pix;
+};
+
 class fclass
 {
     public:
         fclass();
         std::vector<float> HTTPGET();
         void HTTPPOST(String receivedChars);
-        double computeAngle(int x, int y);
-        void RotateDegrees(int angle_rotate, QMC5883LCompass compass);
-        void Brake(int *speedA, int *speedB);
-        float vector_multiply(
-                            std::vector<float> x, 
-                            std::vector<float> y
-                            );
-        void readings(
-                    QMC5883LCompass compass, 
-                    float *headingDegrees,
-                    int *distance_x,
-                    int *distance_y,
-                    int *total_x1,
-                    int *total_y1,
-                    int *total_x,
-                    int *total_y
-                    );
+        void OFS_Cartesian
+                        (
+                            MD md, 
+                            int * prescaled_tx, 
+                            int * prescaled_ty, 
+                            int * total_x, 
+                            int * total_y
+                        );
+        //void OFS_Angular(
+        //                MD md, 
+        //                float * total_x, 
+        //                float * total_y, 
+        //                float* abs_theta
+        //                );
+        //void determineAngle()
         int convTwosComp(int b);
         void mousecam_reset();
         int mousecam_init();
@@ -36,15 +43,6 @@ class fclass
                                 );
         int mousecam_read_reg(int reg);
         void mousecam_read_motion(struct MD *p);
-};
-
-struct MD
-{
-    byte motion;
-    char dx, dy;
-    byte squal;
-    word shutter;
-    byte max_pix;
 };
 
 extern fclass code_body;
