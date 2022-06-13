@@ -33,8 +33,8 @@
   #define ADNS3080_MOTION_BURST   0x50
 //read and write
   #define ADNS3080_FRAME_CAPTURE  0x13 
-
-  #define RADIUS 144 
+//  OFS to centre of rotation WAS incorrectly 144 (Centre of Mass)
+  #define RADIUS 122
 /////////////////////////////////////////////////////////////////
 //  Name of network
 //    #define WIFI_SSID       "NOWTVII8F7"    
@@ -75,11 +75,24 @@ int totalpath_x_int = 0; // prescaling x displacement
 int totalpath_y_int = 0; // prescaling y displacement
 /////////////////////////////////////////////////////////////////
 //  Drive parameters
-double A_x = 0; // TODO: Define at end of movement
-double A_y = 0; // TODO: Define at end of movement
+float A_x = 0; // TODO: Define at end of movement
+float A_y = 0; // TODO: Define at end of movement
 
-double B_x = 0;
-double B_y = 750;
+/*
+OFS_Angular(
+                        MD md, 
+                        CURR_x, 
+                        CURR_y, 
+                        ABSOLUTE_ANGLE;
+                        );
+*/
+
+float B_x = 0;
+float B_y = 750;
+
+float CURR_x = 0;
+float CURR_y = 75;
+float ABSOLUTE_ANGLE = 0;
 
 int MotorSpeedA = 0; //  Final input to motors
 int MotorSpeedB = 0; //  Final input to motors
@@ -96,12 +109,27 @@ float abs_theta = 0;
 float totalpath_x_flt = 0; // postscaling x displacement
 float totalpath_y_flt = 0; // postscaling y displacement
 /////////////////////////////////////////////////////////////////
-// PID Variables
+//  y axis PID Variables
+  float error_displacement = 0;
+  // float pTerm_displacement = 0;
+  // float iTerm_displacement = 0;
+  // float dTerm_displacement = 0;
+
+  float Kp_displacement = 2.5;
+  float Ki_displacement = 0;
+  float Kd_displacement = 0;
+/////////////////////////////////////////////////////////////////
+// anglular offset PID Variables
 float angular_error = 0;
 float angular_error_prev = 0;
 float pTerm;
 float iTerm;
 float dTerm;
+/////////////////////////////////////////////////////////////////
+//  pivoting PID Variables
+float Kp_turning = 2;
+float Ki_turning = 0.2;
+float Kd_turning = 0.2;
 
 float Kp = 2.5;
 float Ki = 0;
@@ -111,11 +139,6 @@ long currT = 0;
 long prevT = 0;
 float deltaT = 0;
 
-float Kp_turning = 2;
-float Ki_turning = 0.2;
-float Kd_turning = 0.2;
-
-
 int output;
 float angle = PI/180 * 0;
 
@@ -123,6 +146,31 @@ MD md;
 /////////////////////////////////////////////////////////////////
 String post_data = "";
 std::vector<float> read_cartesian;
+/////////////////////////////////////////////////////////////////
+/*
+  UpdateRead will be used incrementally to determine if trajectory
+  has changed since input. This is to prevent it from colliding w
+  walls.
+  For now, have it be at every quater readings.
+  B_y is always relative.
+  Our sample rate is high enought that the readigns may happen
+  twice. 
+  time but 
+  TODO: Define A_y
+
+  code to set UpdateRead:
+  UpdateRead = 
+              ( (error/(B_y) > 0.24)  && 
+                (error/(B_y) < 0.26)  && 
+                (UpdateRead != 1))    ||
+              ( (error/(B_y) > 0.49)  && 
+                (error/(B_y) < 0.51)  && 
+                (UpdateRead != 1))    ||
+              ( (error/(B_y) > 0.74)  && 
+                (error/(B_y) < 0.76)  && 
+                (UpdateRead != 1));
+*/
+bool UpdateRead = 0;
 /////////////////////////////////////////////////////////////////
 void setup()
 {
@@ -169,7 +217,7 @@ void loop()
     if (WiFi.status() == WL_CONNECTED)
     {
         /////////////////////////////////////////////////////////////////
-        if (turning_arrived && arrived) 
+        if ((turning_arrived && arrived) || (UpdateRead))
         {
             read_cartesian = code_body.HTTPGET();
             angle = read_cartesian[0] / 180 * PI;
@@ -184,6 +232,7 @@ void loop()
             {
                 //  Rotate
                 code_body.OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
+                code_body.OFS_Angular(md, &CURR_x, &CURR_y, &ABSOLUTE_ANGLE);
                 error = (totalpath_x_int - RADIUS*angle);
                 currT = micros();
                 deltaT = ((float) (currT-prevT))/1.0e6;
@@ -221,7 +270,6 @@ void loop()
                 post_data += "\n";
                 post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
                 post_data += "\n";
-                post_data += "\n";
                 output = abs(output);
 
                 if (error <= 0)
@@ -245,6 +293,9 @@ void loop()
                     pTerm = 0;
                     iTerm = 0;
                     dTerm = 0;
+
+                    A_x = CURR_x;
+                    A_y = CURR_y;
                 } 
                 else if (output > 255) 
                 {
@@ -260,14 +311,17 @@ void loop()
             } 
             else if (!arrived && turning_arrived) {
                 //  Straight
-                code_body.OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
+                //code_body.OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
+                code_body.OFS_Angular(md, &CURR_x, &CURR_y,  &ABSOLUTE_ANGLE);
+                code_body.x_displacement(&CURR_x,&CURR_y,&A_x,&A_y,&B_x,&B_y,&angular_error);
                 currT = micros();
 
                 deltaT = ((float) (currT-prevT))/1.0e6;
                 prevT = currT;
 
                 // controller
-                angular_error = (totalpath_x_int - RADIUS*angle);
+                //angular_error = (totalpath_x_int - RADIUS*angle);
+                
                 pTerm = (angular_error);
                 iTerm += (angular_error*deltaT);
                 //    dTerm = (angular_error - angular_error_prev)/deltaT;
@@ -278,10 +332,10 @@ void loop()
                 post_data +=("Angular Error: " + String(angular_error));
                 post_data += "\n";
                 post_data +=("Output: " + String(output));
-                post_data += "\n";
-                post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
-                post_data += "\n";
-                post_data +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+                //post_data += "\n";
+                //post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+                //post_data += "\n";
+                //post_data +=("TOTAL_PATH_y: " + String(totalpath_y_int));
                 post_data += "\n";
                 //output = abs(output);
 
@@ -289,7 +343,13 @@ void loop()
                     digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CW  // ACW Rover
                     digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CCW
                 }
-
+                //////////////////////////////////////////////////////////////////////////////////////////////
+                //  y-axis p controller
+                error_displacement = B_y - totalpath_y_int;
+                Bang_Constant = Kp_displacement * error_displacement;
+                Bang_Constant = (Bang_Constant > 220) ? (220) : (Bang_Constant);
+                Bang_Constant = (Bang_Constant < 30) ? (30) : (Bang_Constant);
+                //////////////////////////////////////////////////////////////////////////////////////////////
                 //output = abs(output);
                 MotorSpeedA = Bang_Constant + output;
                 MotorSpeedB = Bang_Constant - output;

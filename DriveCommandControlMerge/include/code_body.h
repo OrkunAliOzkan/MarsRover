@@ -27,13 +27,22 @@ class fclass
                             int * total_x, 
                             int * total_y
                         );
-        //void OFS_Angular(
-        //                MD md, 
-        //                float * total_x, 
-        //                float * total_y, 
-        //                float* abs_theta
-        //                );
-        //void determineAngle()
+        void OFS_Angular(
+                        MD md, 
+                        float * total_x, 
+                        float * total_y, 
+                        float* abs_theta
+                        );
+        void x_displacement
+                        (
+                            float *CURR_x,
+                            float *CURR_y,
+                            float *A_x,
+                            float *A_y,
+                            float *B_x,
+                            float *B_y,
+                            float *error_angle
+                        );
         int convTwosComp(int b);
         void mousecam_reset();
         int mousecam_init();

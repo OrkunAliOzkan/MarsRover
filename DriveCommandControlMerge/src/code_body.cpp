@@ -129,7 +129,6 @@ void fclass::OFS_Cartesian
   //Serial.println("Total x: " + String(*total_x));
   //Serial.println();
 }
-/*
 void fclass::OFS_Angular(
                 MD md, 
                 float * total_x, 
@@ -152,8 +151,25 @@ void fclass::OFS_Angular(
         //Serial.println("Total x: " + String(*total_x));
 }
 
-void fclass::determineAngle();
-*/
+void fclass::x_displacement
+                (
+                    float *CURR_x,
+                    float *CURR_y,
+                    float *A_x,
+                    float *A_y,
+                    float *B_x,
+                    float *B_y,
+                    float *error_angle
+                )
+{
+    //  Section which determines the angle
+    *error_angle = (float)acos  
+                    (
+                    ((*B_x - *CURR_x)*(*B_x - *A_x) + (*B_y - *CURR_y)*(*B_y - *A_y))/
+                    sqrt( pow((*B_x - *CURR_x), 2) + pow((*B_y - *CURR_y), 2)) * sqrt( pow((*B_x - *A_x), 2) + pow((*B_y - *A_y), 2))
+                    );
+}
+
 int fclass::convTwosComp(int b)
 {
     //Convert from 2's complement
