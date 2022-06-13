@@ -15,7 +15,7 @@ mission_data = db.mission_data
 mission = {
     "id": 601,
     "times": [tstart, tend],
-    "starting_pos" : [tstart, tend]
+    "duration": 100,
     # "route": [[timestamp, x, y], etc.] uncomment when fully implemented
 }
 

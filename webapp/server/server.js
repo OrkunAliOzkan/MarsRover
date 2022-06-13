@@ -30,17 +30,17 @@ server.listen(3000,'0.0.0.0', () => {
 
 //--------Serve Rover--------//
 
-//--------Initialising Python Control Script--------//
-const {spawn} = require('child_process');
-const control_script = spawn('python', ['map_sim.py']);
-print("Control Script started", 0)
+// //--------Initialising Python Control Script--------//
+// const {spawn} = require('child_process');
+// const control_script = spawn('python', ['map_sim.py']);
+// print("Control Script started", 0)
 
-control_script.stdout.on('data', (data) => {
-    print(`${data}`, 1);
-})
-control_script.on('close', (code) => {
-    print(`Simulation ended with code ${code}`, 0)
-})
+// control_script.stdout.on('data', (data) => {
+//     print(`${data}`, 1);
+// })
+// control_script.on('close', (code) => {
+//     print(`Simulation ended with code ${code}`, 0)
+// })
 
 //--------Initialising Socket.io (client-side communication)--------//
 const socketio = require('socket.io');
