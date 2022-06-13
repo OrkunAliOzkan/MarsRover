@@ -35,14 +35,19 @@
 #define BIN2 15
 /////////////////////////////////////////////////////////////////
 //  Drive parameters
-double A_x = 0;
-double A_y = 0;
-double B_x = 0;
-double B_y = 750;
+float A_x = 0;
+float A_y = 0;
+float B_x = 0;
+float B_y = 750;
 int MotorSpeedA = 0; //  Final input to motors
 int MotorSpeedB = 0; //  Final input to motors
 int Bang_Constant = 128;
 /////////////////////////////////////////////////////////////////
+float ABSOLUTE_ANGLE = 0;
+float CURR_x = 0;
+float CURR_y = 0;
+/////////////////////////////////////////////////////////////////
+
 struct MD
 {
  byte motion;
@@ -62,6 +67,52 @@ int convTwosComp(int b)
     }
     return b;
 }
+
+///////////////////////////////////////////////////////////////////////////////////
+void OFS_Cartesian
+            (            
+            MD md, 
+            int * prescaled_tx, 
+            int * prescaled_ty, 
+            int * total_x, 
+            int * total_y
+            )
+{
+  //  Optical sensor readings
+  mousecam_read_motion(&md);
+
+  *prescaled_tx += convTwosComp(md.dx);
+  *prescaled_ty += convTwosComp(md.dy);
+
+  *total_x = *prescaled_tx / 4.95;
+  *total_y = *prescaled_ty / 4.95;
+
+  Serial.println("Dy: " + String(convTwosComp(md.dy)));
+  Serial.println("Dx: " + String(convTwosComp(md.dx)));
+  Serial.println("Total y: " + String(*total_y));
+  Serial.println("Total x: " + String(*total_x));
+  Serial.println();
+}
+
+void x_displacement
+                (
+                    float *CURR_x,
+                    float *CURR_y,
+                    float *A_x,
+                    float *A_y,
+                    float *B_x,
+                    float *B_y,
+                    float *error_angle
+                )
+{
+  float x = (float)(((*B_x - *CURR_x)*(*B_x - *A_x) + (*B_y - *CURR_y)*(*B_y - *A_y))/
+                    (sqrt( pow((*B_x - *CURR_x), 2) + pow((*B_y - *CURR_y), 2)) * 
+                    sqrt( pow((*B_x - *A_x), 2) + pow((*B_y - *A_y), 2))));
+    //  Section which determines the angle
+    //  For now just using projection
+    *error_angle = PI / 2 - x - pow(x, 3)/6 - 5*pow(x, 5)/40;
+}
+///////////////////////////////////////////////////////////////////////////////////
 void mousecam_reset() //reset procedure = set reset high, followed by set reset low
 {
     digitalWrite(PIN_MOUSECAM_RESET,HIGH);
@@ -100,46 +151,12 @@ void mousecam_read_motion(struct MD *p)
     digitalWrite(PIN_MOUSECAM_CS,HIGH); //deactivate serial port
     delayMicroseconds(5); //necessary wait time
 }
-//void OpticalFlowSensorReadings(MD md,int * distance_x,int * distance_y,int * total_x1,int * total_y1, int * total_x, int * total_y)
-//{
-//  //  Optical sensor readings
-//  // delay(100);
-//  mousecam_read_motion(&md);
-//
-//  *distance_x = convTwosComp(md.dx);
-//  *distance_y = convTwosComp(md.dy);
-//  *total_x1 = *total_x1 + *distance_x;
-//  *total_y1 = *total_y1 + *distance_y;
-//  
-//  *total_x = *total_x1/4.95;
-//  *total_y = *total_y1/4.95;
-//
-//  //Serial.println("Dy: " + String(*distance_y));
-//  //Serial.println("Dx: " + String(*distance_x));
-//  //Serial.println("Total y: " + String(*total_y));
-//  //Serial.println("Total x: " + String(*total_x));
-//  
-//}
 //  Optical Flow Sensor parameters
 int prescaled_tx = 0;
 int prescaled_ty = 0;
 int totalpath_x_int = 0; // prescaling x displacement
 int totalpath_y_int = 0; // prescaling y displacement
-void OFS_Cartesian(MD md, int * prescaled_tx, int * prescaled_ty, int * total_x, int * total_y)
-{
-  //  Optical sensor readings
-  // delay(1);
-  mousecam_read_motion(&md);
-  *prescaled_tx += convTwosComp(md.dx);
-  *prescaled_ty += convTwosComp(md.dy);
-  *total_x = *prescaled_tx / 4.95;
-  *total_y = *prescaled_ty / 4.95;
-  //Serial.println("Dy: " + String(convTwosComp(md.dy)));
-  //Serial.println("Dx: " + String(convTwosComp(md.dx)));
-  //Serial.println("Total y: " + String(*total_y));
-  //Serial.println("Total x: " + String(*total_x));
-  //Serial.println();
-}
+
 float abs_theta = 0;
 float totalpath_x_flt = 0; // postscaling x displacement
 float totalpath_y_flt = 0; // postscaling y displacement
@@ -153,11 +170,11 @@ void OFS_Angular(MD md, float * total_x, float * total_y, float* abs_theta)
   float d_r = convTwosComp(md.dy) / 4.95;
   *total_x += d_r * sin(*abs_theta);
   *total_y += d_r * cos(*abs_theta);
-  //Serial.println("dr: " + String(d_r));
-  //Serial.println("d_theta: "+ String((convTwosComp(md.dx) / 4.95) / RADIUS));
-  //Serial.println("Angle: " + String(*abs_theta));
-  //Serial.println("Total y: " + String(*total_y));
-  //Serial.println("Total x: " + String(*total_x));
+  Serial.println("dr: " + String(d_r));
+  Serial.println("d_theta: "+ String((convTwosComp(md.dx) / 4.95) / RADIUS));
+  Serial.println("Angle: " + String(*abs_theta));
+  Serial.println("Total y: " + String(*total_y));
+  Serial.println("Total x: " + String(*total_x));
 }
 /////////////////////////////////////////////////////////////////
 float error = 0; 
@@ -222,7 +239,7 @@ void setup()
 /////////////////////////////////////////////////////////////////
   if(mousecam_init()==-1)
   {
-    //Serial.println("Mouse cam failed to init");
+    Serial.println("Mouse cam failed to init");
     while(1);
   }
   delay(3000);
@@ -241,19 +258,19 @@ void loop()
 //    error = (abs(totalpath_x_int - RADIUS*angle) < 5) ? (0) : (error);
     pTerm = error;
 //    iTerm += (error * deltaT);
-//    //Serial.println("before shit");
+//    Serial.println("before shit");
 //    dTerm = (error - error_prev)/deltaT;
-//    //Serial.println("avoid shit");
+//    Serial.println("avoid shit");
     output = Kp_turning * pTerm;
     error_prev = error;
-    //Serial.println("deltaT: " + String(deltaT));
-    //Serial.println("P: " + String(pTerm * Kp_turning));
-    //Serial.println("I: " + String(iTerm * Ki_turning));
-    //Serial.println("D: " + String(dTerm * Kd_turning));
-    //Serial.println("error: " + String(error));
-    //Serial.println("output: " + String(output));
-    //Serial.println("TOTAL_PATH_x: " + String(totalpath_x_int));
-    //Serial.println("");
+    Serial.println("deltaT: " + String(deltaT));
+    Serial.println("P: " + String(pTerm * Kp_turning));
+    Serial.println("I: " + String(iTerm * Ki_turning));
+    Serial.println("D: " + String(dTerm * Kd_turning));
+    Serial.println("error: " + String(error));
+    Serial.println("output: " + String(output));
+    Serial.println("TOTAL_PATH_x: " + String(totalpath_x_int));
+    Serial.println("");
     output = abs(output);
     if (error <= 0)
     {
@@ -270,7 +287,7 @@ void loop()
     {
       turning_arrived = 1; 
       output = 0; 
-      //Serial.println("Stopped");
+      Serial.println("Stopped");
     } 
     else 
     if (output > 255) 
@@ -291,15 +308,18 @@ void loop()
     deltaT = ((float) (currT-prevT))/1.0e6;
     prevT = currT;
     // controller
-    angular_error = (totalpath_x_int - RADIUS*angle);
+
+    OFS_Angular(md, &CURR_x, &CURR_y,  &ABSOLUTE_ANGLE);
+    x_displacement(&CURR_x,&CURR_y,&A_x,&A_y,&B_x,&B_y,&angular_error);
+    //angular_error = max(angular_error, (totalpath_x_int - RADIUS*angle));
     pTerm = (angular_error);
     iTerm += (angular_error*deltaT);
 //    dTerm = (angular_error - angular_error_prev)/deltaT;
     output = pTerm * Kp + iTerm * Ki; //0.3 is good, 0.33 decent
     angular_error_prev = angular_error;
-    //Serial.println();
-    //Serial.println("Angular Error: " + String(angular_error));
-    //Serial.println("Output: " + String(output));
+    Serial.println();
+    Serial.println("Angular Error: " + String(angular_error));
+    Serial.println("Output: " + String(output));
     //Serial.println("TOTAL_PATH_x: " + String(totalpath_x_int));
     //Serial.println("TOTAL_PATH_y: " + String(totalpath_y_int));
     //output = abs(output);
@@ -328,8 +348,9 @@ void loop()
         MotorSpeedA = 0;
         MotorSpeedB = 0;
     }
-    //Serial.println("MotorSpeedA: " + String(MotorSpeedA));
-    //Serial.println("MotorSpeedB: " + String(MotorSpeedB));
+    Serial.println("MotorSpeedA: " + String(MotorSpeedA));
+    Serial.println("MotorSpeedB: " + String(MotorSpeedB));
+    Serial.println("arrived" + String(arrived));
     analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
     analogWrite(PWMB, MotorSpeedB);    
   }
