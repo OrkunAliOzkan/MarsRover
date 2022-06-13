@@ -4,6 +4,7 @@ var url = "mongodb+srv://bet20:TCuh4ZxixcbXFQS0@cluster0.agmw9dr.mongodb.net/?re
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   console.log("Connected to MongoDB Atlas database");
+  var 
   db.close();
 });
 

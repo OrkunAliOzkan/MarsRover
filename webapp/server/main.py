@@ -20,8 +20,8 @@ import tornado.web
 import tornado.ioloop
 import tornado.escape
 
-x = 0
-y = 0
+angle = 45
+y = 1000
 
 class pageHandler(tornado.web.RequestHandler):
     def get(self):
@@ -32,10 +32,10 @@ class roverHandler(tornado.web.RequestHandler):
         nprint("Get Request Received")
         date_ = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
         self.set_status(200)
-        data = '{"time": "'+ date_ + '", "x": "'+ str(x) + '", "y": "'+ str(y) +'"}'
-        nprint(data)
+        data = '{"time": "'+ date_ + '", "a": "'+ str(angle) + '", "m": "'+ str(y) +'"}'
         self.write(bytes(data, "utf-8"))
         nprint("Get Request Serviced")
+        nprint("\n");
 
     def post(self):
         # data = tornado.escape.json_decode(self.request.body)
@@ -45,6 +45,7 @@ class roverHandler(tornado.web.RequestHandler):
         nprint(data)
         self.set_status(200)
         nprint("Post Request Serviced") 
+        nprint("\n");
 
 app = tornado.web.Application([
     (r"/", roverHandler),

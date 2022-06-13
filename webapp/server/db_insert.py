@@ -46,7 +46,7 @@ target1 = {
 
 #######
 # INSERT INTO COLLECTION #
-targets.insert_one(target0)
+# targets.insert_one(target0)
 ######
 
 """
