@@ -3,6 +3,7 @@ import time
 import threading
 import os
 import json
+import socket
 
 def nprint(output):
     sys.stdout.write(output + '\n')
@@ -14,44 +15,34 @@ def echo():
         sys.stdout.write(command)
         sys.stdout.flush()
 
+rover_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+rover_socket.bind(('0.0.0.0', 3001))
+rover_socket.listen(0)
+print("TCP server started on port 3001")
+
+def connect():
+    global rover_socket, client, addr
+    client, addr = rover_socket.accept()
+    print("Rover connected on ", addr)
+
+def recv_post(): 
+    while True:
+        content = client.recv(1024)
+        if len(content) ==0:
+            break
+        else:
+            print(content)
+    print("Closing connection")
+    client.close()
+
+angle = 0
+y = 0
+date_ = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
+data = '{"time": "'+ date_ + '", "a": "'+ str(angle) + '", "m": "'+ str(y) +'"}'
+
+def send():
+    rover_socket.send(data)
+
+
+
 threading.Thread(target=echo).start()
-
-import tornado.web
-import tornado.ioloop
-import tornado.escape
-
-angle = 45
-y = 1000
-
-class pageHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.render("../client/test/tornado_test.html")
-
-class roverHandler(tornado.web.RequestHandler):
-    def get(self):
-        nprint("Get Request Received")
-        date_ = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
-        self.set_status(200)
-        data = '{"time": "'+ date_ + '", "a": "'+ str(angle) + '", "m": "'+ str(y) +'"}'
-        self.write(bytes(data, "utf-8"))
-        nprint("Get Request Serviced")
-        nprint("\n");
-
-    def post(self):
-        # data = tornado.escape.json_decode(self.request.body)
-        nprint("Post Request Received")
-        data = str(self.request.body)
-        data = data.replace(r'\n', '\n')
-        nprint(data)
-        self.set_status(200)
-        nprint("Post Request Serviced") 
-        nprint("\n");
-
-app = tornado.web.Application([
-    (r"/", roverHandler),
-    (r"/test", pageHandler)
-])
-
-app.listen(3001)
-nprint("Python servicing rover on port 3001")
-tornado.ioloop.IOLoop.current().start()
