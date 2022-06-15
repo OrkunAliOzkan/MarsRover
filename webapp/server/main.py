@@ -1,3 +1,4 @@
+from datetime import datetime
 import sys
 import time
 import threading
@@ -35,14 +36,13 @@ def recv_post():
     print("Closing connection")
     client.close()
 
-angle = 0
+x = 0
 y = 0
 date_ = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
-data = '{"time": "'+ date_ + '", "a": "'+ str(angle) + '", "m": "'+ str(y) +'"}'
+data = '{"mode": M, "time": "'+ date_ + '", "x": "'+ str(x) + '", "y": "'+ str(y) +'"}'
 
 def send():
+    global rover_socket
     rover_socket.send(data)
-
-
 
 threading.Thread(target=echo).start()

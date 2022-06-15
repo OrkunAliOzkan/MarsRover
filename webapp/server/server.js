@@ -28,19 +28,51 @@ server.listen(3000,'0.0.0.0', () => {
     print('Server is running on port 3000', 0)
 });
 
-//--------Serve Rover--------//
-
-// //--------Initialising Python Control Script--------//
+//--------Initialising Python Control Script--------//
 // const {spawn} = require('child_process');
-// const control_script = spawn('python', ['map_sim.py']);
+// const control_script = spawn('python', ['main.py']);
 // print("Control Script started", 0)
 
 // control_script.stdout.on('data', (data) => {
 //     print(`${data}`, 1);
 // })
 // control_script.on('close', (code) => {
-//     print(`Simulation ended with code ${code}`, 0)
+//     print(`Control Script ended with code ${code}`, 0)
 // })
+
+//--------Initialising TCP server for Rover--------//
+const Net = require('net');
+const port = 8080;
+
+const rover_server = new Net.Server();
+var rover_connected = false;
+var rover_socket;
+
+rover_server.listen(port, () => {
+    console.log(`Rover server listening on port ${port}`);
+});
+
+rover_server.on('connection', (socket) => {
+    // set the global variable
+    rover_socket = socket;
+    rover_connected = true;
+    console.log('Rover Connected');
+
+    socket.on('data', function(chunk) {
+        console.log(`Rover Data:`);
+        console.log(`${chunk.toString()}`);
+    });
+
+    // When the client requests to end the TCP connection with the server, the server
+    // ends the connection.
+    socket.on('end', function() {
+        console.log('Closing connection with rover');
+    });
+
+    socket.on('error', function(err) {
+        console.log(`Error: ${err}`);
+    });
+});
 
 //--------Initialising Socket.io (client-side communication)--------//
 const socketio = require('socket.io');
@@ -48,11 +80,19 @@ const io = socketio(server);
 
 io.on('connection', (sock) => {
     print("Client connected", 0);
-
     sock.on('waypoint', ({ x, y }) => {
         io.emit('waypoint', { x, y });
         print(`waypoint placed at x: ${x}, y: ${y}`, 0);
-        control_script.stdin.write(`W,${x},${y}\n`);
+
+        const time_string = (new Date()).toISOString();
+        const waypoint_data = {time: time_string, x: 100, y: 120, mode: 'M'};
+
+        // send the waypoint data to the rover over TCP
+        if (rover_connected) {
+            rover_socket.write(JSON.stringify(waypoint_data));
+        } else {
+            console.log(`Can't send waypoint, rover is not connected`);
+        }
     });
 });
 

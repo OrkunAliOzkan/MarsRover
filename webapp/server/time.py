@@ -1,2 +1,4 @@
-from datetime import datetime 
-print(datetime.now())
+from datetime import datetime
+import time 
+                    
+
