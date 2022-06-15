@@ -201,6 +201,8 @@ float Kd_turning = 0.2;
 int output;
 float angle = PI/180 * 0;
 /////////////////////////////////////////////////////////////////
+float m = 0;
+float c = 0;
 /////////////////////////////////////////////////////////////////
 //  y axis PID Variables
   float error_displacement = 0;
@@ -311,6 +313,9 @@ void loop()
 
     OFS_Angular(md, &CURR_x, &CURR_y,  &ABSOLUTE_ANGLE);
     x_displacement(&CURR_x,&CURR_y,&A_x,&A_y,&B_x,&B_y,&angular_error);
+    m = ((B_y - A_y) / (B_x - A_x));
+    c = CURR_y - m*CURR_x;
+    angular_error *= (CURR_y < m*CURR_x + c) ? (-1): (1);
     //angular_error = max(angular_error, (totalpath_x_int - RADIUS*angle));
     pTerm = (angular_error);
     iTerm += (angular_error*deltaT);

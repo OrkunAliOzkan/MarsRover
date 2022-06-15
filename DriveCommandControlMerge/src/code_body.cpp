@@ -151,6 +151,38 @@ void fclass::OFS_Angular(
         //Serial.println("Total x: " + String(*total_x));
 }
 
+void fclass::automation()
+{
+    if(isTurning) {
+    /*
+        Characterised desired motion:
+        N/A, R, N/A, L, N/A, L, N/A, R
+        Repeat
+    */
+        int sign = (turningLeft) ? (1) : (-1);
+        *bearing = sign * 90;
+        turningleft = !(turningLeft && turningPrevious);
+    }
+    else{
+        //  Determining x
+        /////////////////////////////////////////////////////////////////////////
+            int DisplaceByX = 0;
+            DisplaceByX = (int)(counter % 2 == 0) * (arena_width);
+            DisplaceByX = (int)(counter % 4 == 0) * (-2 * arena_width);
+            *x_des = x_pos + DisplaceByX;
+        /////////////////////////////////////////////////////////////////////////
+        //  Determining y
+            int DisplaceByY = 0;
+            int scalingFactor = 0;
+            scalingFactor = (counter < 2*n) || (counter > 2 * (m + n)) ? (small_#) : (large_#);
+
+            DisplaceByY = (int)(counter % 2 != 0) * (arena_height / (2*scalingFactor));
+            *y_pos = y_pos + DisplaceByY;
+        /////////////////////////////////////////////////////////////////////////
+        counter++;
+    }
+}
+
 void fclass::x_displacement
                 (
                     float *CURR_x,

@@ -227,7 +227,7 @@ void loop()
             {
                 //  Rotate
                 code_body.OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
-                code_body.OFS_Angular(md, &CURR_x, &CURR_y, &ABSOLUTE_ANGLE);
+                //code_body.OFS_Angular(md, &CURR_x, &CURR_y, &ABSOLUTE_ANGLE);
                 error = (totalpath_x_int - RADIUS*angle);
                 currT = micros();
                 deltaT = ((float) (currT-prevT))/1.0e6;
@@ -244,7 +244,6 @@ void loop()
                 output = Kp_turning * pTerm;
                 error_prev = error;
 
-                /*
                 post_data +=("-------------------------------------------------------");
                 post_data += "\n";
                 post_data +=("B_y: " + String(B_y));
@@ -266,7 +265,6 @@ void loop()
                 post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
                 post_data += "\n";
                 output = abs(output);
-                */
 
                 if (error <= 0)
                 {
@@ -318,7 +316,7 @@ void loop()
                 prevT = currT;
 
                 // controller
-                angular_error = (totalpath_x_int - RADIUS*angle);
+                angular_error = (totalpath_x_int);
                 
                 pTerm = (angular_error);
                 iTerm += (angular_error*deltaT);
@@ -326,17 +324,15 @@ void loop()
                 output = pTerm * Kp + iTerm * Ki; //0.3 is good, 0.33 decent
 
                 angular_error_prev = angular_error;
-                /*
                 post_data +=("Angular Error: " + String(angular_error));
                 post_data += "\n";
                 post_data +=("Output: " + String(output));
-                //post_data += "\n";
-                //post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
-                //post_data += "\n";
-                //post_data +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+                post_data += "\n";
+                post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+                post_data += "\n";
+                post_data +=("TOTAL_PATH_y: " + String(totalpath_y_int));
                 post_data += "\n";
                 //output = abs(output);
-                */
 
                 {
                     digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CW  // ACW Rover
@@ -366,7 +362,6 @@ void loop()
                     MotorSpeedB = 0;
 
                 }
-                /*
                 post_data +=("-------------------------------------------------------");
                 post_data += "CURR_x:\t" + String(CURR_x);
                 post_data += "\n";
@@ -386,7 +381,6 @@ void loop()
                 post_data += "\n";
                 post_data +=("MotorSpeedB: " + String(MotorSpeedB));
                 post_data += "\n";
-                */
 
                 analogWrite(PWMA, MotorSpeedA);  //  TODO: See if mapping works
                 analogWrite(PWMB, MotorSpeedB);    
