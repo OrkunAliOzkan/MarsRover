@@ -114,6 +114,7 @@ void automation(
 )
 {
     {
+        ((*counter % 4 = 0) || (*counter % 4 == 1))
         int sign = ((*counter % 4 == 0) || (*counter % 4 == 1)) 
                     ? (1) : (-1);
         *bearing = sign * 90 * (*counter != 0);
