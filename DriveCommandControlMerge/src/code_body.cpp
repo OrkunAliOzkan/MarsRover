@@ -174,7 +174,6 @@ void fclass::automation(
             DisplaceByX *= (
                 ( ( (*counter) % 3) == 0 ) ? (-1) : (1)
                 );
-            
             *x_des = x_pos + DisplaceByX;
         }
         //  Determining y
@@ -187,8 +186,6 @@ void fclass::automation(
                     (side_sections_spans) : (mid_sections_spans);
 
             DisplaceByY = (int)(*counter % 2 == 0) * (arena_height / (2*scalingFactor));
-            
-            
             *y_des = y_pos + DisplaceByY;
         }
         *counter += 1;
