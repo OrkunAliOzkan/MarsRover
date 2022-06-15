@@ -77,6 +77,9 @@ double current_y = 100;
 double current_bearing = 0;
 
 /////////////////////////////////////////////////////////////////
+//  min max PWM
+  #define MIN_PWM 38
+  #define MAX_PWM 220
 
 //  Drive parameters
 int MotorSpeedA = 0; //  Final input to motors
@@ -241,11 +244,11 @@ int differential_PWM_output;
 
 /////////////////////////////////////////////////////////////////
 // PID for displacement
-/*
-float Ki_displacement = 0;
+
 float Kp_displacement = 3;
+float Ki_displacement = 0;
 float Kd_displacement = 0.05;
-*/
+
 int displacement_PWM_output = 128;  //  Displacement controllers PWM output
 int error_displacement = 0;
 int target_displacement = 0;
@@ -258,8 +261,8 @@ int arrived = 0;
 int turning_arrived = 0;
 /////////////////////////////////////////////////////////////////
 //  automation
-  /*
-  void fclass::automation(
+/*
+  void automation(
       int * counter,
       float arena_width, float arena_height,
       int side_sections_spans, int mid_sections_spans,
@@ -299,7 +302,7 @@ int turning_arrived = 0;
           *counter += 1;
       }
   }
-  */
+*/
 
 void setup()
 {
@@ -401,8 +404,8 @@ void loop()
             if (differential_PWM_output > 255) {
                 differential_PWM_output = 255;
             }
-            else if (differential_PWM_output < 38) {
-                differential_PWM_output = 38;
+            else if (differential_PWM_output < MIN_PWM) {
+                differential_PWM_output = MIN_PWM;
             }
 
             // set the right motor directions
@@ -476,29 +479,27 @@ void loop()
             post_data += ("Straight Line Complete\n");
         } else {
             //  y-axis pid controller
-            /*
             displacement_PWM_output = Kp_displacement * error_displacement;
             //  guards
-            displacement_PWM_output = (displacement_PWM_output > 220) ? (220) : (displacement_PWM_output);
-            displacement_PWM_output = (displacement_PWM_output < 38) ?  (38)  : (displacement_PWM_output);
+            displacement_PWM_output = (displacement_PWM_output > MAX_PWM) ? (MAX_PWM) : (displacement_PWM_output);
+            displacement_PWM_output = (displacement_PWM_output < MIN_PWM) ?  (MIN_PWM)  : (displacement_PWM_output);
             //  strictly for testing purposes FIXME: DELETE
             MotorSpeedA = displacement_PWM_output;
             MotorSpeedB = displacement_PWM_output;
-            */
 
-            // deviation pid controller
-            currT = micros();
-            deltaT = ((float) (currT-prevT))/1.0e6;
-
-            angular_error = (totalpath_x_int);
-
-            p_term_angle = (angular_error);
-            i_term_angle += (angular_error*deltaT);
-            //    d_term_angle = (angular_error - angular_error_prev)/deltaT;
-            differential_PWM_output = p_term_angle * Kp_deviation + i_term_angle * Ki_deviation; //0.3 is good, 0.33 decent
-
-            MotorSpeedA = displacement_PWM_output + differential_PWM_output;
-            MotorSpeedB = displacement_PWM_output - differential_PWM_output;
+//            // deviation pid controller
+//            currT = micros();
+//            deltaT = ((float) (currT-prevT))/1.0e6;
+//
+//            angular_error = (totalpath_x_int);
+//
+//            p_term_angle = (angular_error);
+//            i_term_angle += (angular_error*deltaT);
+//            //    d_term_angle = (angular_error - angular_error_prev)/deltaT;
+//            differential_PWM_output = p_term_angle * Kp_deviation + i_term_angle * Ki_deviation; //0.3 is good, 0.33 decent
+//
+//            MotorSpeedA = displacement_PWM_output + differential_PWM_output;
+//            MotorSpeedB = displacement_PWM_output - differential_PWM_output;
 
         //  guards
             if (MotorSpeedA < 0) {MotorSpeedA = 0;}
@@ -512,8 +513,8 @@ void loop()
             digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CCW
 
         //  write PWMs to the motors
-            analogWrite(PWMA, MotorSpeedA);  
-            analogWrite(PWMB, MotorSpeedB);    
+            analogWrite(PWMA, MotorSpeedA);
+            analogWrite(PWMB, MotorSpeedB);
 
         //  update variables for next cycle
             angular_error_prev = angular_error;

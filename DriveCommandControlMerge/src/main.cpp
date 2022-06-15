@@ -76,7 +76,50 @@ double current_x = 100;
 double current_y = 100;
 double current_bearing = 0;
 
-/////////////////////////////////////////////////////////////////
+void automation(
+    int * counter,
+    float arena_width, float arena_height,
+    int side_sections_spans, int mid_sections_spans,
+    float x_pos, float y_pos,
+    float * x_des, float * y_des, float * bearing
+)
+{
+    {
+        int sign = ((*counter % 4 == 0) || (*counter % 4 == 1)) 
+                    ? (1) : (-1);
+        *bearing = sign * 90 * (*counter != 0);
+    }
+    {
+        //  Determining x
+        {
+            int DisplaceByX = 0;
+            DisplaceByX = (int)(
+                    ((*counter) % 2 != 0))
+                    * (arena_width);
+            DisplaceByX *= (
+                ( ( (*counter) % 3) == 0 ) ? (-1) : (1)
+                );
+            *x_des = x_pos + DisplaceByX;
+        }
+        //  Determining y
+        {
+            int DisplaceByY = 0;
+            float scalingFactor = 0;
+            scalingFactor = (
+                    (*counter < 2*side_sections_spans) || 
+                    (*counter > 2 * (mid_sections_spans + side_sections_spans))) ? 
+                    (side_sections_spans) : (mid_sections_spans);
+
+            DisplaceByY = (int)(*counter % 2 == 0) * (arena_height / (2*scalingFactor));
+            *y_des = y_pos + DisplaceByY;
+        }
+        *counter += 1;
+    }
+}
+
+//  MIN MAX PWM
+  #define MIN_PWM 36
+  #define MAX_PWM 220
 
 //  Drive parameters
 int MotorSpeedA = 0; //  Final input to motors
