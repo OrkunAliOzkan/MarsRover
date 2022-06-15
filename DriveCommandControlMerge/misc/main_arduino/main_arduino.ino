@@ -122,7 +122,7 @@ float Kd_rotation = 0.2;
 
 // PID for straight line
 float Kp_deviation = 3;
-float Ki_deviation = 0;
+float Ki_deviation = 0.05;
 float Kd_deviation = 0.05;
 
 struct MD
@@ -353,6 +353,11 @@ void loop()
     post_data = "";
     if (turning_complete && straight_line_complete) {
         target_angle = (45.0 / 180.0) * PI;
+        A_y = 0;
+        A_x = 0;
+        B_y = 1000;
+        B_x = 0;
+        target_displacement = sqrt(pow(B_y - A_y, 2) + pow(B_x - A_x, 2));
         turning_complete = 0;
         straight_line_complete = 0;
     }
