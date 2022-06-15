@@ -19,6 +19,13 @@ class fclass
         fclass();
         std::vector<float> HTTPGET();
         void HTTPPOST(String receivedChars);
+        void automation(
+            int * counter,
+            float arena_width, float arena_height,
+            int side_sections_spans, int mid_sections_spans,
+            float x_pos, float y_pos,
+            float * x_des, float * y_des, float * bearing
+            );
         void OFS_Cartesian
                         (
                             MD md, 

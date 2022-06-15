@@ -151,6 +151,11 @@ MD md;
 String post_data = "";
 std::vector<float> read_cartesian;
 /////////////////////////////////////////////////////////////////
+int automation_counter = 0;
+bool automationOn = 1;
+/////////////////////////////////////////////////////////////////
+float displacement_y = 0;
+/////////////////////////////////////////////////////////////////
 /*
   UpdateRead will be used incrementally to determine if trajectory
   has changed since input. This is to prevent it from colliding w
@@ -212,10 +217,38 @@ void loop()
         /////////////////////////////////////////////////////////////////
         if ((turning_arrived && arrived) || (UpdateRead))
         {
-            read_cartesian = code_body.HTTPGET();
-            //code_body.HTTPPOST(post_data);
-            angle = read_cartesian[0] / 180 * PI;
-            B_y = read_cartesian[1];
+            //read_cartesian = code_body.HTTPGET();
+            ////code_body.HTTPPOST(post_data);
+            //angle = read_cartesian[0] / 180 * PI;
+            //B_y = read_cartesian[1];
+
+            ///////////////////////////////////////
+          //  Modified
+            A_x = B_x;
+            A_y = B_y;
+
+
+            if(automationOn)
+            {
+              code_body.automation(
+              &automation_counter,
+              232, 1050,
+              3, 2,
+              A_x, A_y,
+              &B_x, &B_y, &angle
+              );
+            }
+            else{
+              /*
+                Some type of get request and post
+              */
+            }
+
+            displacement_y = sqrt(
+                            pow((B_y - A_y), 2) + 
+                            pow((B_x - A_x), 2)
+                            );
+            ///////////////////////////////////////
             turning_arrived = 0;
             arrived = 0;
             UpdateRead = 0;
@@ -246,7 +279,7 @@ void loop()
 
                 post_data +=("-------------------------------------------------------");
                 post_data += "\n";
-                post_data +=("B_y: " + String(B_y));
+                post_data +=("displacement_y: " + String(displacement_y));
                 post_data += "\n";
                 post_data +=("angle: " + String(angle));
                 post_data += "\n";
@@ -308,7 +341,7 @@ void loop()
                 //  Straight
                 code_body.OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
                 //code_body.OFS_Angular(md, &CURR_x, &CURR_y,  &ABSOLUTE_ANGLE);
-                //code_body.x_displacement(&CURR_x,&CURR_y,&A_x,&A_y,&B_x,&B_y,&angular_error);
+                //code_body.x_displacement(&CURR_x,&CURR_y,&A_x,&A_y,&B_x,&displacement_y,&angular_error);
 
                 currT = micros();
 
@@ -340,7 +373,7 @@ void loop()
                 }
                 //////////////////////////////////////////////////////////////////////////////////////////////
                 //  y-axis p controller
-                error_displacement = B_y - totalpath_y_int;
+                error_displacement = displacement_y - totalpath_y_int;
                 Bang_Constant = Kp_displacement * error_displacement;
                 Bang_Constant = (Bang_Constant > 220) ? (220) : (Bang_Constant);
                 Bang_Constant = (Bang_Constant < 30) ? (30) : (Bang_Constant);
@@ -355,7 +388,7 @@ void loop()
                 if (MotorSpeedB < 0) {MotorSpeedB = 0;}
                 if (MotorSpeedB > 255) {MotorSpeedB = 255;}
 
-                if ((totalpath_y_int - B_y < 10) && (totalpath_y_int - B_y > -10)) 
+                if ((totalpath_y_int - displacement_y < 10) && (totalpath_y_int - displacement_y > -10)) 
                 {
                     arrived = 1;
                     MotorSpeedA = 0;
@@ -373,7 +406,7 @@ void loop()
                 post_data += "\n";
                 post_data += "B_x:\t" + String(B_x);
                 post_data += "\n";
-                post_data += "B_y:\t" + String(B_y);
+                post_data += "displacement_y:\t" + String(displacement_y);
                 post_data += "\n";
                 post_data += "ABSOLUTE_ANGLE:\t" + String(ABSOLUTE_ANGLE);
                 post_data += "\n";

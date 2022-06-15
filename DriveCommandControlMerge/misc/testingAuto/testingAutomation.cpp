@@ -28,14 +28,10 @@ std::vector<float> read_cartesian;
 ///////////////////////////////////////////////
 bool UpdateRead = 0;
 ///////////////////////////////////////////////
-int counter = 0;
-///////////////////////////////////////////////
-bool  x = 1;
-bool  y = 0;
+int automation_counter = 0;
 ///////////////////////////////////////////////
 //  Declaration
 void automation(
-    bool isTurning, bool isTravelling,
     int * counter,
     float arena_width, float arena_height,
     int side_sections_spans, int mid_sections_spans,
@@ -45,6 +41,8 @@ void automation(
 ///////////////////////////////////////////////
 bool turningLeft = 0;
 bool turningPrevious = 0;
+///////////////////////////////////////////////
+bool automationOn = 1;
 ///////////////////////////////////////////////
 int main(void)
 {
@@ -61,20 +59,20 @@ int main(void)
             A_x = B_x;
             A_y = B_y;
             
-            automation(
-            !turning_arrived, !arrived,
-            &counter,
-            232, 1050,
-            3, 2,
-            A_x, A_y,
-            &B_x, &B_y, &angle
-            );
+            if(automationOn)
+            {
+                automation(
+                &automation_counter,
+                232, 1050,
+                3, 2,
+                A_x, A_y,
+                &B_x, &B_y, &angle
+                );
+            }
             
             
             std::cout   << "\n---------------------\n"
-                        << "counter:\t" << counter
-                        << "\nA_x:\t" << A_x << "\t" 
-                        << "A_y:\t" << A_y << "\n"
+                        << "automation_counter:\t" << automation_counter
                         << "B_x:\t" << B_x << "\t" 
                         << "B_y:\t" << B_y << "\n"
                         << "angle:\t" << angle;
@@ -105,7 +103,6 @@ int main(void)
 ///////////////////////////////////////////////
 //  Implementation
 void automation(
-    bool isTurning, bool isTravelling,
     int * counter,
     float arena_width, float arena_height,
     int side_sections_spans, int mid_sections_spans,

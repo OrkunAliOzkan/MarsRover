@@ -115,7 +115,7 @@ void fclass::OFS_Cartesian
             )
 {
   //  Optical sensor readings
-  mousecam_read_motion(&md);
+    mousecam_read_motion(&md);
 
   *prescaled_tx += convTwosComp(md.dx);
   *prescaled_ty += convTwosComp(md.dy);
@@ -151,35 +151,47 @@ void fclass::OFS_Angular(
         //Serial.println("Total x: " + String(*total_x));
 }
 
-void fclass::automation()
+void fclass::automation(
+    int * counter,
+    float arena_width, float arena_height,
+    int side_sections_spans, int mid_sections_spans,
+    float x_pos, float y_pos,
+    float * x_des, float * y_des, float * bearing
+)
 {
-    if(isTurning) {
-    /*
-        Characterised desired motion:
-        N/A, R, N/A, L, N/A, L, N/A, R
-        Repeat
-    */
-        int sign = (turningLeft) ? (1) : (-1);
-        *bearing = sign * 90;
-        turningleft = !(turningLeft && turningPrevious);
+    {
+        int sign = ((*counter % 4 == 0) || (*counter % 4 == 1)) 
+                    ? (1) : (-1);
+        *bearing = sign * 90 * (*counter != 0);
     }
-    else{
+    {
         //  Determining x
-        /////////////////////////////////////////////////////////////////////////
+        {
             int DisplaceByX = 0;
-            DisplaceByX = (int)(counter % 2 == 0) * (arena_width);
-            DisplaceByX = (int)(counter % 4 == 0) * (-2 * arena_width);
+            DisplaceByX = (int)(
+                    ((*counter) % 2 != 0))
+                    * (arena_width);
+            DisplaceByX *= (
+                ( ( (*counter) % 3) == 0 ) ? (-1) : (1)
+                );
+            
             *x_des = x_pos + DisplaceByX;
-        /////////////////////////////////////////////////////////////////////////
+        }
         //  Determining y
+        {
             int DisplaceByY = 0;
-            int scalingFactor = 0;
-            scalingFactor = (counter < 2*n) || (counter > 2 * (m + n)) ? (small_#) : (large_#);
+            float scalingFactor = 0;
+            scalingFactor = (
+                    (*counter < 2*side_sections_spans) || 
+                    (*counter > 2 * (mid_sections_spans + side_sections_spans))) ? 
+                    (side_sections_spans) : (mid_sections_spans);
 
-            DisplaceByY = (int)(counter % 2 != 0) * (arena_height / (2*scalingFactor));
-            *y_pos = y_pos + DisplaceByY;
-        /////////////////////////////////////////////////////////////////////////
-        counter++;
+            DisplaceByY = (int)(*counter % 2 == 0) * (arena_height / (2*scalingFactor));
+            
+            
+            *y_des = y_pos + DisplaceByY;
+        }
+        *counter += 1;
     }
 }
 
