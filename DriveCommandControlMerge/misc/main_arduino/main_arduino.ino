@@ -56,7 +56,6 @@
   //  Password
   //  #define WIFI_PASSWORD   "gxqxs3c3fs" 
 */
-
 /////////////////////////////////////////////////////////////////
 
 // Motor Controller Pin mappings
@@ -70,17 +69,21 @@
 /////////////////////////////////////////////////////////////////
 
 // Starting coordinates
-  double A_x = 0; // TODO: Define at end of movement
-  double A_y = 0; // TODO: Define at end of movement
+  float A_x = 0; // TODO: Define at end of movement
+  float A_y = 0; // TODO: Define at end of movement
 
 // Destination coordinates
-  double B_x = 0;
-  double B_y = 750;
+  float B_x = 0;
+  float B_y = 750;
 
 // Current position and bearing
-  double current_x = 100;
-  double current_y = 100;
-  double current_bearing = 0;
+  float current_x = 0;
+  float current_y = 0;
+  float current_bearing = PI/2;
+
+  float prev_x = 0;
+  float prev_y = 0;
+  float prev_bearing = PI/2;
 
 /////////////////////////////////////////////////////////////////
 
@@ -237,7 +240,7 @@ void OFS_Angular(
 {
       //  Optical sensor readings
         mousecam_read_motion(&md);
-        *abs_theta += (convTwosComp(md.dx) / 4.95) / RADIUS ;
+        *abs_theta += (convTwosComp(md.dx) / 4.95) / RADIUS;
         float d_r = convTwosComp(md.dy) / 4.95;
         *total_x += d_r * sin(*abs_theta);
         *total_y += d_r * cos(*abs_theta);
@@ -271,6 +274,21 @@ void OFS_Angular(
 //  tcp related variables
 String tcp_received = "";
 String tcp_send = "";
+String mode_ = "";
+
+int tcp_parse(String tcp_data, float * B_x, float * B_y, String * mode_)
+{
+  String tmp = tcp_data;
+  /*
+  data = "x,y,mode"
+  */
+  *B_x = (tcp_data.substring(0, tcp_data.indexOf(","))).toFloat();
+  tmp = tcp_data.substring(tcp_data.indexOf(",") + 1);
+  *B_y = (tmp.substring(0, tmp.indexOf(","))).toFloat();
+  *mode_ = tmp.substring(tmp.indexOf(",") + 1);
+
+  return 1;
+}
 
 /////////////////////////////////////////////////////////////////
 
@@ -335,6 +353,31 @@ const char * host = "146.169.171.197"; // ip or dns
   }
 */
 
+void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_bearing, int * target_displacement, float * target_angle){
+    
+    float dx = *B_x-*current_x;
+    float dy = *B_y-*current_y;
+    *target_angle = atan2( dx, dy ) - *current_bearing;
+    //  converts from angle to bearing
+      
+    if((*target_angle) > PI){
+        *target_angle -= PI;
+        *target_angle *= -1;
+    }
+    else if ((*target_angle) < -PI){
+        *target_angle += PI;
+        *target_angle *= -1;
+    }
+
+    *target_angle *= -1;
+    // update target displacement
+    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
+}
+
+//  state mashine parameters for the drive process (stop turn go)
+  int turning_complete = 1;
+  int straight_line_complete = 1;
+
 void setup()
 {
     Serial.begin(115200);
@@ -370,7 +413,7 @@ void setup()
     }
     /////////////////////////////////////////////////////////////////
     //  Connecting to Wifi
-    WiFiMulti.addAP("bet-hotspot", "helloworld");
+    WiFiMulti.addAP(WIFI_SSID, WIFI_PASSWORD);
 
     Serial.println();
     Serial.println();
@@ -395,11 +438,34 @@ void setup()
         delay(500);
     }
     Serial.println("Connected to Server\n");
-}
 
-//  state mashine parameters for the drive process (stop turn go)
-  int turning_complete = 1;
-  int straight_line_complete = 1;
+    // // wait for mission start
+     String start_message = "";
+     while(client.available() < 5){
+         Serial.println("Waiting for Mission Start");
+         delay(500);
+     }
+    
+    // if (mode_ == "M") {
+    //     
+    // }
+
+    tcp_received = client.readStringUntil('\r');
+    tcp_parse(tcp_received, &B_x, &B_y, &mode_);
+
+    // update target angle
+    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_bearing, &target_displacement, &target_angle);
+
+    Serial.println("cx: " + String(current_x));
+    Serial.println("cy: " + String(current_y));
+    Serial.println("bx: " + String(B_x));
+    Serial.println("by: " + String(B_y));
+    Serial.println("current bearing: " + String(current_bearing));   
+    Serial.println("target displacement: " + String(target_displacement));
+    Serial.println("target angle: " + String(target_angle));
+    turning_complete = 0;
+    straight_line_complete = 0;
+}
 
 void loop()
 {
@@ -418,212 +484,236 @@ void loop()
     // }
     // //-----------------------------------------------//
     
-    // Periodically send data back to server
-    if (millis() - last_TCP_post > TCP_post_period) {
-        Serial.println(tcp_send);
-        client.print(tcp_send);
-        last_TCP_post = millis();
-    }
+//     // Periodically send data back to server
+//     if (millis() - last_TCP_post > TCP_post_period) {
+//         Serial.println(tcp_send);
+//         // client.print(tcp_send);
+//         last_TCP_post = millis();
+//     }
 
-    // // checks if there is a message from server in buffer
-    // if (client.available() > 5) {
-    //     //read back one line from the server
-    //     // Serial.println("reading buffer");
-    //     tcp_received = client.readStringUntil('\r');
-    //     // Serial.println(line);
-    //     bool new_dest;
-    //     if (new_dest) {
+//     // checks if there is a message from server in buffer
+//     if (client.available() > 5) {
+//         // brake
+//         analogWrite(PWMA, 0); 
+//         analogWrite(PWMB, 0);
+
+//         //read back one line from the server
+//         // Serial.println("reading buffer");
+//         tcp_received = client.readStringUntil('\r');
+//         // Serial.println(line);
+
+//         //  parse data recieved
+//         tcp_parse(tcp_received, &B_x, &B_y, &mode_);
+
+//         // if (mode_ == "M") {
+//         //     
+//         // }
+
+//         // update target angle
+//         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_bearing, &target_displacement, &target_angle);
+//     }
+
+//     tcp_send = "";
+//     // if (turning_complete && straight_line_complete) {
+//     //     // target_angle = (45.0 / 180.0) * PI;
+//     //     //A_y = current_y;
+//     //     //A_x = current_x;
+//     //     //B_y = 1000;
+//     //     //B_x = 0;
+//     //     /*
+//     //     //  tcp getting json data
+
+//     //     */
+//     //     turning_complete = 0;
+//     //     straight_line_complete = 0;
+//     // }
+
+//     if (!turning_complete) {
+//         // Rotation Logic
+//         OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
+//         angular_error = (totalpath_x_int - RADIUS*target_angle);
+//         // simplistic dead reckoning
+//         current_bearing = totalpath_x_int / RADIUS + prev_bearing;
+
+//         if (abs(angular_error) < 3) {
+//             // brake
+//             analogWrite(PWMA, 0); 
+//             analogWrite(PWMB, 0);
+
+//             turning_complete = 1;
+//             differential_PWM_output = 0; 
             
-    //     }
-    // }
-
-    tcp_send = "";
-    if (turning_complete && straight_line_complete) {
-        target_angle = (45.0 / 180.0) * PI;
-        A_y = 0;
-        A_x = 0;
-        B_y = 1000;
-        B_x = 0;
-        /*
-        //  tcp getting json data
-
-        */
-        target_displacement = sqrt(pow(B_y - A_y, 2) + pow(B_x - A_x, 2));
-        turning_complete = 0;
-        straight_line_complete = 0;
-    }
-    if (!turning_complete) {
-        OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
-        angular_error = (totalpath_x_int - RADIUS*target_angle);
-
-        if (abs(angular_error) < 3) {
-            // brake
-            analogWrite(PWMA, 0); 
-            analogWrite(PWMB, 0);
-
-            turning_complete = 1;
-            differential_PWM_output = 0; 
+//             // resetting PID variables
+//             prevT = 0;
+//             p_term_angle = 0;
+//             i_term_angle = 0;
+//             d_term_angle = 0;
+//             // resetting OFS_Cartesian variables
+//             prescaled_tx = 0;
+//             prescaled_ty = 0;
+//             totalpath_x_int = 0;
+//             totalpath_y_int = 0;
             
-            // resetting PID variables
-            prevT = 0;
-            p_term_angle = 0;
-            i_term_angle = 0;
-            d_term_angle = 0;
-            // resetting OFS_Cartesian variables
-            prescaled_tx = 0;
-            prescaled_ty = 0;
-            totalpath_x_int = 0;
-            totalpath_y_int = 0;
+//             // simplistic dead reckoning
+//             prev_bearing = current_bearing;
 
-            tcp_send = "---\n";
-            tcp_send += ("Turning Complete\n");
-        } else {
-            // turning not complete
-            currT = micros();
-            deltaT = ((float) (currT-prevT))/1.0e6;
+//             tcp_send = "---\n";
+//             tcp_send += ("Turning Complete\n");
+//         } else {
+//             // turning not complete
+//             currT = micros();
+//             deltaT = ((float) (currT-prevT))/1.0e6;
             
-            p_term_angle = angular_error;
-            i_term_angle += angular_error * deltaT;
-            d_term_angle = (angular_error - angular_error_prev)/deltaT;
+//             p_term_angle = angular_error;
+//             i_term_angle += angular_error * deltaT;
+//             d_term_angle = (angular_error - angular_error_prev)/deltaT;
 
-            differential_PWM_output = abs(Kp_rotation * p_term_angle);
+//             differential_PWM_output = abs(Kp_rotation * p_term_angle);
 
-            // guards to keep output within bounds
-            if (differential_PWM_output > 255) {
-                differential_PWM_output = 255;
-            }
-            else if (differential_PWM_output < MIN_PWM) {
-                differential_PWM_output = MIN_PWM;
-            }
+//             // guards to keep output within bounds
+//             if (differential_PWM_output > 255) {
+//                 differential_PWM_output = 255;
+//             }
+//             else if (differential_PWM_output < MIN_PWM) {
+//                 differential_PWM_output = MIN_PWM;
+//             }
 
-            // set the right motor directions
-            if (angular_error <= 0) {
-                digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
-                digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-            } else {
-                digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
-                digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
-            }
+//             // set the right motor directions
+//             if (angular_error <= 0) {
+//                 digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
+//                 digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+//             } else {
+//                 digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
+//                 digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
+//             }
 
-            // power the motors
-            analogWrite(PWMA, differential_PWM_output);  
-            analogWrite(PWMB, differential_PWM_output);
+//             // power the motors
+//             analogWrite(PWMA, differential_PWM_output);  
+//             analogWrite(PWMB, differential_PWM_output);
 
-            // update variables for next cycle
-            prevT = currT;
-            angular_error_prev = angular_error;
-        }
+//             // update variables for next cycle
+//             prevT = currT;
+//             angular_error_prev = angular_error;
+//         }
 
-        // Debugging Messages
-        tcp_send += "---\n";
-        tcp_send +=("Rover is turning");
-        tcp_send += "\n";
-        tcp_send +=("target_angle: " + String(target_angle));
-        tcp_send += "\n";
-        tcp_send +=("angular error: " + String(angular_error));
-        tcp_send += "\n";
-        tcp_send +=("deltaT: " + String(deltaT));
-        tcp_send += "\n";
-        tcp_send +=("P: " + String(p_term_angle * Kp_rotation));
-        tcp_send += "\n";
-        tcp_send +=("I: " + String(i_term_angle * Ki_rotation));
-        tcp_send += "\n";
-        tcp_send +=("D: " + String(d_term_angle * Kd_rotation));
-        tcp_send += "\n";
-        tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
-        tcp_send += "\n";
-        tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
-        tcp_send += "\n";
-        tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
-        tcp_send += "\n";
+//         // Debugging Messages
+//         tcp_send += "---\n";
+//         tcp_send +=("Rover is turning");
+//         tcp_send += "\n";
+//         tcp_send +=("target_angle: " + String(target_angle));
+//         tcp_send += "\n";
+//         tcp_send +=("angular error: " + String(angular_error));
+//         tcp_send += "\n";
+//         tcp_send +=("deltaT: " + String(deltaT));
+//         tcp_send += "\n";
+//         tcp_send +=("P: " + String(p_term_angle * Kp_rotation));
+//         tcp_send += "\n";
+//         tcp_send +=("I: " + String(i_term_angle * Ki_rotation));
+//         tcp_send += "\n";
+//         tcp_send +=("D: " + String(d_term_angle * Kd_rotation));
+//         tcp_send += "\n";
+//         tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
+//         tcp_send += "\n";
+//         tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+//         tcp_send += "\n";
+//         tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+//         tcp_send += "\n";
 
-    } else if (!straight_line_complete) {
-    
-        OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
-        displacement_error = target_displacement - totalpath_y_int;
+//     } else if (!straight_line_complete) {
+//         // Straight Line Logic
+//         OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
+//         displacement_error = target_displacement - totalpath_y_int;
+
+//         // simplistic dead reckoning
+//         current_x = prev_x + totalpath_y_int * cos(current_bearing);
+//         current_y = prev_y + totalpath_y_int * sin(current_bearing);
         
-        if (abs(displacement_error) < 10) {
-            // brake when reached
-            analogWrite(PWMA, 0);  
-            analogWrite(PWMB, 0);
+//         if (abs(displacement_error) < 10) {
+//             // brake when reached
+//             analogWrite(PWMA, 0);  
+//             analogWrite(PWMB, 0);
 
-            straight_line_complete = 1;
-            displacement_PWM_output = 0;
-            differential_PWM_output = 0; 
+//             straight_line_complete = 1;
+//             displacement_PWM_output = 0;
+//             differential_PWM_output = 0; 
+
+//             // simplistic dead reckoning
+//             prev_x = current_x;
+//             prev_y = current_y;
             
-            // resetting PID variables
-            prevT = 0;
-            p_term_angle = 0;
-            i_term_angle = 0;
-            d_term_angle = 0;
+//             // resetting PID variables
+//             prevT = 0;
+//             p_term_angle = 0;
+//             i_term_angle = 0;
+//             d_term_angle = 0;
 
-            // resetting OFS_Cartesian variables
-            prescaled_tx = 0;
-            prescaled_ty = 0;
-            totalpath_x_int = 0;
-            totalpath_y_int = 0;
+//             // resetting OFS_Cartesian variables
+//             prescaled_tx = 0;
+//             prescaled_ty = 0;
+//             totalpath_x_int = 0;
+//             totalpath_y_int = 0;
 
-            tcp_send = "---\n";
-            tcp_send += ("Straight Line Complete\n");
-        } else {
-            //  y-axis pid controller
-            displacement_PWM_output = Kp_displacement * displacement_error;
-            //  guards
-            displacement_PWM_output = (displacement_PWM_output > MAX_PWM) ? (MAX_PWM) : (displacement_PWM_output);
-            displacement_PWM_output = (displacement_PWM_output < MIN_PWM) ?  (MIN_PWM)  : (displacement_PWM_output);
-            //  strictly for testing purposes FIXME: DELETE
-            MotorSpeedA = displacement_PWM_output;
-            MotorSpeedB = displacement_PWM_output;
+//             tcp_send = "---\n";
+//             tcp_send += ("Straight Line Complete\n");
+//         } else {
+//             //  y-axis pid controller
+//             displacement_PWM_output = Kp_displacement * displacement_error;
+//             //  guards
+//             displacement_PWM_output = (displacement_PWM_output > MAX_PWM) ? (MAX_PWM) : (displacement_PWM_output);
+//             displacement_PWM_output = (displacement_PWM_output < MIN_PWM) ?  (MIN_PWM)  : (displacement_PWM_output);
+//             //  strictly for testing purposes FIXME: DELETE
+//             MotorSpeedA = displacement_PWM_output;
+//             MotorSpeedB = displacement_PWM_output;
 
-//            // deviation pid controller
-//            currT = micros();
-//            deltaT = ((float) (currT-prevT))/1.0e6;
-//
-//            angular_error = (totalpath_x_int);
-//
-//            p_term_angle = (angular_error);
-//            i_term_angle += (angular_error*deltaT);
-//            //    d_term_angle = (angular_error - angular_error_prev)/deltaT;
-//            differential_PWM_output = p_term_angle * Kp_deviation + i_term_angle * Ki_deviation; //0.3 is good, 0.33 decent
-//
-//            MotorSpeedA = displacement_PWM_output + differential_PWM_output;
-//            MotorSpeedB = displacement_PWM_output - differential_PWM_output;
+// //            // deviation pid controller
+// //            currT = micros();
+// //            deltaT = ((float) (currT-prevT))/1.0e6;
+// //
+// //            angular_error = (totalpath_x_int);
+// //
+// //            p_term_angle = (angular_error);
+// //            i_term_angle += (angular_error*deltaT);
+// //            //    d_term_angle = (angular_error - angular_error_prev)/deltaT;
+// //            differential_PWM_output = p_term_angle * Kp_deviation + i_term_angle * Ki_deviation; //0.3 is good, 0.33 decent
+// //
+// //            MotorSpeedA = displacement_PWM_output + differential_PWM_output;
+// //            MotorSpeedB = displacement_PWM_output - differential_PWM_output;
 
-        //  guards
-            if (MotorSpeedA < 0) {MotorSpeedA = 0;}
-            if (MotorSpeedA > 255) {MotorSpeedA = 255;}
+//         //  guards
+//             if (MotorSpeedA < 0) {MotorSpeedA = 0;}
+//             if (MotorSpeedA > 255) {MotorSpeedA = 255;}
 
-            if (MotorSpeedB < 0) {MotorSpeedB = 0;}
-            if (MotorSpeedB > 255) {MotorSpeedB = 255;}
+//             if (MotorSpeedB < 0) {MotorSpeedB = 0;}
+//             if (MotorSpeedB > 255) {MotorSpeedB = 255;}
 
-        //  inform the motors which way they are rotating
-            digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CW  // ACW Rover
-            digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CCW
+//         //  inform the motors which way they are rotating
+//             digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CW  // ACW Rover
+//             digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CCW
 
-        //  write PWMs to the motors
-            analogWrite(PWMA, MotorSpeedA);
-            analogWrite(PWMB, MotorSpeedB);
+//         //  write PWMs to the motors
+//             analogWrite(PWMA, MotorSpeedA);
+//             analogWrite(PWMB, MotorSpeedB);
 
-        //  update variables for next cycle
-            angular_error_prev = angular_error;
-            prevT = currT;
-        }
+//         //  update variables for next cycle
+//             angular_error_prev = angular_error;
+//             prevT = currT;
+//         }
 
-    //  debug content
-        tcp_send +="---\n";
-        tcp_send +=("Angular Error: " + String(angular_error));
-        tcp_send += "\n";
-        tcp_send +=("Displacement Error: " + String(displacement_error));
-        tcp_send += "\n";
-        tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
-        tcp_send += "\n";
-        tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
-        tcp_send += "\n";
-        tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
-        tcp_send += "\n";
-        tcp_send +=("MotorSpeedA: " + String(MotorSpeedA));
-        tcp_send += "\n";
-        tcp_send +=("MotorSpeedB: " + String(MotorSpeedB));
-        tcp_send += "\n";
-    }
+//     //  debug content
+//         tcp_send +="---\n";
+//         tcp_send +=("Angular Error: " + String(angular_error));
+//         tcp_send += "\n";
+//         tcp_send +=("Displacement Error: " + String(displacement_error));
+//         tcp_send += "\n";
+//         tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
+//         tcp_send += "\n";
+//         tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+//         tcp_send += "\n";
+//         tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+//         tcp_send += "\n";
+//         tcp_send +=("MotorSpeedA: " + String(MotorSpeedA));
+//         tcp_send += "\n";
+//         tcp_send +=("MotorSpeedB: " + String(MotorSpeedB));
+//         tcp_send += "\n";
+//     }
 }
