@@ -75,14 +75,14 @@
   float B_x = 0;
   float B_y = 750;
 
-// Current position and bearing
+// Current position and angle
   float current_x = 100;
   float current_y = 100;
-  float current_bearing = PI/2;
+  float current_angle = 0;
 
-  float prev_x = 100;
-  float prev_y = 100;
-  float prev_bearing = PI/2;
+  float prev_x = current_x;
+  float prev_y = current_y;
+  float prev_angle = current_angle;
 
 /////////////////////////////////////////////////////////////////
 
@@ -358,7 +358,7 @@ void updateTargets(float * B_x, float * B_y, float * current_x, float * current_
     float dy = *B_y - *current_y ;
 
     *target_angle = atan2( dy, dx ) - *current_angle;
-    //  converts from angle to bearing
+    //  converts from angle to angle
       
     if((*target_angle) > PI){
         *target_angle -= 2 * PI;
@@ -458,19 +458,21 @@ void setup()
     tcp_parse(tcp_received, &B_x, &B_y, &mode_);
 
     // update target angle
-    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_bearing, &target_displacement, &target_angle);
+    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
 
     Serial.println("cx: " + String(current_x));
     Serial.println("cy: " + String(current_y));
     Serial.println("bx: " + String(B_x));
     Serial.println("by: " + String(B_y));
-    Serial.println("current bearing: " + String(current_bearing));   
+    Serial.println("current angle: " + String(current_angle));   
     Serial.println("target displacement: " + String(target_displacement));
     Serial.println("target angle: " + String(target_angle));
 
     turning_complete = 0;
     straight_line_complete = 1;
 }
+
+String location_info = "";
 
 void loop()
 {
@@ -492,11 +494,12 @@ void loop()
     // //-----------------------------------------------//
     Serial.println(tcp_send);
     tcp_send = "";
+
     // // Periodically send data back to server
     if (millis() - last_TCP_post > TCP_post_period) {
-        Serial.println(tcp_send);
-        // client.print(tcp_send);
-        
+        // Serial.println(tcp_send);
+        location_info = "{x: " + String(current_x) + " y: " + String(current_y) + " angle: " + String(current_angle) + "}";
+        client.print(location_info);
         last_TCP_post = millis();
     }
 
@@ -507,15 +510,15 @@ void loop()
         analogWrite(PWMB, 0);
 
         //read back one line from the server
-        // Serial.println("reading buffer");
+        //  Serial.println("reading buffer");
         tcp_received = client.readStringUntil('\r');
-        // Serial.println(line);
+        //  Serial.println(line);
 
         //  parse data recieved
         tcp_parse(tcp_received, &B_x, &B_y, &mode_);
 
-        // update target angle
-        updateTargets(&B_x, &B_y, &current_x, &current_y, &current_bearing, &target_displacement, &target_angle);
+        //  update target angle
+        updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
         
         
         Serial.println("//////////////////////////////////////////////////////////////////");
@@ -524,7 +527,7 @@ void loop()
         Serial.println("cy: " + String(current_y));
         Serial.println("bx: " + String(B_x));
         Serial.println("by: " + String(B_y));
-        Serial.println("current bearing: " + String(current_bearing));   
+        Serial.println("current angle: " + String(current_angle));   
         Serial.println("target displacement: " + String(target_displacement));
         Serial.println("target angle: " + String(target_angle));
 
@@ -539,7 +542,7 @@ void loop()
         OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
         angular_error = (totalpath_x_int - RADIUS*target_angle);
         // simplistic dead reckoning
-        current_bearing = -1.0 / RADIUS * totalpath_x_int + prev_bearing;
+        current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
         if (abs(angular_error) < 3) {
             // brake
             analogWrite(PWMA, 0); 
@@ -560,7 +563,7 @@ void loop()
             totalpath_y_int = 0;
             
             // simplistic dead reckoning
-            prev_bearing = current_bearing;
+            prev_angle = current_angle;
 
             tcp_send = "---\n";
             tcp_send += ("Turning Complete\n");
@@ -573,7 +576,7 @@ void loop()
             i_term_angle += angular_error * deltaT;
             d_term_angle = (angular_error - angular_error_prev)/deltaT;
 
-            differential_PWM_output = abs(Kp_rotation * p_term_angle);
+            differential_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
 
             // guards to keep output within bounds
             if (differential_PWM_output > 255) {
@@ -619,7 +622,7 @@ void loop()
         tcp_send += "\n";
         tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
         tcp_send += "\n";
-        tcp_send +=("current bearing: " + String(current_bearing));
+        tcp_send +=("current angle: " + String(current_angle));
         tcp_send += "\n";
         tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
         tcp_send += "\n";
@@ -633,8 +636,8 @@ void loop()
         displacement_error = target_displacement - totalpath_y_int;
 
         // simplistic dead reckoning
-        current_x = prev_x + totalpath_y_int * cos(current_bearing);
-        current_y = prev_y + totalpath_y_int * sin(current_bearing);
+        current_x = prev_x + totalpath_y_int * cos(current_angle);
+        current_y = prev_y + totalpath_y_int * sin(current_angle);
         
         if (abs(displacement_error) < 10) {
             // brake when reached
