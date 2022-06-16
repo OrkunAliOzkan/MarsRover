@@ -76,12 +76,12 @@
   float B_y = 750;
 
 // Current position and bearing
-  float current_x = 0;
-  float current_y = 0;
+  float current_x = 100;
+  float current_y = 100;
   float current_bearing = PI/2;
 
-  float prev_x = 0;
-  float prev_y = 0;
+  float prev_x = 100;
+  float prev_y = 100;
   float prev_bearing = PI/2;
 
 /////////////////////////////////////////////////////////////////
@@ -352,25 +352,29 @@ const char * host = "146.169.171.197"; // ip or dns
   }
 */
 
-void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_bearing, int * target_displacement, float * target_angle){
+void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, int * target_displacement, float * target_angle){
     
-    float dx = *B_x-*current_x;
-    float dy = *B_y-*current_y;
-    *target_angle = atan2( dx, dy ) - *current_bearing;
+    float dx = *B_x - *current_x;
+    float dy = *B_y - *current_y ;
+
+    *target_angle = atan2( dy, dx ) - *current_angle;
     //  converts from angle to bearing
       
     if((*target_angle) > PI){
-        *target_angle -= PI;
-        *target_angle *= -1;
+        *target_angle -= 2 * PI;
     }
     else if ((*target_angle) < -PI){
-        *target_angle += PI;
-        *target_angle *= -1;
+        *target_angle += 2 * PI;
     }
 
-    *target_angle *= -1;
-    // update target displacement
-    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
+//    // update target displacement
+//    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
+//    Serial.println("Target Displacement: " + String(*target_displacement));
+//    Serial.println("Final Angle: " + String(atan2( dy, dx )));
+//    Serial.println("Target Angle: " + String(*target_angle));
+//
+//    Serial.println(*target_displacement * cos(*current_angle + *target_angle) + *current_x);
+//    Serial.println(*target_displacement * sin(*current_angle + *target_angle) + *current_y);
 }
 
 //  state mashine parameters for the drive process (stop turn go)
