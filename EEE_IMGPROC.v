@@ -67,38 +67,39 @@ parameter IMAGE_W = 11'd640;
 parameter IMAGE_H = 11'd480;
 parameter MESSAGE_BUF_MAX = 256;
 parameter MSG_INTERVAL = 6;
-parameter BB_COL_DEFAULT = 24'h00ff00;
+parameter BB_COL_DEFAULT = 24'hff0000;
 
 
 wire [7:0]   red, green, blue, grey;
 wire [7:0]   red_out, green_out, blue_out;
 wire [7:0]	 red_processed, green_processed, blue_processed;
+wire red_sector;
 
 wire         sop, eop, in_valid, out_ready;
 ////////////////////////////////////////////////////////////////////////
 
 // Detect red areas
 wire red_detect;
-assign red_detect = red[7] & ~green[7] & ~blue[7];
+// assign red_detect = red[7] & ~green[7] & ~blue[7];
+assign red_detect = red_sector;
 
 // Find boundary of cursor box
 
 // Highlight detected areas
 wire [23:0] red_high;
 assign grey = green[7:1] + red[7:2] + blue[7:2]; //Grey = green/2 + red/4 + blue/4
-assign red_high  =  red_detect ? {8'hff, 8'h0, 8'h0} : {grey, grey, grey};
+assign red_high = {red_processed, green_processed, blue_processed};
 
 // Show bounding box
 wire [23:0] new_image;
 wire bb_active;
-assign bb_active = (x == left) | (x == right) | (y == top) | (y == bottom);
+assign bb_active = (x==left && y>top && y<bottom) | (x==right && y>top && y<bottom) | (y==top && x>left && x<right) | (y==bottom && x>left && x<right);
 assign new_image = bb_active ? bb_col : red_high;
 
 // Switch output pixels depending on mode switch
 // Don't modify the start-of-packet word - it's a packet discriptor
 // Don't modify data in non-video packets
-//assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? new_image : {red,green,blue};
-assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? {red_processed,green_processed,blue_processed} : {red,green,blue};
+assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? new_image : {red,green,blue};
 
 //Count valid pixels to tget the image coordinates. Reset and detect packet type on Start of Packet.
 reg [10:0] x, y;
@@ -124,10 +125,12 @@ end
 reg [10:0] x_min, y_min, x_max, y_max;
 always@(posedge clk) begin
 	if (red_detect & in_valid) begin	//Update bounds when the pixel is red
-		if (x < x_min) x_min <= x;
-		if (x > x_max) x_max <= x;
-		if (y < y_min) y_min <= y;
-		y_max <= y;
+		if (y>240 && y<450 && x>30 && x<610) begin //chop off ceiling and edges
+			if (x < x_min) x_min <= x;
+			if (x > x_max) x_max <= x;
+			if (y < y_min) y_min <= y;
+			y_max <= y;
+		end
 	end
 	if (sop & in_valid) begin	//Reset bounds on start of packet
 		x_min <= IMAGE_W-11'h1;
@@ -186,13 +189,13 @@ always@(*) begin	//Write words to FIFO as state machine advances
 			msg_buf_wr = 1'b1;
 		end
 		2'b10: begin
-			msg_buf_in = {5'b0, x_min, 5'b0, y_min};	//Top left coordinate
+			msg_buf_in = {5'b0, x_min, 5'b0, x_max};	//Red
 			msg_buf_wr = 1'b1;
 		end
-		2'b11: begin
-			msg_buf_in = {5'b0, x_max, 5'b0, y_max}; //Bottom right coordinate
-			msg_buf_wr = 1'b1;
-		end
+		// 2'b11: begin
+		// 	msg_buf_in = {5'b0, x_max, 5'b0, y_max}; //Bottom right coordinate
+		// 	msg_buf_wr = 1'b1;
+		// end
 	endcase
 end
 
@@ -201,6 +204,7 @@ processing img_processing (
 	.red(red),
 	.green(green),
 	.blue(blue),
+	.grey(grey),
 	.sop(sop),
 	.packet_video(packet_video),
 	.in_valid(in_valid),
@@ -209,7 +213,8 @@ processing img_processing (
 
 	.red_processed(red_processed),
 	.green_processed(green_processed),
-	.blue_processed(blue_processed)
+	.blue_processed(blue_processed),
+	.red_sector(red_sector)
 );
 
 
@@ -283,7 +288,7 @@ begin
 	else begin
 		if(s_chipselect & s_write) begin
 		   if      (s_address == `REG_STATUS)	reg_status <= s_writedata[7:0];
-		   if      (s_address == `REG_BBCOL)	bb_col <= s_writedata[23:0];
+		//    if      (s_address == `REG_BBCOL)	bb_col <= s_writedata[23:0];
 		end
 	end
 end
