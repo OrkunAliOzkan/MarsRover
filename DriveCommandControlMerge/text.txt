@@ -1,0 +1,9812 @@
+
+
+Waiting for WiFi... 
+
+WiFi connected
+IP address: 
+192.168.137.225
+Connected to Server
+
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+Waiting for Mission Start
+cx: 0.00
+cy: 0.00
+bx: 100.00
+by: -100.00
+current bearing: 1.57
+target displacement: 141
+target angle: -0.79
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 33.13
+P: 181.64
+I: 60.17
+D: 0.55
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.18
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.18
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.18
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.18
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.18
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.18
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.19
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.19
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.19
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.19
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.19
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.19
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.20
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.20
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.20
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.20
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.20
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.20
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.21
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.21
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.21
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.21
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.21
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.21
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.22
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.22
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.22
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.22
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.22
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.22
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.23
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.23
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.23
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.23
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.23
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.23
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.24
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.24
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.24
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.24
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.24
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.24
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.25
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 90.82
+deltaT: 0.00
+P: 181.64
+I: 60.25
+D: 0.00
+differential_PWM_output: 181
+current bearing: 1.61
+TOTAL_PATH_x: -5
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.25
+D: -219.78
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.25
+D: 0.00
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.25
+D: 0.00
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.25
+D: 0.00
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.26
+D: 0.00
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.26
+D: 0.00
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.26
+D: 0.00
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.26
+D: 0.00
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 89.82
+deltaT: 0.00
+P: 179.64
+I: 60.26
+D: 0.00
+differential_PWM_output: 179
+current bearing: 1.62
+TOTAL_PATH_x: -6
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 88.82
+deltaT: 0.00
+P: 177.64
+I: 60.26
+D: -218.34
+differential_PWM_output: 177
+current bearing: 1.63
+TOTAL_PATH_x: -7
+TOTAL_PATH_y: 1
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 63.82
+deltaT: 0.88
+P: 127.64
+I: 61.39
+D: -5.67
+differential_PWM_output: 127
+current bearing: 1.83
+TOTAL_PATH_x: -32
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: 37.82
+deltaT: 0.00
+P: 75.64
+I: 61.39
+D: -6011.56
+differential_PWM_output: 75
+current bearing: 2.05
+TOTAL_PATH_x: -58
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: 11.82
+deltaT: 0.00
+P: 23.64
+I: 61.39
+D: -6139.32
+differential_PWM_output: 38
+current bearing: 2.26
+TOTAL_PATH_x: -84
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -14.18
+deltaT: 0.00
+P: -28.36
+I: 61.39
+D: -6168.45
+differential_PWM_output: 38
+current bearing: 2.47
+TOTAL_PATH_x: -110
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -40.18
+deltaT: 0.00
+P: -80.36
+I: 61.39
+D: -6088.99
+differential_PWM_output: 80
+current bearing: 2.69
+TOTAL_PATH_x: -136
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -66.18
+deltaT: 0.00
+P: -132.36
+I: 61.39
+D: -6096.13
+differential_PWM_output: 132
+current bearing: 2.90
+TOTAL_PATH_x: -162
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -92.18
+deltaT: 0.00
+P: -184.36
+I: 61.39
+D: -6053.55
+differential_PWM_output: 184
+current bearing: 3.11
+TOTAL_PATH_x: -188
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -117.18
+deltaT: 0.00
+P: -234.36
+I: 61.39
+D: -5847.95
+differential_PWM_output: 234
+current bearing: 3.32
+TOTAL_PATH_x: -213
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -131.18
+deltaT: 0.00
+P: -262.36
+I: 61.38
+D: -3271.03
+differential_PWM_output: 255
+current bearing: 3.43
+TOTAL_PATH_x: -227
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -132.18
+deltaT: 0.00
+P: -264.36
+I: 61.38
+D: -234.47
+differential_PWM_output: 255
+current bearing: 3.44
+TOTAL_PATH_x: -228
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -132.18
+deltaT: 0.00
+P: -264.36
+I: 61.38
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.44
+TOTAL_PATH_x: -228
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -132.18
+deltaT: 0.00
+P: -264.36
+I: 61.38
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.44
+TOTAL_PATH_x: -228
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -132.18
+deltaT: 0.00
+P: -264.36
+I: 61.37
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.44
+TOTAL_PATH_x: -228
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -132.18
+deltaT: 0.00
+P: -264.36
+I: 61.37
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.44
+TOTAL_PATH_x: -228
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -133.18
+deltaT: 0.00
+P: -266.36
+I: 61.37
+D: -229.89
+differential_PWM_output: 255
+current bearing: 3.45
+TOTAL_PATH_x: -229
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -133.18
+deltaT: 0.00
+P: -266.36
+I: 61.37
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.45
+TOTAL_PATH_x: -229
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -133.18
+deltaT: 0.00
+P: -266.36
+I: 61.36
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.45
+TOTAL_PATH_x: -229
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -133.18
+deltaT: 0.00
+P: -266.36
+I: 61.36
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.45
+TOTAL_PATH_x: -229
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -134.18
+deltaT: 0.00
+P: -268.36
+I: 61.36
+D: -234.74
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -230
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -134.18
+deltaT: 0.00
+P: -268.36
+I: 61.36
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -230
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -134.18
+deltaT: 0.00
+P: -268.36
+I: 61.36
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -230
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -134.18
+deltaT: 0.00
+P: -268.36
+I: 61.35
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -230
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -134.18
+deltaT: 0.00
+P: -268.36
+I: 61.35
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -230
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -135.18
+deltaT: 0.00
+P: -270.36
+I: 61.35
+D: -237.25
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -231
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -135.18
+deltaT: 0.00
+P: -270.36
+I: 61.35
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -231
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -135.18
+deltaT: 0.00
+P: -270.36
+I: 61.34
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -231
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -135.18
+deltaT: 0.00
+P: -270.36
+I: 61.34
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -231
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -135.18
+deltaT: 0.00
+P: -270.36
+I: 61.34
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.46
+TOTAL_PATH_x: -231
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -136.18
+deltaT: 0.00
+P: -272.36
+I: 61.34
+D: -236.41
+differential_PWM_output: 255
+current bearing: 3.47
+TOTAL_PATH_x: -232
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -136.18
+deltaT: 0.00
+P: -272.36
+I: 61.34
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.47
+TOTAL_PATH_x: -232
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -136.18
+deltaT: 0.00
+P: -272.36
+I: 61.33
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.47
+TOTAL_PATH_x: -232
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -136.18
+deltaT: 0.00
+P: -272.36
+I: 61.33
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.47
+TOTAL_PATH_x: -232
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -136.18
+deltaT: 0.00
+P: -272.36
+I: 61.33
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.47
+TOTAL_PATH_x: -232
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -137.18
+deltaT: 0.00
+P: -274.36
+I: 61.33
+D: -234.74
+differential_PWM_output: 255
+current bearing: 3.48
+TOTAL_PATH_x: -233
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -137.18
+deltaT: 0.00
+P: -274.36
+I: 61.32
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.48
+TOTAL_PATH_x: -233
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -137.18
+deltaT: 0.00
+P: -274.36
+I: 61.32
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.48
+TOTAL_PATH_x: -233
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -137.18
+deltaT: 0.00
+P: -274.36
+I: 61.32
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.48
+TOTAL_PATH_x: -233
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -137.18
+deltaT: 0.00
+P: -274.36
+I: 61.32
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.48
+TOTAL_PATH_x: -233
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -137.18
+deltaT: 0.00
+P: -274.36
+I: 61.31
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.48
+TOTAL_PATH_x: -233
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -137.18
+deltaT: 0.00
+P: -274.36
+I: 61.31
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.48
+TOTAL_PATH_x: -233
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -137.18
+deltaT: 0.00
+P: -274.36
+I: 61.31
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.48
+TOTAL_PATH_x: -233
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.31
+D: -235.02
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.30
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.30
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.30
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.30
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.30
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.29
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.29
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.29
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.29
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.28
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.28
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.28
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.28
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.27
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.27
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.27
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.27
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+---
+Rover is turning
+target_angle: -0.79
+angular error: -138.18
+deltaT: 0.00
+P: -276.36
+I: 61.26
+D: 0.00
+differential_PWM_output: 255
+current bearing: 3.49
+TOTAL_PATH_x: -234
+TOTAL_PATH_y: 2
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: -113.18
+deltaT: 0.99
+P: -226.36
+I: 59.01
+D: 5.03
+differential_PWM_output: 226
+current bearing: 3.28
+TOTAL_PATH_x: -209
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: -87.18
+deltaT: 0.00
+P: -174.36
+I: 59.01
+D: 5983.89
+differential_PWM_output: 174
+current bearing: 3.07
+TOTAL_PATH_x: -183
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: -61.18
+deltaT: 0.00
+P: -122.36
+I: 59.01
+D: 6088.99
+differential_PWM_output: 122
+current bearing: 2.86
+TOTAL_PATH_x: -157
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: -36.18
+deltaT: 0.00
+P: -72.36
+I: 59.01
+D: 5903.19
+differential_PWM_output: 72
+current bearing: 2.65
+TOTAL_PATH_x: -132
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: -10.18
+deltaT: 0.00
+P: -20.36
+I: 59.01
+D: 6088.99
+differential_PWM_output: 38
+current bearing: 2.44
+TOTAL_PATH_x: -106
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 14.82
+deltaT: 0.00
+P: 29.64
+I: 59.01
+D: 5861.67
+differential_PWM_output: 38
+current bearing: 2.23
+TOTAL_PATH_x: -81
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 40.82
+deltaT: 0.00
+P: 81.64
+I: 59.01
+D: 6060.61
+differential_PWM_output: 81
+current bearing: 2.02
+TOTAL_PATH_x: -55
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 59.01
+D: 6096.13
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 91.82
+deltaT: 0.00
+P: 183.64
+I: 59.01
+D: 5889.28
+differential_PWM_output: 183
+current bearing: 1.60
+TOTAL_PATH_x: -4
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 116.82
+deltaT: 0.00
+P: 233.64
+I: 59.01
+D: 5917.16
+differential_PWM_output: 233
+current bearing: 1.40
+TOTAL_PATH_x: 21
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 142.82
+deltaT: 0.00
+P: 285.64
+I: 59.02
+D: 6103.29
+differential_PWM_output: 255
+current bearing: 1.19
+TOTAL_PATH_x: 47
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 167.82
+deltaT: 0.00
+P: 335.64
+I: 59.02
+D: 5868.54
+differential_PWM_output: 255
+current bearing: 0.98
+TOTAL_PATH_x: 72
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 193.82
+deltaT: 0.00
+P: 387.64
+I: 59.02
+D: 6081.87
+differential_PWM_output: 255
+current bearing: 0.77
+TOTAL_PATH_x: 98
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 219.82
+deltaT: 0.00
+P: 439.64
+I: 59.03
+D: 6103.29
+differential_PWM_output: 255
+current bearing: 0.55
+TOTAL_PATH_x: 124
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 244.82
+deltaT: 0.00
+P: 489.64
+I: 59.03
+D: 5847.95
+differential_PWM_output: 255
+current bearing: 0.35
+TOTAL_PATH_x: 149
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 266.82
+deltaT: 0.00
+P: 533.64
+I: 59.04
+D: 5170.39
+differential_PWM_output: 255
+current bearing: 0.17
+TOTAL_PATH_x: 171
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 266.82
+deltaT: 0.00
+P: 533.64
+I: 59.04
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.17
+TOTAL_PATH_x: 171
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 267.82
+deltaT: 0.00
+P: 535.64
+I: 59.05
+D: 238.10
+differential_PWM_output: 255
+current bearing: 0.16
+TOTAL_PATH_x: 172
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 267.82
+deltaT: 0.00
+P: 535.64
+I: 59.05
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.16
+TOTAL_PATH_x: 172
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 267.82
+deltaT: 0.00
+P: 535.64
+I: 59.05
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.16
+TOTAL_PATH_x: 172
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 268.82
+deltaT: 0.00
+P: 537.64
+I: 59.06
+D: 235.57
+differential_PWM_output: 255
+current bearing: 0.15
+TOTAL_PATH_x: 173
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 268.82
+deltaT: 0.00
+P: 537.64
+I: 59.06
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.15
+TOTAL_PATH_x: 173
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 268.82
+deltaT: 0.00
+P: 537.64
+I: 59.07
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.15
+TOTAL_PATH_x: 173
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 269.82
+deltaT: 0.00
+P: 539.64
+I: 59.07
+D: 238.66
+differential_PWM_output: 255
+current bearing: 0.14
+TOTAL_PATH_x: 174
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 269.82
+deltaT: 0.00
+P: 539.64
+I: 59.08
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.14
+TOTAL_PATH_x: 174
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 269.82
+deltaT: 0.00
+P: 539.64
+I: 59.08
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.14
+TOTAL_PATH_x: 174
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 270.82
+deltaT: 0.00
+P: 541.64
+I: 59.09
+D: 235.57
+differential_PWM_output: 255
+current bearing: 0.14
+TOTAL_PATH_x: 175
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 270.82
+deltaT: 0.00
+P: 541.64
+I: 59.09
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.14
+TOTAL_PATH_x: 175
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 270.82
+deltaT: 0.00
+P: 541.64
+I: 59.10
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.14
+TOTAL_PATH_x: 175
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 271.82
+deltaT: 0.00
+P: 543.64
+I: 59.10
+D: 236.69
+differential_PWM_output: 255
+current bearing: 0.13
+TOTAL_PATH_x: 176
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 271.82
+deltaT: 0.00
+P: 543.64
+I: 59.10
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.13
+TOTAL_PATH_x: 176
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 271.82
+deltaT: 0.00
+P: 543.64
+I: 59.11
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.13
+TOTAL_PATH_x: 176
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 272.82
+deltaT: 0.00
+P: 545.64
+I: 59.11
+D: 235.02
+differential_PWM_output: 255
+current bearing: 0.12
+TOTAL_PATH_x: 177
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 272.82
+deltaT: 0.00
+P: 545.64
+I: 59.12
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.12
+TOTAL_PATH_x: 177
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 272.82
+deltaT: 0.00
+P: 545.64
+I: 59.12
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.12
+TOTAL_PATH_x: 177
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 273.82
+deltaT: 0.00
+P: 547.64
+I: 59.13
+D: 233.64
+differential_PWM_output: 255
+current bearing: 0.11
+TOTAL_PATH_x: 178
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 273.82
+deltaT: 0.00
+P: 547.64
+I: 59.13
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.11
+TOTAL_PATH_x: 178
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 273.82
+deltaT: 0.00
+P: 547.64
+I: 59.14
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.11
+TOTAL_PATH_x: 178
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 274.82
+deltaT: 0.00
+P: 549.64
+I: 59.14
+D: 235.85
+differential_PWM_output: 255
+current bearing: 0.10
+TOTAL_PATH_x: 179
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 274.82
+deltaT: 0.00
+P: 549.64
+I: 59.15
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.10
+TOTAL_PATH_x: 179
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 274.82
+deltaT: 0.00
+P: 549.64
+I: 59.15
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.10
+TOTAL_PATH_x: 179
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 274.82
+deltaT: 0.00
+P: 549.64
+I: 59.16
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.10
+TOTAL_PATH_x: 179
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 275.82
+deltaT: 0.00
+P: 551.64
+I: 59.16
+D: 236.13
+differential_PWM_output: 255
+current bearing: 0.10
+TOTAL_PATH_x: 180
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 275.82
+deltaT: 0.00
+P: 551.64
+I: 59.17
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.10
+TOTAL_PATH_x: 180
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 275.82
+deltaT: 0.00
+P: 551.64
+I: 59.17
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.10
+TOTAL_PATH_x: 180
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 275.82
+deltaT: 0.00
+P: 551.64
+I: 59.17
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.10
+TOTAL_PATH_x: 180
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 276.82
+deltaT: 0.00
+P: 553.64
+I: 59.18
+D: 235.29
+differential_PWM_output: 255
+current bearing: 0.09
+TOTAL_PATH_x: 181
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 276.82
+deltaT: 0.00
+P: 553.64
+I: 59.18
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.09
+TOTAL_PATH_x: 181
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 276.82
+deltaT: 0.00
+P: 553.64
+I: 59.19
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.09
+TOTAL_PATH_x: 181
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 276.82
+deltaT: 0.00
+P: 553.64
+I: 59.19
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.09
+TOTAL_PATH_x: 181
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 276.82
+deltaT: 0.00
+P: 553.64
+I: 59.20
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.09
+TOTAL_PATH_x: 181
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 277.82
+deltaT: 0.00
+P: 555.64
+I: 59.20
+D: 236.41
+differential_PWM_output: 255
+current bearing: 0.08
+TOTAL_PATH_x: 182
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 277.82
+deltaT: 0.00
+P: 555.64
+I: 59.21
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.08
+TOTAL_PATH_x: 182
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 277.82
+deltaT: 0.00
+P: 555.64
+I: 59.21
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.08
+TOTAL_PATH_x: 182
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 277.82
+deltaT: 0.00
+P: 555.64
+I: 59.22
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.08
+TOTAL_PATH_x: 182
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 277.82
+deltaT: 0.00
+P: 555.64
+I: 59.22
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.08
+TOTAL_PATH_x: 182
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 278.82
+deltaT: 0.00
+P: 557.64
+I: 59.23
+D: 237.25
+differential_PWM_output: 255
+current bearing: 0.07
+TOTAL_PATH_x: 183
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 278.82
+deltaT: 0.00
+P: 557.64
+I: 59.23
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.07
+TOTAL_PATH_x: 183
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 278.82
+deltaT: 0.00
+P: 557.64
+I: 59.24
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.07
+TOTAL_PATH_x: 183
+TOTAL_PATH_y: 1
+---
+Rover is turning
+target_angle: -0.79
+angular error: 278.82
+deltaT: 0.00
+P: 557.64
+I: 59.24
+D: 0.00
+differential_PWM_output: 255
+current bearing: 0.07
+TOTAL_PATH_x: 183
+TOTAL_PATH_y: 1
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 252.82
+deltaT: 0.98
+P: 505.64
+I: 64.22
+D: -5.28
+differential_PWM_output: 255
+current bearing: 0.28
+TOTAL_PATH_x: 157
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 226.82
+deltaT: 0.00
+P: 453.64
+I: 64.22
+D: -5895.69
+differential_PWM_output: 255
+current bearing: 0.50
+TOTAL_PATH_x: 131
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 200.82
+deltaT: 0.00
+P: 401.64
+I: 64.22
+D: -6011.56
+differential_PWM_output: 255
+current bearing: 0.71
+TOTAL_PATH_x: 105
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 175.82
+deltaT: 0.00
+P: 351.64
+I: 64.23
+D: -5800.46
+differential_PWM_output: 255
+current bearing: 0.92
+TOTAL_PATH_x: 80
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 149.82
+deltaT: 0.00
+P: 299.64
+I: 64.23
+D: -6088.99
+differential_PWM_output: 255
+current bearing: 1.13
+TOTAL_PATH_x: 54
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 123.82
+deltaT: 0.00
+P: 247.64
+I: 64.23
+D: -6096.13
+differential_PWM_output: 247
+current bearing: 1.34
+TOTAL_PATH_x: 28
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 97.82
+deltaT: 0.00
+P: 195.64
+I: 64.23
+D: -6039.49
+differential_PWM_output: 195
+current bearing: 1.55
+TOTAL_PATH_x: 2
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 64.23
+D: -5861.67
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 46.82
+deltaT: 0.00
+P: 93.64
+I: 64.24
+D: -6025.49
+differential_PWM_output: 93
+current bearing: 1.97
+TOTAL_PATH_x: -49
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: 20.82
+deltaT: 0.00
+P: 41.64
+I: 64.24
+D: -6067.68
+differential_PWM_output: 41
+current bearing: 2.19
+TOTAL_PATH_x: -75
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -5.18
+deltaT: 0.00
+P: -10.36
+I: 64.24
+D: -6060.61
+differential_PWM_output: 38
+current bearing: 2.40
+TOTAL_PATH_x: -101
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -30.18
+deltaT: 0.00
+P: -60.36
+I: 64.24
+D: -5841.12
+differential_PWM_output: 60
+current bearing: 2.60
+TOTAL_PATH_x: -126
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -56.18
+deltaT: 0.00
+P: -112.36
+I: 64.23
+D: -6117.65
+differential_PWM_output: 112
+current bearing: 2.82
+TOTAL_PATH_x: -152
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -78.18
+deltaT: 0.00
+P: -156.36
+I: 64.23
+D: -5110.34
+differential_PWM_output: 156
+current bearing: 3.00
+TOTAL_PATH_x: -174
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -78.18
+deltaT: 0.00
+P: -156.36
+I: 64.23
+D: 0.00
+differential_PWM_output: 156
+current bearing: 3.00
+TOTAL_PATH_x: -174
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -78.18
+deltaT: 0.00
+P: -156.36
+I: 64.23
+D: 0.00
+differential_PWM_output: 156
+current bearing: 3.00
+TOTAL_PATH_x: -174
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -79.18
+deltaT: 0.00
+P: -158.36
+I: 64.23
+D: -233.37
+differential_PWM_output: 158
+current bearing: 3.01
+TOTAL_PATH_x: -175
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -79.18
+deltaT: 0.00
+P: -158.36
+I: 64.23
+D: 0.00
+differential_PWM_output: 158
+current bearing: 3.01
+TOTAL_PATH_x: -175
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -79.18
+deltaT: 0.00
+P: -158.36
+I: 64.23
+D: 0.00
+differential_PWM_output: 158
+current bearing: 3.01
+TOTAL_PATH_x: -175
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -80.18
+deltaT: 0.00
+P: -160.36
+I: 64.22
+D: -234.74
+differential_PWM_output: 160
+current bearing: 3.01
+TOTAL_PATH_x: -176
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -80.18
+deltaT: 0.00
+P: -160.36
+I: 64.22
+D: 0.00
+differential_PWM_output: 160
+current bearing: 3.01
+TOTAL_PATH_x: -176
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -80.18
+deltaT: 0.00
+P: -160.36
+I: 64.22
+D: 0.00
+differential_PWM_output: 160
+current bearing: 3.01
+TOTAL_PATH_x: -176
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -81.18
+deltaT: 0.00
+P: -162.36
+I: 64.22
+D: -233.92
+differential_PWM_output: 162
+current bearing: 3.02
+TOTAL_PATH_x: -177
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -81.18
+deltaT: 0.00
+P: -162.36
+I: 64.22
+D: 0.00
+differential_PWM_output: 162
+current bearing: 3.02
+TOTAL_PATH_x: -177
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -81.18
+deltaT: 0.00
+P: -162.36
+I: 64.22
+D: 0.00
+differential_PWM_output: 162
+current bearing: 3.02
+TOTAL_PATH_x: -177
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -82.18
+deltaT: 0.00
+P: -164.36
+I: 64.22
+D: -235.29
+differential_PWM_output: 164
+current bearing: 3.03
+TOTAL_PATH_x: -178
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -82.18
+deltaT: 0.00
+P: -164.36
+I: 64.21
+D: 0.00
+differential_PWM_output: 164
+current bearing: 3.03
+TOTAL_PATH_x: -178
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -82.18
+deltaT: 0.00
+P: -164.36
+I: 64.21
+D: 0.00
+differential_PWM_output: 164
+current bearing: 3.03
+TOTAL_PATH_x: -178
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -82.18
+deltaT: 0.00
+P: -164.36
+I: 64.21
+D: 0.00
+differential_PWM_output: 164
+current bearing: 3.03
+TOTAL_PATH_x: -178
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -83.18
+deltaT: 0.00
+P: -166.36
+I: 64.21
+D: -233.64
+differential_PWM_output: 166
+current bearing: 3.04
+TOTAL_PATH_x: -179
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -83.18
+deltaT: 0.00
+P: -166.36
+I: 64.21
+D: 0.00
+differential_PWM_output: 166
+current bearing: 3.04
+TOTAL_PATH_x: -179
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -83.18
+deltaT: 0.00
+P: -166.36
+I: 64.21
+D: 0.00
+differential_PWM_output: 166
+current bearing: 3.04
+TOTAL_PATH_x: -179
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -84.18
+deltaT: 0.00
+P: -168.36
+I: 64.21
+D: -236.13
+differential_PWM_output: 168
+current bearing: 3.05
+TOTAL_PATH_x: -180
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -84.18
+deltaT: 0.00
+P: -168.36
+I: 64.20
+D: 0.00
+differential_PWM_output: 168
+current bearing: 3.05
+TOTAL_PATH_x: -180
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -84.18
+deltaT: 0.00
+P: -168.36
+I: 64.20
+D: 0.00
+differential_PWM_output: 168
+current bearing: 3.05
+TOTAL_PATH_x: -180
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -84.18
+deltaT: 0.00
+P: -168.36
+I: 64.20
+D: 0.00
+differential_PWM_output: 168
+current bearing: 3.05
+TOTAL_PATH_x: -180
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -85.18
+deltaT: 0.00
+P: -170.36
+I: 64.20
+D: -233.92
+differential_PWM_output: 170
+current bearing: 3.05
+TOTAL_PATH_x: -181
+TOTAL_PATH_y: -14
+---
+Rover is turning
+target_angle: -0.79
+angular error: -85.18
+deltaT: 0.00
+P: -170.36
+I: 64.20
+D: 0.00
+differential_PWM_output: 170
+current bearing: 3.05
+TOTAL_PATH_x: -181
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -85.18
+deltaT: 0.00
+P: -170.36
+I: 64.20
+D: 0.00
+differential_PWM_output: 170
+current bearing: 3.05
+TOTAL_PATH_x: -181
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -85.18
+deltaT: 0.00
+P: -170.36
+I: 64.20
+D: 0.00
+differential_PWM_output: 170
+current bearing: 3.05
+TOTAL_PATH_x: -181
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -86.18
+deltaT: 0.00
+P: -172.36
+I: 64.19
+D: -234.19
+differential_PWM_output: 172
+current bearing: 3.06
+TOTAL_PATH_x: -182
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -86.18
+deltaT: 0.00
+P: -172.36
+I: 64.19
+D: 0.00
+differential_PWM_output: 172
+current bearing: 3.06
+TOTAL_PATH_x: -182
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -86.18
+deltaT: 0.00
+P: -172.36
+I: 64.19
+D: 0.00
+differential_PWM_output: 172
+current bearing: 3.06
+TOTAL_PATH_x: -182
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -86.18
+deltaT: 0.00
+P: -172.36
+I: 64.19
+D: 0.00
+differential_PWM_output: 172
+current bearing: 3.06
+TOTAL_PATH_x: -182
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -86.18
+deltaT: 0.00
+P: -172.36
+I: 64.19
+D: 0.00
+differential_PWM_output: 172
+current bearing: 3.06
+TOTAL_PATH_x: -182
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -87.18
+deltaT: 0.00
+P: -174.36
+I: 64.19
+D: -234.19
+differential_PWM_output: 174
+current bearing: 3.07
+TOTAL_PATH_x: -183
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -87.18
+deltaT: 0.00
+P: -174.36
+I: 64.19
+D: 0.00
+differential_PWM_output: 174
+current bearing: 3.07
+TOTAL_PATH_x: -183
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -87.18
+deltaT: 0.00
+P: -174.36
+I: 64.18
+D: 0.00
+differential_PWM_output: 174
+current bearing: 3.07
+TOTAL_PATH_x: -183
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -87.18
+deltaT: 0.00
+P: -174.36
+I: 64.18
+D: 0.00
+differential_PWM_output: 174
+current bearing: 3.07
+TOTAL_PATH_x: -183
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -87.18
+deltaT: 0.00
+P: -174.36
+I: 64.18
+D: 0.00
+differential_PWM_output: 174
+current bearing: 3.07
+TOTAL_PATH_x: -183
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -87.18
+deltaT: 0.00
+P: -174.36
+I: 64.18
+D: 0.00
+differential_PWM_output: 174
+current bearing: 3.07
+TOTAL_PATH_x: -183
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -87.18
+deltaT: 0.00
+P: -174.36
+I: 64.18
+D: 0.00
+differential_PWM_output: 174
+current bearing: 3.07
+TOTAL_PATH_x: -183
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -88.18
+deltaT: 0.00
+P: -176.36
+I: 64.18
+D: -234.19
+differential_PWM_output: 176
+current bearing: 3.08
+TOTAL_PATH_x: -184
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -88.18
+deltaT: 0.00
+P: -176.36
+I: 64.18
+D: 0.00
+differential_PWM_output: 176
+current bearing: 3.08
+TOTAL_PATH_x: -184
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -88.18
+deltaT: 0.00
+P: -176.36
+I: 64.17
+D: 0.00
+differential_PWM_output: 176
+current bearing: 3.08
+TOTAL_PATH_x: -184
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -88.18
+deltaT: 0.00
+P: -176.36
+I: 64.17
+D: 0.00
+differential_PWM_output: 176
+current bearing: 3.08
+TOTAL_PATH_x: -184
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -88.18
+deltaT: 0.00
+P: -176.36
+I: 64.17
+D: 0.00
+differential_PWM_output: 176
+current bearing: 3.08
+TOTAL_PATH_x: -184
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -88.18
+deltaT: 0.00
+P: -176.36
+I: 64.17
+D: 0.00
+differential_PWM_output: 176
+current bearing: 3.08
+TOTAL_PATH_x: -184
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -88.18
+deltaT: 0.00
+P: -176.36
+I: 64.17
+D: 0.00
+differential_PWM_output: 176
+current bearing: 3.08
+TOTAL_PATH_x: -184
+TOTAL_PATH_y: -15
+---
+Rover is turning
+target_angle: -0.79
+angular error: -88.18
+deltaT: 0.00
+P: -176.36
+I: 64.17
+D: 0.00
+differential_PWM_output: 176
+current bearing: 3.08
+TOTAL_PATH_x: -184
+TOTAL_PATH_y: -15
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: -63.18
+deltaT: 0.99
+P: -126.36
+I: 62.91
+D: 5.03
+differential_PWM_output: 126
+current bearing: 2.87
+TOTAL_PATH_x: -159
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: -37.18
+deltaT: 0.00
+P: -74.36
+I: 62.91
+D: 5889.02
+differential_PWM_output: 74
+current bearing: 2.66
+TOTAL_PATH_x: -133
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: -11.18
+deltaT: 0.00
+P: -22.36
+I: 62.91
+D: 6018.52
+differential_PWM_output: 38
+current bearing: 2.45
+TOTAL_PATH_x: -107
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 13.82
+deltaT: 0.00
+P: 27.64
+I: 62.91
+D: 5868.54
+differential_PWM_output: 38
+current bearing: 2.24
+TOTAL_PATH_x: -82
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 39.82
+deltaT: 0.00
+P: 79.64
+I: 62.91
+D: 6110.46
+differential_PWM_output: 79
+current bearing: 2.03
+TOTAL_PATH_x: -56
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 62.91
+D: 5963.30
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 70.82
+deltaT: 0.00
+P: 141.64
+I: 62.91
+D: 1137.66
+differential_PWM_output: 141
+current bearing: 1.78
+TOTAL_PATH_x: -25
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 70.82
+deltaT: 0.00
+P: 141.64
+I: 62.91
+D: 0.00
+differential_PWM_output: 141
+current bearing: 1.78
+TOTAL_PATH_x: -25
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 70.82
+deltaT: 0.00
+P: 141.64
+I: 62.91
+D: 0.00
+differential_PWM_output: 141
+current bearing: 1.78
+TOTAL_PATH_x: -25
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 70.82
+deltaT: 0.00
+P: 141.64
+I: 62.92
+D: 0.00
+differential_PWM_output: 141
+current bearing: 1.78
+TOTAL_PATH_x: -25
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 70.82
+deltaT: 0.00
+P: 141.64
+I: 62.92
+D: 0.00
+differential_PWM_output: 141
+current bearing: 1.78
+TOTAL_PATH_x: -25
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 70.82
+deltaT: 0.00
+P: 141.64
+I: 62.92
+D: 0.00
+differential_PWM_output: 141
+current bearing: 1.78
+TOTAL_PATH_x: -25
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 70.82
+deltaT: 0.00
+P: 141.64
+I: 62.92
+D: 0.00
+differential_PWM_output: 141
+current bearing: 1.78
+TOTAL_PATH_x: -25
+TOTAL_PATH_y: 6
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.92
+D: 234.19
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.92
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.92
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.92
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.93
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.93
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.93
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.93
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.93
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.93
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.93
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.93
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.94
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 62.94
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.94
+D: 233.10
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.94
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.94
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.94
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.94
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.94
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.95
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.95
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.95
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 7
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.95
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.95
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.95
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.95
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.95
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 62.96
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.96
+D: 234.19
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.96
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.96
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.96
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.96
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.96
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.96
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.97
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.97
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.97
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.97
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.97
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.97
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.97
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.97
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.98
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.98
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+---
+Rover is turning
+target_angle: -0.79
+angular error: 73.82
+deltaT: 0.00
+P: 147.64
+I: 62.98
+D: 0.00
+differential_PWM_output: 147
+current bearing: 1.75
+TOTAL_PATH_x: -22
+TOTAL_PATH_y: 8
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.97
+P: 131.64
+I: 64.26
+D: -1.64
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.26
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.26
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.26
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.26
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.27
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 19
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.28
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.29
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 65.82
+deltaT: 0.00
+P: 131.64
+I: 64.30
+D: 0.00
+differential_PWM_output: 131
+current bearing: 1.82
+TOTAL_PATH_x: -30
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.31
+D: 233.92
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.31
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.31
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.31
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.31
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.31
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.31
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.31
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 20
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.32
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.33
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+---
+Rover is turning
+target_angle: -0.79
+angular error: 66.82
+deltaT: 0.00
+P: 133.64
+I: 64.33
+D: 0.00
+differential_PWM_output: 133
+current bearing: 1.81
+TOTAL_PATH_x: -29
+TOTAL_PATH_y: 21
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.97
+P: 143.64
+I: 65.73
+D: 1.03
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.73
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.73
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.73
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.73
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.73
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.73
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.73
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.74
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.74
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.74
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.74
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.74
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.74
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.74
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.74
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.75
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.76
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.76
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.76
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.76
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.76
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.76
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.76
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.76
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.77
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.77
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.77
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.77
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.77
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.77
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.77
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.77
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.78
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.78
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.78
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.78
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.78
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.78
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.78
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.78
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.79
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.79
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.79
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.79
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.79
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.79
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.79
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.79
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.80
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 65.80
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 27
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.95
+P: 143.64
+I: 67.17
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.17
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.17
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.17
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.17
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.17
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.17
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.17
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.18
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.18
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.18
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.18
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.18
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.18
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.18
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.18
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.19
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.19
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.19
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.19
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.19
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.19
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.19
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.19
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.20
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.20
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.20
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.20
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.20
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.20
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.20
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.20
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.21
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.21
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.21
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.21
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.21
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.21
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.21
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.21
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.22
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.23
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.23
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.23
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.23
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.23
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.23
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.23
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.23
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.24
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.24
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 67.24
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.97
+P: 143.64
+I: 68.64
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.64
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.64
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.64
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.64
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.64
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.64
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.65
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.65
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.65
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.65
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.65
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.65
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.65
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.65
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.66
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.66
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.66
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.66
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.66
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.66
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.66
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.66
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.67
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.67
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.67
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.67
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.67
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.67
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.67
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.67
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.68
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.68
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.68
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.68
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.68
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.68
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.68
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.68
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.69
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.69
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.69
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.69
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.69
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.69
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.69
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.69
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.70
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.71
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.71
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 68.71
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.95
+P: 143.64
+I: 70.08
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.08
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.08
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.08
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.08
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.08
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.09
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.09
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.09
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.09
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.09
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.09
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.09
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.09
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.10
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.11
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.11
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.11
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.11
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.11
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.11
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.11
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.11
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.12
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.12
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.12
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.12
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.12
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.12
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.12
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.12
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.13
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.13
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.13
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.13
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.13
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.13
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.13
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.13
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.14
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.14
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.14
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.14
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.14
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.14
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.14
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.14
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.15
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.15
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.15
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 71.82
+deltaT: 0.00
+P: 143.64
+I: 70.15
+D: 0.00
+differential_PWM_output: 143
+current bearing: 1.77
+TOTAL_PATH_x: -24
+TOTAL_PATH_y: 26
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.95
+P: 145.64
+I: 71.54
+D: 0.21
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.54
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.54
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.54
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.54
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.54
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.55
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.55
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.55
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.55
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.55
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.55
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.55
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.55
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.56
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.56
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.56
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.56
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.56
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.56
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.56
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.56
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.57
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.58
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.58
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.58
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.58
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.58
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.58
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.58
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.58
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.59
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.59
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.59
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.59
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.59
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.59
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.59
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.59
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.60
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.60
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.60
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.60
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.60
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.60
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.60
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.60
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.61
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.61
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.61
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 72.82
+deltaT: 0.00
+P: 145.64
+I: 71.61
+D: 0.00
+differential_PWM_output: 145
+current bearing: 1.76
+TOTAL_PATH_x: -23
+TOTAL_PATH_y: 26
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.95
+P: 149.64
+I: 73.04
+D: 0.42
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.04
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.04
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.04
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.04
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.04
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.04
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.05
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.05
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.05
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.05
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.05
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.05
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.05
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.05
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.06
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.06
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.06
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.06
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.06
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.06
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.06
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.06
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.07
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.07
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.07
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.07
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.07
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.07
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.07
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.07
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.08
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.08
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.08
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.08
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.08
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.08
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.08
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.08
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.09
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.09
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.09
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.09
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.09
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.09
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.09
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.10
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.10
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.10
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.10
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.10
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.10
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.10
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.10
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.11
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.11
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.11
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.11
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 73.11
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.95
+P: 149.64
+I: 74.54
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.54
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.54
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.54
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.54
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.54
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.54
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.55
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.55
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.55
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.55
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.55
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.55
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.55
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.56
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.56
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.56
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.56
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.56
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.56
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.56
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.56
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.57
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.57
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.57
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.57
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.57
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.57
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.57
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.57
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.58
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.58
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.58
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.58
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.58
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.58
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.58
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.58
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.59
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.59
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.59
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.59
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.59
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.59
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.59
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.59
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.60
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.60
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.60
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.60
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.60
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.60
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.60
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.60
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.61
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.61
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.61
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.61
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.61
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 74.82
+deltaT: 0.00
+P: 149.64
+I: 74.61
+D: 0.00
+differential_PWM_output: 149
+current bearing: 1.74
+TOTAL_PATH_x: -21
+TOTAL_PATH_y: 26
+
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.97
+P: 151.64
+I: 76.09
+D: 0.21
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.09
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.09
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.09
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.09
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.10
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.10
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.10
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.10
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.10
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.10
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.10
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.10
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.11
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.11
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.11
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.11
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.11
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.11
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.11
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.12
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.12
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.12
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.12
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.12
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.12
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.12
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.12
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.13
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.13
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.13
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.13
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.13
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.13
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.13
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.13
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.14
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.14
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.14
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.14
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_PATH_x: -20
+TOTAL_PATH_y: 26
+---
+Rover is turning
+target_angle: -0.79
+angular error: 75.82
+deltaT: 0.00
+P: 151.64
+I: 76.14
+D: 0.00
+differential_PWM_output: 151
+current bearing: 1.73
+TOTAL_P
