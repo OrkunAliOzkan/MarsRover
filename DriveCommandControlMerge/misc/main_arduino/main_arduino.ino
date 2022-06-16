@@ -1,9 +1,11 @@
 // PIO includes
-#include <SPI.h>
-#include <Wire.h>
-#include <WiFi.h>
+  #include <SPI.h>
+  #include <Wire.h>
+  #include <WiFi.h>
+  #include <WiFiMulti.h>
 
 /////////////////////////////////////////////////////////////////
+
 //  Optical flow sensor parameters
 //slave select/chip select (ESP32 pin number)
   #define PIN_SS                  5 
@@ -31,111 +33,123 @@
 
   #define RADIUS 122
 /////////////////////////////////////////////////////////////////
-//  Name of network
-//    #define WIFI_SSID       "NOWTVII8F7"    
-//  Password
-//    #define WIFI_PASSWORD   "smuqjz6jYsNW"     
-//  Name of network
-//      #define WIFI_SSID       "SIVA_LAPTOP"    
-//  Password
-//      #define WIFI_PASSWORD   "sivashanth"
-//  Name of network
-//    #define WIFI_SSID       "Orkun's Laptop"    
-//  Password
-//    #define WIFI_PASSWORD   "484f17Ya"
+
 //  Name of network
     #define WIFI_SSID       "bet-hotspot"    
 //  Password
     #define WIFI_PASSWORD   "helloworld"
-//  Name of network
-//    #define WIFI_SSID       "CommunityFibre10Gb_003D7"    
-//  Password
-//    #define WIFI_PASSWORD   "gxqxs3c3fs" 
+/*  
+  //  Name of network
+  //    #define WIFI_SSID       "NOWTVII8F7"    
+  //  Password
+  //    #define WIFI_PASSWORD   "smuqjz6jYsNW"     
+  //  Name of network
+  //      #define WIFI_SSID       "SIVA_LAPTOP"    
+  //  Password
+  //      #define WIFI_PASSWORD   "sivashanth"
+  //  Name of network
+  //    #define WIFI_SSID       "Orkun's Laptop"    
+  //  Password
+  //    #define WIFI_PASSWORD   "484f17Ya"
+  //  Name of network
+  //    #define WIFI_SSID       "CommunityFibre10Gb_003D7"    
+  //  Password
+  //  #define WIFI_PASSWORD   "gxqxs3c3fs" 
+*/
+
 /////////////////////////////////////////////////////////////////
 
 // Motor Controller Pin mappings
-#define PWMA 17
-#define PWMB 2
-#define AIN1 14
-#define AIN2 16
-#define BIN1 4
-#define BIN2 15
+  #define PWMA 17
+  #define PWMB 2
+  #define AIN1 14
+  #define AIN2 16
+  #define BIN1 4
+  #define BIN2 15
 
 /////////////////////////////////////////////////////////////////
 
 // Starting coordinates
-double A_x = 0; // TODO: Define at end of movement
-double A_y = 0; // TODO: Define at end of movement
+  double A_x = 0; // TODO: Define at end of movement
+  double A_y = 0; // TODO: Define at end of movement
 
 // Destination coordinates
-double B_x = 0;
-double B_y = 750;
+  double B_x = 0;
+  double B_y = 750;
 
 // Current position and bearing
-double current_x = 100;
-double current_y = 100;
-double current_bearing = 0;
+  double current_x = 100;
+  double current_y = 100;
+  double current_bearing = 0;
 
 /////////////////////////////////////////////////////////////////
+
 //  min max PWM
   #define MIN_PWM 38
   #define MAX_PWM 220
 
 //  Drive parameters
-int MotorSpeedA = 0; //  Final input to motors
-int MotorSpeedB = 0; //  Final input to motors
+  int MotorSpeedA = 0; //  Final input to motors
+  int MotorSpeedB = 0; //  Final input to motors
 
 /////////////////////////////////////////////////////////////////
 
 //  Variables for OFS_Cartesian()
-int prescaled_tx = 0;
-int prescaled_ty = 0;
+  int prescaled_tx = 0;
+  int prescaled_ty = 0;
 
-int totalpath_x_int = 0; // function output - total path in x component of OFS
-int totalpath_y_int = 0; // function output - total path in y component of OFS
+  int totalpath_x_int = 0; // function output - total path in x component of OFS
+  int totalpath_y_int = 0; // function output - total path in y component of OFS
 
 /////////////////////////////////////////////////////////////////
 
 // Variables for OFS_Angular
-float abs_theta = 0;
-float totalpath_x_flt = 0; // postscaling x displacement
-float totalpath_y_flt = 0; // postscaling y displacement
+  float abs_theta = 0;
+  float totalpath_x_flt = 0; // postscaling x displacement
+  float totalpath_y_flt = 0; // postscaling y displacement
 
 /////////////////////////////////////////////////////////////////
 
 //  Angle Control: rotation
-float angular_error = 0;
-float angular_error_prev = 0;
-float target_angle = 0;
+  float angular_error = 0;
+  float angular_error_prev = 0;
+  float target_angle = 0;
 
-float p_term_angle;
-float i_term_angle;
-float d_term_angle;
+  float p_term_angle;
+  float i_term_angle;
+  float d_term_angle;
 
-bool Rot_Ctrl = 0;//  Informed by server
+  bool Rot_Ctrl = 0;//  Informed by server
 
 /////////////////////////////////////////////////////////////////
 
 //  PID for turning
-float Kp_rotation = 2;
-float Ki_rotation = 0.2;
-float Kd_rotation = 0.2;
+  float Kp_rotation = 2;
+  float Ki_rotation = 0.2;
+  float Kd_rotation = 0.2;
 
 /////////////////////////////////////////////////////////////////
 
 // PID for straight line
-float Kp_deviation = 3;
-float Ki_deviation = 0.05;
-float Kd_deviation = 0.05;
+  float Kp_deviation = 3;
+  float Ki_deviation = 0.05;
+  float Kd_deviation = 0.05;
+//  PWM output
+  int differential_PWM_output;
 
-struct MD
-{
-    byte motion;
-    char dx, dy;
-    byte squal;
-    word shutter;
-    byte max_pix;
-};
+  struct MD
+  {
+      byte motion;
+      char dx, dy;
+      byte squal;
+      word shutter;
+      byte max_pix;
+  };
+
+/////////////////////////////////////////////////////////////////
+//  OFS Functions and Variables
+
+  MD md;
 
 int convTwosComp(int b)
 {
@@ -234,31 +248,48 @@ void OFS_Angular(
         //Serial.println("Total x: " + String(*total_x));
 }
 
-long currT = 0;
-long prevT = 0;
-float deltaT = 0;
+//  update variables
+  long currT = 0;
+  long prevT = 0;
+  float deltaT = 0;
 
 /////////////////////////////////////////////////////////////////
 
-int differential_PWM_output;
-
-/////////////////////////////////////////////////////////////////
 // PID for displacement
 
-float Kp_displacement = 3;
-float Ki_displacement = 0;
-float Kd_displacement = 0.05;
+  float Kp_displacement = 3;
+  float Ki_displacement = 0;
+  float Kd_displacement = 0.05;
 
-int displacement_PWM_output = 128;  //  Displacement controllers PWM output
-int error_displacement = 0;
-int target_displacement = 0;
+  int displacement_PWM_output = 128;  //  Displacement controllers PWM output
+  int displacement_error = 0;
+  int target_displacement = 0;
 
-MD md;
+
 /////////////////////////////////////////////////////////////////
-String post_data = "";
 
-int arrived = 0;
-int turning_arrived = 0;
+//  tcp related variables
+String tcp_received = "";
+String tcp_send = "";
+
+/////////////////////////////////////////////////////////////////
+
+//  Wifi Initialisation
+WiFiMulti WiFiMulti;
+WiFiClient client; // Use WiFiClient class to create TCP connections
+const uint16_t port = 8080;
+const char * host = "146.169.171.197"; // ip or dns
+
+// WiFi timeout variables (reliability)
+  long wifi_last_connect_attempt = 0;
+  long wifi_connect_timeout = 3000;
+// tcp timeout variables (reliability)
+  long tcp_last_connect_attempt = 0;
+  long tcp_connect_timeout = 3000;
+  
+  long last_TCP_post = 0;
+  long TCP_post_period = 50;
+
 /////////////////////////////////////////////////////////////////
 //  automation
 /*
@@ -306,60 +337,117 @@ int turning_arrived = 0;
 
 void setup()
 {
-  Serial.begin(115200);
-  Wire.begin();
-/////////////////////////////////////////////////////////////////
-  pinMode(PWMA, OUTPUT);
-  pinMode(PWMB, OUTPUT);
-  pinMode(AIN1, OUTPUT);
-  pinMode(AIN2, OUTPUT);
-  pinMode(BIN1, OUTPUT);
-  pinMode(BIN2, OUTPUT);
-/////////////////////////////////////////////////////////////////
-  pinMode(PIN_SS,OUTPUT); //(CHIP SELECT)
-  pinMode(PIN_MISO,INPUT); //(MASTER IN, SLAVE OUT)
-  pinMode(PIN_MOSI,OUTPUT); //(MASTER OUT, SLAVE IN)
-  pinMode(PIN_SCK,OUTPUT); //(CLOCK)
-/////////////////////////////////////////////////////////////////
-  SPI.begin();
-  //sets SPI clock to 1/32 of the ESP32's clock
-  SPI.setClockDivider(SPI_CLOCK_DIV32); 
-  //in SPI mode 3, data is sampled on the 
-  //falling edge and shifted out on the rising edge
-  SPI.setDataMode(SPI_MODE3); 
-  SPI.setBitOrder(MSBFIRST);
+    Serial.begin(115200);
+    Wire.begin();
+    /////////////////////////////////////////////////////////////////
+    // Setting pinouts for motors
+    pinMode(PWMA, OUTPUT);
+    pinMode(PWMB, OUTPUT);
+    pinMode(AIN1, OUTPUT);
+    pinMode(AIN2, OUTPUT);
+    pinMode(BIN1, OUTPUT);
+    pinMode(BIN2, OUTPUT);
+    /////////////////////////////////////////////////////////////////
+    // Pinouts for OFS
+    pinMode(PIN_SS,OUTPUT); //(CHIP SELECT)
+    pinMode(PIN_MISO,INPUT); //(MASTER IN, SLAVE OUT)
+    pinMode(PIN_MOSI,OUTPUT); //(MASTER OUT, SLAVE IN)
+    pinMode(PIN_SCK,OUTPUT); //(CLOCK)
+    /////////////////////////////////////////////////////////////////
+    //  SPI Initialisation
+    SPI.begin();
+    //sets SPI clock to 1/32 of the ESP32's clock
+    SPI.setClockDivider(SPI_CLOCK_DIV32); 
+    //in SPI mode 3, data is sampled on the 
+    //falling edge and shifted out on the rising edge
+    SPI.setDataMode(SPI_MODE3); 
+    SPI.setBitOrder(MSBFIRST);
 
-  if(mousecam_init()==-1)
-  {
-    //Serial.println("Mouse cam failed to init");
-    while(1);
-  }
-/////////////////////////////////////////////////////////////////
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  Serial.println("Initializing");
+    if(mousecam_init()==-1)
+    {
+        //Serial.println("Mouse cam failed to init");
+        while(1);
+    }
+    /////////////////////////////////////////////////////////////////
+    //  Connecting to Wifi
+    WiFiMulti.addAP("bet-hotspot", "helloworld");
 
-  delay(3000);
-  turning_arrived = 1;
-  arrived = 1;
+    Serial.println();
+    Serial.println();
+    Serial.print("Waiting for WiFi... ");
+
+    while(WiFiMulti.run() != WL_CONNECTED) {
+        Serial.print(".");
+        delay(500);
+    }
+
+    Serial.println("\n");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
+
+    delay(500);
+    /////////////////////////////////////////////////////////////////
+    //  Connecting to TCP Server
+    if (!client.connect(host, port)) {
+        Serial.println("Connection to TCP Server failed");
+        Serial.println("Trying again in 500ms...");
+        delay(500);
+    }
+    Serial.println("Connected to Server\n");
 }
 
-int rotation_tuning = 1;
-int straight_line_tuning = 1;
+//  state mashine parameters for the drive process (stop turn go)
+  int turning_complete = 1;
+  int straight_line_complete = 1;
 
-bool command_received = 1;
-bool testingifread = 0;
-
-int turning_complete = 1;
-int straight_line_complete = 1;
 void loop()
 {
-    post_data = "";
+    // //-------- Uncomment to ensure reliability --------//
+    // // check if connected to WIFI
+    // if (WiFi.status() == WL_CONNECTED) {
+    //     // check if connected to server
+    //     if (client.connected()) {
+            
+    //     } else if(millis() - wifi_last_connect_attempt > wifi_connect_timeout) {
+
+    //     }
+    // } else if (millis() - wifi_last_connect_attempt > wifi_connect_timeout) {
+    //     WiFiMulti.run();
+    //     wifi_connect_timeout = millis();
+    // }
+    // //-----------------------------------------------//
+    
+    // Periodically send data back to server
+    if (millis() - last_TCP_post > TCP_post_period) {
+        Serial.println(tcp_send);
+        client.print(tcp_send);
+        last_TCP_post = millis();
+    }
+
+    // // checks if there is a message from server in buffer
+    // if (client.available() > 5) {
+    //     //read back one line from the server
+    //     // Serial.println("reading buffer");
+    //     tcp_received = client.readStringUntil('\r');
+    //     // Serial.println(line);
+    //     bool new_dest;
+    //     if (new_dest) {
+            
+    //     }
+    // }
+
+    tcp_send = "";
     if (turning_complete && straight_line_complete) {
         target_angle = (45.0 / 180.0) * PI;
         A_y = 0;
         A_x = 0;
         B_y = 1000;
         B_x = 0;
+        /*
+        //  tcp getting json data
+
+        */
         target_displacement = sqrt(pow(B_y - A_y, 2) + pow(B_x - A_x, 2));
         turning_complete = 0;
         straight_line_complete = 0;
@@ -387,8 +475,8 @@ void loop()
             totalpath_x_int = 0;
             totalpath_y_int = 0;
 
-            post_data = "-------------------------------------------------------\n";
-            post_data += ("Turning Complete\n");
+            tcp_send = "---\n";
+            tcp_send += ("Turning Complete\n");
         } else {
             // turning not complete
             currT = micros();
@@ -427,34 +515,34 @@ void loop()
         }
 
         // Debugging Messages
-        post_data += "-------------------------------------------------------\n";
-        post_data +=("Rover is turning");
-        post_data += "\n";
-        post_data +=("target_angle: " + String(target_angle));
-        post_data += "\n";
-        post_data +=("angular error: " + String(angular_error));
-        post_data += "\n";
-        post_data +=("deltaT: " + String(deltaT));
-        post_data += "\n";
-        post_data +=("P: " + String(p_term_angle * Kp_rotation));
-        post_data += "\n";
-        post_data +=("I: " + String(i_term_angle * Ki_rotation));
-        post_data += "\n";
-        post_data +=("D: " + String(d_term_angle * Kd_rotation));
-        post_data += "\n";
-        post_data +=("differential_PWM_output: " + String(differential_PWM_output));
-        post_data += "\n";
-        post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
-        post_data += "\n";
-        post_data +=("TOTAL_PATH_y: " + String(totalpath_y_int));
-        post_data += "\n";
+        tcp_send += "---\n";
+        tcp_send +=("Rover is turning");
+        tcp_send += "\n";
+        tcp_send +=("target_angle: " + String(target_angle));
+        tcp_send += "\n";
+        tcp_send +=("angular error: " + String(angular_error));
+        tcp_send += "\n";
+        tcp_send +=("deltaT: " + String(deltaT));
+        tcp_send += "\n";
+        tcp_send +=("P: " + String(p_term_angle * Kp_rotation));
+        tcp_send += "\n";
+        tcp_send +=("I: " + String(i_term_angle * Ki_rotation));
+        tcp_send += "\n";
+        tcp_send +=("D: " + String(d_term_angle * Kd_rotation));
+        tcp_send += "\n";
+        tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+        tcp_send += "\n";
 
     } else if (!straight_line_complete) {
     
         OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
-        error_displacement = target_displacement - totalpath_y_int;
+        displacement_error = target_displacement - totalpath_y_int;
         
-        if (abs(error_displacement) < 10) {
+        if (abs(displacement_error) < 10) {
             // brake when reached
             analogWrite(PWMA, 0);  
             analogWrite(PWMB, 0);
@@ -475,11 +563,11 @@ void loop()
             totalpath_x_int = 0;
             totalpath_y_int = 0;
 
-            post_data = "-------------------------------------------------------\n";
-            post_data += ("Straight Line Complete\n");
+            tcp_send = "---\n";
+            tcp_send += ("Straight Line Complete\n");
         } else {
             //  y-axis pid controller
-            displacement_PWM_output = Kp_displacement * error_displacement;
+            displacement_PWM_output = Kp_displacement * displacement_error;
             //  guards
             displacement_PWM_output = (displacement_PWM_output > MAX_PWM) ? (MAX_PWM) : (displacement_PWM_output);
             displacement_PWM_output = (displacement_PWM_output < MIN_PWM) ?  (MIN_PWM)  : (displacement_PWM_output);
@@ -522,20 +610,20 @@ void loop()
         }
 
     //  debug content
-        post_data +="-------------------------------------------------------\n";
-        post_data +=("Angular Error: " + String(angular_error));
-        post_data += "\n";
-        post_data +=("differential_PWM_output: " + String(differential_PWM_output));
-        post_data += "\n";
-        post_data +=("TOTAL_PATH_x: " + String(totalpath_x_int));
-        post_data += "\n";
-        post_data +=("TOTAL_PATH_y: " + String(totalpath_y_int));
-        post_data += "\n";
-        post_data +=("MotorSpeedA: " + String(MotorSpeedA));
-        post_data += "\n";
-        post_data +=("MotorSpeedB: " + String(MotorSpeedB));
-        post_data += "\n";
+        tcp_send +="---\n";
+        tcp_send +=("Angular Error: " + String(angular_error));
+        tcp_send += "\n";
+        tcp_send +=("Displacement Error: " + String(displacement_error));
+        tcp_send += "\n";
+        tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+        tcp_send += "\n";
+        tcp_send +=("MotorSpeedA: " + String(MotorSpeedA));
+        tcp_send += "\n";
+        tcp_send +=("MotorSpeedB: " + String(MotorSpeedB));
+        tcp_send += "\n";
     }
-
-    Serial.println(post_data);
 }
