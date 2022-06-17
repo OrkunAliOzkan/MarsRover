@@ -1,6 +1,9 @@
 canvas = document.getElementById('mapCanvas');
 ctx = canvas.getContext("2d");
 
+const canvas_height = 600;
+const canvas_width = 600;
+
 function toRadians(degrees) {
     return Math.PI / 180 * degrees;
 }
@@ -15,7 +18,11 @@ rover.src = "tank.png";   // load image
 flag.src = "flag.png";
 
 function initRover(){
-    drawRover({"posX": 0, "posY": canvas.height - 160, "angle": 0});
+    drawRover({"posX": 0, "posY": 0, "angle": 90});
+}
+
+function arena_to_map(_x, _y) {
+    return {x: _x, y: 600 - _y};
 }
 
 rover.onload = initRover;
@@ -23,17 +30,19 @@ rover.onload = initRover;
 var state;
 
 function drawRover(roverEntity) {
-    ctx.translate( roverEntity.posX + rover.width/2, roverEntity.posY + rover.height/2);
+    const {x, y} = arena_to_map(roverEntity.posX, roverEntity.posY);
+    ctx.translate( x + rover.width/2, y + rover.height/2);
     ctx.rotate(roverEntity.angle * Math.PI / 180);
     ctx.drawImage(rover, -rover.width/2, -rover.width/2, rover.width/2, rover.width/2);
     ctx.rotate(-1 * roverEntity.angle * Math.PI / 180);        
-    ctx.translate( -1 * roverEntity.posX - rover.width/2, -1 * roverEntity.posY - rover.height/2);
+    ctx.translate( -1 * x - rover.width/2, -1 * y - rover.height/2);
 }
 
-function drawAlien(alienEntity) {
+function drawAlien(alienEntity, colour) {
+    const {x, y} = arena_to_map(alienEntity.posX, alienEntity.posY);
     ctx.beginPath();
-    ctx.arc(alienEntity.posX, alienEntity.posY, alienRadius, 0, 2 * Math.PI, false);
-    ctx.fillStyle = alienEntity.colour;
+    ctx.arc(x, y, alienRadius, 0, 2 * Math.PI, false);
+    ctx.fillStyle = colour;
     ctx.fill();
     // ctx.lineWidth = 5;
     // ctx.strokeStyle = '#003300';
@@ -45,19 +54,20 @@ function toRadians(degrees) {
 }
 
 function drawBuilding(buildingEntity) {
+    const {x, y} = arena_to_map(buildingEntity.posX, buildingEntity.posY);
     for (let i = 0; i < 12; i++){
         ctx.fillStyle = i % 2 == 0 ? "black": "white";
         ctx.beginPath();
-        ctx.moveTo(buildingEntity.posX,buildingEntity.posY);
-        ctx.arc(buildingEntity.posX, buildingEntity.posY, buildingRadius, i * 2 * Math.PI / 12, (i+1) * 2 * Math.PI / 12, false);
-        ctx.lineTo(buildingEntity.posX,buildingEntity.posY);
+        ctx.moveTo(x,y);
+        ctx.arc(x, y, buildingRadius, i * 2 * Math.PI / 12, (i+1) * 2 * Math.PI / 12, false);
+        ctx.lineTo(x,y);
         ctx.closePath();
         ctx.fill();
     }
     ctx.fillStyle = "grey";
     ctx.beginPath();
-    ctx.moveTo(buildingEntity.posX,buildingEntity.posY);
-    ctx.arc(buildingEntity.posX, buildingEntity.posY, buildingRadius - 5, 0, 360, false);
+    ctx.moveTo(x,y);
+    ctx.arc(x, y, buildingRadius - 5, 0, 360, false);
     ctx.closePath();
     ctx.fill();
 }
@@ -67,10 +77,14 @@ function redrawCanvas(entity) {
     //var entityData = JSON.parse(entity);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawRover(entity.rover);
-    for (let i = 0; i < entity.alien.length; i++){
-        drawAlien(entity.alien[i]);
+
+    for (let a in entity.alien){
+        drawAlien(entity.alien[a], a);
     }
-    for (let i = 0; i < entity.alien.length; i++){
+    // for (let i = 0; i < entity.alien.length; i++){
+    //     drawAlien(entity.alien[i]);
+    // }
+    for (let i = 0; i < entity.building.length; i++){
         drawBuilding(entity.building[i]);
     }
     //requestAnimationFrame(updatePosition)
@@ -133,41 +147,58 @@ const getClickCoordinates = (element, ev) => {
 
 })();
 
-state = {
-    "rover": {
+const _rover = {
+    "time": 1002,
+    "type": "rover",
+    "data": {
         "posX": 100,
         "posY": 500,
         "angle": 0  
+    }
+}
+
+const _alien = {
+    "time": 1002,
+    "type": "alien",
+    "colour": "blue",
+    "data": {
+        "posX": 150,
+        "posY": 70,
+    }
+}
+
+state = {
+    "rover": {
+        "posX": 200,
+        "posY": 200,
+        "angle": 0  
     },
-    "alien": [
-        {
-            "colour": "red",
+    "alien": {
+        "red": {
             "posX": 100,
             "posY": 500
         },
-        {
-            "colour": "blue",
-            "posX": 150,
-            "posY": 70
+        "blue": {
+            "posX": 200,
+            "posY": 500
         },
-        {
-            "colour": "green",
-            "posX": 250,
-            "posY": 70
-        } 
-    ],
+        "green": {
+            "posX": 300,
+            "posY": 500
+        }
+    },
     "building": [
         {
             "posX": 50,
-            "posY": 170
+            "posY": 300
         },
         {
             "posX": 150,
-            "posY": 170
+            "posY": 300
         },
         {
             "posX": 250,
-            "posY": 170
+            "posY": 300
         } 
     ]
 }
