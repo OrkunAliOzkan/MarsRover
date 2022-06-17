@@ -534,7 +534,7 @@ void loop()
         Serial.println("target displacement: " + String(target_displacement));
         Serial.println("target angle: " + String(target_angle));
 
-        delay(5000);
+        //delay(5000);
         turning_complete = 0;
         straight_line_complete = 0; 
     }
