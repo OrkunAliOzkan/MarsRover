@@ -40,42 +40,7 @@ server.listen(3000,'0.0.0.0', () => {
 //     print(`Control Script ended with code ${code}`, 0)
 // })
 
-//--------Initialising TCP server for Rover--------//
-const Net = require('net');
-const port = 8080;
 
-const rover_server = new Net.Server();
-var rover_connected = false;
-var rover_socket;
-var test_socket;
-
-var count = 0;
-
-rover_server.listen(port, () => {
-    console.log(`Rover server listening on port ${port}`);
-});
-
-rover_server.on('connection', (socket) => {
-    // set the global variable
-    rover_socket = socket;
-    rover_connected = true;
-    console.log('Rover Connected');
-
-    socket.on('data', function(chunk) {
-        console.log(`Rover Data:`);
-        console.log(`${chunk.toString()}`);
-    });
-
-    // When the client requests to end the TCP connection with the server, the server
-    // ends the connection.
-    socket.on('end', function() {
-        console.log('Closing connection with rover');
-    });
-
-    socket.on('error', function(err) {
-        console.log(`Error: ${err}`);
-    });
-});
 
 //--------Initialising Socket.io (client-side communication)--------//
 const socketio = require('socket.io');
@@ -117,6 +82,43 @@ io.on('connection', (sock) => {
         }
     });
     
+});
+
+//--------Initialising TCP server for Rover--------//
+const Net = require('net');
+const port = 8080;
+
+const rover_server = new Net.Server();
+var rover_connected = false;
+var rover_socket;
+
+rover_server.listen(port, () => {
+    console.log(`Rover server listening on port ${port}`);
+});
+
+rover_server.on('connection', (socket) => {
+    // set the global variable
+    rover_socket = socket;
+    rover_connected = true;
+    console.log('Rover Connected');
+
+    socket.on('data', function(chunk) {
+        console.log(`Rover Data:`);
+        const rover_string = chunk.toString();
+        const rover_json = JSON.parse(rover_string);
+        console.log(`${rover_string}`);
+        io.emit('update', rover_json);
+    });
+
+    // When the client requests to end the TCP connection with the server, the server
+    // ends the connection.
+    socket.on('end', function() {
+        console.log('Closing connection with rover');
+    });
+
+    socket.on('error', function(err) {
+        console.log(`Error: ${err}`);
+    });
 });
 
 var state = {

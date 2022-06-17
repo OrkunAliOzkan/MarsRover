@@ -29,6 +29,62 @@ rover.onload = initRover;
 
 var state;
 
+state = {
+    "rover": {
+        "posX": 200,
+        "posY": 200,
+        "angle": 0  
+    },
+    "alien": {
+        "red": {
+            "posX": 100,
+            "posY": 500
+        },
+        "blue": {
+            "posX": 200,
+            "posY": 500
+        },
+        "green": {
+            "posX": 300,
+            "posY": 500
+        }
+    },
+    "building": [
+        {
+            "posX": 50,
+            "posY": 300
+        },
+        {
+            "posX": 150,
+            "posY": 300
+        },
+        {
+            "posX": 250,
+            "posY": 300
+        } 
+    ]
+}
+
+const _rover = {
+    "time": 1002,
+    "type": "rover",
+    "data": {
+        "posX": 400,
+        "posY": 400,
+        "angle": 0  
+    }
+}
+
+const _alien = {
+    "time": 1002,
+    "type": "alien",
+    "colour": "blue",
+    "data": {
+        "posX": 150,
+        "posY": 70,
+    }
+}
+
 function drawRover(roverEntity) {
     const {x, y} = arena_to_map(roverEntity.posX, roverEntity.posY);
     ctx.translate( x + rover.width/2, y + rover.height/2);
@@ -90,6 +146,24 @@ function redrawCanvas(entity) {
     //requestAnimationFrame(updatePosition)
 }
 
+const rover_x = document.getElementById("rover_x");
+const rover_y = document.getElementById("rover_y");
+const rover_angle = document.getElementById("rover_angle");
+
+function updateDashboard(data) {
+    
+}
+
+function updateState(packet) {
+    if (packet.type == "rover") {
+        state.rover = packet.data;
+    } else if (packet.type == "alien") {
+        state.alien[packet.colour] = packet.data;
+    } else if (packet.type == "building"){
+
+    }
+}
+
 const getClickCoordinates = (element, ev) => {
     const { top, left } = element.getBoundingClientRect();
     const { clientX, clientY } = ev;
@@ -111,8 +185,8 @@ const getClickCoordinates = (element, ev) => {
     canvas.addEventListener('click', onClick)
 
     sock.on('update', (data) => {
-        redrawCanvas(data);
-        state = data;
+        console.log(data);
+        //redrawCanvas(data);
     });
 
     sock.on('waypoint', ({x, y}) => {
@@ -145,60 +219,10 @@ const getClickCoordinates = (element, ev) => {
         sock.emit('test', {x, y});
     })
 
+    console.log("Before update");
+    console.log(state);
+    updateState(_rover);
+    console.log("After update");
+    console.log(state);
 })();
 
-const _rover = {
-    "time": 1002,
-    "type": "rover",
-    "data": {
-        "posX": 100,
-        "posY": 500,
-        "angle": 0  
-    }
-}
-
-const _alien = {
-    "time": 1002,
-    "type": "alien",
-    "colour": "blue",
-    "data": {
-        "posX": 150,
-        "posY": 70,
-    }
-}
-
-state = {
-    "rover": {
-        "posX": 200,
-        "posY": 200,
-        "angle": 0  
-    },
-    "alien": {
-        "red": {
-            "posX": 100,
-            "posY": 500
-        },
-        "blue": {
-            "posX": 200,
-            "posY": 500
-        },
-        "green": {
-            "posX": 300,
-            "posY": 500
-        }
-    },
-    "building": [
-        {
-            "posX": 50,
-            "posY": 300
-        },
-        {
-            "posX": 150,
-            "posY": 300
-        },
-        {
-            "posX": 250,
-            "posY": 300
-        } 
-    ]
-}
