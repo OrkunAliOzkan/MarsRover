@@ -223,11 +223,11 @@ void OFS_Cartesian
   *total_x = *prescaled_tx / 4.95;
   *total_y = *prescaled_ty / 4.95;
 
-  //Serial.println("Dy: " + String(convTwosComp(md.dy)));
-  //Serial.println("Dx: " + String(convTwosComp(md.dx)));
-  //Serial.println("Total y: " + String(*total_y));
-  //Serial.println("Total x: " + String(*total_x));
-  //Serial.println();
+  Serial.println("Dy: " + String(*prescaled_ty));
+  Serial.println("Dx: " + String(*prescaled_tx));
+  Serial.println("Total y: " + String(*total_y));
+  Serial.println("Total x: " + String(*total_x));
+  Serial.println();
 }
 
 void OFS_Angular(
@@ -294,7 +294,7 @@ int tcp_parse(String tcp_data, float * B_x, float * B_y, String * mode_)
 //  Wifi Initialisation
 
 WiFiClient client; // Use WiFiClient class to create TCP connections
-const uint16_t port = 8080;
+const uint16_t port = 4001;
 const char * host = "146.169.171.197"; // ip or dns
 
 // WiFi timeout variables (reliability)
@@ -367,8 +367,8 @@ void updateTargets(float * B_x, float * B_y, float * current_x, float * current_
         *target_angle += 2 * PI;
     }
 
-//    // update target displacement
-//    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
+   // update target displacement
+    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
 //    Serial.println("Target Displacement: " + String(*target_displacement));
 //    Serial.println("Final Angle: " + String(atan2( dy, dx )));
 //    Serial.println("Target Angle: " + String(*target_angle));
@@ -419,8 +419,8 @@ void setup()
     //  Connecting to Wifi
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-    Serial.println();
-    Serial.println();
+    //Serial.println();
+    //Serial.println();
     Serial.print("Waiting for WiFi... ");
 
     while(WiFi.status() != WL_CONNECTED) {
@@ -444,15 +444,15 @@ void setup()
     Serial.println("Connected to Server\n");
 
     // // wait for mission start
-     String start_message = "";
-     while(client.available() < 5){
-         Serial.println("Waiting for Mission Start");
-         delay(500);
-     }
+    String start_message = "";
+    while(client.available() < 5){
+        Serial.println("Waiting for Mission Start");
+        delay(500);
+    }
     
     // if (mode_ == "M") {
     //     
-    // }
+    // }a
 
     tcp_received = client.readStringUntil('\r');
     tcp_parse(tcp_received, &B_x, &B_y, &mode_);
@@ -469,7 +469,7 @@ void setup()
     Serial.println("target angle: " + String(target_angle));
 
     turning_complete = 0;
-    straight_line_complete = 1;
+    straight_line_complete = 0;
 }
 
 String location_info = "";
@@ -536,8 +536,7 @@ void loop()
 
         delay(5000);
         turning_complete = 0;
-        //  TODO: Bryan remember to change this back when finished testing turning angles
-        straight_line_complete = 1; 
+        straight_line_complete = 0; 
     }
 
     if (!turning_complete) {
@@ -637,7 +636,6 @@ void loop()
         // Straight Line Logic
         OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
         displacement_error = target_displacement - totalpath_y_int;
-
         // simplistic dead reckoning
         current_x = prev_x + totalpath_y_int * cos(current_angle);
         current_y = prev_y + totalpath_y_int * sin(current_angle);
@@ -672,6 +670,7 @@ void loop()
         } else {
             //  y-axis pid controller
             displacement_PWM_output = Kp_displacement * displacement_error;
+            Serial.println("displacement_error:\t" + String(displacement_error));
             //  guards
             displacement_PWM_output = (displacement_PWM_output > MAX_PWM) ? (MAX_PWM) : (displacement_PWM_output);
             displacement_PWM_output = (displacement_PWM_output < MIN_PWM) ?  (MIN_PWM)  : (displacement_PWM_output);
@@ -714,6 +713,7 @@ void loop()
         }
 
     //  debug content
+    /*
         tcp_send +="---\n";
         tcp_send +=("Rover moving in straight line:");
         tcp_send += "\n";
@@ -731,5 +731,6 @@ void loop()
         tcp_send += "\n";
         tcp_send +=("MotorSpeedB: " + String(MotorSpeedB));
         tcp_send += "\n";
+    */
     }
 }
