@@ -504,15 +504,18 @@ void loop()
     }
 
     // checks if there is a message from server in buffer
-    if (client.available() > 0) {
+    if (client.available() > 5) {
         // brake
         analogWrite(PWMA, 0); 
         analogWrite(PWMB, 0);
 
         //read back one line from the server
-        //  Serial.println("reading buffer");
-        tcp_received = client.readStringUntil('\r');
-        //  Serial.println(line);
+        tcp_received = "";
+        char c = client.read();
+        while(c != 255){
+            tcp_received += c;
+            c = client.read();
+        }
 
         //  parse data recieved
         tcp_parse(tcp_received, &B_x, &B_y, &mode_);
