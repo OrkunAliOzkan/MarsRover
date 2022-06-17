@@ -307,9 +307,33 @@ const char * host = "146.169.171.197"; // ip or dns
   long last_TCP_post = 0;
   long TCP_post_period = 50;
 
+void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, int * target_displacement, float * target_angle){
+    
+    float dx = *B_x - *current_x;
+    float dy = *B_y - *current_y ;
+
+    *target_angle = atan2( dy, dx ) - *current_angle;
+    //  converts from angle to angle
+      
+    if((*target_angle) > PI){
+        *target_angle -= 2 * PI;
+    }
+    else if ((*target_angle) < -PI){
+        *target_angle += 2 * PI;
+    }
+
+   // update target displacement
+    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
+//    Serial.println("Target Displacement: " + String(*target_displacement));
+//    Serial.println("Final Angle: " + String(atan2( dy, dx )));
+//    Serial.println("Target Angle: " + String(*target_angle));
+//
+//    Serial.println(*target_displacement * cos(*current_angle + *target_angle) + *current_x);
+//    Serial.println(*target_displacement * sin(*current_angle + *target_angle) + *current_y);
+}
+
 /////////////////////////////////////////////////////////////////
 //  automation
-/*
   void automation(
       int * counter,
       float arena_width, float arena_height,
@@ -350,32 +374,8 @@ const char * host = "146.169.171.197"; // ip or dns
           *counter += 1;
       }
   }
-*/
 
-void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, int * target_displacement, float * target_angle){
-    
-    float dx = *B_x - *current_x;
-    float dy = *B_y - *current_y ;
-
-    *target_angle = atan2( dy, dx ) - *current_angle;
-    //  converts from angle to angle
-      
-    if((*target_angle) > PI){
-        *target_angle -= 2 * PI;
-    }
-    else if ((*target_angle) < -PI){
-        *target_angle += 2 * PI;
-    }
-
-   // update target displacement
-    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
-//    Serial.println("Target Displacement: " + String(*target_displacement));
-//    Serial.println("Final Angle: " + String(atan2( dy, dx )));
-//    Serial.println("Target Angle: " + String(*target_angle));
-//
-//    Serial.println(*target_displacement * cos(*current_angle + *target_angle) + *current_x);
-//    Serial.println(*target_displacement * sin(*current_angle + *target_angle) + *current_y);
-}
+/////////////////////////////////////////////////////////////////
 
 //  state mashine parameters for the drive process (stop turn go)
   int turning_complete = 1;
@@ -449,16 +449,32 @@ void setup()
         Serial.println("Waiting for Mission Start");
         delay(500);
     }
-    
-    // if (mode_ == "M") {
-    //     
-    // }a
 
     tcp_received = client.readStringUntil('\r');
     tcp_parse(tcp_received, &B_x, &B_y, &mode_);
 
-    // update target angle
-    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+    //mode_ = "A";
+
+    if (mode_ == "M") {
+      // update target angle
+      updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+        
+    }
+    else if (mode_ == "A") {
+      Serial.println("Shouldn't be seeing this in loop!\n");
+
+      // update position to travel to
+      /*
+      automation(
+      &counter,
+      arena_width, arena_height,
+      side_sections_spans,  mid_sections_spans,
+      x_pos, y_pos,
+      &x_des, &y_des, &target_bearing
+      );  
+      */
+    }
+
 
     Serial.println("cx: " + String(current_x));
     Serial.println("cy: " + String(current_y));
@@ -504,7 +520,7 @@ void loop()
     }
 
     // checks if there is a message from server in buffer
-    if (client.available() > 5) {
+    if ((mode_ == "M") && (client.available() > 5)) {
         // brake
         analogWrite(PWMA, 0); 
         analogWrite(PWMB, 0);
@@ -537,6 +553,9 @@ void loop()
         //delay(5000);
         turning_complete = 0;
         straight_line_complete = 0; 
+    }
+    else if((mode_ == "A") && (0)){
+      Serial.println("Shouldn't be seeing this in loop!\n");
     }
 
     if (!turning_complete) {
