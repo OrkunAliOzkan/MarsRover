@@ -35,8 +35,8 @@ function drawAlien(alienEntity) {
     ctx.arc(alienEntity.posX, alienEntity.posY, alienRadius, 0, 2 * Math.PI, false);
     ctx.fillStyle = alienEntity.colour;
     ctx.fill();
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = '#003300';
+    // ctx.lineWidth = 5;
+    // ctx.strokeStyle = '#003300';
     ctx.stroke();
 }
 
@@ -92,6 +92,7 @@ const getClickCoordinates = (element, ev) => {
         console.log("onClick");
         const { x, y } = getClickCoordinates(canvas, e);
         sock.emit('waypoint', { x, y });
+
     };
     canvas.addEventListener('click', onClick)
 
@@ -106,19 +107,43 @@ const getClickCoordinates = (element, ev) => {
         ctx.drawImage(flag, x, y - flag.height);
     });
 
+    const start_btn = document.getElementById("start");
+    start_btn.addEventListener('click', (event) => {
+        console.log("Start Mission");
+        sock.emit('start_mission', "");
+    })
+
+    const data_btn = document.getElementById("data_btn");
+    data_btn.addEventListener('click', (event) => {
+        const angle = Math.floor(document.getElementById("angle").value) / 180 * Math.PI;
+        const distance = Math.floor(document.getElementById("distance").value);
+        const x = distance * Math.cos(angle);
+        const y = distance * Math.sin(angle);
+        console.log(`x: ${x}, y: ${y}`);
+        sock.emit('test', {x, y});
+    })
+
+    const c_btn = document.getElementById("c_btn");
+    c_btn.addEventListener('click', (event) => {
+        const x = Math.floor(document.getElementById("x").value);
+        const y = Math.floor(document.getElementById("y").value);
+        console.log(`x: ${x}, y: ${y}`);
+        sock.emit('test', {x, y});
+    })
+
 })();
 
 state = {
     "rover": {
         "posX": 100,
-        "posY": 100,
-        "angle": 75  
+        "posY": 500,
+        "angle": 0  
     },
     "alien": [
         {
             "colour": "red",
-            "posX": 50,
-            "posY": 70
+            "posX": 100,
+            "posY": 500
         },
         {
             "colour": "blue",

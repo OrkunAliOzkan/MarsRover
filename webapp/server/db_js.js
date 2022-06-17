@@ -20,7 +20,7 @@ const mongo = require('mongodb');
 })();
 
 async function printDocs(col) {
-    document_list = await 
+    document_list;
 }
 
 async function printCollections(db) {

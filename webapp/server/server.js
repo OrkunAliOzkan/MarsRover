@@ -47,6 +47,9 @@ const port = 8080;
 const rover_server = new Net.Server();
 var rover_connected = false;
 var rover_socket;
+var test_socket;
+
+var count = 0;
 
 rover_server.listen(port, () => {
     console.log(`Rover server listening on port ${port}`);
@@ -80,27 +83,47 @@ const io = socketio(server);
 
 io.on('connection', (sock) => {
     print("Client connected", 0);
+
     sock.on('waypoint', ({ x, y }) => {
         io.emit('waypoint', { x, y });
-        print(`waypoint placed at x: ${x}, y: ${y}`, 0);
+        print(`waypoint placed at x: ${x}, y: ${600 - y}`, 0);
 
         const time_string = (new Date()).toISOString();
-        const waypoint_data = {time: time_string, x: 100, y: 120, mode: 'M'};
-
+        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
+        const waypoint_data = `${x + 100},${600 - y+ 100},M`;
         // send the waypoint data to the rover over TCP
         if (rover_connected) {
-            rover_socket.write(JSON.stringify(waypoint_data));
+            rover_socket.write(waypoint_data);
+            console.log(`Waypoint sent`);
         } else {
             console.log(`Can't send waypoint, rover is not connected`);
         }
     });
+
+    sock.on('start_mission', (msg) => {
+        print(`Mission Start`, 0);
+    });
+
+    sock.on('test', ({ x, y }) => {
+        print(`waypoint placed at x: ${x}, y: ${y}`, 0);
+        const time_string = (new Date()).toISOString();
+        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
+        const waypoint_data = `${x + 100},${y + 100},M`;
+        // send the waypoint data to the rover over TCP
+        if (rover_connected) {
+            rover_socket.write(waypoint_data);
+        } else {
+            console.log(`Can't send waypoint, rover is not connected`);
+        }
+    });
+    
 });
 
 var state = {
     "rover": {
-        "posX": 200,
-        "posY": 200,
-        "angle": 180  
+        "posX": 100,
+        "posY": 100,
+        "angle": 0  
     },
     "alien": [
         {
