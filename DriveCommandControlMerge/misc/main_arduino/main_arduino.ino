@@ -279,13 +279,10 @@ void OFS_Angular(
 // type, displacement, angle 
 vector<int> camera_readings;
 
-//  camera readings
-camera_readings(&camera_readings);
-
 //  update values
   //  stash destination
-  float camera_stashed_x = B_x;
-  float camera_stashed_y = B_y;
+  float camera_stashed_x = 0;
+  float camera_stashed_y = 0;
 
   //  counter, remember to mod 4 to reset it
   int detourCounter = 0;
@@ -306,30 +303,44 @@ camera_readings(&camera_readings);
 
   //  If the rover is in emergancy break procedure
   int emergancy_corner_count = 0;
+  
+/*
+//  camera readings
+camera_readings(&camera_readings);
 
+//  update values
+  object_x = current_x + camera_readings[1]*sin( (PI * camera_readings[2]) / 180 );
+  object_y = current_y + camera_readings[1]*cos( (PI * camera_readings[2]) / 180 );
 
-/**/
+  object_radius = (camera[readings] == 7) ? (MAXIMUM_HOME_RADIUS) : (BALL_RADIUS);
 
+  object_rover_x_difference = abs(object_x) + object_radius - (ROVER_WIDTH / 2) - current_x;
+
+  object_displacement = sqrt(pow((object_x - current_x), 2) + pow((object_y - current_y), 2));
+  object_angle = atan2(object_y - current_y, object_x - current_x);
 
   //  if there is an object and it is less than 10cm away
-  if ((camera_readings[0]) && (object_displacement < 100)){
-    if((object_rover_x_difference < MINIMUM_SAFE_OBJECT_X_DISPLACEMENT) && (!emergancy_corner_count)){
-      //  if haven't already emergancy breaked
-        //  stop
-        analogWrite(PWMA, 0); 
-        analogWrite(PWMB, 0);
-        emergancy_breaked = 1;
+  if(  
+        (camera_readings[0]) &&
+        (object_displacement < 100) &&
+        (object_rover_x_difference < MINIMUM_SAFE_OBJECT_X_DISPLACEMENT) && 
+        (!emergancy_corner_count)){
+    //  if haven't already emergancy breaked
+      //  stop
+      analogWrite(PWMA, 0); 
+      analogWrite(PWMB, 0);
+      emergancy_breaked = 1;
 
-        //  stash desired destination coodinate
-        camera_stashed_coodinates.push_back({B_x, B_y});
+      //  stash desired destination coodinate
+      camera_stashed_x = B_x;
+      camera_stashed_y = B_y;
 
-        //  tell rover to move left or right in opposite direction to the object
-        //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
-        B_x = (object_angle >  0) ? (-2*object_radius) : (2*object_radius); 
+      //  tell rover to move left or right in opposite direction to the object
+      //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
+      B_x = (object_angle >  0) ? (-2*object_radius) : (2*object_radius); 
 
-        //  initialise the emergancy procedure
-          emergancy_corner_count++;
-    }
+      //  initialise the emergancy procedure
+        emergancy_corner_count++;
   }
   //  0)
   else if(emergancy_corner_count){
@@ -367,7 +378,7 @@ camera_readings(&camera_readings);
           //  mximum amount needed to move out by eye would probably be 2 of the object displacements.        B_y = sign(B_y)*(2*object_radius); 
   }
 
-/**/
+*/
 
 /////////////////////////////////////////////////////////////////
 
