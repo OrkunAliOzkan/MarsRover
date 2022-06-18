@@ -9,5 +9,15 @@ const pi = 3.14;
     const waypoint_json = JSON.stringify(waypoint_data);
     console.log(waypoint_data);
     console.log(waypoint_json);
+
+    const thing = {
+        "time": 1002,
+        "type": "rover",
+        "data": {
+            "posX": 400,
+            "posY": 469,
+            "angle": 0  
+        }
+    }
 })();
 

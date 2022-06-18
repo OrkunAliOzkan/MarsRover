@@ -65,6 +65,21 @@ io.on('connection', (sock) => {
         }
     });
 
+    sock.on('auto', (data) => {
+        print(`Rover set to Automatic Mode`, 0);
+
+        const time_string = (new Date()).toISOString();
+        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
+        const tcp_send = `0,0,A`;
+        // send the waypoint data to the rover over TCP
+        if (rover_connected) {
+            rover_socket.write(tcp_send);
+            console.log(`Command sent`);
+        } else {
+            console.log(`Can't send, rover is not connected`);
+        }
+    });
+
     sock.on('start_mission', (msg) => {
         print(`Mission Start`, 0);
     });
