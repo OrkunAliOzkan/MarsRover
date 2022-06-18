@@ -4,7 +4,7 @@ from PIL import Image
 
 start = time.time()
 
-img = Image.open('inputs/mars7.png')
+img = Image.open('inputs/mars8.png')
 pixels = np.array(img)
 
 n = 3
