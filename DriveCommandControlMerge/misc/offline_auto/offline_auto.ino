@@ -257,74 +257,6 @@ void OFS_Angular(
 
 /////////////////////////////////////////////////////////////////
 
-//  camera readings
-  void camera_readings(vector<int> *readings) {
-
-  }
-
-  /*
-    Type, displacement, angle
-  */
-
-//  radius of an A2 base at its widest
-#define MAXIMUM_HOME_RADIUS                 174.75
-//  radius of a ping pong ball
-#define BALL_RADIUS                         20
-//  minimum boundary for object to to from rover to not need to avoid
-#define MINIMUM_SAFE_OBJECT_X_DISPLACEMENT  70
-//  rover width
-#define ROVER_WIDTH  200
-
-// type, displacement, angle 
-vector<int> camera_readings;
-//  travelled path to avoid collision
-vector<vector<int> camera_stashed_coodinates;
-//  counter, remember to mod 4 to reset it
-int detourCounter = 0;
-//  object radius
-float object_radius = (camera[readings] == 7) ? (MAXIMUM_HOME_RADIUS) : (BALL_RADIUS);
-//  difference in space between the rover and the object
-float object_rover_x_difference = abs(camera_readings[1]*sin( (PI * camera_readings[2]) / 180 )) + object_radius - (ROVER_WIDTH / 2);
-//  objects centre for reference
-float object_x = 0; /*current_x + camera_readings[1]*sin( (PI * camera_readings[2]) / 180 );*/
-float object_y = 0; /*current_y + camera_readings[1]*cos( (PI * camera_readings[2]) / 180 );*/
-
-//  how far away the object is when deciding how far to move away from it
-float object_displacement = 0; /*sqrt(pow((object_x - current_x), 2) + pow((object_y - current_y), 2))*/
-float object_angle = 0; /*atan2(object_y - current_y, object_x - current_x)*/
-
-float third_vertex_x = 0; /*current_x*/
-float third_vertex_y = 0; /*object_y*/
-/*
-  //  camera readings
-  camera_readings(&camera_readings);
-
-  //  update values
-
-  //  if there is an object and it is less than 10cm away
-  if ((camera_readings[0]) && (camera_readings[1] < 100))
-  {
-    //  0)
-    if(object_rover_x_difference >= MINIMUM_SAFE_OBJECT_X_DISPLACEMENT){
-      //  do nothing
-    }
-    else{
-        //  stop
-        analogWrite(PWMA, 0); 
-        analogWrite(PWMB, 0);
-
-        //  stash desired destination coodinate
-        camera_stashed_coodinates.push_back({B_x, B_y});
-
-        //  compute the new desired destination
-        camera_stashed_coodinates.push_back{}
-      }
-    }
-
-*/
-
-/////////////////////////////////////////////////////////////////
-
 // PID for displacement
 
   float Kp_displacement = 3;
@@ -500,6 +432,7 @@ void setup()
         while(1);
     }
     /////////////////////////////////////////////////////////////////
+    /*
     //  Connecting to Wifi
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
@@ -535,29 +468,30 @@ void setup()
 
     tcp_received = client.readStringUntil('\r');
     tcp_parse(tcp_received, &B_x, &B_y, &mode_);
+    */
 
-    //mode_ = "A";
+    mode_ = "A";
 
     if (mode_ == "A") {
       // update position to travel to
       automation(
-          &counter,
-          current_x, current_y,
-          &B_x, &B_y, returning
+            &counter,
+            current_x, current_y,
+            &B_x, &B_y, returning
       );
     }
     // update target angle
     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
-
-    // Serial.println("counter: " + String(counter));
-    // Serial.println("cx: " + String(current_x));
-    // Serial.println("cy: " + String(current_y));
-    // Serial.println("bx: " + String(B_x));
-    // Serial.println("by: " + String(B_y));
-    // Serial.println("current angle: " + String(current_angle));   
-    // Serial.println("target displacement: " + String(target_displacement));
-    // Serial.println("target angle: " + String(target_angle));
-    // Serial.println("actual angle: " + String(target_angle));
+    Serial.println
+    Serial.println("counter: " + String(counter));
+    Serial.println("cx: " + String(current_x));
+    Serial.println("cy: " + String(current_y));
+    Serial.println("bx: " + String(B_x));
+    Serial.println("by: " + String(B_y));
+    Serial.println("current angle: " + String(current_angle));   
+    Serial.println("target displacement: " + String(target_displacement));
+    Serial.println("target angle: " + String(target_angle));
+    Serial.println("actual angle: " + String(target_angle));
 
     turning_complete = 0;
     straight_line_complete = 0;
@@ -585,10 +519,11 @@ void loop()
     tcp_send = "";
 
     // // Periodically send data back to server
+    /*
     if (millis() - last_TCP_post > TCP_post_period) {
         // Serial.println(tcp_send);
         location_info = "{\"time\":" + String(millis()) + 
-                        ",\"type\": \"rover\"," + 
+                        "\"type\": \"rover\"," + 
                         "\"data\":"  + 
                         "{\"posX\": " + String(current_x) + 
                         ",\"posY\": " + String(current_y) + 
@@ -603,7 +538,8 @@ void loop()
         client.print(location_info);
         last_TCP_post = millis();
     }
-
+    */
+    /*
     // checks if there is a message from server in buffer
     if ((mode_ == "M") && (client.available() > 5)) {
         // brake
@@ -638,8 +574,10 @@ void loop()
         turning_complete = 0;
         straight_line_complete = 0; 
     }
+    */
 
-    else if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
+    /*else*/ 
+    if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
         // brake
         analogWrite(PWMA, 0); 
         analogWrite(PWMB, 0);
@@ -680,7 +618,7 @@ void loop()
             Serial.println("target_angle:\t" + String(target_angle));
             
             turning_complete = 0;
-            straight_line_complete = 0;
+            straight_line_complete = 1;
     }
 
     if (!turning_complete) {
@@ -695,6 +633,7 @@ void loop()
             analogWrite(PWMB, 0);
 
             turning_complete = 1;
+            straight_line_complete = 1;
             differential_PWM_output = 0; 
             
             // resetting PID variables
@@ -711,9 +650,22 @@ void loop()
             // simplistic dead reckoning
             prev_angle = current_angle;
 
+
             tcp_send = "---\n";
             tcp_send += ("Turning Complete\n");
         } else {
+
+            Serial.println(
+                        "{\"time\":" + String(millis()) + 
+                        "\"type\": \"rover\"," + 
+                        "\"data\":"  + 
+                        "{\"posX\": " + String(current_x) + 
+                        ",\"posY\": " + String(current_y) + 
+                        ",\"angle\": " + String(current_angle) + 
+                        "}" + 
+                        "}"
+            );
+            
             // turning not complete
             currT = micros();
             deltaT = ((float) (currT-prevT))/1.0e6;
@@ -860,26 +812,5 @@ void loop()
             angular_error_prev = angular_error;
             prevT = currT;
         }
-
-    //  debug content
-    /*
-        tcp_send +="---\n";
-        tcp_send +=("Rover moving in straight line:");
-        tcp_send += "\n";
-        tcp_send +=("Angular Error: " + String(angular_error));
-        tcp_send += "\n";
-        tcp_send +=("Displacement Error: " + String(displacement_error));
-        tcp_send += "\n";
-        tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
-        tcp_send += "\n";
-        tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
-        tcp_send += "\n";
-        tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
-        tcp_send += "\n";
-        tcp_send +=("MotorSpeedA: " + String(MotorSpeedA));
-        tcp_send += "\n";
-        tcp_send +=("MotorSpeedB: " + String(MotorSpeedB));
-        tcp_send += "\n";
-    */
     }
 }
