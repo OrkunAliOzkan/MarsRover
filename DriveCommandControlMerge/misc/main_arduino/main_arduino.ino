@@ -288,18 +288,18 @@ vector<int> camera_readings;
   int detourCounter = 0;
 
   //  objects centre for reference
-  float object_x = current_x + camera_readings[1]*sin( (PI * camera_readings[2]) / 180 );
-  float object_y = current_y + camera_readings[1]*cos( (PI * camera_readings[2]) / 180 );
+  float object_x = 0;
+  float object_y = 0;
 
   //  object radius
-  float object_radius = (camera[readings] == 7) ? (MAXIMUM_HOME_RADIUS) : (BALL_RADIUS);
+  float object_radius = 0;
 
   //  difference in space between the rover and the object
-  float object_rover_x_difference = abs(object_x) + object_radius - (ROVER_WIDTH / 2) - current_x;
+  float object_rover_x_difference = 0;
 
   //  how far away the object is when deciding how far to move away from it
-  float object_displacement = sqrt(pow((object_x - current_x), 2) + pow((object_y - current_y), 2));
-  float object_angle = atan2(object_y - current_y, object_x - current_x);
+  float object_displacement = 0;
+  float object_angle = 0;
 
   //  If the rover is in emergancy break procedure
   int emergancy_corner_count = 0;
@@ -343,24 +343,27 @@ camera_readings(&camera_readings);
         emergancy_corner_count++;
   }
   //  0)
-  else if(emergancy_corner_count){
+  if(emergancy_corner_count){
         //  stop
         analogWrite(PWMA, 0); 
         analogWrite(PWMB, 0);
 
         if((turning_complete) && (straight_line_complete)){
-        switch()
+        switch(emergancy_corner_count)
         {
             case 1:{
-              //  if facing downwards move downwards
+              //  tell rover to move forward or backward in direction to the object
+              //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
               B_y = (sign(current_angle) * (2*object_radius));
             }
 
             case 2:{
+              //  return to original x position
               B_x = camera_stashed_x;
             }
 
             case 3:{
+              //  return to travelling on original path
               B_y = camera_stashed_y;
               emergancy_corner_count = 0;
             }
@@ -373,9 +376,6 @@ camera_readings(&camera_readings);
             analogWrite(PWMB, 0);
           }
         }
-
-          //  tell rover to move forward or backward in direction to the object
-          //  mximum amount needed to move out by eye would probably be 2 of the object displacements.        B_y = sign(B_y)*(2*object_radius); 
   }
 
 */
