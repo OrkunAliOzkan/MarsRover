@@ -7,11 +7,15 @@ const mongo = require('mongodb');
         await client.connect();
         console.log("Connected to cluster");
 
-        await listDatabases(client);
-
-        const mars_db = client.db("missions");
         
-        await printCollections(mars_db);
+
+        // await listDatabases(client);
+
+        // const mars_db = client.db("missions");
+        
+        // await printCollections(mars_db);
+
+        // await printDocs(mars_db, "mission_data");
     } catch (e) {
         console.log(e);
     } finally {
@@ -19,8 +23,9 @@ const mongo = require('mongodb');
     }
 })();
 
-async function printDocs(col) {
-    document_list;
+async function printDocs(db, col) {
+    document_list = await db.collection(col).find({}).toArray();
+    console.log(document_list);
 }
 
 async function printCollections(db) {
