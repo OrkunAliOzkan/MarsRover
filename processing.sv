@@ -119,7 +119,7 @@ end
 
 assign edge_x = (conv_x[8]==1) ? -conv_x : conv_x; //abs
 assign edge_sharp = (edge_x>30) ? 8'hff : 0;	//sharpen
-y
+
 assign red_processed = edge_sharp; //first 8 bits
 assign green_processed = edge_sharp;
 assign blue_processed = edge_sharp;
