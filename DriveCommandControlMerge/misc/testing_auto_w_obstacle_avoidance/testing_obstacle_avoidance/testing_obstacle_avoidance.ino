@@ -11,7 +11,7 @@ float A_y = 0; // TODO: Define at end of movement
 
 // Destination coordinates
 float B_x = 0;
-float B_y = 750;
+float B_y = 300;
 
 // Current position and angle
 float current_x = A_x;
@@ -26,8 +26,8 @@ void camera_readings(int *camera_readings_type, float *camera_readings_displacem
 *camera_readings_type = 7;
 
 //  object is at (30, 30)
-*camera_readings_displacemet = 42.426407;
-*camera_readings_angle = PI / 4;
+*camera_readings_displacemet = 27;
+*camera_readings_angle = 0;
 }
 
 int sign(float number){
@@ -41,7 +41,7 @@ int sign(float number){
 //  minimum boundary for object to to from rover to not need to avoid
 #define MINIMUM_SAFE_OBJECT_X_DISPLACEMENT  70  //SHOULD BE SOMETHING LIKE 15
 //  minimum boundary for rover from wall 
-#define MINIMUM_SAFE_WALL_DISPLACEMENT      200
+#define MINIMUM_SAFE_WALL_DISPLACEMENT      300
 //  rover width
 #define ROVER_WIDTH                         200
 
@@ -154,8 +154,10 @@ void loop()
     "\nB_x:\t" + String(B_x) +
     "\nB_y:\t" + String(B_y) +
     "\nobject_angle:\t" + String(object_angle)
-    
     );
+
+    Serial.println("object_displacement:\t" + String(object_displacement));
+    Serial.println("abs(camera_stashed_y - current_y - object_displacement - 2*object_radius):\t" + String(abs(camera_stashed_y - current_y - object_displacement)));
 
         emergancy_corner_count = 1;
         //  initialise the emergancy procedure
@@ -175,17 +177,15 @@ void loop()
                 */
 
                 if(abs(camera_stashed_y - current_y - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT){
+                  Serial.println("Yo");
                   B_y = camera_stashed_y;
                   emergancy_corner_count = 0;
                   avoided = 1;
-                  return; //  equivalent to continue-ing the loop in c++
+                  break; //  equivalent to continue-ing the loop in c++
                 }
                 else{
                   B_y = (sign(current_angle) * (2*object_radius));
                 }
-//                Serial.println("B_yyy:\t" + String(B_y));
-//                Serial.println("sign(current_angle):\t" + String(sign(current_angle)));
-//                Serial.println("object_radius:\t" + String(object_radius));
                 break;
                 }
 
