@@ -666,30 +666,30 @@ void loop()
     }
 
   //  camera readings
-  camera_readings(&camera_readings);
+    camera_readings(&camera_readings_type, &camera_readings_displacemet, &camera_readings_angle);
 
   //  update values
-    object_x = current_x + camera_readings[1]*sin( (PI * camera_readings[2]) / 180 );
-    object_y = current_y + camera_readings[1]*cos( (PI * camera_readings[2]) / 180 );
+    object_x = current_x + (camera_readings_displacemet*sin( (PI * camera_readings_angle) / 180 ));
+    object_y = current_y + (camera_readings_displacemet*cos( (PI * camera_readings_angle) / 180 ));
 
-    object_radius = (camera[readings] == 7) ? (MAXIMUM_HOME_RADIUS) : (BALL_RADIUS);
+    object_radius = (camera_readings_type == 7) ? (MAXIMUM_HOME_RADIUS) : (BALL_RADIUS);
 
-    object_rover_x_difference = abs(object_x) + object_radius - (ROVER_WIDTH / 2) - current_x;
+    object_rover_x_difference = abs(object_x - current_x) /*+ object_radius - (ROVER_WIDTH / 2)*/;
 
     object_displacement = sqrt(pow((object_x - current_x), 2) + pow((object_y - current_y), 2));
-    object_angle = atan2(object_y - current_y, object_x - current_x);
+    object_angle = atan2(object_y - current_y, object_x - current_x) - current_angle;
 
     //  if there is an object and it is less than 10cm away
     if(  
-          (camera_readings[0]) &&
-          (object_displacement < 100) &&
-          (object_rover_x_difference < MINIMUM_SAFE_OBJECT_X_DISPLACEMENT) && 
-          (!emergancy_corner_count)){
+        (camera_readings_type > 0) &&
+        (object_displacement < 100) &&
+        (object_rover_x_difference < MINIMUM_SAFE_OBJECT_X_DISPLACEMENT) && 
+        (emergancy_corner_count == 0) &&
+        (!avoided)){
       //  if haven't already emergancy breaked
         //  stop
         analogWrite(PWMA, 0); 
         analogWrite(PWMB, 0);
-        emergancy_breaked = 1;
 
         //  stash desired destination coodinate
         camera_stashed_x = B_x;
@@ -698,44 +698,43 @@ void loop()
         //  tell rover to move left or right in opposite direction to the object
         //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
         B_x = (object_angle >  0) ? (-2*object_radius) : (2*object_radius); 
+        B_y = current_y;
 
         //  initialise the emergancy procedure
-          emergancy_corner_count++;
+          emergancy_corner_count = 1;
     }
     //  0)
-    if(emergancy_corner_count){
+    else if((emergancy_corner_count > 0) && (!avoided)){
           //  stop
           analogWrite(PWMA, 0); 
           analogWrite(PWMB, 0);
 
-          if((turning_complete) && (straight_line_complete)){
-          switch(emergancy_corner_count)
-          {
-              case 1:{
+            switch(emergancy_corner_count)
+            {
+                case 1:{
                 //  tell rover to move forward or backward in direction to the object
                 //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
                 B_y = (sign(current_angle) * (2*object_radius));
-              }
+                break;
+                }
 
-              case 2:{
+                case 2:{
                 //  return to original x position
                 B_x = camera_stashed_x;
-              }
+                break;
 
-              case 3:{
+                }
+
+                case 3:{
                 //  return to travelling on original path
                 B_y = camera_stashed_y;
-                emergancy_corner_count = 0;
-              }
-          }
-            
-            default:{
-              Serial.println("Should never be here.\n");
-              //  stop
-              analogWrite(PWMA, 0); 
-              analogWrite(PWMB, 0);
+                avoided = 1;
+                break;
+
+                }
             }
-          }
+          emergancy_corner_count++;
+          emergancy_corner_count = emergancy_corner_count % 4;
           turning_complete = 0;
           straight_line_complete = 0;
     }
