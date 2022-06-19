@@ -37,7 +37,9 @@ int sign(float number){
 //  radius of a ping pong ball
 #define BALL_RADIUS                         20
 //  minimum boundary for object to to from rover to not need to avoid
-#define MINIMUM_SAFE_OBJECT_X_DISPLACEMENT  70
+#define MINIMUM_SAFE_OBJECT_X_DISPLACEMENT  70  //SHOULD BE SOMETHING LIKE 15
+//  minimum boundary for rover from wall 
+#define MINIMUM_SAFE_WALL_DISPLACEMENT      200
 //  rover width
 #define ROVER_WIDTH                         200
 
@@ -71,6 +73,10 @@ float object_angle = 0;
 //  If the rover is in emergancy break procedure
 int emergancy_corner_count = 0;
 bool avoided = 0;
+
+//  wall position
+float wall_x = 0;
+float wall_y = 0;
 
 /////////////////////////////////////////////////////////////////
 
@@ -154,7 +160,20 @@ void loop()
                 Serial.println("1\n");
                 //  tell rover to move forward or backward in direction to the object
                 //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
-                B_y = (sign(current_angle) * (2*object_radius));
+
+                /*
+                abs(camera_stashed_y - current_y - object_displacement 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT
+                */
+
+                if(){
+                  B_y += stashed_y;
+                  emergancy_corner_count = 0;
+                  avoided = 1;
+                  return; //  equivalent to continue-ing the loop in c++
+                }
+                else{
+                  B_y = (sign(current_angle) * (2*object_radius));
+                }
 //                Serial.println("B_yyy:\t" + String(B_y));
 //                Serial.println("sign(current_angle):\t" + String(sign(current_angle)));
 //                Serial.println("object_radius:\t" + String(object_radius));
