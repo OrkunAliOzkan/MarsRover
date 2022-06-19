@@ -83,18 +83,20 @@ wire red_detect;
 // assign red_detect = red[7] & ~green[7] & ~blue[7];
 assign red_detect = red_sector;
 
-// Find boundary of cursor box
+// edge row
+reg [10:0] edge_row = 11'd240; //only row to be analysed for edges
 
 // Highlight detected areas
-wire [23:0] red_high;
+wire [23:0] filtered;
 assign grey = green[7:1] + red[7:2] + blue[7:2]; //Grey = green/2 + red/4 + blue/4
-assign red_high = {red_processed, green_processed, blue_processed};
+assign filtered = {red_processed, green_processed, blue_processed};
 
 // Show bounding box
 wire [23:0] new_image;
 wire bb_active;
 assign bb_active = (x==left && y>top && y<bottom) | (x==right && y>top && y<bottom) | (y==top && x>left && x<right) | (y==bottom && x>left && x<right);
-assign new_image = bb_active ? bb_col : red_high;
+assign new_image = (bb_active) ? bb_col :
+				   (y==edge_row) ? {24'h00C800} : filtered;
 
 // Switch output pixels depending on mode switch
 // Don't modify the start-of-packet word - it's a packet discriptor
@@ -204,7 +206,6 @@ processing img_processing (
 	.red(red),
 	.green(green),
 	.blue(blue),
-	.grey(grey),
 	.sop(sop),
 	.packet_video(packet_video),
 	.in_valid(in_valid),

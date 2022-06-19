@@ -3,7 +3,6 @@ module processing (
 	input wire [7:0] red,
 	input wire [7:0] green,
 	input wire [7:0] blue,
-	input wire [7:0] grey, /////////////////////////////////////
 	input wire sop,
 	input wire packet_video,
 	input wire in_valid,
@@ -57,14 +56,7 @@ always@(posedge clk) begin
     end
 end
 
-wire [7:0] red_b, green_b, blue_b, grey_b;//, red_bb, green_bb, blue_bb;
-// assign red_b = r_buff_0[0];//////////////////
-// assign green_b = g_buff_0[0];////////////////
-// assign blue_b = b_buff_0[0];///////////////////
-// assign red_bb = r_buff_0[1];//////////////////
-// assign green_bb = g_buff_0[1];////////////////
-// assign blue_bb = b_buff_0[1];///////////////////
-// assign grey_b = green_b[7:1] + red_b[7:2] + blue_b[7:2];//////////////////
+wire [7:0] grey, red_b, green_b, blue_b, grey_b;
 
 always@(posedge clk) begin
 	r_blur_x_0 <= (r_buff_0[0] + r_buff_0[1] + r_buff_0[2] + r_buff_0[3]) >> 2; // sum/4
@@ -80,7 +72,8 @@ always@(posedge clk) begin
 	red_b <= r_blur_x_2[7:0];
 	green_b <= g_blur_x_2[7:0];
 	blue_b <= b_blur_x_2[7:0];
-	grey_b <= green_b[7:1] + red_b[7:2] + blue_b[7:2]; //Grey = green/2 + red/4 + blue/4
+	grey <= green[7:1] + red[7:2] + blue[7:2]; //Grey = green/2 + red/4 + blue/4
+	grey_b <= green_b[7:1] + red_b[7:2] + blue_b[7:2];
 end
 
 ///////////////////////////////////////////////////HSV
@@ -89,52 +82,6 @@ reg signed [15:0] Hue_0, Hue; //0-360.. % 360
 reg [7:0] Sat, Val; //0-100, 0-255
 reg [7:0] RGB_max, RGB_min;
 reg [7:0] RGB_diff;
-
-// reg [7:0] Sat_next, Val_next; //0-100, 0-255
-// reg alternator = 0;
-// always@(posedge clk) alternator <= (alternator) ? 0 : 1; //flips alternator between 0 & 1 to avoid doing %2
-
-// always@(posedge clk) begin	//pipelined HSV at half resolution to spread divides
-// 	if (alternator) begin	//val and sat half
-// 		if (red_b>green_b && red_b>blue_b) RGB_max <= red_b;
-// 			else if (green_b>blue_b) RGB_max <= green_b;
-// 			else RGB_max <= blue_b;
-// 		if (red_b<green_b && red_b<blue_b) RGB_max <= red_b;
-// 			else if (green_b<blue_b) RGB_max <= green_b;
-// 			else RGB_max <= blue_b;
-// 		if ((RGB_max-RGB_min) != 0) RGB_diff <= RGB_max - RGB_min;
-// 			else RGB_diff <= 8'b1;
-// 		Val_next <= RGB_max;
-// 		if (Val_next==0) Sat_next <= 0;
-// 			else Sat_next <= (100*RGB_diff) / RGB_max;
-// 	end else begin	//hue half
-// 		Sat <= Sat_next;
-// 		Val <= Val_next;
-// 		if (RGB_max==red_bb) Hue_0 <= 60*(green_bb-blue_bb) / RGB_diff;
-// 			else if (RGB_max==green_bb) Hue_0 <= 120+(60*(blue_bb-red_bb) / RGB_diff);
-// 		else Hue_0 <= 240+(60*(red_bb-green_bb) / RGB_diff);
-// 			if (Hue_0<0) Hue <= Hue_0 + 360;
-// 		else Hue <= Hue_0;
-// 	end
-// end
-
-// always@(posedge clk) begin
-// 	if (red_b>green_b && red_b>blue_b) RGB_max <= red_b;
-// 		else if (green_b>blue_b) RGB_max <= green_b;
-// 		else RGB_max <= blue_b;
-// 	if (red_b<green_b && red_b<blue_b) RGB_max <= red_b;
-// 		else if (green_b<blue_b) RGB_max <= green_b;
-// 		else RGB_max <= blue_b;
-// 	if ((RGB_max-RGB_min) != 0) RGB_diff <= RGB_max - RGB_min;
-// 		else RGB_diff <= 8'b1;
-// 	Val <= RGB_max;
-// 	if (Val==0) Sat <= 0;
-// 		else Sat <= (100*RGB_diff) / RGB_max;
-// 	if (RGB_max==red_b) Hue_0 <= 60*(green_b-blue_b) / RGB_diff;
-// 		else if (RGB_max==green_b) Hue_0 <= 120+(60*(blue_b-red_b) / RGB_diff);
-// 		else Hue_0 <= 240+(60*(red_b-green_b) / RGB_diff);
-// 	if (Hue_0<0) Hue <= Hue_0 + 360;
-// 		else Hue <= Hue_0;
 
 assign RGB_max = (red_b>green_b && red_b>blue_b) ? red_b :
                  (green_b>blue_b) ? green_b : blue_b;
@@ -150,13 +97,31 @@ assign Hue = (Hue_0<0) ? Hue_0 + 360 : Hue_0;
 
 assign red_sector = ((Hue>5 && Hue<15) && (Sat>40)) && (Val>20 && Val<200);
 
-assign red_processed = (red_sector) ? red_b : grey_b;
-assign green_processed = (red_sector) ? green_b : grey_b;
-assign blue_processed = (red_sector) ? blue_b : grey_b;
+// assign red_processed = (red_sector) ? red_b : grey_b;
+// assign green_processed = (red_sector) ? green_b : grey_b;
+// assign blue_processed = (red_sector) ? blue_b : grey_b;
 
-// assign red_processed = grey_b;
-// assign green_processed = grey_b;
-// assign blue_processed = grey_b;
+////////////////////////////////////////////////////////edge
 
+reg signed [8:0] edge_buff [2:0];
+wire signed [8:0] conv_x, edge_x;
+wire [7:0] edge_sharp;
+
+always@(posedge clk) begin
+    if (in_valid) begin
+        for (i=2; i>0; i=i-1) begin   //delay line
+            edge_buff[i] <= edge_buff[i-1];
+        end
+        edge_buff[0] <= {1'b0, grey};
+    	conv_x = edge_buff[0] - edge_buff[2]; //[1, 0, -1]
+    end
+end
+
+assign edge_x = (conv_x[8]==1) ? -conv_x : conv_x; //abs
+assign edge_sharp = (edge_x>30) ? 8'hff : 0;	//sharpen
+y
+assign red_processed = edge_sharp; //first 8 bits
+assign green_processed = edge_sharp;
+assign blue_processed = edge_sharp;
 
 endmodule

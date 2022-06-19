@@ -4,7 +4,7 @@ from PIL import Image
 
 start = time.time()
 
-img = Image.open('inputs/mars8.png')
+img = Image.open('inputs/mars7.png')
 pixels = np.array(img)
 
 n = 3
@@ -24,6 +24,8 @@ final = np.zeros(shape=(480, 640, 3))	#after all operations
 
 edge_x = 0
 #edge_y = 0
+
+edge_row = 235
 
 def pre_assignments ():
 	global red, green, blue, grey, edge_detected, face_detected
@@ -77,7 +79,7 @@ first_face_black = 0 #to check alternating pattern
 
 def edge_measure ():
 	global edge_prev, edge_detected, face_detected, measured_count, faces_count, first_face_black
-	if (y == 240):	#middle row
+	if (y == edge_row):	#middle row
 		if (x > 64 and x < 576):	#exclude sides of image
 			if (edge_x == 255):		#check if edge at all
 				if edge_prev == 0:	#first edge
@@ -157,6 +159,10 @@ for x in faces_list:
 		final[:, x, 0] = 255
 		final[:, x, 1] = 200
 		final[:, x, 2] = 0
+
+final[edge_row, :, 0] = 0
+final[edge_row, :, 1] = 200
+final[edge_row, :, 2] = 0
 
 out = Image.fromarray(np.asarray(final).astype(np.uint8))
 out.save("results/out_edge.png")
