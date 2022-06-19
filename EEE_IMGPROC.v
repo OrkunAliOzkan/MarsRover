@@ -192,10 +192,10 @@ always@(*) begin	//Write words to FIFO as state machine advances
 			msg_buf_in = {5'b0, x_min, 5'b0, x_max};	//Red
 			msg_buf_wr = 1'b1;
 		end
-		// 2'b11: begin
-		// 	msg_buf_in = {5'b0, x_max, 5'b0, y_max}; //Bottom right coordinate
-		// 	msg_buf_wr = 1'b1;
-		// end
+		2'b11: begin
+			msg_buf_in = {32'b0};
+			msg_buf_wr = 1'b1;
+		end
 	endcase
 end
 
