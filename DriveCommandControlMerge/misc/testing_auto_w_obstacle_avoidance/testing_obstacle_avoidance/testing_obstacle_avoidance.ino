@@ -24,8 +24,10 @@ float current_angle = PI/2;
 //  camera readings
 void camera_readings(int *camera_readings_type, float *camera_readings_displacemet, float *camera_readings_angle) {
 *camera_readings_type = 7;
-*camera_readings_displacemet = 40;
-*camera_readings_angle = 0;
+
+//  object is at (30, 30)
+*camera_readings_displacemet = 42.426407;
+*camera_readings_angle = PI / 4;
 }
 
 int sign(float number){
@@ -137,8 +139,15 @@ void loop()
 
         //  tell rover to move left or right in opposite direction to the object
         //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
-        B_x = (object_angle >  0) ? (-2*object_radius) : (2*object_radius); 
+        B_x = (object_angle >  0) ? 
+        (
+          (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? (3*object_radius) : (-2*object_radius)
+        ) : 
+        (
+          (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? (-3*object_radius) : (2*object_radius)
+        ); 
         B_y = current_y;
+
 
     Serial.println(
     "\nemergancy_corner_count:\t" + String(emergancy_corner_count) +
@@ -165,8 +174,8 @@ void loop()
                 abs(camera_stashed_y - current_y - object_displacement 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT
                 */
 
-                if(){
-                  B_y += stashed_y;
+                if(abs(camera_stashed_y - current_y - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT){
+                  B_y = camera_stashed_y;
                   emergancy_corner_count = 0;
                   avoided = 1;
                   return; //  equivalent to continue-ing the loop in c++
