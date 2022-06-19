@@ -274,7 +274,7 @@ void OFS_Angular(
 //  minimum boundary for object to to from rover to not need to avoid
 #define MINIMUM_SAFE_OBJECT_X_DISPLACEMENT  70
 //  rover width
-#define ROVER_WIDTH  200
+#define ROVER_WIDTH                         200
 
 // type, displacement, angle 
 vector<int> camera_readings;
@@ -303,82 +303,6 @@ vector<int> camera_readings;
 
   //  If the rover is in emergancy break procedure
   int emergancy_corner_count = 0;
-  
-/*
-//  camera readings
-camera_readings(&camera_readings);
-
-//  update values
-  object_x = current_x + camera_readings[1]*sin( (PI * camera_readings[2]) / 180 );
-  object_y = current_y + camera_readings[1]*cos( (PI * camera_readings[2]) / 180 );
-
-  object_radius = (camera[readings] == 7) ? (MAXIMUM_HOME_RADIUS) : (BALL_RADIUS);
-
-  object_rover_x_difference = abs(object_x) + object_radius - (ROVER_WIDTH / 2) - current_x;
-
-  object_displacement = sqrt(pow((object_x - current_x), 2) + pow((object_y - current_y), 2));
-  object_angle = atan2(object_y - current_y, object_x - current_x);
-
-  //  if there is an object and it is less than 10cm away
-  if(  
-        (camera_readings[0]) &&
-        (object_displacement < 100) &&
-        (object_rover_x_difference < MINIMUM_SAFE_OBJECT_X_DISPLACEMENT) && 
-        (!emergancy_corner_count)){
-    //  if haven't already emergancy breaked
-      //  stop
-      analogWrite(PWMA, 0); 
-      analogWrite(PWMB, 0);
-      emergancy_breaked = 1;
-
-      //  stash desired destination coodinate
-      camera_stashed_x = B_x;
-      camera_stashed_y = B_y;
-
-      //  tell rover to move left or right in opposite direction to the object
-      //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
-      B_x = (object_angle >  0) ? (-2*object_radius) : (2*object_radius); 
-
-      //  initialise the emergancy procedure
-        emergancy_corner_count++;
-  }
-  //  0)
-  if(emergancy_corner_count){
-        //  stop
-        analogWrite(PWMA, 0); 
-        analogWrite(PWMB, 0);
-
-        if((turning_complete) && (straight_line_complete)){
-        switch(emergancy_corner_count)
-        {
-            case 1:{
-              //  tell rover to move forward or backward in direction to the object
-              //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
-              B_y = (sign(current_angle) * (2*object_radius));
-            }
-
-            case 2:{
-              //  return to original x position
-              B_x = camera_stashed_x;
-            }
-
-            case 3:{
-              //  return to travelling on original path
-              B_y = camera_stashed_y;
-              emergancy_corner_count = 0;
-            }
-        }
-          
-          default:{
-            Serial.println("Should never be here.\n");
-            //  stop
-            analogWrite(PWMA, 0); 
-            analogWrite(PWMB, 0);
-          }
-        }
-  }
-
-*/
 
 /////////////////////////////////////////////////////////////////
 
@@ -602,6 +526,7 @@ void setup()
           current_x, current_y,
           &B_x, &B_y, returning
       );
+
     }
     // update target angle
     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
@@ -738,6 +663,81 @@ void loop()
             
             turning_complete = 0;
             straight_line_complete = 0;
+    }
+
+  //  camera readings
+  camera_readings(&camera_readings);
+
+  //  update values
+    object_x = current_x + camera_readings[1]*sin( (PI * camera_readings[2]) / 180 );
+    object_y = current_y + camera_readings[1]*cos( (PI * camera_readings[2]) / 180 );
+
+    object_radius = (camera[readings] == 7) ? (MAXIMUM_HOME_RADIUS) : (BALL_RADIUS);
+
+    object_rover_x_difference = abs(object_x) + object_radius - (ROVER_WIDTH / 2) - current_x;
+
+    object_displacement = sqrt(pow((object_x - current_x), 2) + pow((object_y - current_y), 2));
+    object_angle = atan2(object_y - current_y, object_x - current_x);
+
+    //  if there is an object and it is less than 10cm away
+    if(  
+          (camera_readings[0]) &&
+          (object_displacement < 100) &&
+          (object_rover_x_difference < MINIMUM_SAFE_OBJECT_X_DISPLACEMENT) && 
+          (!emergancy_corner_count)){
+      //  if haven't already emergancy breaked
+        //  stop
+        analogWrite(PWMA, 0); 
+        analogWrite(PWMB, 0);
+        emergancy_breaked = 1;
+
+        //  stash desired destination coodinate
+        camera_stashed_x = B_x;
+        camera_stashed_y = B_y;
+
+        //  tell rover to move left or right in opposite direction to the object
+        //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
+        B_x = (object_angle >  0) ? (-2*object_radius) : (2*object_radius); 
+
+        //  initialise the emergancy procedure
+          emergancy_corner_count++;
+    }
+    //  0)
+    if(emergancy_corner_count){
+          //  stop
+          analogWrite(PWMA, 0); 
+          analogWrite(PWMB, 0);
+
+          if((turning_complete) && (straight_line_complete)){
+          switch(emergancy_corner_count)
+          {
+              case 1:{
+                //  tell rover to move forward or backward in direction to the object
+                //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
+                B_y = (sign(current_angle) * (2*object_radius));
+              }
+
+              case 2:{
+                //  return to original x position
+                B_x = camera_stashed_x;
+              }
+
+              case 3:{
+                //  return to travelling on original path
+                B_y = camera_stashed_y;
+                emergancy_corner_count = 0;
+              }
+          }
+            
+            default:{
+              Serial.println("Should never be here.\n");
+              //  stop
+              analogWrite(PWMA, 0); 
+              analogWrite(PWMB, 0);
+            }
+          }
+          turning_complete = 0;
+          straight_line_complete = 0;
     }
 
     if (!turning_complete) {
