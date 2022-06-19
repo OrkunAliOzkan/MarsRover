@@ -27,7 +27,7 @@ void camera_readings(int *camera_readings_type, float *camera_readings_displacem
 
 //  object is at (30, 30)
 *camera_readings_displacemet = 27;
-*camera_readings_angle = 0;
+*camera_readings_angle = -PI/2;
 }
 
 int sign(float number){
@@ -139,6 +139,8 @@ void loop()
 
         //  tell rover to move left or right in opposite direction to the object
         //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
+        Serial.println(object_angle >  0);
+        Serial.println(abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT);
         B_x = (object_angle >  0) ? 
         (
           (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? (3*object_radius) : (-2*object_radius)
@@ -146,18 +148,24 @@ void loop()
         (
           (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? (-3*object_radius) : (2*object_radius)
         ); 
+
+        // B_x = (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? 
+        //       (sign(camera_stashed_x - current_x - object_displacement - 2*object_radius)*(2*object_radius)) 
+        //       : 
+        //       (camera_stashed_x);
+        // break;
+
         B_y = current_y;
 
+        Serial.println(
+        "\nemergancy_corner_count:\t" + String(emergancy_corner_count) +
+        "\nB_x:\t" + String(B_x) +
+        "\nB_y:\t" + String(B_y) +
+        "\nobject_angle:\t" + String(object_angle)
+        );
 
-    Serial.println(
-    "\nemergancy_corner_count:\t" + String(emergancy_corner_count) +
-    "\nB_x:\t" + String(B_x) +
-    "\nB_y:\t" + String(B_y) +
-    "\nobject_angle:\t" + String(object_angle)
-    );
-
-    Serial.println("object_displacement:\t" + String(object_displacement));
-    Serial.println("abs(camera_stashed_y - current_y - object_displacement - 2*object_radius):\t" + String(abs(camera_stashed_y - current_y - object_displacement)));
+        Serial.println("object_displacement:\t" + String(object_displacement));
+        Serial.println("abs(camera_stashed_y - current_y - object_displacement - 2*object_radius):\t" + String(abs(camera_stashed_y - current_y - object_displacement)));
 
         emergancy_corner_count = 1;
         //  initialise the emergancy procedure
@@ -192,7 +200,10 @@ void loop()
                 case 2:{
                 Serial.println("2\n");
                 //  return to original x position
-                B_x = camera_stashed_x;
+                B_x = (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? 
+                (sign(camera_stashed_x - current_x - object_displacement - 2*object_radius)*(2*object_radius)) 
+                : 
+                (camera_stashed_x);
                 break;
 
                 }
