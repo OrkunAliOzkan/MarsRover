@@ -334,7 +334,7 @@ float wall_y = 0;
 
 //  tcp related variables
 String tcp_received = "";
-String tcp_send = "";
+// String tcp_send = "";
 String mode_ = "";
 
 int tcp_parse(String tcp_data, float * B_x, float * B_y, String * mode_)
@@ -577,7 +577,7 @@ void loop()
     // }
     // //-----------------------------------------------//
     //Serial.println(tcp_send);
-    tcp_send = "";
+    // tcp_send = "";
 
     // // Periodically send data back to server
     if (millis() - last_TCP_post > TCP_post_period) {
@@ -835,8 +835,8 @@ void loop()
             // simplistic dead reckoning
             prev_angle = current_angle;
 
-            tcp_send = "---\n";
-            tcp_send += ("Turning Complete\n");
+            // tcp_send = "---\n";
+            // tcp_send += ("Turning Complete\n");
         } else {
             // turning not complete
             currT = micros();
@@ -938,8 +938,8 @@ void loop()
             totalpath_x_int = 0;
             totalpath_y_int = 0;
 
-            tcp_send = "---\n";
-            tcp_send += ("Straight Line Complete\n");
+            // tcp_send = "---\n";
+            // tcp_send += ("Straight Line Complete\n");
         } else {
             //  y-axis pid controller
             displacement_PWM_output = Kp_displacement * displacement_error;

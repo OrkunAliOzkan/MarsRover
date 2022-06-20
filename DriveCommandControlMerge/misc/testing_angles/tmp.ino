@@ -1,7 +1,6 @@
 // PIO includes
   #include <SPI.h>
   #include <Wire.h>
-  #include <WiFi.h>
 
 /////////////////////////////////////////////////////////////////
 
@@ -33,12 +32,6 @@
   #define RADIUS 122
 /////////////////////////////////////////////////////////////////
 
-//  Name of network
-    #define WIFI_SSID       "bet-hotspot"    
-//  Password
-    #define WIFI_PASSWORD   "helloworld"
-/////////////////////////////////////////////////////////////////
-
 // Motor Controller Pin mappings
   #define PWMA 17
   #define PWMB 2
@@ -52,10 +45,6 @@
 // Starting coordinates
   float A_x = 0; // TODO: Define at end of movement
   float A_y = 0; // TODO: Define at end of movement
-
-// Destination coordinates
-  float B_x = 0;
-  float B_y = 0;
 
 // Current position and angle
   float current_x = 100;
@@ -97,7 +86,7 @@
 //  Angle Control: rotation
   float angular_error = 0;
   float angular_error_prev = 0;
-  float target_angle = 0;
+  float target_angle = 2*PI;
 
   float p_term_angle;
   float i_term_angle;
@@ -113,7 +102,6 @@
   float Kd_rotation = 0.2;
 
 /////////////////////////////////////////////////////////////////
-
 
   struct MD
   {
@@ -233,67 +221,10 @@ void OFS_Angular(
 
 /////////////////////////////////////////////////////////////////
 
-//  tcp related variables
-String tcp_received = "";
-String mode_ = "";
-
-int tcp_parse(String tcp_data, float * B_x, float * B_y, String * mode_)
-{
-  String tmp = tcp_data;
-  /*
-  data = "x,y,mode"
-  */
-  *B_x = (tcp_data.substring(0, tcp_data.indexOf(","))).toFloat();
-  tmp = tcp_data.substring(tcp_data.indexOf(",") + 1);
-  *B_y = (tmp.substring(0, tmp.indexOf(","))).toFloat();
-  *mode_ = tmp.substring(tmp.indexOf(",") + 1);
-
-  return 1;
-}
-
-/////////////////////////////////////////////////////////////////
-
-//  Wifi Initialisation
-
-WiFiClient client; // Use WiFiClient class to create TCP connections
-const uint16_t port = 8080;
-const char * host = "146.169.171.197"; // ip or dns
-
-// WiFi timeout variables (reliability)
-  long wifi_last_connect_attempt = 0;
-  long wifi_connect_timeout = 3000;
-// tcp timeout variables (reliability)
-  long tcp_last_connect_attempt = 0;
-  long tcp_connect_timeout = 3000;
-  
-  long last_TCP_post = 0;
-  long TCP_post_period = 50;
-
-void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, int * target_displacement, float * target_angle){
-    
-    float dx = *B_x - *current_x;
-    float dy = *B_y - *current_y ;
-
-    *target_angle = atan2( dy, dx ) - *current_angle;
-    //  converts from angle to angle
-      
-    if((*target_angle) > PI){
-        *target_angle -= 2 * PI;
-    }
-    else if ((*target_angle) < -PI){
-        *target_angle += 2 * PI;
-    }
-
-   // update target displacement
-    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
-}
-
-/////////////////////////////////////////////////////////////////
-
 //  state mashine parameters for the drive process (stop turn go)
   int turning_complete = 1;
+  int straight_line_complete = 1;
 
-long lastCycle = 0;
 void setup()
 {
     Serial.begin(115200);
@@ -324,82 +255,14 @@ void setup()
 
     if(mousecam_init()==-1)
     {
+        Serial.println("Mouse cam failed to init");
         while(1);
     }
-    /////////////////////////////////////////////////////////////////
-    //  Connecting to Wifi
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-
-    //Serial.println();
-    //Serial.println();
-    Serial.print("Waiting for WiFi... ");
-    while(WiFi.status() != WL_CONNECTED) {
-        Serial.print(".");
-        delay(500);
-    }
-
-    Serial.println("\n");
-    Serial.println("WiFi connected");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-
-    delay(500);
-    /////////////////////////////////////////////////////////////////
-    //  Connecting to TCP Server
-    if (!client.connect(host, port)) {
-        Serial.println("Connection to TCP Server failed");
-        Serial.println("Trying again in 500ms...");
-        delay(500);
-    }
-    Serial.println("Connected to Server\n");
-
-    // // wait for mission start
-    String start_message = "";
-    while(client.available() < 5){
-        Serial.println("Waiting for Mission Start");
-        delay(500);
-    }
-
-    tcp_received = client.readStringUntil('\r');
-    tcp_parse(tcp_received, &B_x, &B_y, &mode_);
-
-    //mode_ = "A";
-
-    if (mode_ == "A") {
-      // update position to travel to
-      automation(
-          &counter,
-          current_x, current_y,
-          &B_x, &B_y, returning
-      );
-
-    }
-    // update target angle
-    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
-
     turning_complete = 0;
 }
 
-String location_info = "";
-
 void loop()
 {
-    lastCycle = micros();
-    // // Periodically send data back to server
-    if (millis() - last_TCP_post > TCP_post_period) {
-        location_info = "{\"time\":" + String(millis()) + 
-                        ",\"type\": \"rover\"," + 
-                        "\"data\":"  + 
-                        "{\"posX\": " + String(current_x) + 
-                        ",\"posY\": " + String(current_y) + 
-                        ",\"angle\": " + String(current_angle) + 
-                        "}" + 
-                        "}";
-
-        client.print(location_info);
-        last_TCP_post = millis();
-    }
-
     if (!turning_complete) {
         // Rotation Logic
         OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
@@ -428,6 +291,8 @@ void loop()
             // simplistic dead reckoning
             prev_angle = current_angle;
 
+            Serial.println("---\n");
+            Serial.println("Turning Complete\n");
         } else {
             // turning not complete
             currT = micros();
@@ -464,5 +329,36 @@ void loop()
             prevT = currT;
             angular_error_prev = angular_error;
         }
+
+        // Debugging Messages
+        Serial.println("Rover is turning");
+        Serial.println("target_angle: " + String(target_angle));
+        Serial.println("angular error: " + String(angular_error));
+        /*
+        tcp_send += "---\n";
+        tcp_send +=("Rover is turning");
+        tcp_send += "\n";
+        tcp_send +=("target_angle: " + String(target_angle));
+        tcp_send += "\n";
+        tcp_send +=("angular error: " + String(angular_error));
+        tcp_send += "\n";
+        tcp_send +=("deltaT: " + String(deltaT));
+        tcp_send += "\n";
+        tcp_send +=("P: " + String(p_term_angle * Kp_rotation));
+        tcp_send += "\n";
+        tcp_send +=("I: " + String(i_term_angle * Ki_rotation));
+        tcp_send += "\n";
+        tcp_send +=("D: " + String(d_term_angle * Kd_rotation));
+        tcp_send += "\n";
+        tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
+        tcp_send += "\n";
+        tcp_send +=("current angle: " + String(current_angle));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+        tcp_send += "\n";
+        */
+
     } 
 }
