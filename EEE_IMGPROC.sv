@@ -1,65 +1,37 @@
+// synthesis VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
+
 module EEE_IMGPROC(
 	// global clock & reset
-	clk,
-	reset_n,
-	
-	// mm slave
-	s_chipselect,
-	s_read,
-	s_write,
-	s_readdata,
-	s_writedata,
-	s_address,
+    input	clk,
+    input	reset_n,
 
-	// stream sink
-	sink_data,
-	sink_valid,
-	sink_ready,
-	sink_sop,
-	sink_eop,
-	
-	// streaming source
-	source_data,
-	source_valid,
-	source_ready,
-	source_sop,
-	source_eop,
-	
-	// conduit
-	mode
+    // mm slave
+    input							s_chipselect,
+    input							s_read,
+    input							s_write,
+    output	logic	[31:0]	s_readdata,
+    input	[31:0]				s_writedata,
+    input	[2:0]					s_address,
+
+
+    // streaming sink
+    input	[23:0]            	sink_data,
+    input								sink_valid,
+    output							sink_ready,
+    input								sink_sop,
+    input								sink_eop,
+
+    // streaming source
+    output	[23:0]			  	   source_data,
+    output						        source_valid,
+    input									source_ready,
+    output								source_sop,
+    output								source_eop,
+
+    // conduit export
+    input                         mode
 	
 );
-
-
-// global clock & reset
-input	clk;
-input	reset_n;
-
-// mm slave
-input							s_chipselect;
-input							s_read;
-input							s_write;
-output	reg	[31:0]	s_readdata;
-input	[31:0]				s_writedata;
-input	[2:0]					s_address;
-
-
-// streaming sink
-input	[23:0]            	sink_data;
-input								sink_valid;
-output							sink_ready;
-input								sink_sop;
-input								sink_eop;
-
-// streaming source
-output	[23:0]			  	   source_data;
-output								source_valid;
-input									source_ready;
-output								source_sop;
-output								source_eop;
-
-// conduit export
-input                         mode;
 
 ////////////////////////////////////////////////////////////////////////
 //
@@ -68,58 +40,56 @@ parameter IMAGE_H = 11'd480;
 parameter MESSAGE_BUF_MAX = 256;
 parameter MSG_INTERVAL = 6;
 parameter BB_COL_DEFAULT = 24'hff0000;
+parameter edge_row = 11'd240; //only row to be analysed for edges
 
+logic [7:0]   red, green, blue, grey;
+logic [7:0]   red_out, green_out, blue_out;
+logic [7:0]	 red_processed, green_processed, blue_processed;
+logic red_sector;
 
-wire [7:0]   red, green, blue, grey;
-wire [7:0]   red_out, green_out, blue_out;
-wire [7:0]	 red_processed, green_processed, blue_processed;
-wire red_sector;
-
-wire         sop, eop, in_valid, out_ready;
+logic         sop, eop, in_valid, out_ready;
 ////////////////////////////////////////////////////////////////////////
 
 // Detect red areas
-wire red_detect;
+logic red_detect;
 // assign red_detect = red[7] & ~green[7] & ~blue[7];
 assign red_detect = red_sector;
 
-// edge row
-reg [10:0] edge_row = 11'd240; //only row to be analysed for edges
-
-reg [329:0] edge_list;
-
 // Highlight detected areas
-reg filtered_edge_active;
-wire [23:0] filtered_0, filtered_1, filtered_edge;
+logic [29:0][10:0] edge_list; //for next frame (drawing)
+logic [29:0][10:0] measured_list; //stores valid edges belonging to a building
+logic filtered_edge_active;
+logic [23:0] filtered_0, filtered_1, filtered_edge;
 assign grey = green[7:1] + red[7:2] + blue[7:2]; //Grey = green/2 + red/4 + blue/4
 assign filtered_0 = {red_processed, green_processed, blue_processed};
 
 // Show bounding box
-wire bb_active;
+logic bb_active;
 assign bb_active = (x==left && y>top && y<bottom) | (x==right && y>top && y<bottom) | (y==top && x>left && x<right) | (y==bottom && x>left && x<right);
 assign filtered_1 = (bb_active) ? bb_col :
-				   		(y==edge_row) ? {24'h00C800} : filtered_0;
-//assign filtered_edge = (x==edge_list[10:0])// | x==edge_list[21:11] | x==edge_list[32:22] | x==edge_list[43:33] | x==edge_list[54:44] | x==edge_list[65:55] | 
-						// x==edge_list[76:66] | x==edge_list[87:77] | x==edge_list[98:88] | x==edge_list[109:99] | x==edge_list[120:110] | x==edge_list[131:121] | 
-						// x==edge_list[142:132] | x==edge_list[153:143] | x==edge_list[164:154] | x==edge_list[175:165] | x==edge_list[186:176] | x==edge_list[197:187] | 
-						// x==edge_list[208:198] | x==edge_list[219:209] | x==edge_list[230:220] | x==edge_list[241:231] | x==edge_list[252:242] | x==edge_list[263:253] | 
-						// x==edge_list[274:264] | x==edge_list[285:275] | x==edge_list[296:286] | x==edge_list[307:297] | x==edge_list[318:308] | x==edge_list[329:319]) 
-//							? {24'h0064FF} : filtered_bb;
-assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? filtered_1 : {red,green,blue};
+				   		(y==edge_row-1 | y==edge_row | y==edge_row+1) ? {red, green, blue} : filtered_0;
 
-// integer k;
-// always@(*) begin
-// 	filtered_edge_active = 0;
-// 	for (k=1; k>29; k=k+1) begin
-// 		if (x==edge_list[11*k -:11]) filtered_edge_active = 1;
-// 	end
-// end
-// assign filtered_edge = (filtered_edge_active) ? {24'h0064FF} : filtered_bb;
+integer k;
+always@(*) begin
+	filtered_edge_active = 0;
+	for (k=0; k<30; k=k+1) begin
+		if (x==edge_list[k]) filtered_edge_active = 1;
+	end
+end
 
+assign filtered_edge = (filtered_edge_active==0) ? filtered_1 : 
+					   (y[3]) ? {24'h21007C} : {24'hB2CDE8}; //alternating navy and white line
+assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? filtered_edge : {red,green,blue};
+
+always@(posedge clk) begin
+	if (y==edge_row+1) begin
+		if (x<30) edge_list[x] <= measured_list[x];	//copy list for next frame after edge row
+	end
+end
 
 //Count valid pixels to tget the image coordinates. Reset and detect packet type on Start of Packet.
-reg [10:0] x, y;
-reg packet_video;
+logic [10:0] x, y;
+logic packet_video;
 always@(posedge clk) begin
 	if (sop) begin
 		x <= 11'h0;
@@ -138,7 +108,7 @@ always@(posedge clk) begin
 end
 
 //Find first and last red pixels
-reg [10:0] x_min, y_min, x_max, y_max;
+logic [10:0] x_min, y_min, x_max, y_max;
 always@(posedge clk) begin
 	if (red_detect & in_valid) begin	//Update bounds when the pixel is red
 		if (y>240 && y<450 && x>30 && x<610) begin //chop off ceiling and edges
@@ -157,9 +127,9 @@ always@(posedge clk) begin
 end
 
 //Process bounding box at the end of the frame.
-reg [1:0] msg_state;
-reg [10:0] left, right, top, bottom;
-reg [7:0] frame_count;
+logic [1:0] msg_state;
+logic [10:0] left, right, top, bottom;
+logic [7:0] frame_count;
 always@(posedge clk) begin
 	if (eop & in_valid & packet_video) begin  //Ignore non-video packets
 		
@@ -185,12 +155,12 @@ always@(posedge clk) begin
 end
 	
 //Generate output messages for CPU
-reg [31:0] msg_buf_in; 
-wire [31:0] msg_buf_out;
-reg msg_buf_wr;
-wire msg_buf_rd, msg_buf_flush;
-wire [7:0] msg_buf_size;
-wire msg_buf_empty;
+logic [31:0] msg_buf_in; 
+logic [31:0] msg_buf_out;
+logic msg_buf_wr;
+logic msg_buf_rd, msg_buf_flush;
+logic [7:0] msg_buf_size;
+logic msg_buf_empty;
 
 `define RED_BOX_MSG_ID "RBB"
 
@@ -230,8 +200,8 @@ processing img_processing (
 	.red_processed(red_processed),
 	.green_processed(green_processed),
 	.blue_processed(blue_processed),
-	.red_sector(red_sector)//,
-	//.edge_list(edge_list)
+	.red_sector(red_sector),
+	.measured_list(measured_list)
 );
 
 
@@ -292,8 +262,8 @@ STREAM_REG #(.DATA_WIDTH(26)) out_reg (
 
 // Process write
 
-reg  [7:0]   reg_status;
-reg	[23:0]	bb_col;
+logic  [7:0]   reg_status;
+logic	[23:0]	bb_col;
 
 always @ (posedge clk)
 begin
@@ -316,7 +286,7 @@ assign msg_buf_flush = (s_chipselect & s_write & (s_address == `REG_STATUS) & s_
 
 
 // Process reads
-reg read_d; //Store the read signal for correct updating of the message buffer
+logic read_d; //Store the read signal for correct updating of the message buffer
 
 // Copy the requested word to the output port when there is a read.
 always @ (posedge clk)
@@ -342,4 +312,3 @@ assign msg_buf_rd = s_chipselect & s_read & ~read_d & ~msg_buf_empty & (s_addres
 
 
 endmodule
-

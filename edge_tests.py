@@ -70,7 +70,7 @@ def HSV_conversion ():
 	Val = RGB_max
 	Sat = 0 if Val == 0 else (100 * RGB_diff) / RGB_max
 
-edge_prev = 0	#stores old high value
+edge_prev = 0	#stores old high value x-coord
 measured_list = [0 for i in range(30)]	#stores valid edges belonging to a building
 measured_count = 0
 faces_list = [0 for i in range(30)]	#stores valid faces belonging to a building
