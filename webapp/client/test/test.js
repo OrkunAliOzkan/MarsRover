@@ -148,6 +148,10 @@ function drawBuilding(buildingEntity) {
     ctx.fill();
 }
 
+function drawWaypoint(waypointEntity) {
+    ctx.drawImage(flag, waypointEntity.posX, waypointEntity.posY - flag.height);
+}
+
 function redrawCanvas(entity) {
     console.log("redraw");
     //var entityData = JSON.parse(entity);
@@ -167,7 +171,9 @@ function redrawCanvas(entity) {
     drawRover(entity.rover);
 
     // draw waypoint
-    
+    if (entity.waypoint != null) {
+        drawWaypoint(entity.waypoint);
+    }
 }
 
 const rover_x = document.getElementById("rover_x");
@@ -248,12 +254,11 @@ function genPacketsSmall() {
     sock.on('update', (packet) => {
         console.log(packet);
         updateState(state, packet);
+        redrawCanvas(state);
     });
 
     sock.on('waypoint', ({x, y}) => {
         console.log("waypoint");
-        redrawCanvas(state);
-        ctx.drawImage(flag, x, y - flag.height);
     });
 
     const start_btn = document.getElementById("start");

@@ -50,12 +50,11 @@ io.on('connection', (sock) => {
     print("Client connected", 0);
 
     sock.on('waypoint', ({ x, y }) => {
-        io.emit('waypoint', { x, y });
         print(`waypoint placed at x: ${x}, y: ${600 - y}`, 0);
 
-        const time_string = (new Date()).toISOString();
-        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
+        // map canvas coordinates to arena coordinates
         const waypoint_data = `${x + 100},${600 - y+ 100},M`;
+
         // send the waypoint data to the rover over TCP
         if (rover_connected) {
             rover_socket.write(waypoint_data);
@@ -63,6 +62,17 @@ io.on('connection', (sock) => {
         } else {
             console.log(`Can't send waypoint, rover is not connected`);
         }
+
+        // send ack to webpage to render
+        const packet_json = {
+            "time": 1002,
+            "type": "waypoint",
+            "data": {
+                "posX": x,
+                "posY": y, 
+            }
+        }
+        io.emit('update', packet_json);
     });
 
     sock.on('auto', (data) => {
@@ -85,7 +95,7 @@ io.on('connection', (sock) => {
     });
 
     sock.on('test', ({ x, y }) => {
-        print(`waypoint placed at x: ${x}, y: ${y}`, 0);
+        print(`test point set at x: ${x}, y: ${y}`, 0);
         const time_string = (new Date()).toISOString();
         // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
         const waypoint_data = `${x + 100},${y + 100},M`;
