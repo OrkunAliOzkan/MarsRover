@@ -259,50 +259,63 @@ void OFS_Angular(
 //  obstacle avoidance
 
 //  camera readings
-  void camera_readings(vector<int> *readings) {
+void camera_readings(int *camera_readings_type, float *camera_readings_displacemet, float *camera_readings_angle) {
+*camera_readings_type = 7;
 
-  }
+//  object is at (30, 30)
+*camera_readings_displacemet = 27;
+*camera_readings_angle = -PI/2;
+}
 
-  int sign(float number){
+int sign(float number){
     return (number >= 0) ? (1) : (-1);
-  }
+}
 
 //  radius of an A2 base at its widest
 #define MAXIMUM_HOME_RADIUS                 174.75
 //  radius of a ping pong ball
 #define BALL_RADIUS                         20
 //  minimum boundary for object to to from rover to not need to avoid
-#define MINIMUM_SAFE_OBJECT_X_DISPLACEMENT  70
+#define MINIMUM_SAFE_OBJECT_X_DISPLACEMENT  70  //SHOULD BE SOMETHING LIKE 15
+//  minimum boundary for rover from wall 
+#define MINIMUM_SAFE_WALL_DISPLACEMENT      300
 //  rover width
 #define ROVER_WIDTH                         200
 
 // type, displacement, angle 
-vector<int> camera_readings;
+int camera_readings_type = 0;
+float camera_readings_displacemet = 0;
+float camera_readings_angle = 0;
 
 //  update values
   //  stash destination
-  float camera_stashed_x = 0;
-  float camera_stashed_y = 0;
+float camera_stashed_x = 0;
+float camera_stashed_y = 0;
 
-  //  counter, remember to mod 4 to reset it
-  int detourCounter = 0;
+//  counter, remember to mod 4 to reset it
+int detourCounter = 0;
 
-  //  objects centre for reference
-  float object_x = 0;
-  float object_y = 0;
+//  objects centre for reference
+float object_x = 0;
+float object_y = 0;
 
-  //  object radius
-  float object_radius = 0;
+//  object radius
+float object_radius = 0;
 
-  //  difference in space between the rover and the object
-  float object_rover_x_difference = 0;
+//  difference in space between the rover and the object
+float object_rover_x_difference = 0;
 
-  //  how far away the object is when deciding how far to move away from it
-  float object_displacement = 0;
-  float object_angle = 0;
+//  how far away the object is when deciding how far to move away from it
+float object_displacement = 0;
+float object_angle = 0;
 
-  //  If the rover is in emergancy break procedure
-  int emergancy_corner_count = 0;
+//  If the rover is in emergancy break procedure
+int emergancy_corner_count = 0;
+bool avoided = 0;
+
+//  wall position
+float wall_x = 0;
+float wall_y = 0;
 
 /////////////////////////////////////////////////////////////////
 
@@ -686,10 +699,11 @@ void loop()
         (object_rover_x_difference < MINIMUM_SAFE_OBJECT_X_DISPLACEMENT) && 
         (emergancy_corner_count == 0) &&
         (!avoided)){
+          Serial.println("HELLo");
       //  if haven't already emergancy breaked
-        //  stop
-        analogWrite(PWMA, 0); 
-        analogWrite(PWMB, 0);
+      //  stop
+          analogWrite(PWMA, 0); 
+          analogWrite(PWMB, 0);
 
         //  stash desired destination coodinate
         camera_stashed_x = B_x;
@@ -697,35 +711,81 @@ void loop()
 
         //  tell rover to move left or right in opposite direction to the object
         //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
-        B_x = (object_angle >  0) ? (-2*object_radius) : (2*object_radius); 
+        // Serial.println(object_angle >  0);
+        // Serial.println(abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT);
+        B_x = (object_angle >  0) ? 
+        (
+          (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? (3*object_radius) : (-2*object_radius)
+        ) : 
+        (
+          (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? (-3*object_radius) : (2*object_radius)
+        ); 
+
+        // B_x = (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? 
+        //       (sign(camera_stashed_x - current_x - object_displacement - 2*object_radius)*(2*object_radius)) 
+        //       : 
+        //       (camera_stashed_x);
+        // break;
+
         B_y = current_y;
 
+        // Serial.println(
+        // "\nemergancy_corner_count:\t" + String(emergancy_corner_count) +
+        // "\nB_x:\t" + String(B_x) +
+        // "\nB_y:\t" + String(B_y) +
+        // "\nobject_angle:\t" + String(object_angle)
+        // );
+
+        // Serial.println("object_displacement:\t" + String(object_displacement));
+        // Serial.println("abs(camera_stashed_y - current_y - object_displacement - 2*object_radius):\t" + String(abs(camera_stashed_y - current_y - object_displacement)));
+
+        emergancy_corner_count = 1;
         //  initialise the emergancy procedure
-          emergancy_corner_count = 1;
     }
     //  0)
     else if((emergancy_corner_count > 0) && (!avoided)){
-          //  stop
-          analogWrite(PWMA, 0); 
-          analogWrite(PWMB, 0);
+            if((turning_complete) && (straight_line_complete)){
+            //  stop
+            analogWrite(PWMA, 0); 
+            analogWrite(PWMB, 0);
 
             switch(emergancy_corner_count)
             {
                 case 1:{
+                // Serial.println("1\n");
                 //  tell rover to move forward or backward in direction to the object
                 //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
-                B_y = (sign(current_angle) * (2*object_radius));
+
+                /*
+                abs(camera_stashed_y - current_y - object_displacement 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT
+                */
+
+                if(abs(camera_stashed_y - current_y - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT){
+                  // Serial.println("Yo");
+                  B_y = camera_stashed_y;
+                  emergancy_corner_count = 0;
+                  avoided = 1;
+                  break; //  equivalent to continue-ing the loop in c++
+                }
+                else{
+                  B_y = (sign(current_angle) * (2*object_radius));
+                }
                 break;
                 }
 
                 case 2:{
+                // Serial.println("2\n");
                 //  return to original x position
-                B_x = camera_stashed_x;
+                B_x = (abs(camera_stashed_x - current_x - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT) ? 
+                (sign(camera_stashed_x - current_x - object_displacement - 2*object_radius)*(2*object_radius)) 
+                : 
+                (camera_stashed_x);
                 break;
 
                 }
 
                 case 3:{
+                // Serial.println("3\n");
                 //  return to travelling on original path
                 B_y = camera_stashed_y;
                 avoided = 1;
@@ -733,10 +793,18 @@ void loop()
 
                 }
             }
-          emergancy_corner_count++;
-          emergancy_corner_count = emergancy_corner_count % 4;
-          turning_complete = 0;
-          straight_line_complete = 0;
+            emergancy_corner_count++;
+            emergancy_corner_count = emergancy_corner_count % 4;
+            turning_complete = 0;
+            straight_line_complete = 0;
+
+//            Serial.println(
+//            "\nemergancy_corner_count:\t" + String(emergancy_corner_count) +
+//            "\nB_x:\t" + String(B_x) +
+//            "\nB_y:\t" + String(B_y) +
+//            "\nobject_angle:\t" + String(object_angle)
+//            );
+            }
     }
 
     if (!turning_complete) {

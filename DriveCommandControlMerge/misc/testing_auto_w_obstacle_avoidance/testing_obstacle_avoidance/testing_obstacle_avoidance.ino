@@ -131,7 +131,9 @@ void loop()
         (!avoided)){
           Serial.println("HELLo");
       //  if haven't already emergancy breaked
-        //  stop
+      //  stop
+          analogWrite(PWMA, 0); 
+          analogWrite(PWMB, 0);
 
         //  stash desired destination coodinate
         camera_stashed_x = B_x;
@@ -173,6 +175,10 @@ void loop()
     //  0)
     else if((emergancy_corner_count > 0) && (!avoided)){
             if((turning_complete) && (straight_line_complete)){
+            //  stop
+            analogWrite(PWMA, 0); 
+            analogWrite(PWMB, 0);
+
             switch(emergancy_corner_count)
             {
                 case 1:{
