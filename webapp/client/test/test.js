@@ -298,26 +298,26 @@ function genPacketsSmall() {
         console.log("Replay begin");
     })
 
-    updateState(state, _alien);
+    // updateState(state, _alien);
 
-    const replay_data_string = genPacketsSmall();
-    let replay_data_json = [];
-    for (let i = 0; i < replay_data_string.length; i++){
-        replay_data_json.push(JSON.parse(replay_data_string[i]));
-    }
-    // replay_data_json.forEach(item => console.log(item));
+    // const replay_data_string = genPacketsSmall();
+    // let replay_data_json = [];
+    // for (let i = 0; i < replay_data_string.length; i++){
+    //     replay_data_json.push(JSON.parse(replay_data_string[i]));
+    // }
+    // // replay_data_json.forEach(item => console.log(item));
 
-    var curr_replay_frame = 0;
+    // var curr_replay_frame = 0;
 
-    var replay_interval;
-    replay_interval = setInterval(() => {
-        if (curr_replay_frame < replay_data_json.length) {
-            updateState(state, replay_data_json[curr_replay_frame]);
-            redrawCanvas(state);
-            curr_replay_frame++;
-        } else {
-            clearInterval(replay_interval);
-        }
-    }, 50);
+    // var replay_interval;
+    // replay_interval = setInterval(() => {
+    //     if (curr_replay_frame < replay_data_json.length) {
+    //         updateState(state, replay_data_json[curr_replay_frame]);
+    //         redrawCanvas(state);
+    //         curr_replay_frame++;
+    //     } else {
+    //         clearInterval(replay_interval);
+    //     }
+    // }, 50);
 })();
 

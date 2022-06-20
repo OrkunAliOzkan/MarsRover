@@ -2,15 +2,16 @@ Database
 
 Total Number of Missions
 
-Duration
+Duration ()
 min, max, avg
 
-Distance Travelled
+Distance Travelled ()
 min, max, avg
 
-Success Rate (x / 6 targets found)
+Success Rate (x / 7 targets found)
+min, max, avg
 
-targets 
+targets : 6 aliens and 1 fan
 
 Mission Queries:
 -----------------

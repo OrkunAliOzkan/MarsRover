@@ -6,7 +6,7 @@ const mission_1 = {
     "id": 601,
     "times": [tstart, tend],
     "duration_sec": 600,
-    "starting_pos" : [30, 2000],
+    "starting_pos" : {"posX": 30, "posY": 30},
     "total_path": 1245,
     "route_data": route_example,
     "num_targets_found" : 4,

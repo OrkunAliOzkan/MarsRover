@@ -7,10 +7,24 @@ const mongo = require('mongodb');
         await client.connect();
         console.log("Connected to cluster");
 
-        
-
         // await listDatabases(client);
 
+        const test_db = client.db("test");
+        // await printCollections(test_db);
+        const orders = test_db.collection("orders");
+        // await printDocs(orders);
+
+        const result = await orders.aggregate([
+            {
+                $match: {size: "medium"}
+            },
+            {
+                $group: {_id: "$name", totalQuantity: {$sum: "$quantity"}}
+            }
+        ]).toArray();
+
+        console.log(result);
+        // await result.forEach(console.dir);
         // const mars_db = client.db("missions");
         
         // await printCollections(mars_db);
@@ -23,8 +37,8 @@ const mongo = require('mongodb');
     }
 })();
 
-async function printDocs(db, col) {
-    document_list = await db.collection(col).find({}).toArray();
+async function printDocs(col) {
+    document_list = await col.find({}).toArray();
     console.log(document_list);
 }
 

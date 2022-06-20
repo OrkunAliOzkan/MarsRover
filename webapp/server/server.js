@@ -130,9 +130,21 @@ rover_server.on('connection', (socket) => {
     socket.on('data', function(chunk) {
         console.log(`Rover Data:`);
         const rover_string = chunk.toString();
-        const rover_json = JSON.parse(rover_string);
-        console.log(`${rover_string}`);
-        io.emit('update', rover_json);
+        const packet_list = rover_string.split('@');
+        let packet_json;
+        packet_list.forEach(item => {
+            if (item != '') {
+                try {
+                    packet_json = JSON.parse(item);
+                    // console.log(packet_json);
+                    io.emit('update', packet_json);
+                } catch (error) {
+                    console.log("Error parsing JSON")
+                }
+            }
+        });
+        // const rover_json = JSON.parse(rover_string);
+        // console.log(`${rover_string}`);
     });
 
     // When the client requests to end the TCP connection with the server, the server
@@ -146,41 +158,41 @@ rover_server.on('connection', (socket) => {
     });
 });
 
-var state = {
-    "rover": {
-        "posX": 100,
-        "posY": 100,
-        "angle": 0  
-    },
-    "alien": [
-        {
-            "colour": "red",
-            "posX": 50,
-            "posY": 70
-        },
-        {
-            "colour": "blue",
-            "posX": 150,
-            "posY": 70
-        },
-        {
-            "colour": "green",
-            "posX": 250,
-            "posY": 70
-        } 
-    ],
-    "building": [
-        {
-            "posX": 50,
-            "posY": 170
-        },
-        {
-            "posX": 150,
-            "posY": 170
-        },
-        {
-            "posX": 250,
-            "posY": 170
-        } 
-    ]
-}
+// var state = {
+//     "rover": {
+//         "posX": 100,
+//         "posY": 100,
+//         "angle": 0  
+//     },
+//     "alien": [
+//         {
+//             "colour": "red",
+//             "posX": 50,
+//             "posY": 70
+//         },
+//         {
+//             "colour": "blue",
+//             "posX": 150,
+//             "posY": 70
+//         },
+//         {
+//             "colour": "green",
+//             "posX": 250,
+//             "posY": 70
+//         } 
+//     ],
+//     "building": [
+//         {
+//             "posX": 50,
+//             "posY": 170
+//         },
+//         {
+//             "posX": 150,
+//             "posY": 170
+//         },
+//         {
+//             "posX": 250,
+//             "posY": 170
+//         } 
+//     ]
+// }
