@@ -36,9 +36,10 @@ var state = {
 };
 
 (() => {
-    genPacketsSmall();
-    state.y = 123;
-    console.log(state);
+    console.log(genPacketsSmall());
+    
+    // state.y = 123;
+    // console.log(state);
     // console.log(pi);
 
     // const time_string = (new Date()).toISOString();
