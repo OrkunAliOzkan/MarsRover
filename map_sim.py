@@ -11,7 +11,7 @@ from matplotlib.patches import Polygon
 arena_x = 360
 arena_y = 240
 
-aliens_count = random.randint(3, 6)
+aliens_count = 6
 raycount = 20
 ray_jump = 5 #initial ray distance for each point
 ultrasound_jump = 1
@@ -210,8 +210,9 @@ class Radar ():
 		plt.figure(2)
 		self.scatter1 = plt.scatter(self.position[0], self.position[1], color="red", s=5000, alpha=0.1, zorder=3)
 		self.scatter2 = plt.scatter(self.position[0], self.position[1], color="red", s=70, alpha=0.3, zorder=4)
-		plt.figure(1)
+		plt.figure(2)
 		self.scatter_guesses = plt.scatter([], [], color="whitesmoke", s=40, alpha=0, zorder=3)
+		plt.figure(1)
 		self.scatter_avg1 = plt.scatter([], [], color="whitesmoke", marker='s', s=200, alpha=0.5, zorder=5)
 		self.scatter_avg2 = plt.scatter([], [], color="gray", marker='o', s=140, alpha=0.5, zorder=6)
 
@@ -227,7 +228,7 @@ class Radar ():
 		if self.scan_probability != 0:	#valid scan
 			self.weighted_sum_pos[0] += self.position[0]*self.scan_probability	#x
 			self.weighted_sum_pos[1] += self.position[1]*self.scan_probability	#y
-			self.probability_sum += self.scan_probability
+			self.probability_sum += self.scan_probability/4
 			self.avg_object_pos[0] = self.weighted_sum_pos[0] / self.probability_sum #x
 			self.avg_object_pos[1] = self.weighted_sum_pos[1] / self.probability_sum #y
 			self.guesses[0].append([self.position[0], self.position[1]])
