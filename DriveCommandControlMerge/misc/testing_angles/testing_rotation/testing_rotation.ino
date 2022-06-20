@@ -103,6 +103,8 @@
   float i_term_angle;
   float d_term_angle;
 
+  float differential_PWM_output = 0;
+
   bool Rot_Ctrl = 0;//  Informed by server
 
 /////////////////////////////////////////////////////////////////
@@ -269,7 +271,7 @@ const char * host = "146.169.171.197"; // ip or dns
   long last_TCP_post = 0;
   long TCP_post_period = 50;
 
-void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, int * target_displacement, float * target_angle){
+void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, float * target_angle){
     
     float dx = *B_x - *current_x;
     float dy = *B_y - *current_y ;
@@ -283,9 +285,6 @@ void updateTargets(float * B_x, float * B_y, float * current_x, float * current_
     else if ((*target_angle) < -PI){
         *target_angle += 2 * PI;
     }
-
-   // update target displacement
-    *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
 }
 
 /////////////////////////////////////////////////////////////////
@@ -363,19 +362,8 @@ void setup()
     tcp_received = client.readStringUntil('\r');
     tcp_parse(tcp_received, &B_x, &B_y, &mode_);
 
-    //mode_ = "A";
-
-    if (mode_ == "A") {
-      // update position to travel to
-      automation(
-          &counter,
-          current_x, current_y,
-          &B_x, &B_y, returning
-      );
-
-    }
     // update target angle
-    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_angle);
 
     turning_complete = 0;
 }
