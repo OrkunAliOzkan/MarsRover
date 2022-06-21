@@ -36,7 +36,7 @@ var state = {
 };
 
 (() => {
-    console.log(genPacketsSmall());
+    // console.log(genPacketsSmall());
     
     // state.y = 123;
     // console.log(state);
@@ -82,5 +82,10 @@ var state = {
     // //     console.log(packet_list[i]);
     // // }
     // packet_list.forEach(item => console.log(item));
+    const time_string = (new Date()).toISOString();
+    console.log(time_string);
+
+    const now = new Date("2022-06-10 23:16:39.603783Z");
+    console.log(now);
 })();
 
