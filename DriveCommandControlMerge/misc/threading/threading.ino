@@ -186,74 +186,30 @@ void mousecam_read_motion(struct MD *p)
     delayMicroseconds(5); //necessary wait time
 }
 
-void OFS_Cartesian
-            (            
-            MD md, 
-            int * prescaled_tx, 
-            int * prescaled_ty, 
-            int * total_x, 
-            int * total_y
-            )
-{
-  //  Optical sensor readings
-    mousecam_read_motion(&md);
+// void OFS_Cartesian
+//             (            
+//             MD md, 
+//             int * prescaled_tx, 
+//             int * prescaled_ty, 
+//             int * total_x, 
+//             int * total_y
+//             )
+// {
+//   //  Optical sensor readings
+//     mousecam_read_motion(&md);
 
-  *prescaled_tx += convTwosComp(md.dx);
-  *prescaled_ty += convTwosComp(md.dy);
+//   *prescaled_tx += convTwosComp(md.dx);
+//   *prescaled_ty += convTwosComp(md.dy);
 
-  *total_x = *prescaled_tx / 4.95;
-  *total_y = *prescaled_ty / 4.95;
+//   *total_x = *prescaled_tx / 4.95;
+//   *total_y = *prescaled_ty / 4.95;
 
-  Serial.println("Dy: " + String(*prescaled_ty));
-  Serial.println("Dx: " + String(*prescaled_tx));
-  Serial.println("Total y: " + String(*total_y));
-  Serial.println("Total x: " + String(*total_x));
-  Serial.println();
-}
-
-// double prescaled_tx = 0;
-// double prescaled_ty = 0;
-double total_path_x_R = 0;
-double total_path_y_R = 0;
-double x_coordinate_R = 0;
-double y_coordinate_R = 0;
-double angle_R = 0;
-
-void OFS_Readings
-            (            
-            MD md, 
-            double * total_path_x, 
-            double * total_path_y, 
-            double * x_coordinate, 
-            double * y_coordinate,
-            double * angle
-            )
-{
-  //  Optical sensor readings
-    mousecam_read_motion(&md);
-
-    double dx = convTwosComp(md.dx) / 4.95;
-    double dy = convTwosComp(md.dy) / 4.95;
-
-    // calculating total oath moved in each direction
-    *total_path_x += convTwosComp(md.dx) / 4.95;
-    *total_path_y += convTwosComp(md.dy) / 4.95;
-
-    double tmp_angle = *angle + (convTwosComp(md.dx) / 4.95) / RADIUS / 2;
-    *angle += (convTwosComp(md.dx) / 4.95) / RADIUS;
-
-    *x_coordinate += dy * cos(*tmp_angle);
-    *y_coordinate += dy * sin(*tmp_angle);
-
-    Serial.println("Dy: " + String(dy));
-    Serial.println("Dx: " + String(dx));
-    Serial.println("Angle: " + String(*angle));
-    Serial.println("Total path y: " + String(*total_path_y));
-    Serial.println("Total path x: " + String(*total_path_x));
-    Serial.println("y_coordinate: " + String(*y_coordinate));
-    Serial.println("x_coordinate: " + String(*x_coordinate));
-    Serial.println();
-}
+//   Serial.println("Dy: " + String(*prescaled_ty));
+//   Serial.println("Dx: " + String(*prescaled_tx));
+//   Serial.println("Total y: " + String(*total_y));
+//   Serial.println("Total x: " + String(*total_x));
+//   Serial.println();
+// }
 
 void OFS_Angular(
                 MD md, 
@@ -268,20 +224,39 @@ void OFS_Angular(
         float d_r = convTwosComp(md.dy) / 4.95;
         *total_x += d_r * sin(*abs_theta);
         *total_y += d_r * cos(*abs_theta);
-        Serial.println
-        Serial.println("dx: " + String(md.dx));
         Serial.println("dr: " + String(d_r));
         Serial.println("d_theta: "+ String((convTwosComp(md.dx) / 4.95) / RADIUS));
-        Serial.println("Angle: " + String(*abs_theta));
         Serial.println("Angle: " + String(*abs_theta));
         Serial.println("Total y: " + String(*total_y));
         Serial.println("Total x: " + String(*total_x));
 }
 
+
+void OFS_Angular_Thread(
+                // MD md, 
+                // float * total_x, 
+                // float * total_y, 
+                // float* abs_theta
+                )
+{
+      //  Optical sensor readings
+        mousecam_read_motion(&md);
+        *abs_theta += (convTwosComp(md.dx) / 4.95) / RADIUS;
+        float d_r = convTwosComp(md.dy) / 4.95;
+        *total_x += d_r * sin(*abs_theta);
+        *total_y += d_r * cos(*abs_theta);
+        Serial.println("dr: " + String(d_r));
+        Serial.println("d_theta: "+ String((convTwosComp(md.dx) / 4.95) / RADIUS));
+        Serial.println("Angle: " + String(*abs_theta));
+        Serial.println("Total y: " + String(*total_y));
+        Serial.println("Total x: " + String(*total_x));
+}
+
+
 //  update variables
-  long currT = 0;
-  long prevT = 0;
-  float deltaT = 0;
+long currT = 0;
+long prevT = 0;
+float deltaT = 0;
 
 /////////////////////////////////////////////////////////////////
 
@@ -291,16 +266,16 @@ String mode_ = "";
 
 int tcp_parse(String tcp_data, float * B_x, float * B_y, String * mode_)
 {
-  String tmp = tcp_data;
-  /*
-  data = "x,y,mode"
-  */
-  *B_x = (tcp_data.substring(0, tcp_data.indexOf(","))).toFloat();
-  tmp = tcp_data.substring(tcp_data.indexOf(",") + 1);
-  *B_y = (tmp.substring(0, tmp.indexOf(","))).toFloat();
-  *mode_ = tmp.substring(tmp.indexOf(",") + 1);
+    String tmp = tcp_data;
+    /*
+    data = "x,y,mode"
+    */
+    *B_x = (tcp_data.substring(0, tcp_data.indexOf(","))).toFloat();
+    tmp = tcp_data.substring(tcp_data.indexOf(",") + 1);
+    *B_y = (tmp.substring(0, tmp.indexOf(","))).toFloat();
+    *mode_ = tmp.substring(tmp.indexOf(",") + 1);
 
-  return 1;
+    return 1;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -322,13 +297,10 @@ const char * host = "146.169.166.173"; // ip or dns
   long TCP_post_period = 50;
 
 // void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, float * target_angle){
-    
 //     float dx = *B_x - *current_x;
 //     float dy = *B_y - *current_y ;
-
 //     *target_angle = atan2( dy, dx ) - *current_angle;
 //     //  converts from angle to angle
-      
 //     if((*target_angle) > PI){
 //         *target_angle -= 2 * PI;
 //     }
@@ -417,12 +389,16 @@ void setup()
     //  hard code target angle
     target_angle = 2*PI;
 
-    // turning_complete = 0;
-    // digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
-    // digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-//    analogWrite(PWMA, 200); 
-//    analogWrite(PWMB, 200);
-    
+    turning_complete = 0;
+//  threading
+    xTaskCreatePinnedToCore(
+        Task1code, /* Function to implement the task */
+        "OFS_Angular_Threaded", /* Name of the task */
+        10000,  /* Stack size in words */
+        NULL,  /* Task input parameter */
+        0,  /* Priority of the task */
+        &Task1,  /* Task handle. */
+        0); /* Core where the task should run */
 }
 
 String location_info = "";
@@ -430,7 +406,6 @@ String location_info = "";
 
 void loop()
 {
-      
     // // Periodically send data back to server
     // if (millis() - last_TCP_post > TCP_post_period) {
     //     location_info = "{\"time\":" + String(millis()) + 
@@ -461,7 +436,7 @@ void loop()
         // Serial.println("in !turning_complete");
         // simplistic dead reckoning
         //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
-          Serial.println("angular_error:\t" + String(angular_error));
+            Serial.println("angular_error:\t" + String(angular_error));
         if (abs(angular_error) < 0.01) {
             Serial.println("in error good");
             // brake
@@ -478,21 +453,21 @@ void loop()
             d_term_angle = 0;
             // resetting OFS_Cartesian variables
             prescaled_tx = 0;
-  //            prescaled_ty = 0;
+    //            prescaled_ty = 0;
             totalpath_x_int = 0;
-  //            totalpath_y_int = 0;
-  /*
+    //            totalpath_y_int = 0;
+    /*
             Issue is we can see totalpath_y_int to be non zero. so then ignoring it might be bad. 
             I propose that we dont set to zero and then it will adjust for it. 
             TODO: test this AFTER turning is fixed
-  */
+    */
             
             // simplistic dead reckoning
             //prev_angle = current_angle;
 
         } else {
-          Serial.println("in else");
-          Serial.println("differential_PWM_output:\t" + String(differential_PWM_output));
+            Serial.println("in else");
+            Serial.println("differential_PWM_output:\t" + String(differential_PWM_output));
             // turning not complete
             currT = micros();
             deltaT = ((float) (currT-prevT))/1.0e6;

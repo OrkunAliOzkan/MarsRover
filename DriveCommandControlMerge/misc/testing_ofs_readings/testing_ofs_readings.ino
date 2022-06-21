@@ -242,8 +242,8 @@ void OFS_Readings
     double tmp_angle = *angle + (convTwosComp(md.dx) / 4.95) / RADIUS / 2;
     *angle += (convTwosComp(md.dx) / 4.95) / RADIUS;
 
-    *x_coordinate += dy * cos(*tmp_angle);
-    *y_coordinate += dy * sin(*tmp_angle);
+    *x_coordinate += dy * cos(tmp_angle);
+    *y_coordinate += dy * sin(tmp_angle);
 
     Serial.println("Dy: " + String(dy));
     Serial.println("Dx: " + String(dx));
@@ -268,7 +268,7 @@ void OFS_Angular(
         float d_r = convTwosComp(md.dy) / 4.95;
         *total_x += d_r * sin(*abs_theta);
         *total_y += d_r * cos(*abs_theta);
-        Serial.println
+        Serial.println();
         Serial.println("dx: " + String(md.dx));
         Serial.println("dr: " + String(d_r));
         Serial.println("d_theta: "+ String((convTwosComp(md.dx) / 4.95) / RADIUS));
@@ -322,13 +322,10 @@ const char * host = "146.169.166.173"; // ip or dns
   long TCP_post_period = 50;
 
 // void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, float * target_angle){
-    
 //     float dx = *B_x - *current_x;
 //     float dy = *B_y - *current_y ;
-
 //     *target_angle = atan2( dy, dx ) - *current_angle;
 //     //  converts from angle to angle
-      
 //     if((*target_angle) > PI){
 //         *target_angle -= 2 * PI;
 //     }
@@ -430,7 +427,15 @@ String location_info = "";
 
 void loop()
 {
-      
+     OFS_Readings
+            (            
+            md, 
+            &total_path_x_R, 
+            &total_path_y_R, 
+            &x_coordinate_R, 
+            &y_coordinate_R,
+            &angle_R
+            );
     // // Periodically send data back to server
     // if (millis() - last_TCP_post > TCP_post_period) {
     //     location_info = "{\"time\":" + String(millis()) + 
@@ -447,86 +452,86 @@ void loop()
     //     last_TCP_post = millis();
     // }
 
-    if (!turning_complete) {
-        // Rotation Logic
-        // OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
-        OFS_Angular(md, &totalpath_x_flt, &totalpath_y_flt, &abs_theta);
-        // Serial.println("-------");
-        // Serial.println("totalpath_x_int:\t" + String(totalpath_x_int));
-        // Serial.println("totalpath_y_int:\t" + String(totalpath_y_int));
-        // Serial.println("-------");
-        // angular_error = (totalpath_x_int - RADIUS*target_angle);
-        angular_error = (abs_theta - target_angle);
+//     if (!turning_complete) {
+//         // Rotation Logic
+//         // OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
+//         OFS_Angular(md, &totalpath_x_flt, &totalpath_y_flt, &abs_theta);
+//         // Serial.println("-------");
+//         // Serial.println("totalpath_x_int:\t" + String(totalpath_x_int));
+//         // Serial.println("totalpath_y_int:\t" + String(totalpath_y_int));
+//         // Serial.println("-------");
+//         // angular_error = (totalpath_x_int - RADIUS*target_angle);
+//         angular_error = (abs_theta - target_angle);
 
-        // Serial.println("in !turning_complete");
-        // simplistic dead reckoning
-        //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
-          Serial.println("angular_error:\t" + String(angular_error));
-        if (abs(angular_error) < 0.01) {
-            Serial.println("in error good");
-            // brake
-            analogWrite(PWMA, 0); 
-            analogWrite(PWMB, 0);
+//         // Serial.println("in !turning_complete");
+//         // simplistic dead reckoning
+//         //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
+//           Serial.println("angular_error:\t" + String(angular_error));
+//         if (abs(angular_error) < 0.01) {
+//             Serial.println("in error good");
+//             // brake
+//             analogWrite(PWMA, 0); 
+//             analogWrite(PWMB, 0);
 
-            turning_complete = 1;
-            differential_PWM_output = 0; 
+//             turning_complete = 1;
+//             differential_PWM_output = 0; 
             
-            // resetting PID variables
-            prevT = 0;
-            p_term_angle = 0;
-            i_term_angle = 0;
-            d_term_angle = 0;
-            // resetting OFS_Cartesian variables
-            prescaled_tx = 0;
-  //            prescaled_ty = 0;
-            totalpath_x_int = 0;
-  //            totalpath_y_int = 0;
-  /*
-            Issue is we can see totalpath_y_int to be non zero. so then ignoring it might be bad. 
-            I propose that we dont set to zero and then it will adjust for it. 
-            TODO: test this AFTER turning is fixed
-  */
+//             // resetting PID variables
+//             prevT = 0;
+//             p_term_angle = 0;
+//             i_term_angle = 0;
+//             d_term_angle = 0;
+//             // resetting OFS_Cartesian variables
+//             prescaled_tx = 0;
+//   //            prescaled_ty = 0;
+//             totalpath_x_int = 0;
+//   //            totalpath_y_int = 0;
+//   /*
+//             Issue is we can see totalpath_y_int to be non zero. so then ignoring it might be bad. 
+//             I propose that we dont set to zero and then it will adjust for it. 
+//             TODO: test this AFTER turning is fixed
+//   */
             
-            // simplistic dead reckoning
-            //prev_angle = current_angle;
+//             // simplistic dead reckoning
+//             //prev_angle = current_angle;
 
-        } else {
-          Serial.println("in else");
-          Serial.println("differential_PWM_output:\t" + String(differential_PWM_output));
-            // turning not complete
-            currT = micros();
-            deltaT = ((float) (currT-prevT))/1.0e6;
+//         } else {
+//           Serial.println("in else");
+//           Serial.println("differential_PWM_output:\t" + String(differential_PWM_output));
+//             // turning not complete
+//             currT = micros();
+//             deltaT = ((float) (currT-prevT))/1.0e6;
             
-            p_term_angle = angular_error;
-            i_term_angle += angular_error * deltaT;
-            d_term_angle = (angular_error - angular_error_prev)/deltaT;
+//             p_term_angle = angular_error;
+//             i_term_angle += angular_error * deltaT;
+//             d_term_angle = (angular_error - angular_error_prev)/deltaT;
 
-            differential_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
+//             differential_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
 
-            // guards to keep output within bounds
-            if (differential_PWM_output > MAX_PWM) {
-                differential_PWM_output = MAX_PWM;
-            }
-            else if (differential_PWM_output < MIN_PWM) {
-                differential_PWM_output = MIN_PWM;
-            }
+//             // guards to keep output within bounds
+//             if (differential_PWM_output > MAX_PWM) {
+//                 differential_PWM_output = MAX_PWM;
+//             }
+//             else if (differential_PWM_output < MIN_PWM) {
+//                 differential_PWM_output = MIN_PWM;
+//             }
 
-            // set the right motor directions
-            if (angular_error <= 0) {
-                digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
-                digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-            } else {
-                digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
-                digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
-            }
+//             // set the right motor directions
+//             if (angular_error <= 0) {
+//                 digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
+//                 digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+//             } else {
+//                 digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
+//                 digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
+//             }
 
-            // power the motors
-            analogWrite(PWMA, differential_PWM_output);  
-            analogWrite(PWMB, differential_PWM_output);
+//             // power the motors
+//             analogWrite(PWMA, differential_PWM_output);  
+//             analogWrite(PWMB, differential_PWM_output);
 
-            // update variables for next cycle
-            prevT = currT;
-            angular_error_prev = angular_error;
-        }
-    } 
+//             // update variables for next cycle
+//             prevT = currT;
+//             angular_error_prev = angular_error;
+//         }
+//     } 
 }
