@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/trips.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Trips | Mars Rover</title>
+</head>
+<body>
+    <section class = "header">
+        <nav>
+            <a href="home.html"><img src="../images/team.png"></a>
+            <div class="nav-link-wrapper" id="navLinks">
+
+                <i class="fa fa-times" onclick="hideMenu()"></i>              
+                <ul>
+                    <li> <a href="home.html">HOME</a> </li>
+                    <li> <a href="mem.html">MEMBERS</a> </li>
+                    <li> <a href="rover.html">ROVER</a> </li>
+                    <li> <a href="trips.html">TRIPS</a> </li>
+                    <li> <a href="spec.html">SPECIFICATION</a> </li>
+                </ul>            
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </section>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Trip1')" id="defaultOpen">Trip1</button>
+        <button class="tablinks" onclick="openCity(event, 'Trip2')">Trip2</button>
+        <button class="tablinks" onclick="openCity(event, 'Trip3')">Trip3</button>
+        <button class="tablinks" onclick="openCity(event, 'Trip4')">Trip4</button>
+        <button class="tablinks" onclick="openCity(event, 'Trip5')">Trip5</button>
+        <button class="tablinks" onclick="openCity(event, 'Trip6')">Trip6</button>
+        <button class="tablinks" onclick="openCity(event, 'Trip7')">Trip7</button>
+        <button class="tablinks" onclick="openCity(event, 'Trip8')">Trip8</button>
+        <button class="tablinks" onclick="openCity(event, 'Trip9')">Trip9</button>
+    </div>
+      
+    <div id="Trip1" class="tabcontent">
+        <h3>Trip1</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip1Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:red;"></canvas>
+    </div>
+
+    <div id="Trip2" class="tabcontent">
+        <h3>Trip2</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip2Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:blue;"></canvas>
+    </div>
+
+    <div id="Trip3" class="tabcontent">
+        <h3>Trip3</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip3Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:green;"></canvas>
+    </div>
+
+    <div id="Trip4" class="tabcontent">
+        <h3>Trip4</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip4Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:yellow;"></canvas>
+    </div>
+
+    <div id="Trip5" class="tabcontent">
+        <h3>Trip5</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip5Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:black;"></canvas>
+    </div>
+
+    <div id="Trip6" class="tabcontent">
+        <h3>Trip6</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip6Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:grey;"></canvas>
+    </div>
+
+    <div id="Trip7" class="tabcontent">
+        <h3>Trip7</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip7Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:purple;"></canvas>
+    </div>
+
+    <div id="Trip8" class="tabcontent">
+        <h3>Trip8</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip8Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:cornflowerblue;"></canvas>
+    </div>
+
+    <div id="Trip9" class="tabcontent">
+        <h3>Trip9</h3>
+        <p>Content yadayada.</p>
+    </div>
+    <div id="Trip9Map" class="tabmap">
+        <canvas id = "mapCanvas" width="600" height="600" style="background:pink;"></canvas>
+    </div>
+
+
+    <script src="../js/trips.js"></script>
+
+    <!--JAVASCRIPT for toggle menu-->
+    <script>
+        document.getElementById("defaultOpen").click();
+        var navLinks = document.getElementById("navLinks");
+        
+        function hideMenu()     { navLinks.style.right = "-220px"; }
+        function showMenu()     { navLinks.style.right = "0"; }
+    </script>
+</body>
+</html>
