@@ -40,7 +40,7 @@ parameter IMAGE_H = 11'd480;
 parameter MESSAGE_BUF_MAX = 256;
 parameter MSG_INTERVAL = 6;
 parameter BB_COL_DEFAULT = 24'hff0000;
-parameter edge_row = 11'd240; //only row to be analysed for edges
+parameter edge_row = 11'd215; //only row to be analysed for edges
 
 logic [7:0]   red, green, blue, grey;
 logic [7:0]   red_out, green_out, blue_out;

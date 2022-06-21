@@ -100,7 +100,7 @@ assign Hue_0 = (RGB_max==red_b) ? (60*(green_b-blue_b)/RGB_diff):
              (240+(60*(red_b-green_b)/RGB_diff));
 assign Hue = (Hue_0<0) ? Hue_0 + 360 : Hue_0;
 
-assign red_sector = ((Hue>5 && Hue<15) && (Sat>40)) && (Val>20 && Val<200);
+assign red_sector = ((Hue>5 && Hue<18) && (Sat>75)) && (Val>50);
 
 // assign red_processed = (red_sector) ? red_b : grey_b;
 // assign green_processed = (red_sector) ? green_b : grey_b;
@@ -142,15 +142,11 @@ always@(posedge clk) begin
 				if (edge_sharp==8'hff) begin
 					if (edge_prev==0) begin	//first edge
 						measured_list[measured_count] <= x;
-						//edge_detected <= 1;
 						measured_count <= measured_count + 1;
 					end
-					else if (x-edge_prev > 3) begin	//small gap rejection
-						// if (x-edge_prev < 150) begin //large gap rejection
+					else if (x-edge_prev > 2) begin	//small gap rejection
 							measured_list[measured_count] <= x;
-							//edge_detected <= 1;
 							measured_count <= measured_count + 1;
-						// end
 					end
 					edge_prev <= x;	//next edge prev if 255
 				end
