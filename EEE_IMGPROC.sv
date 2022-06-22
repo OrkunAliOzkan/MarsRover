@@ -39,55 +39,57 @@ parameter IMAGE_W = 11'd640;
 parameter IMAGE_H = 11'd480;
 parameter MESSAGE_BUF_MAX = 256;
 parameter MSG_INTERVAL = 6;
-parameter BB_COL_DEFAULT = 24'hff0000;
+parameter BB_COL_DEFAULT = 24'h4CFF00;
 parameter edge_row = 11'd215; //only row to be analysed for edges
 
 logic [7:0]   red, green, blue, grey;
 logic [7:0]   red_out, green_out, blue_out;
 logic [7:0]	 red_processed, green_processed, blue_processed;
-logic red_sector;
+logic red_sector, green_sector, blue_sector, lime_sector, yellow_sector, pink_sector;
 
 logic         sop, eop, in_valid, out_ready;
 ////////////////////////////////////////////////////////////////////////
 
-// Detect red areas
-logic red_detect;
-// assign red_detect = red[7] & ~green[7] & ~blue[7];
-assign red_detect = red_sector;
-
 // Highlight detected areas
 logic [29:0][10:0] edge_list; //for next frame (drawing)
 logic [29:0][10:0] measured_list; //stores valid edges belonging to a building
-logic filtered_edge_active;
-logic [23:0] filtered_0, filtered_1, filtered_edge;
+logic filtered_edge_active; //is this an edge coord?
+logic [23:0] filtered_0, filtered_1, filtered_edge; //drawing pipeline
+
 assign grey = green[7:1] + red[7:2] + blue[7:2]; //Grey = green/2 + red/4 + blue/4
-assign filtered_0 = {red_processed, green_processed, blue_processed};
+
+assign filtered_0 = {red_processed, green_processed, blue_processed}; //take output from processing.sv
 
 // Show bounding box
-logic bb_active;
-assign bb_active = (x==left && y>top && y<bottom) | (x==right && y>top && y<bottom) | (y==top && x>left && x<right) | (y==bottom && x>left && x<right);
-assign filtered_1 = (bb_active) ? bb_col :
-				   		(y==edge_row-1 | y==edge_row | y==edge_row+1) ? {red, green, blue} : filtered_0;
+logic r_active, g_active, b_active, l_active, y_active, p_active; //check bounding boxes against coords
+assign r_active = (x==r_left && y>r_top && y<r_bottom) | (x==r_right && y>r_top && y<r_bottom) | (y==r_top && x>r_left && x<r_right) | (y==r_bottom && x>r_left && x<r_right);
+assign g_active = (x==g_left && y>g_top && y<g_bottom) | (x==g_right && y>g_top && y<g_bottom) | (y==g_top && x>g_left && x<g_right) | (y==g_bottom && x>g_left && x<g_right);
+assign b_active = (x==b_left && y>b_top && y<b_bottom) | (x==b_right && y>b_top && y<b_bottom) | (y==b_top && x>b_left && x<b_right) | (y==b_bottom && x>b_left && x<b_right);
+assign l_active = (x==l_left && y>l_top && y<l_bottom) | (x==l_right && y>l_top && y<l_bottom) | (y==l_top && x>l_left && x<l_right) | (y==l_bottom && x>l_left && x<l_right);
+assign y_active = (x==y_left && y>y_top && y<y_bottom) | (x==y_right && y>y_top && y<y_bottom) | (y==y_top && x>y_left && x<y_right) | (y==y_bottom && x>y_left && x<y_right);
+assign p_active = (x==p_left && y>p_top && y<p_bottom) | (x==p_right && y>p_top && y<p_bottom) | (y==p_top && x>p_left && x<p_right) | (y==p_bottom && x>p_left && x<p_right);
+assign filtered_1 = (r_active) ? {24'hFF0000} : (g_active) ? {24'h267F00} : (b_active) ? {24'h351AA8} : (l_active) ? {24'h00FF21} : 
+					(y_active) ? {24'hFFF300} : (p_active) ? {24'hFF60E9} : filtered_0;	//coloured bounding boxes
 
 integer k;
 always@(*) begin
 	filtered_edge_active = 0;
 	for (k=0; k<30; k=k+1) begin
-		if (x==edge_list[k]) filtered_edge_active = 1;
+		if (x==edge_list[k] && x!=0) filtered_edge_active = 1; //check if it's an edge coord for drawing
 	end
 end
 
 assign filtered_edge = (filtered_edge_active==0) ? filtered_1 : 
 					   (y[3]) ? {24'h21007C} : {24'hB2CDE8}; //alternating navy and white line
-assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? filtered_edge : {red,green,blue};
+assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? filtered_edge : {red,green,blue}; //switch views
 
 always@(posedge clk) begin
-	if (y==edge_row+1) begin
-		if (x<30) edge_list[x] <= measured_list[x];	//copy list for next frame after edge row
+	if (y==479) begin
+		if (x<30) edge_list[x] <= measured_list[x];	//use pixel X as counter to copy list for next frame
 	end
 end
 
-//Count valid pixels to tget the image coordinates. Reset and detect packet type on Start of Packet.
+//Count valid pixels to get the image coordinates. Reset and detect packet type on Start of Packet.
 logic [10:0] x, y;
 logic packet_video;
 always@(posedge clk) begin
@@ -107,50 +109,129 @@ always@(posedge clk) begin
 	end
 end
 
-//Find first and last red pixels
-logic [10:0] x_min, y_min, x_max, y_max;
+//Find first and last coloured pixels
+logic [10:0] r_x_min, r_y_min, r_x_max, r_y_max;
+logic [10:0] g_x_min, g_y_min, g_x_max, g_y_max;
+logic [10:0] b_x_min, b_y_min, b_x_max, b_y_max;
+logic [10:0] l_x_min, l_y_min, l_x_max, l_y_max;
+logic [10:0] y_x_min, y_y_min, y_x_max, y_y_max;
+logic [10:0] p_x_min, p_y_min, p_x_max, p_y_max;
+
 always@(posedge clk) begin
-	if (red_detect & in_valid) begin	//Update bounds when the pixel is red
+	if (in_valid) begin
 		if (y>240 && y<450 && x>30 && x<610) begin //chop off ceiling and edges
-			if (x < x_min) x_min <= x;
-			if (x > x_max) x_max <= x;
-			if (y < y_min) y_min <= y;
-			y_max <= y;
+			if (red_sector) begin	//Update bounds when the pixel is red
+				if (x < r_x_min) r_x_min <= x;
+				if (x > r_x_max) r_x_max <= x;
+				if (y < r_y_min) r_y_min <= y;
+				r_y_max <= y;
+			end else if (green_sector) begin
+				if (x < g_x_min) g_x_min <= x;
+				if (x > g_x_max) g_x_max <= x;
+				if (y < g_y_min) g_y_min <= y;
+				g_y_max <= y;
+			end else if (blue_sector) begin
+				if (x < b_x_min) b_x_min <= x;
+				if (x > b_x_max) b_x_max <= x;
+				if (y < b_y_min) b_y_min <= y;
+				b_y_max <= y;
+			end else if (lime_sector) begin
+				if (x < l_x_min) l_x_min <= x;
+				if (x > l_x_max) l_x_max <= x;
+				if (y < l_y_min) l_y_min <= y;
+				l_y_max <= y;
+			end else if (yellow_sector) begin
+				if (x < y_x_min) y_x_min <= x;
+				if (x > y_x_max) y_x_max <= x;
+				if (y < y_y_min) y_y_min <= y;
+				y_y_max <= y;
+			end else if (pink_sector) begin
+				if (x < p_x_min) p_x_min <= x;
+				if (x > p_x_max) p_x_max <= x;
+				if (y < p_y_min) p_y_min <= y;
+				p_y_max <= y;
+			end
 		end
 	end
 	if (sop & in_valid) begin	//Reset bounds on start of packet
-		x_min <= IMAGE_W-11'h1;
-		x_max <= 0;
-		y_min <= IMAGE_H-11'h1;
-		y_max <= 0;
+		r_x_min <= IMAGE_W-11'h1;
+		r_x_max <= 0;
+		r_y_min <= IMAGE_H-11'h1;
+		r_y_max <= 0;
+		g_x_min <= IMAGE_W-11'h1;
+		g_x_max <= 0;
+		g_y_min <= IMAGE_H-11'h1;
+		g_y_max <= 0;
+		b_x_min <= IMAGE_W-11'h1;
+		b_x_max <= 0;
+		b_y_min <= IMAGE_H-11'h1;
+		b_y_max <= 0;
+		l_x_min <= IMAGE_W-11'h1;
+		l_x_max <= 0;
+		l_y_min <= IMAGE_H-11'h1;
+		l_y_max <= 0;
+		y_x_min <= IMAGE_W-11'h1;
+		y_x_max <= 0;
+		y_y_min <= IMAGE_H-11'h1;
+		y_y_max <= 0;
+		p_x_min <= IMAGE_W-11'h1;
+		p_x_max <= 0;
+		p_y_min <= IMAGE_H-11'h1;
+		p_y_max <= 0;
 	end
 end
 
 //Process bounding box at the end of the frame.
-logic [1:0] msg_state;
-logic [10:0] left, right, top, bottom;
+logic [4:0] msg_state;
+logic [10:0] r_left, r_right, r_top, r_bottom;
+logic [10:0] g_left, g_right, g_top, g_bottom;
+logic [10:0] b_left, b_right, b_top, b_bottom;
+logic [10:0] l_left, l_right, l_top, l_bottom;
+logic [10:0] y_left, y_right, y_top, y_bottom;
+logic [10:0] p_left, p_right, p_top, p_bottom;
 logic [7:0] frame_count;
+
 always@(posedge clk) begin
 	if (eop & in_valid & packet_video) begin  //Ignore non-video packets
 		
 		//Latch edges for display overlay on next frame
-		left <= x_min;
-		right <= x_max;
-		top <= y_min;
-		bottom <= y_max;
-		
+		r_left <= r_x_min;
+		r_right <= r_x_max;
+		r_top <= r_y_min;
+		r_bottom <= r_y_max;
+		g_left <= g_x_min;
+		g_right <= g_x_max;
+		g_top <= g_y_min;
+		g_bottom <= g_y_max;
+		b_left <= b_x_min;
+		b_right <= b_x_max;
+		b_top <= b_y_min;
+		b_bottom <= b_y_max;
+		l_left <= l_x_min;
+		l_right <= l_x_max;
+		l_top <= l_y_min;
+		l_bottom <= l_y_max;
+		y_left <= y_x_min;
+		y_right <= y_x_max;
+		y_top <= y_y_min;
+		y_bottom <= y_y_max;
+		p_left <= p_x_min;
+		p_right <= p_x_max;
+		p_top <= p_y_min;
+		p_bottom <= p_y_max;
 		
 		//Start message writer FSM once every MSG_INTERVAL frames, if there is room in the FIFO
 		frame_count <= frame_count - 1;
 		
 		if (frame_count == 0 && msg_buf_size < MESSAGE_BUF_MAX - 3) begin
-			msg_state <= 2'b01;
+			msg_state <= 5'b1;
 			frame_count <= MSG_INTERVAL-1;
 		end
 	end
 	
 	//Cycle through message writer states once started
-	if (msg_state != 2'b00) msg_state <= msg_state + 2'b01;
+	if (msg_state == 5'b10111) msg_state <= 5'b1;
+	else if (msg_state != 5'b0) msg_state <= msg_state + 5'b1;
 
 end
 	
@@ -162,24 +243,103 @@ logic msg_buf_rd, msg_buf_flush;
 logic [7:0] msg_buf_size;
 logic msg_buf_empty;
 
-`define RED_BOX_MSG_ID "RBB"
 
 always@(*) begin	//Write words to FIFO as state machine advances
 	case(msg_state)
-		2'b00: begin
+		5'b0: begin
 			msg_buf_in = 32'b0;
 			msg_buf_wr = 1'b0;
 		end
-		2'b01: begin
-			msg_buf_in = `RED_BOX_MSG_ID;	//Message ID
+		5'b1: begin
+			msg_buf_in = 32'hAAAAAAAA;	//Message start
 			msg_buf_wr = 1'b1;
 		end
-		2'b10: begin
-			msg_buf_in = {5'b0, x_min, 5'b0, x_max};	//Red
+		5'b10: begin
+			msg_buf_in = {5'b0, r_x_min, 5'b0, r_x_max};	//Red
 			msg_buf_wr = 1'b1;
 		end
-		2'b11: begin
-			msg_buf_in = {32'b0};
+		5'b11: begin
+			msg_buf_in = {5'b0, g_x_min, 5'b0, g_x_max};	//Green
+			msg_buf_wr = 1'b1;
+		end
+		5'b100: begin
+			msg_buf_in = {5'b0, b_x_min, 5'b0, b_x_max};	//Blue
+			msg_buf_wr = 1'b1;
+		end
+		5'b101: begin
+			msg_buf_in = {5'b0, l_x_min, 5'b0, l_x_max};	//Lime
+			msg_buf_wr = 1'b1;
+		end
+		5'b110: begin
+			msg_buf_in = {5'b0, y_x_min, 5'b0, y_x_max};	//Yellow
+			msg_buf_wr = 1'b1;
+		end
+		5'b111: begin
+			msg_buf_in = {5'b0, p_x_min, 5'b0, p_x_max};	//Pink
+			msg_buf_wr = 1'b1;
+		end
+		5'b1000: begin
+			msg_buf_in = {32'hBBBBBBBB};	//Message start
+			msg_buf_wr = 1'b1;
+		end
+		5'b1001: begin
+			msg_buf_in = {5'b0, edge_list[0], 5'b0, edge_list[1]};	//edge_list begins
+			msg_buf_wr = 1'b1;
+		end
+		5'b1010: begin
+			msg_buf_in = {5'b0, edge_list[2], 5'b0, edge_list[3]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b1011: begin
+			msg_buf_in = {5'b0, edge_list[4], 5'b0, edge_list[5]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b1100: begin
+			msg_buf_in = {5'b0, edge_list[6], 5'b0, edge_list[7]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b1101: begin
+			msg_buf_in = {5'b0, edge_list[8], 5'b0, edge_list[9]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b1110: begin
+			msg_buf_in = {5'b0, edge_list[10], 5'b0, edge_list[11]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b1111: begin
+			msg_buf_in = {5'b0, edge_list[12], 5'b0, edge_list[13]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b10000: begin
+			msg_buf_in = {5'b0, edge_list[14], 5'b0, edge_list[15]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b10001: begin
+			msg_buf_in = {5'b0, edge_list[16], 5'b0, edge_list[17]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b10010: begin
+			msg_buf_in = {5'b0, edge_list[18], 5'b0, edge_list[19]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b10011: begin
+			msg_buf_in = {5'b0, edge_list[20], 5'b0, edge_list[21]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b10100: begin
+			msg_buf_in = {5'b0, edge_list[22], 5'b0, edge_list[23]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b10101: begin
+			msg_buf_in = {5'b0, edge_list[24], 5'b0, edge_list[25]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b10110: begin
+			msg_buf_in = {5'b0, edge_list[26], 5'b0, edge_list[27]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b10111: begin
+			msg_buf_in = {5'b0, edge_list[28], 5'b0, edge_list[29]};
 			msg_buf_wr = 1'b1;
 		end
 	endcase
@@ -201,6 +361,11 @@ processing img_processing (
 	.green_processed(green_processed),
 	.blue_processed(blue_processed),
 	.red_sector(red_sector),
+	.green_sector(green_sector),
+	.blue_sector(blue_sector),
+	.lime_sector(lime_sector),
+	.yellow_sector(yellow_sector),
+	.pink_sector(pink_sector),
 	.measured_list(measured_list)
 );
 

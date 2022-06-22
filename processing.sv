@@ -16,6 +16,11 @@ module processing (
 	output logic [7:0] green_processed,
 	output logic [7:0] blue_processed,
 	output logic red_sector,
+	output logic green_sector,
+	output logic blue_sector,
+	output logic lime_sector,
+	output logic yellow_sector,
+	output logic pink_sector,
 	output logic [29:0][10:0] measured_list
 );
 
@@ -83,28 +88,31 @@ end
 
 ///////////////////////////////////////////////////HSV
 
-logic signed [15:0] Hue_0, Hue; //0-360.. % 360
+logic signed [15:0] Hue_0;
+logic [15:0] Hue; //0-360.. % 360
 logic [7:0] Sat, Val; //0-100, 0-255
 logic [7:0] RGB_max, RGB_min;
 logic [7:0] RGB_diff;
 
-assign RGB_max = (red_b>green_b && red_b>blue_b) ? red_b :
-                 (green_b>blue_b) ? green_b : blue_b;
-assign RGB_min = (red_b<green_b && red_b<blue_b) ? red_b :
-                 (green_b<blue_b) ? green_b : blue_b;
+assign RGB_max = (blue_b>green_b && blue_b>red_b) ? blue_b :
+                 (green_b>red_b) ? green_b : red_b;
+assign RGB_min = (blue_b<green_b && blue_b<red_b) ? blue_b :
+                 (green_b<red_b) ? green_b : red_b;
 assign RGB_diff = ((RGB_max-RGB_min) != 0) ? RGB_max-RGB_min : 8'b1;
 assign Val = RGB_max;
 assign Sat = (Val==0) ? 0 : (100*RGB_diff) / RGB_max;
 assign Hue_0 = (RGB_max==red_b) ? (60*(green_b-blue_b)/RGB_diff):
              (RGB_max==green_b) ? (120+(60*(blue_b-red_b)/RGB_diff)): 
              (240+(60*(red_b-green_b)/RGB_diff));
-assign Hue = (Hue_0<0) ? Hue_0 + 360 : Hue_0;
+assign Hue = (Hue_0<0) ? Hue_0 + 360 :
+			 (Hue_0>360) ? Hue_0 - 360 : Hue_0;
 
-assign red_sector = ((Hue>5 && Hue<18) && (Sat>75)) && (Val>50);
-
-// assign red_processed = (red_sector) ? red_b : grey_b;
-// assign green_processed = (red_sector) ? green_b : grey_b;
-// assign blue_processed = (red_sector) ? blue_b : grey_b;
+assign red_sector = ((Hue>=0 && Hue<15) || (Hue>358 && Hue<=360)) && (Sat>40);
+assign green_sector = (Hue>165 && Hue<180) && (Sat>20);
+assign blue_sector = (Hue>215 && Hue<240) && (Sat>35);
+assign lime_sector = (Hue>120 && Hue<150) && (Sat>20 && Sat<70) && (Val>100);
+assign yellow_sector = (Hue>45 && Hue<65) && (Sat>35) && (Val>150);
+assign pink_sector = (Hue>330 && Hue<348) && (Sat>20 && Sat<70) && (Val>120);
 
 ////////////////////////////////////////////////////////edge
 
@@ -123,7 +131,7 @@ always@(posedge clk) begin
     end
 end
 
-assign edge_x = (conv_x[8]==1) ? -conv_x : conv_x; //abs
+assign edge_x = (conv_x<0) ? -conv_x : conv_x; //abs
 assign edge_sharp = (edge_x>40) ? 8'hff : 0;	//sharpen
 
 logic [7:0] measured_count;
@@ -155,8 +163,14 @@ always@(posedge clk) begin
 	end
 end
 
-assign red_processed = edge_sharp; //first 8 bits
-assign green_processed = edge_sharp;
-assign blue_processed = edge_sharp;
+logic [7:0]	 red_col, green_col, blue_col;
+
+assign red_col = (red_sector || green_sector || blue_sector || lime_sector || yellow_sector || pink_sector) ? red_b : grey_b;
+assign green_col = (red_sector || green_sector || blue_sector || lime_sector || yellow_sector || pink_sector) ? green_b : grey_b;
+assign blue_col = (red_sector || green_sector || blue_sector || lime_sector || yellow_sector || pink_sector) ? blue_b : grey_b;
+
+assign red_processed =  (y==edge_row-2 | y==edge_row-1 | y==edge_row | y==edge_row+1 | y==edge_row+2 ) ? edge_sharp : red_col;
+assign green_processed = (y==edge_row-2 | y==edge_row-1 | y==edge_row | y==edge_row+1 | y==edge_row+2 ) ? edge_sharp : green_col;
+assign blue_processed = (y==edge_row-2 | y==edge_row-1 | y==edge_row | y==edge_row+1 | y==edge_row+2 ) ? edge_sharp : blue_col;
 
 endmodule
