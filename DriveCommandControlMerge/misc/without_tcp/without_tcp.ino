@@ -598,23 +598,23 @@ void setup()
 
     delay(500);
     ///////////////////////////////////////////////////////////////
-    //  Connecting to TCP Server
-    while (!client.connect(host, port)) {
-        Serial.println("Connection to TCP Server failed");
-        Serial.println("Trying again in 500ms...");
-        delay(500);
-    }
-    Serial.println("Connected to Server\n");
-    // // wait for mission start
-    String start_message = "";
-    while(client.available() < 5){
-        Serial.println("Waiting for Mission Start");
-        delay(500);
-    }
-    tcp_received = client.readStringUntil('\r');
-    tcp_parse(tcp_received, &B_x, &B_y, &mode_);
+    // //  Connecting to TCP Server
+    // while (!client.connect(host, port)) {
+    //     Serial.println("Connection to TCP Server failed");
+    //     Serial.println("Trying again in 500ms...");
+    //     delay(500);
+    // }
+    // Serial.println("Connected to Server\n");
+    // // // wait for mission start
+    // String start_message = "";
+    // while(client.available() < 5){
+    //     Serial.println("Waiting for Mission Start");
+    //     delay(500);
+    // }
+    // tcp_received = client.readStringUntil('\r');
+    // tcp_parse(tcp_received, &B_x, &B_y, &mode_);
 
-    // mode_ = "A";
+    mode_ = "A";
 
     if (mode_ == "A") {
       // update position to travel to
@@ -664,23 +664,23 @@ void loop()
     // tcp_send = "";
 
     // Periodically send data back to server
-    if (millis() - last_TCP_post > TCP_post_period) {
-        // Serial.println(tcp_send);
-        location_info = "{\"time\":" + String(millis()) + 
-                        ",\"type\": \"rover\"," + 
-                        "\"data\":"  + 
-                        "{\"posX\": " + String(current_x) + 
-                        ",\"posY\": " + String(current_y) + 
-                        ",\"angle\": " + String(current_angle) + 
-                        "}" + 
-                        "}@";
+    // if (millis() - last_TCP_post > TCP_post_period) {
+    //     // Serial.println(tcp_send);
+    //     location_info = "{\"time\":" + String(millis()) + 
+    //                     ",\"type\": \"rover\"," + 
+    //                     "\"data\":"  + 
+    //                     "{\"posX\": " + String(current_x) + 
+    //                     ",\"posY\": " + String(current_y) + 
+    //                     ",\"angle\": " + String(current_angle) + 
+    //                     "}" + 
+    //                     "}@";
 
-        Serial.println("----------------------");
-        Serial.println(location_info);
-        Serial.println("----------------------");
-        client.print(location_info);
-        last_TCP_post = millis();
-    }
+    //     Serial.println("----------------------");
+    //     Serial.println(location_info);
+    //     Serial.println("----------------------");
+    //     client.print(location_info);
+    //     last_TCP_post = millis();
+    // }
 
     // checks if there is a message from server in buffer
     if ((mode_ == "M") && (client.available() > 5)) {
@@ -975,7 +975,6 @@ void loop()
 
     if (!turning_complete) {
         // Rotation Logic
-        offset_error = total_path_y_R;
 
         OFS_Readings
                 (            
@@ -987,6 +986,7 @@ void loop()
                 &angle_R
                 );
 
+        offset_error = total_path_y_R;
         Serial.println("offset_error:\t" + String(offset_error));
         if (0.9*abs(abs(angle_R) - abs(target_angle)) < 0.05) {
             Serial.println("in error good");
@@ -1007,6 +1007,11 @@ void loop()
   //            prescaled_ty = 0;
             totalpath_x_int = 0;
   //            totalpath_y_int = 0;
+            //  resetting reading variables
+            total_path_x_R = 0;
+            total_path_y_R = 0;
+            x_coordinate_R = 0;
+            y_coordinate_R = 0;
             
             // simplistic dead reckoning
             //prev_angle = current_angle;
