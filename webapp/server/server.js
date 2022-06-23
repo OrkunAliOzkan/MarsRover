@@ -52,7 +52,9 @@ io.on('connection', (sock) => {
         print(`waypoint placed at x: ${x}, y: ${600 - y}`, 0);
 
         // map canvas coordinates to arena coordinates
-        const waypoint_data = `${x + 100},${600 - y+ 100},M`;
+        const mars_x = Math.floor(x + 100);
+        const mars_y = Math.floor(600 - y + 100);
+        const waypoint_data = `${mars_x},${mars_y},M`;
 
         // send the waypoint data to the rover over TCP
         if (rover_connected) {
@@ -76,9 +78,6 @@ io.on('connection', (sock) => {
 
     sock.on('auto', (data) => {
         print(`Rover set to Automatic Mode`, 0);
-
-        const time_string = (new Date()).toISOString();
-        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
         const tcp_send = `0,0,A`;
         // send the waypoint data to the rover over TCP
         if (rover_connected) {

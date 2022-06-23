@@ -103,10 +103,11 @@ function drawRover(roverEntity) {
     const {x, y} = arena_to_map(roverEntity.posX, roverEntity.posY);
     const img_x = x - rover.width/2;
     const img_y = y - rover.height/2;
+    const rover_angle = (roverEntity.angle * -1 + Math.PI / 2);
 
     // move and rotate
     ctx.translate(x, y);
-    ctx.rotate(roverEntity.angle);
+    ctx.rotate(rover_angle);
     ctx.translate(-x, -y);       
 
     // draw
@@ -114,7 +115,7 @@ function drawRover(roverEntity) {
 
     // reverse
     ctx.translate(x, y);
-    ctx.rotate(-roverEntity.angle);
+    ctx.rotate(-rover_angle);
     ctx.translate(-x, -y);  
 }
 
