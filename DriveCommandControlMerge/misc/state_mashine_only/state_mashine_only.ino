@@ -73,11 +73,11 @@
 
 // Destination coordinates
   float B_x = 0;
-  float B_y = 750;
+  float B_y = 0;
 
 // Current position and angle
-  float current_x = 100;
-  float current_y = 100;
+  float current_x = 0;
+  float current_y = 0;
   float current_angle = 0;
 
   float prev_x = current_x;
@@ -409,12 +409,12 @@ void updateTargets(float * B_x, float * B_y, float * current_x, float * current_
   //  x_pos is current_x
   //  y_pos is current_y
 /*
-  functin call exampleS
-  automation(
-      &counter,
-      current_x, current_y,
-      &B_x, &B_y, &target_angle
-  )
+functin call exampleS
+automation(
+    &counter,
+    current_x, current_y,
+    &B_x, &B_y, &target_angle
+)
 */
 
 //  automation function
@@ -456,8 +456,8 @@ void automation(
 /////////////////////////////////////////////////////////////////
 
 //  state mashine parameters for the drive process (stop turn go)
-  int turning_complete = 1;
-  int straight_line_complete = 1;
+int turning_complete = 1;
+int straight_line_complete = 1;
 
 long lastCycle = 0;
 void setup()
@@ -531,11 +531,11 @@ void setup()
 
     if (mode_ == "A") {
       // update position to travel to
-      automation(
-          &counter,
-          current_x, current_y,
-          &B_x, &B_y, returning
-      );
+    automation(
+        &counter,
+        current_x, current_y,
+        &B_x, &B_y, returning
+    );
 
     }
     // update target angle
@@ -591,7 +591,6 @@ void loop()
     //     Serial.println("----------------------");
     //     Serial.println(location_info);
     //     Serial.println("----------------------");
-
     //     client.print(location_info);
     //     last_TCP_post = millis();
     // }
@@ -671,11 +670,9 @@ void loop()
         Serial.println("y_pos:\t" + String(current_y));
         Serial.println("target_angle:\t" + String(target_angle));
             
-            turning_complete = 0;
-            straight_line_complete = 0;
+        turning_complete = 0;
+        straight_line_complete = 0;
     }
-
-    
 /*
   //  camera readings
     camera_readings(&camera_readings_type, &camera_readings_displacemet, &camera_readings_angle);
@@ -759,9 +756,9 @@ void loop()
 
                 if(abs(camera_stashed_y - current_y - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT){
                   // Serial.println("Yo");
-                  B_y = camera_stashed_y;
-                  emergancy_corner_count = 0;
-                  avoided = 1;
+                    B_y = camera_stashed_y;
+                    emergancy_corner_count = 0;
+                    avoided = 1;
                   break; //  equivalent to continue-ing the loop in c++
                 }
                 else{
@@ -805,175 +802,21 @@ void loop()
     }
 
 */
-
-
-
     if (!turning_complete) {
-        // Rotation Logic
-        OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
-        angular_error = (totalpath_x_int - RADIUS*target_angle);
-        // simplistic dead reckoning
         current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
-        if (abs(angular_error) < 0.5) {
-            // brake
-            analogWrite(PWMA, 0); 
-            analogWrite(PWMB, 0);
-
-            turning_complete = 1;
-            differential_PWM_output = 0; 
-            
-            // resetting PID variables
-            prevT = 0;
-            p_term_angle = 0;
-            i_term_angle = 0;
-            d_term_angle = 0;
-            // resetting OFS_Cartesian variables
-            prescaled_tx = 0;
-            prescaled_ty = 0;
-            totalpath_x_int = 0;
-            totalpath_y_int = 0;
-            
-            // simplistic dead reckoning
-            prev_angle = current_angle;
-
-            // tcp_send = "---\n";
-            // tcp_send += ("Turning Complete\n");
-        } else {
-            // turning not complete
-            currT = micros();
-            deltaT = ((float) (currT-prevT))/1.0e6;
-            
-            p_term_angle = angular_error;
-            i_term_angle += angular_error * deltaT;
-            d_term_angle = (angular_error - angular_error_prev)/deltaT;
-
-            differential_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
-
-            // guards to keep output within bounds
-            if (differential_PWM_output > 255) {
-                differential_PWM_output = 255;
-            }
-            else if (differential_PWM_output < MIN_PWM) {
-                differential_PWM_output = MIN_PWM;
-            }
-
-            // set the right motor directions
-            if (angular_error <= 0) {
-                digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
-                digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-            } else {
-                digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
-                digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
-            }
-
-            // power the motors
-            analogWrite(PWMA, differential_PWM_output);  
-            analogWrite(PWMB, differential_PWM_output);
-
-            // update variables for next cycle
-            prevT = currT;
-            angular_error_prev = angular_error;
-        }
+        turning_complete = 1;
 
         // Debugging Messages
-        Serial.println("Rover is turning");
-        Serial.println("target_angle: " + String(target_angle));
-        Serial.println("angular error: " + String(angular_error));
-        Serial.println("TOTAL_PATH_x: " + String(totalpath_x_int));
-        Serial.println("TOTAL_PATH_y: " + String(totalpath_y_int));
-
-
+        Serial.println("Rover has turned");
     } 
     else if (!straight_line_complete) {
-        // Straight Line Logic
-        OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
-        displacement_error = target_displacement - totalpath_y_int;
-        // simplistic dead reckoning
-        current_x = prev_x + totalpath_y_int * cos(current_angle);
-        current_y = prev_y + totalpath_y_int * sin(current_angle);
+        current_x = B_x;
+        current_y = B_y;
         
-        if (abs(displacement_error) == 0) {
-            // brake when reached
-            analogWrite(PWMA, 0);  
-            analogWrite(PWMB, 0);
-
-            straight_line_complete = 1;
-            displacement_PWM_output = 0;
-            differential_PWM_output = 0; 
-
-            // simplistic dead reckoning
-            prev_x = current_x;
-            prev_y = current_y;
-            
-            // resetting PID variables
-            prevT = 0;
-            p_term_angle = 0;
-            i_term_angle = 0;
-            d_term_angle = 0;
-
-            // resetting OFS_Cartesian variables
-            prescaled_tx = 0;
-            prescaled_ty = 0;
-            totalpath_x_int = 0;
-            totalpath_y_int = 0;
-
-            // tcp_send = "---\n";
-            // tcp_send += ("Straight Line Complete\n");
-        } else {
-            //  y-axis pid controller
-            displacement_PWM_output = Kp_displacement * displacement_error;
-            Serial.println("displacement_error:\t" + String(displacement_error));
-            //  guards
-            displacement_PWM_output = (displacement_PWM_output > MAX_PWM) ? (MAX_PWM) : (displacement_PWM_output);
-            displacement_PWM_output = (displacement_PWM_output < MIN_PWM) ?  (MIN_PWM)  : (displacement_PWM_output);
-            //  strictly for testing purposes FIXME: DELETE
-            MotorSpeedA = displacement_PWM_output;
-            MotorSpeedB = displacement_PWM_output;
-
-           // deviation pid controller
-          currT = micros();
-          deltaT = ((float) (currT-prevT))/1.0e6;
-
-          angular_error = (totalpath_x_int);
-
-          p_term_angle = (angular_error);
-          i_term_angle += (angular_error*deltaT);
-           //    d_term_angle = (angular_error - angular_error_prev)/deltaT;
-           differential_PWM_output = p_term_angle * Kp_deviation + i_term_angle * Ki_deviation; //0.3 is good, 0.33 decent
-
-          MotorSpeedA = displacement_PWM_output + differential_PWM_output;
-          MotorSpeedB = displacement_PWM_output - differential_PWM_output;
-
-        //  guards
-            if (MotorSpeedA < 0) {MotorSpeedA = 0;}
-            if (MotorSpeedA > 255) {MotorSpeedA = 255;}
-
-            if (MotorSpeedB < 0) {MotorSpeedB = 0;}
-            if (MotorSpeedB > 255) {MotorSpeedB = 255;}
-
-        //  inform the motors which way they are rotating
-            digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CW  // ACW Rover
-            digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CCW
-
-        //  write PWMs to the motors
-            analogWrite(PWMA, MotorSpeedA);
-            analogWrite(PWMB, MotorSpeedB);
-
-        //  update variables for next cycle
-            angular_error_prev = angular_error;
-            prevT = currT;
-        }
+        straight_line_complete = 1;
 
     //  debug content
-        Serial.println("Rover moving in straight line:");
-        Serial.println("Angular Error: " + String(angular_error));
-        Serial.println("Displacement Error: " + String(displacement_error));
-        Serial.println("differential_PWM_output: " + String(differential_PWM_output));
-        Serial.println("TOTAL_PATH_x: " + String(totalpath_x_int));
-        Serial.println("TOTAL_PATH_y: " + String(totalpath_y_int));
-        Serial.println("MotorSpeedA: " + String(MotorSpeedA));
-        Serial.println("MotorSpeedB: " + String(MotorSpeedB));
+        Serial.println("Rover moved in straight line:");
     }
-
-
+    delay(1000);
 }

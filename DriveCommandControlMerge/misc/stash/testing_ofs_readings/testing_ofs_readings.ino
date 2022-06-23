@@ -72,7 +72,7 @@
 //    #define RADIUS 120
 
 //  min max PWM
-  #define MIN_PWM 90
+  #define MIN_PWM 100
   #define MAX_PWM 200
 
 //  Drive parameters
@@ -100,7 +100,7 @@
 //  Angle Control: rotation
   float offset_error = 0;
   float offset_error_prev = 0;
-  float target_angle = 3*PI;  // target angle, starting from 90 degrees
+  float target_angle = 4*PI;  // target angle, starting from 90 degrees
 
   float p_term_angle;
   float i_term_angle;
@@ -115,8 +115,8 @@
 
 //  PID for turning
   //  TODO: mess around with
-  float Kp_rotation = 1;
-  float Ki_rotation = 1;
+  float Kp_rotation = 0.1 ;
+  float Ki_rotation = 0;
   float Kd_rotation = 0;
 
 /////////////////////////////////////////////////////////////////
@@ -188,30 +188,53 @@ void mousecam_read_motion(struct MD *p)
     delayMicroseconds(5); //necessary wait time
 }
 
-void OFS_Cartesian
-            (            
-            MD md, 
-            int * prescaled_tx, 
-            int * prescaled_ty, 
-            int * total_x, 
-            int * total_y
-            )
-{
-  //  Optical sensor readings
-    mousecam_read_motion(&md);
+//void OFS_Cartesian
+//            (            
+//            MD md, 
+//            int * prescaled_tx, 
+//            int * prescaled_ty, 
+//            int * total_x, 
+//            int * total_y
+//            )
+//{
+//  //  Optical sensor readings
+//    mousecam_read_motion(&md);
+//
+//  *prescaled_tx += convTwosComp(md.dx);
+//  *prescaled_ty += convTwosComp(md.dy);
+//
+//  *total_x = *prescaled_tx / 4.95;
+//  *total_y = *prescaled_ty / 4.95;
+//
+//  Serial.println("Dy: " + String(*prescaled_ty));
+//  Serial.println("Dx: " + String(*prescaled_tx));
+//  Serial.println("Total y: " + String(*total_y));
+//  Serial.println("Total x: " + String(*total_x));
+//  Serial.println();
+//}
 
-  *prescaled_tx += convTwosComp(md.dx);
-  *prescaled_ty += convTwosComp(md.dy);
-
-  *total_x = *prescaled_tx / 4.95;
-  *total_y = *prescaled_ty / 4.95;
-
-  Serial.println("Dy: " + String(*prescaled_ty));
-  Serial.println("Dx: " + String(*prescaled_tx));
-  Serial.println("Total y: " + String(*total_y));
-  Serial.println("Total x: " + String(*total_x));
-  Serial.println();
-}
+//void OFS_Angular(
+//                MD md, 
+//                float * total_x, 
+//                float * total_y, 
+//                float* abs_theta
+//                )
+//{
+//      //  Optical sensor readings
+//        mousecam_read_motion(&md);
+//        *abs_theta += (convTwosComp(md.dx) / 4.95) / RADIUS;
+//        float d_r = convTwosComp(md.dy) / 4.95;
+//        *total_x += d_r * sin(*abs_theta);
+//        *total_y += d_r * cos(*abs_theta);
+//        Serial.println();
+//        Serial.println("dx: " + String(md.dx));
+//        Serial.println("dr: " + String(d_r));
+//        Serial.println("d_theta: "+ String((convTwosComp(md.dx) / 4.95) / RADIUS));
+//        Serial.println("Angle: " + String(*abs_theta));
+//        Serial.println("Angle: " + String(*abs_theta));
+//        Serial.println("Total y: " + String(*total_y));
+//        Serial.println("Total x: " + String(*total_x));
+//}
 
 // double prescaled_tx = 0;
 // double prescaled_ty = 0;
@@ -246,7 +269,7 @@ void OFS_Readings
 
     *x_coordinate += dy * cos(tmp_angle);
     *y_coordinate += dy * sin(tmp_angle);
-
+/*
     Serial.println("Dy: " + String(dy));
     Serial.println("Dx: " + String(dx));
      Serial.println("Angle: " + String(*angle));
@@ -255,30 +278,10 @@ void OFS_Readings
     Serial.println("y_coordinate: " + String(*y_coordinate));
     Serial.println("x_coordinate: " + String(*x_coordinate));
     Serial.println();
+*/
 }
 
-void OFS_Angular(
-                MD md, 
-                float * total_x, 
-                float * total_y, 
-                float* abs_theta
-                )
-{
-      //  Optical sensor readings
-        mousecam_read_motion(&md);
-        *abs_theta += (convTwosComp(md.dx) / 4.95) / RADIUS;
-        float d_r = convTwosComp(md.dy) / 4.95;
-        *total_x += d_r * sin(*abs_theta);
-        *total_y += d_r * cos(*abs_theta);
-        Serial.println();
-        Serial.println("dx: " + String(md.dx));
-        Serial.println("dr: " + String(d_r));
-        Serial.println("d_theta: "+ String((convTwosComp(md.dx) / 4.95) / RADIUS));
-        Serial.println("Angle: " + String(*abs_theta));
-        Serial.println("Angle: " + String(*abs_theta));
-        Serial.println("Total y: " + String(*total_y));
-        Serial.println("Total x: " + String(*total_x));
-}
+//
 
 //  update variables
   long currT = 0;
@@ -339,7 +342,7 @@ const char * host = "85.255.235.186"; // ip or dns
 /////////////////////////////////////////////////////////////////
 
 //  state mashine parameters for the drive process (stop turn go)
-  int turning_complete = 1;
+  int turning_complete = 0;
 
 long lastSampleT = 0;
 void setup()
@@ -410,10 +413,8 @@ void setup()
     // // tcp_parse(tcp_received, &B_x, &B_y, &mode_);
     // update target angle
     // updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_angle);
-
     //  hard code target angle
-    target_angle = 6*PI;
-
+    //target_angle = 6*PI;
       turning_complete = 0;
 //     // digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
 //     // digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
@@ -422,13 +423,11 @@ void setup()
     lastSampleT = 0;
     // set the right motor directions
 
-    digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
-    digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-
-
-    // power the motors
-    analogWrite(PWMA, 120);  
-    analogWrite(PWMB, 126.5);
+    // digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
+    // digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+    // // power the motors
+    // analogWrite(PWMA, 120);  
+    // analogWrite(PWMB, 126.5);
 }
 
 String location_info = "";
@@ -447,34 +446,14 @@ void loop()
             &y_coordinate_R,
             &angle_R
             );
+    Serial.println("abs(angle_R) - target_angle:\t" + String(0.75*abs(abs(angle_R) - abs(target_angle))));
     samplePeriod = micros() - lastSampleT;
     lastSampleT = micros();
     Serial.println();
     Serial.println(samplePeriod);
 
-    delay(30);
-
-
     //delay(50);
     // Periodically send data back to server
-    /*
-    if (millis() - last_TCP_post > TCP_post_period) {
-        tcp_send_prev = micros();
-        location_info = "{\"time\":" + String(millis()) + 
-                        ",\"type\": \"rover\"," + 
-                        "\"data\":"  + 
-                        "{\"posX\": " + String(current_x) + 
-                        ",\"posY\": " + String(current_y) + 
-                        ",\"angle\": " + String(current_angle) + 
-                        "}" + 
-                        "}@";
-
-        client.print(location_info);
-        Serial.println(String(micros() - tcp_send_prev) + " TCP Duration");
-        location_info = "";
-        last_TCP_post = millis();
-    }
-    */
 
     if (!turning_complete) {
         // Rotation Logic
@@ -487,12 +466,11 @@ void loop()
         // offset_error = (total_path_x_R - RADIUS*target_angle);
         offset_error = total_path_y_R;
 
-
         // Serial.println("in !turning_complete");
         // simplistic dead reckoning
         //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
           Serial.println("offset_error:\t" + String(offset_error));
-        if (abs(total_path_x_R - RADIUS*target_angle) < 0.01) {
+        if (0.9*abs(abs(angle_R) - abs(target_angle)) < 0.01) {
             Serial.println("in error good");
             // brake
             analogWrite(PWMA, 0); 
@@ -544,6 +522,20 @@ void loop()
                 // digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
                 // digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
             // }
+
+            /*
+              if (offset_error <= 0) {
+                digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
+                digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+            // } else {
+                digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
+                digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
+            }
+
+            // power the motors
+            analogWrite(PWMA, differential_PWM_output + (offset_error <= 0) ? (- offset_PWM_output) :(offset_PWM_output);  
+            analogWrite(PWMB, differential_PWM_output + (offset_error <= 0) ? (offset_PWM_output) :(-offset_PWM_output);
+            */
 
             // power the motors
             analogWrite(PWMA, differential_PWM_output - offset_PWM_output);  

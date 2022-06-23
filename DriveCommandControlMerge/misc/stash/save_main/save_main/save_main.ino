@@ -519,14 +519,17 @@ void setup()
     //     delay(500);
     // }
     // Serial.println("Connected to Server\n");
+
     // // // wait for mission start
     // String start_message = "";
     // while(client.available() < 5){
     //     Serial.println("Waiting for Mission Start");
     //     delay(500);
     // }
+
     // tcp_received = client.readStringUntil('\r');
     // tcp_parse(tcp_received, &B_x, &B_y, &mode_);
+
     mode_ = "A";
 
     if (mode_ == "A") {
@@ -541,15 +544,15 @@ void setup()
     // update target angle
     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
 
-    Serial.println("counter: " + String(counter));
-    Serial.println("cx: " + String(current_x));
-    Serial.println("cy: " + String(current_y));
-    Serial.println("bx: " + String(B_x));
-    Serial.println("by: " + String(B_y));
-    Serial.println("current angle: " + String(current_angle));   
-    Serial.println("target displacement: " + String(target_displacement));
-    Serial.println("target angle: " + String(target_angle));
-    Serial.println("actual angle: " + String(target_angle));
+    // Serial.println("counter: " + String(counter));
+    // Serial.println("cx: " + String(current_x));
+    // Serial.println("cy: " + String(current_y));
+    // Serial.println("bx: " + String(B_x));
+    // Serial.println("by: " + String(B_y));
+    // Serial.println("current angle: " + String(current_angle));   
+    // Serial.println("target displacement: " + String(target_displacement));
+    // Serial.println("target angle: " + String(target_angle));
+    // Serial.println("actual angle: " + String(target_angle));
 
     turning_complete = 0;
     straight_line_complete = 0;
@@ -577,24 +580,24 @@ void loop()
     // tcp_send = "";
 
     // // Periodically send data back to server
-    // if (millis() - last_TCP_post > TCP_post_period) {
-    //     // Serial.println(tcp_send);
-    //     location_info = "{\"time\":" + String(millis()) + 
-    //                     ",\"type\": \"rover\"," + 
-    //                     "\"data\":"  + 
-    //                     "{\"posX\": " + String(current_x) + 
-    //                     ",\"posY\": " + String(current_y) + 
-    //                     ",\"angle\": " + String(current_angle) + 
-    //                     "}" + 
-    //                     "}";
+    if (millis() - last_TCP_post > TCP_post_period) {
+        // Serial.println(tcp_send);
+        location_info = "{\"time\":" + String(millis()) + 
+                        ",\"type\": \"rover\"," + 
+                        "\"data\":"  + 
+                        "{\"posX\": " + String(current_x) + 
+                        ",\"posY\": " + String(current_y) + 
+                        ",\"angle\": " + String(current_angle) + 
+                        "}" + 
+                        "}";
 
-    //     Serial.println("----------------------");
-    //     Serial.println(location_info);
-    //     Serial.println("----------------------");
+        Serial.println("----------------------");
+        Serial.println(location_info);
+        Serial.println("----------------------");
 
-    //     client.print(location_info);
-    //     last_TCP_post = millis();
-    // }
+        client.print(location_info);
+        last_TCP_post = millis();
+    }
 
     // checks if there is a message from server in buffer
     if ((mode_ == "M") && (client.available() > 5)) {
@@ -664,19 +667,17 @@ void loop()
         //  update target angle
         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
         
-        Serial.println("counter:\t" + String(counter));
-        Serial.println("x_des:\t" + String(B_x));
-        Serial.println("y_des:\t" + String(B_y));
-        Serial.println("x_pos:\t" + String(current_x));
-        Serial.println("y_pos:\t" + String(current_y));
-        Serial.println("target_angle:\t" + String(target_angle));
+            Serial.println("counter:\t" + String(counter));
+            Serial.println("x_des:\t" + String(B_x));
+            Serial.println("y_des:\t" + String(B_y));
+            Serial.println("x_pos:\t" + String(current_x));
+            Serial.println("y_pos:\t" + String(current_y));
+            Serial.println("target_angle:\t" + String(target_angle));
             
             turning_complete = 0;
             straight_line_complete = 0;
     }
 
-    
-/*
   //  camera readings
     camera_readings(&camera_readings_type, &camera_readings_displacemet, &camera_readings_angle);
 
@@ -686,7 +687,7 @@ void loop()
 
     object_radius = (camera_readings_type == 7) ? (MAXIMUM_HOME_RADIUS) : (BALL_RADIUS);
 
-    object_rover_x_difference = abs(object_x - current_x) /*+ object_radius - (ROVER_WIDTH / 2);
+    object_rover_x_difference = abs(object_x - current_x) /*+ object_radius - (ROVER_WIDTH / 2)*/;
 
     object_displacement = sqrt(pow((object_x - current_x), 2) + pow((object_y - current_y), 2));
     object_angle = atan2(object_y - current_y, object_x - current_x) - current_angle;
@@ -755,7 +756,9 @@ void loop()
                 //  tell rover to move forward or backward in direction to the object
                 //  mximum amount needed to move out by eye would probably be 2 of the object displacements.
 
-                //abs(camera_stashed_y - current_y - object_displacement 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT
+                /*
+                abs(camera_stashed_y - current_y - object_displacement 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT
+                */
 
                 if(abs(camera_stashed_y - current_y - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT){
                   // Serial.println("Yo");
@@ -803,10 +806,6 @@ void loop()
 //            );
             }
     }
-
-*/
-
-
 
     if (!turning_complete) {
         // Rotation Logic
@@ -879,9 +878,31 @@ void loop()
         Serial.println("Rover is turning");
         Serial.println("target_angle: " + String(target_angle));
         Serial.println("angular error: " + String(angular_error));
-        Serial.println("TOTAL_PATH_x: " + String(totalpath_x_int));
-        Serial.println("TOTAL_PATH_y: " + String(totalpath_y_int));
-
+        /*
+        tcp_send += "---\n";
+        tcp_send +=("Rover is turning");
+        tcp_send += "\n";
+        tcp_send +=("target_angle: " + String(target_angle));
+        tcp_send += "\n";
+        tcp_send +=("angular error: " + String(angular_error));
+        tcp_send += "\n";
+        tcp_send +=("deltaT: " + String(deltaT));
+        tcp_send += "\n";
+        tcp_send +=("P: " + String(p_term_angle * Kp_rotation));
+        tcp_send += "\n";
+        tcp_send +=("I: " + String(i_term_angle * Ki_rotation));
+        tcp_send += "\n";
+        tcp_send +=("D: " + String(d_term_angle * Kd_rotation));
+        tcp_send += "\n";
+        tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
+        tcp_send += "\n";
+        tcp_send +=("current angle: " + String(current_angle));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+        tcp_send += "\n";
+        */
 
     } 
     else if (!straight_line_complete) {
@@ -965,15 +986,24 @@ void loop()
         }
 
     //  debug content
-        Serial.println("Rover moving in straight line:");
-        Serial.println("Angular Error: " + String(angular_error));
-        Serial.println("Displacement Error: " + String(displacement_error));
-        Serial.println("differential_PWM_output: " + String(differential_PWM_output));
-        Serial.println("TOTAL_PATH_x: " + String(totalpath_x_int));
-        Serial.println("TOTAL_PATH_y: " + String(totalpath_y_int));
-        Serial.println("MotorSpeedA: " + String(MotorSpeedA));
-        Serial.println("MotorSpeedB: " + String(MotorSpeedB));
+    /*
+        tcp_send +="---\n";
+        tcp_send +=("Rover moving in straight line:");
+        tcp_send += "\n";
+        tcp_send +=("Angular Error: " + String(angular_error));
+        tcp_send += "\n";
+        tcp_send +=("Displacement Error: " + String(displacement_error));
+        tcp_send += "\n";
+        tcp_send +=("differential_PWM_output: " + String(differential_PWM_output));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_x: " + String(totalpath_x_int));
+        tcp_send += "\n";
+        tcp_send +=("TOTAL_PATH_y: " + String(totalpath_y_int));
+        tcp_send += "\n";
+        tcp_send +=("MotorSpeedA: " + String(MotorSpeedA));
+        tcp_send += "\n";
+        tcp_send +=("MotorSpeedB: " + String(MotorSpeedB));
+        tcp_send += "\n";
+    */
     }
-
-
 }

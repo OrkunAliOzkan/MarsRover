@@ -73,11 +73,11 @@
 
 // Destination coordinates
   float B_x = 0;
-  float B_y = 750;
+  float B_y = 0;
 
 // Current position and angle
-  float current_x = 100;
-  float current_y = 100;
+  float current_x = 0;
+  float current_y = 0;
   float current_angle = 0;
 
   float prev_x = current_x;
@@ -396,25 +396,25 @@ void updateTargets(float * B_x, float * B_y, float * current_x, float * current_
 
 /////////////////////////////////////////////////////////////////
 //  automation parameters
-  int counter = 0;
-  #define ARENA_WIDTH         1050
-  #define ARENA_HEIGHT        250
-  #define SIDE_SECTION_SPANS  2
-  #define MID_SECTION_SPANS   2
-  bool skipLoop = 0;
-  bool returning = 0;
+int counter = 0;
+#define ARENA_WIDTH         1050
+#define ARENA_HEIGHT        250
+#define SIDE_SECTION_SPANS  2
+#define MID_SECTION_SPANS   2
+bool skipLoop = 0;
+bool returning = 0;
   //  x_des is B_x
   //  y_des is B_y
   //  target_angle is target_angle
   //  x_pos is current_x
   //  y_pos is current_y
 /*
-  functin call exampleS
-  automation(
-      &counter,
-      current_x, current_y,
-      &B_x, &B_y, &target_angle
-  )
+functin call exampleS
+automation(
+    &counter,
+    current_x, current_y,
+    &B_x, &B_y, &target_angle
+)
 */
 
 //  automation function
@@ -456,8 +456,8 @@ void automation(
 /////////////////////////////////////////////////////////////////
 
 //  state mashine parameters for the drive process (stop turn go)
-  int turning_complete = 1;
-  int straight_line_complete = 1;
+int turning_complete = 1;
+int straight_line_complete = 1;
 
 long lastCycle = 0;
 void setup()
@@ -531,11 +531,11 @@ void setup()
 
     if (mode_ == "A") {
       // update position to travel to
-      automation(
-          &counter,
-          current_x, current_y,
-          &B_x, &B_y, returning
-      );
+    automation(
+        &counter,
+        current_x, current_y,
+        &B_x, &B_y, returning
+    );
 
     }
     // update target angle
@@ -591,7 +591,6 @@ void loop()
     //     Serial.println("----------------------");
     //     Serial.println(location_info);
     //     Serial.println("----------------------");
-
     //     client.print(location_info);
     //     last_TCP_post = millis();
     // }
@@ -671,11 +670,9 @@ void loop()
         Serial.println("y_pos:\t" + String(current_y));
         Serial.println("target_angle:\t" + String(target_angle));
             
-            turning_complete = 0;
-            straight_line_complete = 0;
+        turning_complete = 0;
+        straight_line_complete = 0;
     }
-
-    
 /*
   //  camera readings
     camera_readings(&camera_readings_type, &camera_readings_displacemet, &camera_readings_angle);
@@ -759,9 +756,9 @@ void loop()
 
                 if(abs(camera_stashed_y - current_y - object_displacement - 2*object_radius) < MINIMUM_SAFE_WALL_DISPLACEMENT){
                   // Serial.println("Yo");
-                  B_y = camera_stashed_y;
-                  emergancy_corner_count = 0;
-                  avoided = 1;
+                    B_y = camera_stashed_y;
+                    emergancy_corner_count = 0;
+                    avoided = 1;
                   break; //  equivalent to continue-ing the loop in c++
                 }
                 else{
@@ -806,8 +803,6 @@ void loop()
 
 */
 
-
-
     if (!turning_complete) {
         // Rotation Logic
         OFS_Cartesian(md, &prescaled_tx, &prescaled_ty, &totalpath_x_int, &totalpath_y_int);
@@ -850,8 +845,8 @@ void loop()
             differential_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
 
             // guards to keep output within bounds
-            if (differential_PWM_output > 255) {
-                differential_PWM_output = 255;
+            if (differential_PWM_output > MAX_PWM) {
+                differential_PWM_output = MAX_PWM;
             }
             else if (differential_PWM_output < MIN_PWM) {
                 differential_PWM_output = MIN_PWM;
@@ -867,8 +862,8 @@ void loop()
             }
 
             // power the motors
-            analogWrite(PWMA, differential_PWM_output);  
-            analogWrite(PWMB, differential_PWM_output);
+            analogWrite(PWMA, differential_PWM_output + 0.5*totalpath_y_int);  
+            analogWrite(PWMB, differential_PWM_output - 0.5*totalpath_y_int);
 
             // update variables for next cycle
             prevT = currT;
@@ -892,7 +887,7 @@ void loop()
         current_x = prev_x + totalpath_y_int * cos(current_angle);
         current_y = prev_y + totalpath_y_int * sin(current_angle);
         
-        if (abs(displacement_error) == 0) {
+        if (abs(displacement_error) < 4) {
             // brake when reached
             analogWrite(PWMA, 0);  
             analogWrite(PWMB, 0);
@@ -931,18 +926,18 @@ void loop()
             MotorSpeedB = displacement_PWM_output;
 
            // deviation pid controller
-          currT = micros();
-          deltaT = ((float) (currT-prevT))/1.0e6;
+        currT = micros();
+        deltaT = ((float) (currT-prevT))/1.0e6;
 
-          angular_error = (totalpath_x_int);
+        angular_error = (totalpath_x_int);
 
-          p_term_angle = (angular_error);
-          i_term_angle += (angular_error*deltaT);
+        p_term_angle = (angular_error);
+        i_term_angle += (angular_error*deltaT);
            //    d_term_angle = (angular_error - angular_error_prev)/deltaT;
-           differential_PWM_output = p_term_angle * Kp_deviation + i_term_angle * Ki_deviation; //0.3 is good, 0.33 decent
+        differential_PWM_output = p_term_angle * Kp_deviation + i_term_angle * Ki_deviation; //0.3 is good, 0.33 decent
 
-          MotorSpeedA = displacement_PWM_output + differential_PWM_output;
-          MotorSpeedB = displacement_PWM_output - differential_PWM_output;
+        MotorSpeedA += differential_PWM_output;
+        MotorSpeedB -= differential_PWM_output;
 
         //  guards
             if (MotorSpeedA < 0) {MotorSpeedA = 0;}
@@ -974,6 +969,5 @@ void loop()
         Serial.println("MotorSpeedA: " + String(MotorSpeedA));
         Serial.println("MotorSpeedB: " + String(MotorSpeedB));
     }
-
 
 }

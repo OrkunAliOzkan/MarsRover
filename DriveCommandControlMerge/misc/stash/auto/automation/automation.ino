@@ -1,10 +1,6 @@
-#include <Arduino.h>
 #include <SPI.h>
-#include "code_body.h"
 #include <Wire.h>
-#include <vector>
 #include "WiFi.h"
-#include <Adafruit_BusIO_Register.h>
 
 //#include "soc/soc.h"
 //#include "soc/rtc_cntl_reg.h"
@@ -146,10 +142,18 @@ float deltaT = 0;
 int output;
 float angle = PI/180 * 0;
 
+  struct MD
+  {
+      byte motion;
+      char dx, dy;
+      byte squal;
+      word shutter;
+      byte max_pix;
+  };
+
 MD md;
 /////////////////////////////////////////////////////////////////
 String post_data = "";
-std::vector<float> read_cartesian;
 /////////////////////////////////////////////////////////////////
 int automation_counter = 0;
 bool automationOn = 1;
