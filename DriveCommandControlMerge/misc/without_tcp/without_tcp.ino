@@ -88,6 +88,7 @@
 
 //  min max PWM
   #define MIN_PWM 38
+  #define MIN_ROT_PWM 100
   #define MAX_PWM 220
 
 //  Drive parameters
@@ -374,7 +375,9 @@ const char * host = "146.169.168.102"; // ip or dns
   long last_TCP_post = 0;
   long TCP_post_period = 50;
 
-void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, int * target_displacement, float * target_angle){
+void updateTargets( float * B_x, float * B_y, 
+                    float * current_x, float * current_y, float * current_angle, 
+                    int * target_displacement, float * target_angle){
     
     float dx = *B_x - *current_x;
     float dy = *B_y - *current_y ;
@@ -423,41 +426,6 @@ automation(
 */
 
 //  automation function
-// void automation(
-//     int * counter,
-//     float x_pos, float y_pos,
-//     float * x_des, float * y_des,/*, float * target_angle*/
-//     bool returning
-// )
-// {
-//     float x =   ARENA_WIDTH / (2*(2*SIDE_SECTION_SPANS + MID_SECTION_SPANS));
-//     float append = 0;
-//     x *= (
-//             ((*counter / 4) > SIDE_SECTION_SPANS) && 
-//             ((*counter / 4) < MID_SECTION_SPANS + SIDE_SECTION_SPANS)
-//         ) ? 
-//             (MID_SECTION_SPANS) : (SIDE_SECTION_SPANS);
-
-//     if(!returning){
-//         append = -x;
-//     }
-//     else{
-//         append = x;
-//     }
-//     if(*counter % 2 == 0){
-//         *x_des -= append;
-//     }
-//     else{
-//         if(*counter % 4 == 1){
-//             *y_des -= ARENA_HEIGHT;
-//         }
-//         else if(*counter % 4 == 3){
-//             *y_des += ARENA_HEIGHT;
-//         }
-//     }
-//         *counter += 1;
-// }
-
 void automation(
     int * counter,
     float x_pos, float y_pos,
@@ -484,14 +452,49 @@ void automation(
     }
     else{
         if(*counter % 4 == 1){
-            *y_des += ARENA_HEIGHT;
+            *y_des -= ARENA_HEIGHT;
         }
         else if(*counter % 4 == 3){
-            *y_des -= ARENA_HEIGHT;
+            *y_des += ARENA_HEIGHT;
         }
     }
         *counter += 1;
 }
+
+// void automation(
+//     int * counter,
+//     float x_pos, float y_pos,
+//     float * x_des, float * y_des,/*, float * target_angle*/
+//     bool returning
+// )
+// {
+//     float x =   ARENA_WIDTH / (2*(2*SIDE_SECTION_SPANS + MID_SECTION_SPANS));
+//     float append = 0;
+//     x *= (
+//             ((*counter / 4) > SIDE_SECTION_SPANS) && 
+//             ((*counter / 4) < MID_SECTION_SPANS + SIDE_SECTION_SPANS)
+//         ) ? 
+//             (MID_SECTION_SPANS) : (SIDE_SECTION_SPANS);
+
+//     if(!returning){
+//         append = -x;
+//     }
+//     else{
+//         append = x;
+//     }
+//     if(*counter % 2 == 0){
+//         *x_des -= append;
+//     }
+//     else{
+//         if(*counter % 4 == 1){
+//             *y_des += ARENA_HEIGHT;
+//         }
+//         else if(*counter % 4 == 3){
+//             *y_des -= ARENA_HEIGHT;
+//         }
+//     }
+//         *counter += 1;
+// }
 
 /////////////////////////////////////////////////////////////////
 
@@ -527,7 +530,6 @@ void OFS_Readings
 
     *x_coordinate += dy * cos(tmp_angle);
     *y_coordinate += dy * sin(tmp_angle);
-/*
     Serial.println("Dy: " + String(dy));
     Serial.println("Dx: " + String(dx));
      Serial.println("Angle: " + String(*angle));
@@ -536,7 +538,6 @@ void OFS_Readings
     Serial.println("y_coordinate: " + String(*y_coordinate));
     Serial.println("x_coordinate: " + String(*x_coordinate));
     Serial.println();
-*/
 }
 
 /////////////////////////////////////////////////////////////////
@@ -576,15 +577,13 @@ void setup()
 
     if(mousecam_init()==-1)
     {
-        //Serial.println("Mouse cam failed to init");
+        Serial.println("Mouse cam failed to init");
         while(1);
     }
     /////////////////////////////////////////////////////////////////
     //  Connecting to Wifi
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-    //Serial.println();
-    //Serial.println();
     Serial.print("Waiting for WiFi... ");
     while(WiFi.status() != WL_CONNECTED) {
         Serial.print(".");
@@ -993,7 +992,6 @@ void loop()
         // Serial.println("in !turning_complete");
         // simplistic dead reckoning
         //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
-        Serial.println("offset_error:\t" + String(offset_error));
         if (0.9*abs(angle_R - target_angle) < 0.05) {
             Serial.println("in error good");
             // brake
@@ -1021,7 +1019,6 @@ void loop()
             //prev_angle = current_angle;
         } else {
         Serial.println("in else");
-        Serial.println("differential_PWM_output:\t" + String(differential_PWM_output));
             // turning not complete
             currT = micros();
             deltaT = ((float) (currT-prevT))/1.0e6;
@@ -1033,7 +1030,6 @@ void loop()
             offset_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
 
             // guards to keep output within bounds
-            differential_PWM_output = MIN_PWM;
 
             // set the right motor directions
             if (target_angle > 0) {
@@ -1045,12 +1041,18 @@ void loop()
             }
 
             // power the motors
-            analogWrite(PWMA, differential_PWM_output - offset_PWM_output);  
-            analogWrite(PWMB, differential_PWM_output + offset_PWM_output);
+            analogWrite(PWMA, MIN_ROT_PWM - offset_PWM_output);  
+            analogWrite(PWMB, MIN_ROT_PWM + offset_PWM_output);
 
             // update variables for next cycle
             prevT = currT;
             offset_error_prev = offset_error;
+
+            Serial.println("total_path_x_R:\t"  + String(total_path_x_R));
+            Serial.println("total_path_y_R:\t"  + String(total_path_y_R));
+            Serial.println("x_coordinate_R:\t"  + String(x_coordinate_R));
+            Serial.println("y_coordinate_R:\t"  + String(y_coordinate_R));
+            Serial.println("angle_R:\t"         + String(angle_R)       );
         }
         delay(30);
     }
