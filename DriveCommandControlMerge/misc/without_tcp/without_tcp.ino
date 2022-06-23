@@ -88,6 +88,7 @@
 
 //  min max PWM
   #define MIN_PWM 38
+  #define MIN_ROT_PWM 100
   #define MAX_PWM 220
 
 //  Drive parameters
@@ -374,7 +375,9 @@ const char * host = "146.169.168.102"; // ip or dns
   long last_TCP_post = 0;
   long TCP_post_period = 50;
 
-void updateTargets(float * B_x, float * B_y, float * current_x, float * current_y, float * current_angle, int * target_displacement, float * target_angle){
+void updateTargets( float * B_x, float * B_y, 
+                    float * current_x, float * current_y, float * current_angle, 
+                    int * target_displacement, float * target_angle){
     
     float dx = *B_x - *current_x;
     float dy = *B_y - *current_y ;
@@ -423,41 +426,6 @@ automation(
 */
 
 //  automation function
-// void automation(
-//     int * counter,
-//     float x_pos, float y_pos,
-//     float * x_des, float * y_des,/*, float * target_angle*/
-//     bool returning
-// )
-// {
-//     float x =   ARENA_WIDTH / (2*(2*SIDE_SECTION_SPANS + MID_SECTION_SPANS));
-//     float append = 0;
-//     x *= (
-//             ((*counter / 4) > SIDE_SECTION_SPANS) && 
-//             ((*counter / 4) < MID_SECTION_SPANS + SIDE_SECTION_SPANS)
-//         ) ? 
-//             (MID_SECTION_SPANS) : (SIDE_SECTION_SPANS);
-
-//     if(!returning){
-//         append = -x;
-//     }
-//     else{
-//         append = x;
-//     }
-//     if(*counter % 2 == 0){
-//         *x_des -= append;
-//     }
-//     else{
-//         if(*counter % 4 == 1){
-//             *y_des -= ARENA_HEIGHT;
-//         }
-//         else if(*counter % 4 == 3){
-//             *y_des += ARENA_HEIGHT;
-//         }
-//     }
-//         *counter += 1;
-// }
-
 void automation(
     int * counter,
     float x_pos, float y_pos,
@@ -484,14 +452,49 @@ void automation(
     }
     else{
         if(*counter % 4 == 1){
-            *y_des += ARENA_HEIGHT;
+            *y_des -= ARENA_HEIGHT;
         }
         else if(*counter % 4 == 3){
-            *y_des -= ARENA_HEIGHT;
+            *y_des += ARENA_HEIGHT;
         }
     }
         *counter += 1;
 }
+
+// void automation(
+//     int * counter,
+//     float x_pos, float y_pos,
+//     float * x_des, float * y_des,/*, float * target_angle*/
+//     bool returning
+// )
+// {
+//     float x =   ARENA_WIDTH / (2*(2*SIDE_SECTION_SPANS + MID_SECTION_SPANS));
+//     float append = 0;
+//     x *= (
+//             ((*counter / 4) > SIDE_SECTION_SPANS) && 
+//             ((*counter / 4) < MID_SECTION_SPANS + SIDE_SECTION_SPANS)
+//         ) ? 
+//             (MID_SECTION_SPANS) : (SIDE_SECTION_SPANS);
+
+//     if(!returning){
+//         append = -x;
+//     }
+//     else{
+//         append = x;
+//     }
+//     if(*counter % 2 == 0){
+//         *x_des -= append;
+//     }
+//     else{
+//         if(*counter % 4 == 1){
+//             *y_des += ARENA_HEIGHT;
+//         }
+//         else if(*counter % 4 == 3){
+//             *y_des -= ARENA_HEIGHT;
+//         }
+//     }
+//         *counter += 1;
+// }
 
 /////////////////////////////////////////////////////////////////
 
@@ -527,7 +530,6 @@ void OFS_Readings
 
     *x_coordinate += dy * cos(tmp_angle);
     *y_coordinate += dy * sin(tmp_angle);
-/*
     Serial.println("Dy: " + String(dy));
     Serial.println("Dx: " + String(dx));
      Serial.println("Angle: " + String(*angle));
@@ -536,7 +538,6 @@ void OFS_Readings
     Serial.println("y_coordinate: " + String(*y_coordinate));
     Serial.println("x_coordinate: " + String(*x_coordinate));
     Serial.println();
-*/
 }
 
 /////////////////////////////////////////////////////////////////
@@ -576,15 +577,13 @@ void setup()
 
     if(mousecam_init()==-1)
     {
-        //Serial.println("Mouse cam failed to init");
+        Serial.println("Mouse cam failed to init");
         while(1);
     }
     /////////////////////////////////////////////////////////////////
     //  Connecting to Wifi
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-    //Serial.println();
-    //Serial.println();
     Serial.print("Waiting for WiFi... ");
     while(WiFi.status() != WL_CONNECTED) {
         Serial.print(".");
@@ -598,23 +597,23 @@ void setup()
 
     delay(500);
     ///////////////////////////////////////////////////////////////
-    //  Connecting to TCP Server
-    while (!client.connect(host, port)) {
-        Serial.println("Connection to TCP Server failed");
-        Serial.println("Trying again in 500ms...");
-        delay(500);
-    }
-    Serial.println("Connected to Server\n");
-    // // wait for mission start
-    String start_message = "";
-    while(client.available() < 5){
-        Serial.println("Waiting for Mission Start");
-        delay(500);
-    }
-    tcp_received = client.readStringUntil('\r');
-    tcp_parse(tcp_received, &B_x, &B_y, &mode_);
+    // //  Connecting to TCP Server
+    // while (!client.connect(host, port)) {
+    //     Serial.println("Connection to TCP Server failed");
+    //     Serial.println("Trying again in 500ms...");
+    //     delay(500);
+    // }
+    // Serial.println("Connected to Server\n");
+    // // // wait for mission start
+    // String start_message = "";
+    // while(client.available() < 5){
+    //     Serial.println("Waiting for Mission Start");
+    //     delay(500);
+    // }
+    // tcp_received = client.readStringUntil('\r');
+    // tcp_parse(tcp_received, &B_x, &B_y, &mode_);
 
-    // mode_ = "A";
+    mode_ = "A";
 
     if (mode_ == "A") {
       // update position to travel to
@@ -664,23 +663,23 @@ void loop()
     // tcp_send = "";
 
     // Periodically send data back to server
-    if (millis() - last_TCP_post > TCP_post_period) {
-        // Serial.println(tcp_send);
-        location_info = "{\"time\":" + String(millis()) + 
-                        ",\"type\": \"rover\"," + 
-                        "\"data\":"  + 
-                        "{\"posX\": " + String(current_x) + 
-                        ",\"posY\": " + String(current_y) + 
-                        ",\"angle\": " + String(current_angle) + 
-                        "}" + 
-                        "}@";
+    // if (millis() - last_TCP_post > TCP_post_period) {
+    //     // Serial.println(tcp_send);
+    //     location_info = "{\"time\":" + String(millis()) + 
+    //                     ",\"type\": \"rover\"," + 
+    //                     "\"data\":"  + 
+    //                     "{\"posX\": " + String(current_x) + 
+    //                     ",\"posY\": " + String(current_y) + 
+    //                     ",\"angle\": " + String(current_angle) + 
+    //                     "}" + 
+    //                     "}@";
 
-        Serial.println("----------------------");
-        Serial.println(location_info);
-        Serial.println("----------------------");
-        client.print(location_info);
-        last_TCP_post = millis();
-    }
+    //     Serial.println("----------------------");
+    //     Serial.println(location_info);
+    //     Serial.println("----------------------");
+    //     client.print(location_info);
+    //     last_TCP_post = millis();
+    // }
 
     // checks if there is a message from server in buffer
     if ((mode_ == "M") && (client.available() > 5)) {
@@ -975,7 +974,6 @@ void loop()
 
     if (!turning_complete) {
         // Rotation Logic
-        offset_error = total_path_y_R;
 
         OFS_Readings
                 (            
@@ -987,14 +985,24 @@ void loop()
                 &angle_R
                 );
 
+        offset_error = total_path_y_R;
         Serial.println("offset_error:\t" + String(offset_error));
-        if (0.9*abs(abs(angle_R) - abs(target_angle)) < 0.05) {
+        offset_error = total_path_y_R;
+
+        // Serial.println("in !turning_complete");
+        // simplistic dead reckoning
+        //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
+        if (0.9*abs(angle_R - target_angle) < 0.05) {
             Serial.println("in error good");
             // brake
             analogWrite(PWMA, 0); 
             analogWrite(PWMB, 0);
 
+            total_path_x_R = 0;
+            total_path_y_R = 0;
+
             turning_complete = 1;
+            differential_PWM_output = 0; 
             offset_PWM_output = 0; 
             
             // resetting PID variables
@@ -1006,12 +1014,11 @@ void loop()
             prescaled_tx = 0;
   //            prescaled_ty = 0;
             totalpath_x_int = 0;
-  //            totalpath_y_int = 0;
             
             // simplistic dead reckoning
             //prev_angle = current_angle;
         } else {
-            Serial.println("in else");
+        Serial.println("in else");
             // turning not complete
             currT = micros();
             deltaT = ((float) (currT-prevT))/1.0e6;
@@ -1022,23 +1029,32 @@ void loop()
 
             offset_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
 
+            // guards to keep output within bounds
+
             // set the right motor directions
-            // if (offset_error <= 0) {
+            if (target_angle > 0) {
                 digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
                 digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-            // } else {
-                // digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
-                // digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
-            // }
+            } else {
+                digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
+                digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
+            }
 
             // power the motors
-            analogWrite(PWMA, MIN_PWM - offset_PWM_output);  
-            analogWrite(PWMB, MIN_PWM + offset_PWM_output);
+            analogWrite(PWMA, MIN_ROT_PWM - offset_PWM_output);  
+            analogWrite(PWMB, MIN_ROT_PWM + offset_PWM_output);
 
             // update variables for next cycle
             prevT = currT;
             offset_error_prev = offset_error;
+
+            Serial.println("total_path_x_R:\t"  + String(total_path_x_R));
+            Serial.println("total_path_y_R:\t"  + String(total_path_y_R));
+            Serial.println("x_coordinate_R:\t"  + String(x_coordinate_R));
+            Serial.println("y_coordinate_R:\t"  + String(y_coordinate_R));
+            Serial.println("angle_R:\t"         + String(angle_R)       );
         }
+        delay(30);
     }
 
     else if (!straight_line_complete) {
@@ -1131,5 +1147,4 @@ void loop()
         Serial.println("MotorSpeedB: " + String(MotorSpeedB));
     }
 
-    delay(30);
 }
