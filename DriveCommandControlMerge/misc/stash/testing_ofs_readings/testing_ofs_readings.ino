@@ -437,6 +437,13 @@ long samplePeriod = 0;
 long tcp_send_prev = 0;
 void loop()
 {
+  if(turning_complete)
+  {
+    target_angle *= -1;
+    turning_complete = 0;
+    delay(1000);
+  }
+
     OFS_Readings
             (            
             md, 
@@ -464,6 +471,7 @@ void loop()
         // Serial.println("totalpath_y_int:\t" + String(totalpath_y_int));
         // Serial.println("-------");
         // offset_error = (total_path_x_R - RADIUS*target_angle);
+
         offset_error = total_path_y_R;
 
         // Serial.println("in !turning_complete");
@@ -475,6 +483,9 @@ void loop()
             // brake
             analogWrite(PWMA, 0); 
             analogWrite(PWMB, 0);
+
+            total_path_x_R = 0;
+            total_path_y_R = 0;
 
             turning_complete = 1;
             differential_PWM_output = 0; 
@@ -489,12 +500,6 @@ void loop()
             prescaled_tx = 0;
   //            prescaled_ty = 0;
             totalpath_x_int = 0;
-  //            totalpath_y_int = 0;
-  /*
-            Issue is we can see totalpath_y_int to be non zero. so then ignoring it might be bad. 
-            I propose that we dont set to zero and then it will adjust for it. 
-            TODO: test this AFTER turning is fixed
-  */
             
             // simplistic dead reckoning
             //prev_angle = current_angle;

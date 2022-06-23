@@ -988,13 +988,23 @@ void loop()
 
         offset_error = total_path_y_R;
         Serial.println("offset_error:\t" + String(offset_error));
-        if (0.9*abs(abs(angle_R) - abs(target_angle)) < 0.05) {
+        offset_error = total_path_y_R;
+
+        // Serial.println("in !turning_complete");
+        // simplistic dead reckoning
+        //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
+        Serial.println("offset_error:\t" + String(offset_error));
+        if (0.9*abs(angle_R - target_angle) < 0.05) {
             Serial.println("in error good");
             // brake
             analogWrite(PWMA, 0); 
             analogWrite(PWMB, 0);
 
+            total_path_x_R = 0;
+            total_path_y_R = 0;
+
             turning_complete = 1;
+            differential_PWM_output = 0; 
             offset_PWM_output = 0; 
             
             // resetting PID variables
@@ -1006,17 +1016,12 @@ void loop()
             prescaled_tx = 0;
   //            prescaled_ty = 0;
             totalpath_x_int = 0;
-  //            totalpath_y_int = 0;
-            //  resetting reading variables
-            total_path_x_R = 0;
-            total_path_y_R = 0;
-            x_coordinate_R = 0;
-            y_coordinate_R = 0;
             
             // simplistic dead reckoning
             //prev_angle = current_angle;
         } else {
-            Serial.println("in else");
+        Serial.println("in else");
+        Serial.println("differential_PWM_output:\t" + String(differential_PWM_output));
             // turning not complete
             currT = micros();
             deltaT = ((float) (currT-prevT))/1.0e6;
@@ -1027,23 +1032,27 @@ void loop()
 
             offset_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
 
+            // guards to keep output within bounds
+            differential_PWM_output = MIN_PWM;
+
             // set the right motor directions
-            // if (offset_error <= 0) {
+            if (target_angle > 0) {
                 digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
                 digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
-            // } else {
-                // digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
-                // digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
-            // }
+            } else {
+                digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
+                digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
+            }
 
             // power the motors
-            analogWrite(PWMA, MIN_PWM - offset_PWM_output);  
-            analogWrite(PWMB, MIN_PWM + offset_PWM_output);
+            analogWrite(PWMA, differential_PWM_output - offset_PWM_output);  
+            analogWrite(PWMB, differential_PWM_output + offset_PWM_output);
 
             // update variables for next cycle
             prevT = currT;
             offset_error_prev = offset_error;
         }
+        delay(30);
     }
 
     else if (!straight_line_complete) {
@@ -1136,5 +1145,4 @@ void loop()
         Serial.println("MotorSpeedB: " + String(MotorSpeedB));
     }
 
-    delay(30);
 }
