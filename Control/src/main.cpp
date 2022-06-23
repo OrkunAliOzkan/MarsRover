@@ -152,11 +152,11 @@ void OFS_Readings
     double dy = convTwosComp(md.dy) / 4.95;
 
     // calculating total oath moved in each direction
-    *total_path_x += convTwosComp(md.dx) / 4.95;
-    *total_path_y += convTwosComp(md.dy) / 4.95;
+    *total_path_x += dx;
+    *total_path_y += dy;
 
-    double tmp_angle = *angle + (convTwosComp(md.dx) / 4.95) / RADIUS / 2;
-    *angle += (convTwosComp(md.dx) / 4.95) / RADIUS;
+    double tmp_angle = *angle + dx / RADIUS / 2;
+    *angle += dx / RADIUS;
 
     // update absolute coordinates 
     *x_coordinate += dy * cos(tmp_angle);
@@ -225,8 +225,8 @@ int tcp_parse(String tcp_data, double * B_x, double * B_y, String * mode_)
   double B_y = 750;
 
 // Current position and angle
-  double current_x = 100;
-  double current_y = 100;
+  double current_x = 0;
+  double current_y = 0;
   double current_angle = 0;
 
 /////////////////////////////////////////////////////////////////
@@ -265,10 +265,9 @@ int tcp_parse(String tcp_data, double * B_x, double * B_y, String * mode_)
 
 // PID for deviation (during straight line motion)
 
-
-  double Kp_deviation = 3;
-  double Ki_deviation = 0.05;
-  double Kd_deviation = 0.05;
+  double Kp_deviation = 1;
+  double Ki_deviation = 0;
+  double Kd_deviation = 1;
 
 /////////////////////////////////////////////////////////////////
 
@@ -345,8 +344,6 @@ bool avoided = 0;
 //  wall position
 double wall_x = 0;
 double wall_y = 0;
-
-
 
 /////////////////////////////////////////////////////////////////
 void updateTargets(double * B_x, double * B_y, double * current_x, double * current_y, double * current_angle, int * target_displacement, double * target_angle){
@@ -513,15 +510,15 @@ void setup()
     
     mode_ = "A";
 
-    if (mode_ == "A") {
-      // update position to travel to
-      automation(
-          &counter,
-          current_x, current_y,
-          &B_x, &B_y, returning
-      );
+    // if (mode_ == "A") {
+    //   // update position to travel to
+    //   automation(
+    //       &counter,
+    //       current_x, current_y,
+    //       &B_x, &B_y, returning
+    //   );
+    // }
 
-    }
     // update target angle
     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
 
@@ -535,8 +532,9 @@ void setup()
     Serial.println("target angle: " + String(target_angle));
     Serial.println("actual angle: " + String(target_angle));
 
-    turning_complete = 0;
-    straight_line_complete = 0;
+    turning_complete = 1;
+    straight_line_complete = 1;
+
 }
 
 
@@ -627,8 +625,8 @@ void loop()
         //     &B_x, &B_y, returning
         // );
 
-        B_x = 0;
-        B_y = 1000;
+        B_y = 0;
+        B_x = 1000;
 
         //  update target angle
         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
@@ -738,6 +736,7 @@ void loop()
             & current_angle
             );
         displacement_error = target_displacement - total_path_y;
+        angular_error = total_path_x;
         
         if (abs(displacement_error) <= 1) {
             // brake when reached
@@ -766,8 +765,6 @@ void loop()
             // deviation pid controller
             currT = micros();
             deltaT = ((double) (currT-prevT))/1.0e6;
-
-            angular_error = (total_path_x);
 
             p_term_angle = (angular_error);
             i_term_angle += (angular_error*deltaT);
