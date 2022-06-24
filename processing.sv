@@ -107,12 +107,12 @@ assign Hue_0 = (RGB_max==red_b) ? (60*(green_b-blue_b)/RGB_diff):
 assign Hue = (Hue_0<0) ? Hue_0 + 360 :
 			 (Hue_0>360) ? Hue_0 - 360 : Hue_0;
 
-assign red_sector = ((Hue>=0 && Hue<15) || (Hue>358 && Hue<=360)) && (Sat>40);
-assign green_sector = (Hue>165 && Hue<180) && (Sat>20);
-assign blue_sector = (Hue>215 && Hue<240) && (Sat>35);
-assign lime_sector = (Hue>120 && Hue<150) && (Sat>20 && Sat<70) && (Val>100);
-assign yellow_sector = (Hue>45 && Hue<65) && (Sat>35) && (Val>150);
-assign pink_sector = (Hue>330 && Hue<348) && (Sat>20 && Sat<70) && (Val>120);
+assign red_sector = (Hue>10 && Hue<30) && (Sat>50);
+assign green_sector = (Hue>165 && Hue<180) && (Sat>35);
+assign blue_sector = (Hue>210 && Hue<240) && (Sat>30) && (Val>10 && Val<200);
+assign lime_sector = (Hue>125 && Hue<150) && (Sat>20) && (Val>220);
+assign yellow_sector = (Hue>55 && Hue<65) && (Sat>40) && (Val>230);
+assign pink_sector = (Hue>340 && Hue<=360) && (Sat<80) && (Val>180);
 
 ////////////////////////////////////////////////////////edge
 

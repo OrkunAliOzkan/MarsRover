@@ -37,8 +37,8 @@ module EEE_IMGPROC(
 //
 parameter IMAGE_W = 11'd640;
 parameter IMAGE_H = 11'd480;
-parameter MESSAGE_BUF_MAX = 256;
-parameter MSG_INTERVAL = 6;
+parameter MESSAGE_BUF_MAX = 1024;
+parameter MSG_INTERVAL = 32;
 parameter BB_COL_DEFAULT = 24'h4CFF00;
 parameter edge_row = 11'd215; //only row to be analysed for edges
 
@@ -51,10 +51,10 @@ logic         sop, eop, in_valid, out_ready;
 ////////////////////////////////////////////////////////////////////////
 
 // Highlight detected areas
-logic [29:0][10:0] edge_list; //for next frame (drawing)
-logic [29:0][10:0] measured_list; //stores valid edges belonging to a building
+logic [27:0][10:0] edge_list; //for next frame (drawing)
+logic [27:0][10:0] measured_list; //stores valid edges belonging to a building
 logic filtered_edge_active; //is this an edge coord?
-logic [23:0] filtered_0, filtered_1, filtered_edge; //drawing pipeline
+logic [23:0] filtered_0, filtered_1, filtered_edge, filtered_bb; //drawing pipeline
 
 assign grey = green[7:1] + red[7:2] + blue[7:2]; //Grey = green/2 + red/4 + blue/4
 
@@ -70,22 +70,24 @@ assign y_active = (x==y_left && y>y_top && y<y_bottom) | (x==y_right && y>y_top 
 assign p_active = (x==p_left && y>p_top && y<p_bottom) | (x==p_right && y>p_top && y<p_bottom) | (y==p_top && x>p_left && x<p_right) | (y==p_bottom && x>p_left && x<p_right);
 assign filtered_1 = (r_active) ? {24'hFF0000} : (g_active) ? {24'h267F00} : (b_active) ? {24'h351AA8} : (l_active) ? {24'h00FF21} : 
 					(y_active) ? {24'hFFF300} : (p_active) ? {24'hFF60E9} : filtered_0;	//coloured bounding boxes
+assign filtered_bb = (r_active) ? {24'hFF0000} : (g_active) ? {24'h267F00} : (b_active) ? {24'h351AA8} : (l_active) ? {24'h00FF21} : 
+					(y_active) ? {24'hFFF300} : (p_active) ? {24'hFF60E9} : {red,green,blue};	//coloured bounding boxes on red,green,blue
 
 integer k;
 always@(*) begin
 	filtered_edge_active = 0;
-	for (k=0; k<30; k=k+1) begin
+	for (k=0; k<28; k=k+1) begin
 		if (x==edge_list[k] && x!=0) filtered_edge_active = 1; //check if it's an edge coord for drawing
 	end
 end
 
 assign filtered_edge = (filtered_edge_active==0) ? filtered_1 : 
 					   (y[3]) ? {24'h21007C} : {24'hB2CDE8}; //alternating navy and white line
-assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? filtered_edge : {red,green,blue}; //switch views
+assign {red_out, green_out, blue_out} = (mode & ~sop & packet_video) ? filtered_edge : filtered_bb; //switch views
 
 always@(posedge clk) begin
 	if (y==479) begin
-		if (x<30) edge_list[x] <= measured_list[x];	//use pixel X as counter to copy list for next frame
+		if (x<28) edge_list[x] <= measured_list[x];	//use pixel X as counter to copy list for next frame
 	end
 end
 
@@ -182,7 +184,7 @@ always@(posedge clk) begin
 end
 
 //Process bounding box at the end of the frame.
-logic [4:0] msg_state;
+logic [4:0] msg_state = 5'b0;
 logic [10:0] r_left, r_right, r_top, r_bottom;
 logic [10:0] g_left, g_right, g_top, g_bottom;
 logic [10:0] b_left, b_right, b_top, b_bottom;
@@ -230,8 +232,7 @@ always@(posedge clk) begin
 	end
 	
 	//Cycle through message writer states once started
-	if (msg_state == 5'b10111) msg_state <= 5'b1;
-	else if (msg_state != 5'b0) msg_state <= msg_state + 5'b1;
+	if (msg_state != 5'b0) msg_state <= msg_state + 5'b1;
 
 end
 	
@@ -251,7 +252,7 @@ always@(*) begin	//Write words to FIFO as state machine advances
 			msg_buf_wr = 1'b0;
 		end
 		5'b1: begin
-			msg_buf_in = 32'hAAAAAAAA;	//Message start
+			msg_buf_in = 32'hAAAAAAAA;	//New line
 			msg_buf_wr = 1'b1;
 		end
 		5'b10: begin
@@ -263,83 +264,115 @@ always@(*) begin	//Write words to FIFO as state machine advances
 			msg_buf_wr = 1'b1;
 		end
 		5'b100: begin
-			msg_buf_in = {5'b0, b_x_min, 5'b0, b_x_max};	//Blue
+			msg_buf_in = 32'hBBBBBBBB;	//New line
 			msg_buf_wr = 1'b1;
 		end
 		5'b101: begin
-			msg_buf_in = {5'b0, l_x_min, 5'b0, l_x_max};	//Lime
+			msg_buf_in = {5'b0, b_x_min, 5'b0, b_x_max};	//Blue
 			msg_buf_wr = 1'b1;
 		end
 		5'b110: begin
-			msg_buf_in = {5'b0, y_x_min, 5'b0, y_x_max};	//Yellow
+			msg_buf_in = {5'b0, l_x_min, 5'b0, l_x_max};	//Lime
 			msg_buf_wr = 1'b1;
 		end
 		5'b111: begin
-			msg_buf_in = {5'b0, p_x_min, 5'b0, p_x_max};	//Pink
+			msg_buf_in = 32'hCCCCCCCC;	//New line
 			msg_buf_wr = 1'b1;
 		end
 		5'b1000: begin
-			msg_buf_in = {32'hBBBBBBBB};	//Message start
+			msg_buf_in = {5'b0, y_x_min, 5'b0, y_x_max};	//Yellow
 			msg_buf_wr = 1'b1;
 		end
 		5'b1001: begin
-			msg_buf_in = {5'b0, edge_list[0], 5'b0, edge_list[1]};	//edge_list begins
+			msg_buf_in = {5'b0, p_x_min, 5'b0, p_x_max};	//Pink
 			msg_buf_wr = 1'b1;
 		end
 		5'b1010: begin
-			msg_buf_in = {5'b0, edge_list[2], 5'b0, edge_list[3]};
+			msg_buf_in = 32'h11111111;  //New line
 			msg_buf_wr = 1'b1;
 		end
 		5'b1011: begin
-			msg_buf_in = {5'b0, edge_list[4], 5'b0, edge_list[5]};
+			msg_buf_in = {5'b0, edge_list[0], 5'b0, edge_list[1]};	//edge_list begins
 			msg_buf_wr = 1'b1;
 		end
 		5'b1100: begin
-			msg_buf_in = {5'b0, edge_list[6], 5'b0, edge_list[7]};
+			msg_buf_in = {5'b0, edge_list[2], 5'b0, edge_list[3]};
 			msg_buf_wr = 1'b1;
 		end
 		5'b1101: begin
-			msg_buf_in = {5'b0, edge_list[8], 5'b0, edge_list[9]};
+			msg_buf_in = 32'h22222222;  //New line
 			msg_buf_wr = 1'b1;
 		end
 		5'b1110: begin
-			msg_buf_in = {5'b0, edge_list[10], 5'b0, edge_list[11]};
+			msg_buf_in = {5'b0, edge_list[4], 5'b0, edge_list[5]};
 			msg_buf_wr = 1'b1;
 		end
 		5'b1111: begin
-			msg_buf_in = {5'b0, edge_list[12], 5'b0, edge_list[13]};
+			msg_buf_in = {5'b0, edge_list[6], 5'b0, edge_list[7]};
 			msg_buf_wr = 1'b1;
 		end
 		5'b10000: begin
-			msg_buf_in = {5'b0, edge_list[14], 5'b0, edge_list[15]};
+			msg_buf_in = 32'h33333333;  //New line
 			msg_buf_wr = 1'b1;
 		end
 		5'b10001: begin
-			msg_buf_in = {5'b0, edge_list[16], 5'b0, edge_list[17]};
+			msg_buf_in = {5'b0, edge_list[8], 5'b0, edge_list[9]};
 			msg_buf_wr = 1'b1;
 		end
 		5'b10010: begin
-			msg_buf_in = {5'b0, edge_list[18], 5'b0, edge_list[19]};
+			msg_buf_in = {5'b0, edge_list[10], 5'b0, edge_list[11]};
 			msg_buf_wr = 1'b1;
 		end
 		5'b10011: begin
-			msg_buf_in = {5'b0, edge_list[20], 5'b0, edge_list[21]};
+			msg_buf_in = 32'h44444444;  //New line
 			msg_buf_wr = 1'b1;
 		end
 		5'b10100: begin
-			msg_buf_in = {5'b0, edge_list[22], 5'b0, edge_list[23]};
+			msg_buf_in = {5'b0, edge_list[12], 5'b0, edge_list[13]};
 			msg_buf_wr = 1'b1;
 		end
 		5'b10101: begin
-			msg_buf_in = {5'b0, edge_list[24], 5'b0, edge_list[25]};
+			msg_buf_in = {5'b0, edge_list[14], 5'b0, edge_list[15]};
 			msg_buf_wr = 1'b1;
 		end
 		5'b10110: begin
-			msg_buf_in = {5'b0, edge_list[26], 5'b0, edge_list[27]};
+			msg_buf_in = 32'h55555555;  //New line
 			msg_buf_wr = 1'b1;
 		end
 		5'b10111: begin
-			msg_buf_in = {5'b0, edge_list[28], 5'b0, edge_list[29]};
+			msg_buf_in = {5'b0, edge_list[16], 5'b0, edge_list[17]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b11000: begin
+			msg_buf_in = {5'b0, edge_list[18], 5'b0, edge_list[19]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b11001: begin
+			msg_buf_in = 32'h66666666;  //New line
+			msg_buf_wr = 1'b1;
+		end
+		5'b11010: begin
+			msg_buf_in = {5'b0, edge_list[20], 5'b0, edge_list[21]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b11011: begin
+			msg_buf_in = {5'b0, edge_list[22], 5'b0, edge_list[23]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b11100: begin
+			msg_buf_in = 32'h77777777;  //New line
+			msg_buf_wr = 1'b1;
+		end
+		5'b11101: begin
+			msg_buf_in = {5'b0, edge_list[24], 5'b0, edge_list[25]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b11110: begin
+			msg_buf_in = {5'b0, edge_list[26], 5'b0, edge_list[27]};
+			msg_buf_wr = 1'b1;
+		end
+		5'b11111: begin
+			msg_buf_in = 32'h88888888;  //New line
 			msg_buf_wr = 1'b1;
 		end
 	endcase

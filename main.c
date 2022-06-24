@@ -22,7 +22,7 @@
 
 #define EXPOSURE_INIT 0x002000
 #define EXPOSURE_STEP 0x100
-#define GAIN_INIT 0x2C0 //0x080
+#define GAIN_INIT 0x440 //0x080
 #define GAIN_STEP 0x040
 #define DEFAULT_LEVEL 3
 
@@ -205,8 +205,10 @@ int main()
 
        // touch KEY0 to trigger Auto focus
 	   if((IORD(KEY_BASE,0)&0x03) == 0x02){
-
-    	   current_focus = Focus_Window(320,240);
+    	   exposureTime -= EXPOSURE_STEP;
+    	   OV8865SetExposure(exposureTime);
+    	   printf("\nExposure = %x ", exposureTime);
+    	   //current_focus = Focus_Window(320,240);
        }
 	   // touch KEY1 to ZOOM
 	         if((IORD(KEY_BASE,0)&0x03) == 0x01){
@@ -220,25 +222,28 @@ int main()
 
 
 	#if 0
-       if((IORD(KEY_BASE,0)&0x0F) == 0x0E){
-
-    	   current_focus = Focus_Window(320,240);
-       }
+//       if((IORD(KEY_BASE,0)&0x0F) == 0x0E){
+//
+//    	   current_focus = Focus_Window(320,240);
+//       }
 
        // touch KEY1 to trigger Manual focus  - step
+//       if((IORD(KEY_BASE,0)&0x0F) == 0x0D){
+//
+//    	   if(current_focus > manual_focus_step) current_focus -= manual_focus_step;
+//    	   else current_focus = 0;
+//    	   OV8865_FOCUS_Move_to(current_focus);
+//
+//       }
+
+       // touch KEY2 to trigger lower exposure time //Manual focus  + step
        if((IORD(KEY_BASE,0)&0x0F) == 0x0D){
-
-    	   if(current_focus > manual_focus_step) current_focus -= manual_focus_step;
-    	   else current_focus = 0;
-    	   OV8865_FOCUS_Move_to(current_focus);
-
-       }
-
-       // touch KEY2 to trigger Manual focus  + step
-       if((IORD(KEY_BASE,0)&0x0F) == 0x0B){
-    	   current_focus += manual_focus_step;
-    	   if(current_focus >1023) current_focus = 1023;
-    	   OV8865_FOCUS_Move_to(current_focus);
+    	   exposureTime -= EXPOSURE_STEP;
+    	   OV8865SetExposure(exposureTime);
+    	   printf("\nExposure = %x ", exposureTime);
+//    	   current_focus += manual_focus_step;
+//    	   if(current_focus >1023) current_focus = 1023;
+//    	   OV8865_FOCUS_Move_to(current_focus);
        }
 
        // touch KEY3 to ZOOM
@@ -257,7 +262,10 @@ int main()
            int word = IORD(0x42000,EEE_IMGPROC_MSG); 			//Get next word from message buffer
     	   if (fwrite(&word, 4, 1, ser) != 1)
     		   printf("Error writing to UART");
-           if (word == EEE_IMGPROC_MSG_START)				//Newline on message identifier
+           if (word == 0xAAAAAAAA || word == 0xBBBBBBBB || word == 0xCCCCCCCC
+        	|| word == 0x11111111 || word == 0x22222222 || word == 0x33333333
+			|| word == 0x44444444 || word == 0x55555555 || word == 0x66666666
+			|| word == 0x77777777 || word == 0x88888888)				//Newline on message identifier
     		   printf("\n");
     	   printf("%08x ",word);
        }
