@@ -28,6 +28,14 @@ server.listen(3000,'0.0.0.0', () => {
     print('Server is running on port 3000', 0)
 });
 
+// var count = 0;
+
+// var interval
+// interval = setInterval(() => {
+//         console.log(count);
+//         count++;
+//     }, 500);
+
 //--------Initialising Python Control Script--------//
 // const {spawn} = require('child_process');
 // const control_script = spawn('python', ['main.py']);
@@ -39,7 +47,6 @@ server.listen(3000,'0.0.0.0', () => {
 // control_script.on('close', (code) => {
 //     print(`Control Script ended with code ${code}`, 0)
 // })
-
 
 //--------Initialising Socket.io (client-side communication)--------//
 const socketio = require('socket.io');
@@ -137,7 +144,8 @@ rover_server.on('connection', (socket) => {
                     // console.log(packet_json);
                     io.emit('update', packet_json);
                 } catch (error) {
-                    console.log("Error parsing JSON")
+                    console.log("Not JSON:");
+                    console.log(rover_string);
                 }
             }
         });
