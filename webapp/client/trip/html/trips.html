@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-    <title>Mars Rover | Database</title>
+    <link rel="stylesheet" href="../css/trips.css">
 
-    <link rel = "stylesheet" type = "text/css" href = "../css/mem.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 
+    <title>Trips | Mars Rover</title>
+</head>
 <body>
     <section class = "header">
         <nav>
@@ -23,14 +24,16 @@
                 <i class="fa fa-times" onclick="hideMenu()"></i>              
                 <ul>
                     <li> <a href="home.html">HOME</a> </li>
-                    <li> <a href="members.html">MEMBERS</a> </li>
+                    <li> <a href="mem.html">MEMBERS</a> </li>
                     <li> <a href="rover.html">ROVER</a> </li>
-                    <li> <a href="specification.html">SPECIFICATION</a> </li>
+                    <li> <a href="trips.html">TRIPS</a> </li>
+                    <li> <a href="spec.html">SPECIFICATION</a> </li>
                 </ul>            
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
     </section>
+
     <div class="tab">
         <button class="tablinks" onclick="openCity(event, 'Trip1')" id="defaultOpen">Trip1</button>
         <button class="tablinks" onclick="openCity(event, 'Trip2')">Trip2</button>
@@ -116,8 +119,8 @@
     </div>
 
 
-    <script src="../js/database.js"></script>
-    
+    <script src="../js/trips.js"></script>
+
     <!--JAVASCRIPT for toggle menu-->
     <script>
         document.getElementById("defaultOpen").click();
@@ -126,5 +129,5 @@
         function hideMenu()     { navLinks.style.right = "-220px"; }
         function showMenu()     { navLinks.style.right = "0"; }
     </script>
-    
 </body>
+</html>
