@@ -1,0 +1,4960 @@
+counter:        0
+x_des:  1000.00
+y_des:  0.00
+x_pos:  0.00
+y_pos:  0.00
+current_angle:  0.00
+target_angle:   0.00
+target_displacement:    1000
+Dy: 0.00
+Dx: 0.00
+Angle: 0.00
+Total path y: 0.00
+Total path x: 0.00
+y_coordinate: 0.00
+x_coordinate: 0.00
+
+Rover is turning
+target_angle: 0.00
+angular error: 0.00
+TOTAL_PATH_x: 0.00
+TOTAL_PATH_y: 0.00
+Dy: 0.00
+Dx: 0.00
+Angle: 0.00
+Total path y: 0.00
+Total path x: 0.00
+y_coordinate: 0.00
+x_coordinate: 0.00
+
+displacement_error:     1000
+Rover moving in straight line:
+Angular Error: 0.00
+p_term_angle: 0.00
+i_term_angle: 0.00
+d_term_angle: 0.00
+Displacement Error: 1000
+differential_PWM_output: 0
+TOTAL_PATH_x: 0.00
+TOTAL_PATH_y: 0.00
+MotorSpeedA: 128
+MotorSpeedB: 128
+Dy: 0.00
+Dx: 0.00
+Angle: 0.00
+Total path y: 0.00
+Total path x: 0.00
+y_coordinate: 0.00
+x_coordinate: 0.00
+
+displacement_error:     1000
+Rover moving in straight line:
+Angular Error: 0.00
+p_term_angle: 0.00
+i_term_angle: 0.00
+d_term_angle: 0.00
+Displacement Error: 1000
+differential_PWM_output: 0
+TOTAL_PATH_x: 0.00
+TOTAL_PATH_y: 0.00
+MotorSpeedA: 128
+MotorSpeedB: 128
+Dy: 0.81
+Dx: 0.00
+Angle: 0.00
+Total path y: 0.81
+Total path x: 0.00
+y_coordinate: 0.00
+x_coordinate: 0.81
+
+displacement_error:     999
+Rover moving in straight line:
+Angular Error: 0.00
+p_term_angle: 0.00
+i_term_angle: 0.00
+d_term_angle: 0.00
+Displacement Error: 999
+differential_PWM_output: 0
+TOTAL_PATH_x: 0.00
+TOTAL_PATH_y: 0.81
+MotorSpeedA: 128
+MotorSpeedB: 128
+Dy: 2.22
+Dx: -0.61
+Angle: -0.00
+Total path y: 3.03
+Total path x: -0.61
+y_coordinate: -0.01
+x_coordinate: 3.03
+
+displacement_error:     996
+Rover moving in straight line:
+Angular Error: -0.61
+p_term_angle: -0.61
+i_term_angle: -0.03
+d_term_angle: -13.98
+Displacement Error: 996
+differential_PWM_output: -7
+TOTAL_PATH_x: -0.61
+TOTAL_PATH_y: 3.03
+MotorSpeedA: 121
+MotorSpeedB: 135
+Dy: 3.03
+Dx: -1.01
+Angle: -0.01
+Total path y: 6.06
+Total path x: -1.62
+y_coordinate: -0.03
+x_coordinate: 6.06
+
+displacement_error:     993
+Rover moving in straight line:
+Angular Error: -1.62
+p_term_angle: -1.62
+i_term_angle: -0.10
+d_term_angle: -23.56
+Displacement Error: 993
+differential_PWM_output: -13
+TOTAL_PATH_x: -1.62
+TOTAL_PATH_y: 6.06
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 3.64
+Dx: -1.01
+Angle: -0.02
+Total path y: 9.70
+Total path x: -2.63
+y_coordinate: -0.09
+x_coordinate: 9.70
+
+displacement_error:     990
+Rover moving in straight line:
+Angular Error: -2.63
+p_term_angle: -2.63
+i_term_angle: -0.21
+d_term_angle: -23.49
+Displacement Error: 990
+differential_PWM_output: -14
+TOTAL_PATH_x: -2.63
+TOTAL_PATH_y: 9.70
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 3.84
+Dx: -0.20
+Angle: -0.02
+Total path y: 13.54
+Total path x: -2.83
+y_coordinate: -0.17
+x_coordinate: 13.53
+
+displacement_error:     986
+Rover moving in straight line:
+Angular Error: -2.83
+p_term_angle: -2.83
+i_term_angle: -0.33
+d_term_angle: -4.70
+Displacement Error: 986
+differential_PWM_output: -4
+TOTAL_PATH_x: -2.83
+TOTAL_PATH_y: 13.54
+MotorSpeedA: 124
+MotorSpeedB: 132
+Dy: 4.04
+Dx: -0.40
+Angle: -0.02
+Total path y: 17.58
+Total path x: -3.23
+y_coordinate: -0.26
+x_coordinate: 17.57
+
+displacement_error:     982
+Rover moving in straight line:
+Angular Error: -3.23
+p_term_angle: -3.23
+i_term_angle: -0.47
+d_term_angle: -9.38
+Displacement Error: 982
+differential_PWM_output: -7
+TOTAL_PATH_x: -3.23
+TOTAL_PATH_y: 17.58
+MotorSpeedA: 121
+MotorSpeedB: 135
+Dy: 4.24
+Dx: -0.40
+Angle: -0.03
+Total path y: 21.82
+Total path x: -3.64
+y_coordinate: -0.37
+x_coordinate: 21.81
+
+displacement_error:     978
+Rover moving in straight line:
+Angular Error: -3.64
+p_term_angle: -3.64
+i_term_angle: -0.63
+d_term_angle: -9.41
+Displacement Error: 978
+differential_PWM_output: -8
+TOTAL_PATH_x: -3.64
+TOTAL_PATH_y: 21.82
+MotorSpeedA: 120
+MotorSpeedB: 136
+Dy: 3.84
+Dx: -0.61
+Angle: -0.03
+Total path y: 25.66
+Total path x: -4.24
+y_coordinate: -0.49
+x_coordinate: 25.65
+
+displacement_error:     974
+Rover moving in straight line:
+Angular Error: -4.24
+p_term_angle: -4.24
+i_term_angle: -0.81
+d_term_angle: -14.09
+Displacement Error: 974
+differential_PWM_output: -11
+TOTAL_PATH_x: -4.24
+TOTAL_PATH_y: 25.66
+MotorSpeedA: 117
+MotorSpeedB: 139
+Dy: 4.44
+Dx: -0.81
+Angle: -0.04
+Total path y: 30.10
+Total path x: -5.05
+y_coordinate: -0.64
+x_coordinate: 30.09
+
+displacement_error:     969
+Rover moving in straight line:
+Angular Error: -5.05
+p_term_angle: -5.05
+i_term_angle: -1.03
+d_term_angle: -18.76
+Displacement Error: 969
+differential_PWM_output: -14
+TOTAL_PATH_x: -5.05
+TOTAL_PATH_y: 30.10
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: -0.04
+Total path y: 34.14
+Total path x: -5.05
+y_coordinate: -0.80
+x_coordinate: 34.13
+
+displacement_error:     965
+Rover moving in straight line:
+Angular Error: -5.05
+p_term_angle: -5.05
+i_term_angle: -1.24
+d_term_angle: 0.00
+Displacement Error: 965
+differential_PWM_output: -4
+TOTAL_PATH_x: -5.05
+TOTAL_PATH_y: 34.14
+MotorSpeedA: 124
+MotorSpeedB: 132
+Dy: 4.24
+Dx: -0.20
+Angle: -0.04
+Total path y: 38.38
+Total path x: -5.25
+y_coordinate: -0.96
+x_coordinate: 38.37
+
+displacement_error:     961
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -1.47
+d_term_angle: -4.70
+Displacement Error: 961
+differential_PWM_output: -7
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 38.38
+MotorSpeedA: 121
+MotorSpeedB: 135
+Dy: 4.04
+Dx: -0.40
+Angle: -0.04
+Total path y: 42.42
+Total path x: -5.66
+y_coordinate: -1.13
+x_coordinate: 42.41
+
+displacement_error:     957
+Rover moving in straight line:
+Angular Error: -5.66
+p_term_angle: -5.66
+i_term_angle: -1.71
+d_term_angle: -9.39
+Displacement Error: 957
+differential_PWM_output: -10
+TOTAL_PATH_x: -5.66
+TOTAL_PATH_y: 42.42
+MotorSpeedA: 118
+MotorSpeedB: 138
+Dy: 4.04
+Dx: -0.81
+Angle: -0.05
+Total path y: 46.46
+Total path x: -6.46
+y_coordinate: -1.31
+x_coordinate: 46.44
+
+displacement_error:     953
+Rover moving in straight line:
+Angular Error: -6.46
+p_term_angle: -6.46
+i_term_angle: -1.99
+d_term_angle: -18.76
+Displacement Error: 953
+differential_PWM_output: -15
+TOTAL_PATH_x: -6.46
+TOTAL_PATH_y: 46.46
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 3.84
+Dx: -0.20
+Angle: -0.05
+Total path y: 50.30
+Total path x: -6.67
+y_coordinate: -1.51
+x_coordinate: 50.28
+
+displacement_error:     949
+Rover moving in straight line:
+Angular Error: -6.67
+p_term_angle: -6.67
+i_term_angle: -2.28
+d_term_angle: -4.71
+Displacement Error: 949
+differential_PWM_output: -8
+TOTAL_PATH_x: -6.67
+TOTAL_PATH_y: 50.30
+MotorSpeedA: 120
+MotorSpeedB: 136
+Dy: 4.24
+Dx: -0.81
+Angle: -0.06
+Total path y: 54.55
+Total path x: -7.47
+y_coordinate: -1.73
+x_coordinate: 54.51
+
+displacement_error:     945
+Rover moving in straight line:
+Angular Error: -7.47
+p_term_angle: -7.47
+i_term_angle: -2.60
+d_term_angle: -18.79
+Displacement Error: 945
+differential_PWM_output: -16
+TOTAL_PATH_x: -7.47
+TOTAL_PATH_y: 54.55
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.04
+Dx: -0.40
+Angle: -0.06
+Total path y: 58.59
+Total path x: -7.88
+y_coordinate: -1.97
+x_coordinate: 58.55
+
+displacement_error:     941
+Rover moving in straight line:
+Angular Error: -7.88
+p_term_angle: -7.88
+i_term_angle: -2.94
+d_term_angle: -9.40
+Displacement Error: 941
+differential_PWM_output: -12
+TOTAL_PATH_x: -7.88
+TOTAL_PATH_y: 58.59
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.24
+Dx: -0.61
+Angle: -0.06
+Total path y: 62.83
+Total path x: -8.48
+y_coordinate: -2.23
+x_coordinate: 62.78
+
+displacement_error:     937
+Rover moving in straight line:
+Angular Error: -8.48
+p_term_angle: -8.48
+i_term_angle: -3.30
+d_term_angle: -14.09
+Displacement Error: 937
+differential_PWM_output: -15
+TOTAL_PATH_x: -8.48
+TOTAL_PATH_y: 62.83
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 3.84
+Dx: -0.61
+Angle: -0.07
+Total path y: 66.67
+Total path x: -9.09
+y_coordinate: -2.49
+x_coordinate: 66.61
+
+displacement_error:     933
+Rover moving in straight line:
+Angular Error: -9.09
+p_term_angle: -9.09
+i_term_angle: -3.69
+d_term_angle: -14.10
+Displacement Error: 933
+differential_PWM_output: -15
+TOTAL_PATH_x: -9.09
+TOTAL_PATH_y: 66.67
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.24
+Dx: -0.61
+Angle: -0.07
+Total path y: 70.91
+Total path x: -9.70
+y_coordinate: -2.79
+x_coordinate: 70.84
+
+displacement_error:     929
+Rover moving in straight line:
+Angular Error: -9.70
+p_term_angle: -9.70
+i_term_angle: -4.11
+d_term_angle: -14.09
+Displacement Error: 929
+differential_PWM_output: -16
+TOTAL_PATH_x: -9.70
+TOTAL_PATH_y: 70.91
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 3.84
+Dx: 0.00
+Angle: -0.07
+Total path y: 74.75
+Total path x: -9.70
+y_coordinate: -3.07
+x_coordinate: 74.67
+
+displacement_error:     925
+Rover moving in straight line:
+Angular Error: -9.70
+p_term_angle: -9.70
+i_term_angle: -4.53
+d_term_angle: 0.00
+Displacement Error: 925
+differential_PWM_output: -9
+TOTAL_PATH_x: -9.70
+TOTAL_PATH_y: 74.75
+MotorSpeedA: 119
+MotorSpeedB: 137
+Dy: 3.84
+Dx: -0.61
+Angle: -0.08
+Total path y: 78.59
+Total path x: -10.30
+y_coordinate: -3.36
+x_coordinate: 78.50
+
+displacement_error:     921
+Rover moving in straight line:
+Angular Error: -10.30
+p_term_angle: -10.30
+i_term_angle: -4.97
+d_term_angle: -14.12
+Displacement Error: 921
+differential_PWM_output: -17
+TOTAL_PATH_x: -10.30
+TOTAL_PATH_y: 78.59
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.04
+Dx: -0.20
+Angle: -0.08
+Total path y: 82.63
+Total path x: -10.51
+y_coordinate: -3.68
+x_coordinate: 82.53
+
+displacement_error:     917
+Rover moving in straight line:
+Angular Error: -10.51
+p_term_angle: -10.51
+i_term_angle: -5.42
+d_term_angle: -4.70
+Displacement Error: 917
+differential_PWM_output: -12
+TOTAL_PATH_x: -10.51
+TOTAL_PATH_y: 82.63
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.04
+Dx: -0.20
+Angle: -0.08
+Total path y: 86.67
+Total path x: -10.71
+y_coordinate: -4.00
+x_coordinate: 86.55
+
+displacement_error:     913
+Rover moving in straight line:
+Angular Error: -10.71
+p_term_angle: -10.71
+i_term_angle: -5.88
+d_term_angle: -4.70
+Displacement Error: 913
+differential_PWM_output: -13
+TOTAL_PATH_x: -10.71
+TOTAL_PATH_y: 86.67
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 3.84
+Dx: -0.20
+Angle: -0.08
+Total path y: 90.51
+Total path x: -10.91
+y_coordinate: -4.32
+x_coordinate: 90.38
+
+displacement_error:     909
+Rover moving in straight line:
+Angular Error: -10.91
+p_term_angle: -10.91
+i_term_angle: -6.35
+d_term_angle: -4.70
+Displacement Error: 909
+differential_PWM_output: -13
+TOTAL_PATH_x: -10.91
+TOTAL_PATH_y: 90.51
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: -0.20
+Angle: -0.08
+Total path y: 94.55
+Total path x: -11.11
+y_coordinate: -4.65
+x_coordinate: 94.40
+
+displacement_error:     905
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -6.83
+d_term_angle: -4.70
+Displacement Error: 905
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 94.55
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: -0.20
+Angle: -0.09
+Total path y: 98.59
+Total path x: -11.31
+y_coordinate: -5.00
+x_coordinate: 98.43
+
+displacement_error:     901
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -7.31
+d_term_angle: -4.70
+Displacement Error: 901
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 98.59
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 102.63
+Total path x: -11.31
+y_coordinate: -5.34
+x_coordinate: 102.46
+
+displacement_error:     897
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -7.80
+d_term_angle: 0.00
+Displacement Error: 897
+differential_PWM_output: -11
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 102.63
+MotorSpeedA: 117
+MotorSpeedB: 139
+Dy: 4.04
+Dx: -0.20
+Angle: -0.09
+Total path y: 106.67
+Total path x: -11.52
+y_coordinate: -5.69
+x_coordinate: 106.48
+
+displacement_error:     893
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -8.30
+d_term_angle: -4.70
+Displacement Error: 893
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 106.67
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 3.84
+Dx: 0.00
+Angle: -0.09
+Total path y: 110.51
+Total path x: -11.52
+y_coordinate: -6.02
+x_coordinate: 110.30
+
+displacement_error:     889
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -8.79
+d_term_angle: 0.00
+Displacement Error: 889
+differential_PWM_output: -12
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 110.51
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.24
+Dx: -0.20
+Angle: -0.09
+Total path y: 114.75
+Total path x: -11.72
+y_coordinate: -6.40
+x_coordinate: 114.53
+
+displacement_error:     885
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -9.29
+d_term_angle: -4.70
+Displacement Error: 885
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 114.75
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 118.79
+Total path x: -11.72
+y_coordinate: -6.76
+x_coordinate: 118.56
+
+displacement_error:     881
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -9.80
+d_term_angle: 0.00
+Displacement Error: 881
+differential_PWM_output: -12
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 118.79
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.04
+Dx: -0.20
+Angle: -0.09
+Total path y: 122.83
+Total path x: -11.92
+y_coordinate: -7.12
+x_coordinate: 122.58
+
+displacement_error:     877
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -10.31
+d_term_angle: -4.70
+Displacement Error: 877
+differential_PWM_output: -15
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 122.83
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 127.07
+Total path x: -11.92
+y_coordinate: -7.50
+x_coordinate: 126.80
+
+displacement_error:     872
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -10.82
+d_term_angle: 0.00
+Displacement Error: 872
+differential_PWM_output: -12
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 127.07
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 131.31
+Total path x: -11.92
+y_coordinate: -7.88
+x_coordinate: 131.03
+
+displacement_error:     868
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -11.34
+d_term_angle: 0.00
+Displacement Error: 868
+differential_PWM_output: -12
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 131.31
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 135.35
+Total path x: -11.92
+y_coordinate: -8.25
+x_coordinate: 135.05
+
+displacement_error:     864
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -11.85
+d_term_angle: 0.00
+Displacement Error: 864
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 135.35
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 139.60
+Total path x: -11.92
+y_coordinate: -8.63
+x_coordinate: 139.28
+
+displacement_error:     860
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -12.36
+d_term_angle: 0.00
+Displacement Error: 860
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 139.60
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 143.64
+Total path x: -11.92
+y_coordinate: -8.99
+x_coordinate: 143.30
+
+displacement_error:     856
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -12.87
+d_term_angle: 0.00
+Displacement Error: 856
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 143.64
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 147.88
+Total path x: -11.92
+y_coordinate: -9.38
+x_coordinate: 147.53
+
+displacement_error:     852
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -13.39
+d_term_angle: 0.00
+Displacement Error: 852
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 147.88
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 152.12
+Total path x: -11.92
+y_coordinate: -9.76
+x_coordinate: 151.75
+
+displacement_error:     847
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -13.90
+d_term_angle: 0.00
+Displacement Error: 847
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 152.12
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.20
+Angle: -0.09
+Total path y: 156.16
+Total path x: -11.72
+y_coordinate: -10.12
+x_coordinate: 155.78
+
+displacement_error:     843
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -14.40
+d_term_angle: 4.70
+Displacement Error: 843
+differential_PWM_output: -11
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 156.16
+MotorSpeedA: 117
+MotorSpeedB: 139
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 160.40
+Total path x: -11.72
+y_coordinate: -10.50
+x_coordinate: 160.00
+
+displacement_error:     839
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -14.91
+d_term_angle: 0.00
+Displacement Error: 839
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 160.40
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 164.44
+Total path x: -11.72
+y_coordinate: -10.85
+x_coordinate: 164.03
+
+displacement_error:     835
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -15.41
+d_term_angle: 0.00
+Displacement Error: 835
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 164.44
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 168.48
+Total path x: -11.72
+y_coordinate: -11.21
+x_coordinate: 168.05
+
+displacement_error:     831
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -15.91
+d_term_angle: 0.00
+Displacement Error: 831
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 168.48
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.20
+Angle: -0.09
+Total path y: 172.53
+Total path x: -11.52
+y_coordinate: -11.57
+x_coordinate: 172.08
+
+displacement_error:     827
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -16.41
+d_term_angle: 4.70
+Displacement Error: 827
+differential_PWM_output: -11
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 172.53
+MotorSpeedA: 117
+MotorSpeedB: 139
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 176.77
+Total path x: -11.52
+y_coordinate: -11.94
+x_coordinate: 176.30
+
+displacement_error:     823
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -16.90
+d_term_angle: 0.00
+Displacement Error: 823
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 176.77
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 180.81
+Total path x: -11.52
+y_coordinate: -12.29
+x_coordinate: 180.33
+
+displacement_error:     819
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -17.40
+d_term_angle: 0.00
+Displacement Error: 819
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 180.81
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 3.84
+Dx: 0.00
+Angle: -0.09
+Total path y: 184.65
+Total path x: -11.52
+y_coordinate: -12.62
+x_coordinate: 184.15
+
+displacement_error:     815
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -17.89
+d_term_angle: 0.00
+Displacement Error: 815
+differential_PWM_output: -13
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 184.65
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 188.69
+Total path x: -11.52
+y_coordinate: -12.98
+x_coordinate: 188.18
+
+displacement_error:     811
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -18.39
+d_term_angle: 0.00
+Displacement Error: 811
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 188.69
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 192.73
+Total path x: -11.52
+y_coordinate: -13.33
+x_coordinate: 192.20
+
+displacement_error:     807
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -18.89
+d_term_angle: 0.00
+Displacement Error: 807
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 192.73
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 196.97
+Total path x: -11.52
+y_coordinate: -13.70
+x_coordinate: 196.43
+
+displacement_error:     803
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -19.38
+d_term_angle: 0.00
+Displacement Error: 803
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 196.97
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 201.21
+Total path x: -11.52
+y_coordinate: -14.07
+x_coordinate: 200.65
+
+displacement_error:     798
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -19.88
+d_term_angle: 0.00
+Displacement Error: 798
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 201.21
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 205.25
+Total path x: -11.52
+y_coordinate: -14.42
+x_coordinate: 204.68
+
+displacement_error:     794
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -20.37
+d_term_angle: 0.00
+Displacement Error: 794
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 205.25
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 209.29
+Total path x: -11.52
+y_coordinate: -14.77
+x_coordinate: 208.70
+
+displacement_error:     790
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -20.87
+d_term_angle: 0.00
+Displacement Error: 790
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 209.29
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.20
+Angle: -0.09
+Total path y: 213.54
+Total path x: -11.31
+y_coordinate: -15.14
+x_coordinate: 212.93
+
+displacement_error:     786
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -21.35
+d_term_angle: 4.70
+Displacement Error: 786
+differential_PWM_output: -12
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 213.54
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 217.78
+Total path x: -11.31
+y_coordinate: -15.50
+x_coordinate: 217.16
+
+displacement_error:     782
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -21.84
+d_term_angle: 0.00
+Displacement Error: 782
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 217.78
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 221.82
+Total path x: -11.31
+y_coordinate: -15.85
+x_coordinate: 221.18
+
+displacement_error:     778
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -22.33
+d_term_angle: 0.00
+Displacement Error: 778
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 221.82
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 226.06
+Total path x: -11.31
+y_coordinate: -16.21
+x_coordinate: 225.41
+
+displacement_error:     773
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -22.81
+d_term_angle: 0.00
+Displacement Error: 773
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 226.06
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 3.84
+Dx: 0.00
+Angle: -0.09
+Total path y: 229.90
+Total path x: -11.31
+y_coordinate: -16.54
+x_coordinate: 229.23
+
+displacement_error:     770
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -23.30
+d_term_angle: 0.00
+Displacement Error: 770
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 229.90
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 234.14
+Total path x: -11.31
+y_coordinate: -16.90
+x_coordinate: 233.46
+
+displacement_error:     765
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -23.78
+d_term_angle: 0.00
+Displacement Error: 765
+differential_PWM_output: -14
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 234.14
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 3.84
+Dx: 0.00
+Angle: -0.09
+Total path y: 237.98
+Total path x: -11.31
+y_coordinate: -17.23
+x_coordinate: 237.29
+
+displacement_error:     762
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -24.27
+d_term_angle: 0.00
+Displacement Error: 762
+differential_PWM_output: -15
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 237.98
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.44
+Dx: 0.00
+Angle: -0.09
+Total path y: 242.42
+Total path x: -11.31
+y_coordinate: -17.61
+x_coordinate: 241.71
+
+displacement_error:     757
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -24.76
+d_term_angle: 0.00
+Displacement Error: 757
+differential_PWM_output: -15
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 242.42
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 246.46
+Total path x: -11.31
+y_coordinate: -17.96
+x_coordinate: 245.74
+
+displacement_error:     753
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -25.24
+d_term_angle: 0.00
+Displacement Error: 753
+differential_PWM_output: -15
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 246.46
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 250.51
+Total path x: -11.31
+y_coordinate: -18.30
+x_coordinate: 249.77
+
+displacement_error:     749
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -25.73
+d_term_angle: 0.00
+Displacement Error: 749
+differential_PWM_output: -15
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 250.51
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 254.75
+Total path x: -11.31
+y_coordinate: -18.66
+x_coordinate: 253.99
+
+displacement_error:     745
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -26.22
+d_term_angle: 0.00
+Displacement Error: 745
+differential_PWM_output: -15
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 254.75
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 3.84
+Dx: -0.61
+Angle: -0.09
+Total path y: 258.59
+Total path x: -11.92
+y_coordinate: -19.00
+x_coordinate: 257.82
+
+displacement_error:     741
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -26.73
+d_term_angle: -14.09
+Displacement Error: 741
+differential_PWM_output: -23
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 258.59
+MotorSpeedA: 105
+MotorSpeedB: 151
+Dy: 4.04
+Dx: -0.40
+Angle: -0.09
+Total path y: 262.63
+Total path x: -12.32
+y_coordinate: -19.37
+x_coordinate: 261.84
+
+displacement_error:     737
+Rover moving in straight line:
+Angular Error: -12.32
+p_term_angle: -12.32
+i_term_angle: -27.26
+d_term_angle: -9.40
+Displacement Error: 737
+differential_PWM_output: -21
+TOTAL_PATH_x: -12.32
+TOTAL_PATH_y: 262.63
+MotorSpeedA: 107
+MotorSpeedB: 149
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 266.67
+Total path x: -12.32
+y_coordinate: -19.75
+x_coordinate: 265.86
+
+displacement_error:     733
+Rover moving in straight line:
+Angular Error: -12.32
+p_term_angle: -12.32
+i_term_angle: -27.79
+d_term_angle: 0.00
+Displacement Error: 733
+differential_PWM_output: -16
+TOTAL_PATH_x: -12.32
+TOTAL_PATH_y: 266.67
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.44
+Dx: 0.00
+Angle: -0.09
+Total path y: 271.11
+Total path x: -12.32
+y_coordinate: -20.16
+x_coordinate: 270.29
+
+displacement_error:     728
+Rover moving in straight line:
+Angular Error: -12.32
+p_term_angle: -12.32
+i_term_angle: -28.32
+d_term_angle: 0.00
+Displacement Error: 728
+differential_PWM_output: -16
+TOTAL_PATH_x: -12.32
+TOTAL_PATH_y: 271.11
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.04
+Dx: -0.20
+Angle: -0.09
+Total path y: 275.15
+Total path x: -12.53
+y_coordinate: -20.54
+x_coordinate: 274.31
+
+displacement_error:     724
+Rover moving in straight line:
+Angular Error: -12.53
+p_term_angle: -12.53
+i_term_angle: -28.86
+d_term_angle: -4.70
+Displacement Error: 724
+differential_PWM_output: -19
+TOTAL_PATH_x: -12.53
+TOTAL_PATH_y: 275.15
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.04
+Dx: -0.20
+Angle: -0.10
+Total path y: 279.19
+Total path x: -12.73
+y_coordinate: -20.93
+x_coordinate: 278.33
+
+displacement_error:     720
+Rover moving in straight line:
+Angular Error: -12.73
+p_term_angle: -12.73
+i_term_angle: -29.41
+d_term_angle: -4.69
+Displacement Error: 720
+differential_PWM_output: -19
+TOTAL_PATH_x: -12.73
+TOTAL_PATH_y: 279.19
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 3.84
+Dx: -0.40
+Angle: -0.10
+Total path y: 283.03
+Total path x: -13.13
+y_coordinate: -21.30
+x_coordinate: 282.15
+
+displacement_error:     716
+Rover moving in straight line:
+Angular Error: -13.13
+p_term_angle: -13.13
+i_term_angle: -29.97
+d_term_angle: -9.40
+Displacement Error: 716
+differential_PWM_output: -22
+TOTAL_PATH_x: -13.13
+TOTAL_PATH_y: 283.03
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 287.27
+Total path x: -13.13
+y_coordinate: -21.73
+x_coordinate: 286.37
+
+displacement_error:     712
+Rover moving in straight line:
+Angular Error: -13.13
+p_term_angle: -13.13
+i_term_angle: -30.53
+d_term_angle: 0.00
+Displacement Error: 712
+differential_PWM_output: -17
+TOTAL_PATH_x: -13.13
+TOTAL_PATH_y: 287.27
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.04
+Dx: 0.00
+Angle: -0.10
+Total path y: 291.31
+Total path x: -13.13
+y_coordinate: -22.13
+x_coordinate: 290.39
+
+displacement_error:     708
+Rover moving in straight line:
+Angular Error: -13.13
+p_term_angle: -13.13
+i_term_angle: -31.10
+d_term_angle: 0.00
+Displacement Error: 708
+differential_PWM_output: -18
+TOTAL_PATH_x: -13.13
+TOTAL_PATH_y: 291.31
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.24
+Dx: -0.20
+Angle: -0.10
+Total path y: 295.56
+Total path x: -13.33
+y_coordinate: -22.55
+x_coordinate: 294.61
+
+displacement_error:     704
+Rover moving in straight line:
+Angular Error: -13.33
+p_term_angle: -13.33
+i_term_angle: -31.67
+d_term_angle: -4.70
+Displacement Error: 704
+differential_PWM_output: -20
+TOTAL_PATH_x: -13.33
+TOTAL_PATH_y: 295.56
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.00
+Angle: -0.10
+Total path y: 299.60
+Total path x: -13.33
+y_coordinate: -22.96
+x_coordinate: 298.63
+
+displacement_error:     700
+Rover moving in straight line:
+Angular Error: -13.33
+p_term_angle: -13.33
+i_term_angle: -32.25
+d_term_angle: 0.00
+Displacement Error: 700
+differential_PWM_output: -18
+TOTAL_PATH_x: -13.33
+TOTAL_PATH_y: 299.60
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 303.84
+Total path x: -13.33
+y_coordinate: -23.39
+x_coordinate: 302.85
+
+displacement_error:     696
+Rover moving in straight line:
+Angular Error: -13.33
+p_term_angle: -13.33
+i_term_angle: -32.82
+d_term_angle: 0.00
+Displacement Error: 696
+differential_PWM_output: -18
+TOTAL_PATH_x: -13.33
+TOTAL_PATH_y: 303.84
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 308.08
+Total path x: -13.33
+y_coordinate: -23.81
+x_coordinate: 307.08
+
+displacement_error:     691
+Rover moving in straight line:
+Angular Error: -13.33
+p_term_angle: -13.33
+i_term_angle: -33.39
+d_term_angle: 0.00
+Displacement Error: 691
+differential_PWM_output: -18
+TOTAL_PATH_x: -13.33
+TOTAL_PATH_y: 308.08
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.24
+Dx: -0.20
+Angle: -0.10
+Total path y: 312.32
+Total path x: -13.54
+y_coordinate: -24.25
+x_coordinate: 311.30
+
+displacement_error:     687
+Rover moving in straight line:
+Angular Error: -13.54
+p_term_angle: -13.54
+i_term_angle: -33.97
+d_term_angle: -4.70
+Displacement Error: 687
+differential_PWM_output: -21
+TOTAL_PATH_x: -13.54
+TOTAL_PATH_y: 312.32
+MotorSpeedA: 107
+MotorSpeedB: 149
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 316.57
+Total path x: -13.54
+y_coordinate: -24.68
+x_coordinate: 315.52
+
+displacement_error:     683
+Rover moving in straight line:
+Angular Error: -13.54
+p_term_angle: -13.54
+i_term_angle: -34.56
+d_term_angle: 0.00
+Displacement Error: 683
+differential_PWM_output: -19
+TOTAL_PATH_x: -13.54
+TOTAL_PATH_y: 316.57
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.04
+Dx: 0.00
+Angle: -0.10
+Total path y: 320.61
+Total path x: -13.54
+y_coordinate: -25.09
+x_coordinate: 319.54
+
+displacement_error:     679
+Rover moving in straight line:
+Angular Error: -13.54
+p_term_angle: -13.54
+i_term_angle: -35.14
+d_term_angle: 0.00
+Displacement Error: 679
+differential_PWM_output: -19
+TOTAL_PATH_x: -13.54
+TOTAL_PATH_y: 320.61
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.65
+Dx: -0.20
+Angle: -0.10
+Total path y: 325.25
+Total path x: -13.74
+y_coordinate: -25.57
+x_coordinate: 324.16
+
+displacement_error:     674
+Rover moving in straight line:
+Angular Error: -13.74
+p_term_angle: -13.74
+i_term_angle: -35.73
+d_term_angle: -4.70
+Displacement Error: 674
+differential_PWM_output: -21
+TOTAL_PATH_x: -13.74
+TOTAL_PATH_y: 325.25
+MotorSpeedA: 107
+MotorSpeedB: 149
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 329.49
+Total path x: -13.74
+y_coordinate: -26.01
+x_coordinate: 328.38
+
+displacement_error:     670
+Rover moving in straight line:
+Angular Error: -13.74
+p_term_angle: -13.74
+i_term_angle: -36.32
+d_term_angle: 0.00
+Displacement Error: 670
+differential_PWM_output: -19
+TOTAL_PATH_x: -13.74
+TOTAL_PATH_y: 329.49
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.44
+Dx: 0.00
+Angle: -0.10
+Total path y: 333.94
+Total path x: -13.74
+y_coordinate: -26.48
+x_coordinate: 332.80
+
+displacement_error:     666
+Rover moving in straight line:
+Angular Error: -13.74
+p_term_angle: -13.74
+i_term_angle: -36.91
+d_term_angle: 0.00
+Displacement Error: 666
+differential_PWM_output: -19
+TOTAL_PATH_x: -13.74
+TOTAL_PATH_y: 333.94
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 338.18
+Total path x: -13.74
+y_coordinate: -26.92
+x_coordinate: 337.02
+
+displacement_error:     661
+Rover moving in straight line:
+Angular Error: -13.74
+p_term_angle: -13.74
+i_term_angle: -37.50
+d_term_angle: 0.00
+Displacement Error: 661
+differential_PWM_output: -19
+TOTAL_PATH_x: -13.74
+TOTAL_PATH_y: 338.18
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.44
+Dx: 0.00
+Angle: -0.10
+Total path y: 342.63
+Total path x: -13.74
+y_coordinate: -27.38
+x_coordinate: 341.44
+
+displacement_error:     657
+Rover moving in straight line:
+Angular Error: -13.74
+p_term_angle: -13.74
+i_term_angle: -38.09
+d_term_angle: 0.00
+Displacement Error: 657
+differential_PWM_output: -19
+TOTAL_PATH_x: -13.74
+TOTAL_PATH_y: 342.63
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.20
+Angle: -0.10
+Total path y: 346.87
+Total path x: -13.54
+y_coordinate: -27.82
+x_coordinate: 345.66
+
+displacement_error:     653
+Rover moving in straight line:
+Angular Error: -13.54
+p_term_angle: -13.54
+i_term_angle: -38.67
+d_term_angle: 4.70
+Displacement Error: 653
+differential_PWM_output: -17
+TOTAL_PATH_x: -13.54
+TOTAL_PATH_y: 346.87
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.44
+Dx: 0.00
+Angle: -0.10
+Total path y: 351.31
+Total path x: -13.54
+y_coordinate: -28.27
+x_coordinate: 350.08
+
+displacement_error:     648
+Rover moving in straight line:
+Angular Error: -13.54
+p_term_angle: -13.54
+i_term_angle: -39.26
+d_term_angle: 0.00
+Displacement Error: 648
+differential_PWM_output: -20
+TOTAL_PATH_x: -13.54
+TOTAL_PATH_y: 351.31
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.61
+Angle: -0.10
+Total path y: 355.56
+Total path x: -12.93
+y_coordinate: -28.69
+x_coordinate: 354.30
+
+displacement_error:     644
+Rover moving in straight line:
+Angular Error: -12.93
+p_term_angle: -12.93
+i_term_angle: -39.81
+d_term_angle: 14.09
+Displacement Error: 644
+differential_PWM_output: -12
+TOTAL_PATH_x: -12.93
+TOTAL_PATH_y: 355.56
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.44
+Dx: 0.00
+Angle: -0.10
+Total path y: 360.00
+Total path x: -12.93
+y_coordinate: -29.13
+x_coordinate: 358.72
+
+displacement_error:     639
+Rover moving in straight line:
+Angular Error: -12.93
+p_term_angle: -12.93
+i_term_angle: -40.37
+d_term_angle: 0.00
+Displacement Error: 639
+differential_PWM_output: -19
+TOTAL_PATH_x: -12.93
+TOTAL_PATH_y: 360.00
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 364.24
+Total path x: -12.93
+y_coordinate: -29.54
+x_coordinate: 362.94
+
+displacement_error:     635
+Rover moving in straight line:
+Angular Error: -12.93
+p_term_angle: -12.93
+i_term_angle: -40.92
+d_term_angle: 0.00
+Displacement Error: 635
+differential_PWM_output: -19
+TOTAL_PATH_x: -12.93
+TOTAL_PATH_y: 364.24
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 368.48
+Total path x: -12.93
+y_coordinate: -29.96
+x_coordinate: 367.17
+
+displacement_error:     631
+Rover moving in straight line:
+Angular Error: -12.93
+p_term_angle: -12.93
+i_term_angle: -41.48
+d_term_angle: 0.00
+Displacement Error: 631
+differential_PWM_output: -19
+TOTAL_PATH_x: -12.93
+TOTAL_PATH_y: 368.48
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 372.73
+Total path x: -12.93
+y_coordinate: -30.37
+x_coordinate: 371.39
+
+displacement_error:     627
+Rover moving in straight line:
+Angular Error: -12.93
+p_term_angle: -12.93
+i_term_angle: -42.04
+d_term_angle: 0.00
+Displacement Error: 627
+differential_PWM_output: -20
+TOTAL_PATH_x: -12.93
+TOTAL_PATH_y: 372.73
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.20
+Angle: -0.10
+Total path y: 376.97
+Total path x: -12.73
+y_coordinate: -30.79
+x_coordinate: 375.61
+
+displacement_error:     623
+Rover moving in straight line:
+Angular Error: -12.73
+p_term_angle: -12.73
+i_term_angle: -42.58
+d_term_angle: 4.70
+Displacement Error: 623
+differential_PWM_output: -17
+TOTAL_PATH_x: -12.73
+TOTAL_PATH_y: 376.97
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.00
+Angle: -0.10
+Total path y: 381.21
+Total path x: -12.73
+y_coordinate: -31.19
+x_coordinate: 379.83
+
+displacement_error:     618
+Rover moving in straight line:
+Angular Error: -12.73
+p_term_angle: -12.73
+i_term_angle: -43.13
+d_term_angle: 0.00
+Displacement Error: 618
+differential_PWM_output: -20
+TOTAL_PATH_x: -12.73
+TOTAL_PATH_y: 381.21
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.20
+Angle: -0.09
+Total path y: 385.45
+Total path x: -12.53
+y_coordinate: -31.60
+x_coordinate: 384.06
+
+displacement_error:     614
+Rover moving in straight line:
+Angular Error: -12.53
+p_term_angle: -12.53
+i_term_angle: -43.67
+d_term_angle: 4.70
+Displacement Error: 614
+differential_PWM_output: -17
+TOTAL_PATH_x: -12.53
+TOTAL_PATH_y: 385.45
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 389.70
+Total path x: -12.53
+y_coordinate: -32.00
+x_coordinate: 388.28
+
+displacement_error:     610
+Rover moving in straight line:
+Angular Error: -12.53
+p_term_angle: -12.53
+i_term_angle: -44.21
+d_term_angle: 0.00
+Displacement Error: 610
+differential_PWM_output: -20
+TOTAL_PATH_x: -12.53
+TOTAL_PATH_y: 389.70
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 393.94
+Total path x: -12.53
+y_coordinate: -32.40
+x_coordinate: 392.50
+
+displacement_error:     606
+Rover moving in straight line:
+Angular Error: -12.53
+p_term_angle: -12.53
+i_term_angle: -44.75
+d_term_angle: 0.00
+Displacement Error: 606
+differential_PWM_output: -20
+TOTAL_PATH_x: -12.53
+TOTAL_PATH_y: 393.94
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 398.18
+Total path x: -12.53
+y_coordinate: -32.81
+x_coordinate: 396.73
+
+displacement_error:     601
+Rover moving in straight line:
+Angular Error: -12.53
+p_term_angle: -12.53
+i_term_angle: -45.28
+d_term_angle: 0.00
+Displacement Error: 601
+differential_PWM_output: -20
+TOTAL_PATH_x: -12.53
+TOTAL_PATH_y: 398.18
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 402.22
+Total path x: -12.53
+y_coordinate: -33.19
+x_coordinate: 400.75
+
+displacement_error:     597
+Rover moving in straight line:
+Angular Error: -12.53
+p_term_angle: -12.53
+i_term_angle: -45.82
+d_term_angle: 0.00
+Displacement Error: 597
+differential_PWM_output: -20
+TOTAL_PATH_x: -12.53
+TOTAL_PATH_y: 402.22
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 406.46
+Total path x: -12.53
+y_coordinate: -33.59
+x_coordinate: 404.97
+
+displacement_error:     593
+Rover moving in straight line:
+Angular Error: -12.53
+p_term_angle: -12.53
+i_term_angle: -46.36
+d_term_angle: 0.00
+Displacement Error: 593
+differential_PWM_output: -20
+TOTAL_PATH_x: -12.53
+TOTAL_PATH_y: 406.46
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.40
+Angle: -0.09
+Total path y: 410.51
+Total path x: -12.12
+y_coordinate: -33.97
+x_coordinate: 408.99
+
+displacement_error:     589
+Rover moving in straight line:
+Angular Error: -12.12
+p_term_angle: -12.12
+i_term_angle: -46.88
+d_term_angle: 9.40
+Displacement Error: 589
+differential_PWM_output: -15
+TOTAL_PATH_x: -12.12
+TOTAL_PATH_y: 410.51
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.04
+Dx: 0.20
+Angle: -0.09
+Total path y: 414.55
+Total path x: -11.92
+y_coordinate: -34.33
+x_coordinate: 413.02
+
+displacement_error:     585
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -47.40
+d_term_angle: 4.70
+Displacement Error: 585
+differential_PWM_output: -17
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 414.55
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.20
+Angle: -0.09
+Total path y: 418.79
+Total path x: -11.72
+y_coordinate: -34.71
+x_coordinate: 417.24
+
+displacement_error:     581
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -47.90
+d_term_angle: 4.69
+Displacement Error: 581
+differential_PWM_output: -17
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 418.79
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 422.83
+Total path x: -11.72
+y_coordinate: -35.07
+x_coordinate: 421.27
+
+displacement_error:     577
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -48.40
+d_term_angle: 0.00
+Displacement Error: 577
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 422.83
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 426.87
+Total path x: -11.72
+y_coordinate: -35.43
+x_coordinate: 425.29
+
+displacement_error:     573
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -48.91
+d_term_angle: 0.00
+Displacement Error: 573
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 426.87
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.20
+Angle: -0.09
+Total path y: 430.91
+Total path x: -11.52
+y_coordinate: -35.78
+x_coordinate: 429.32
+
+displacement_error:     569
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -49.40
+d_term_angle: 4.70
+Displacement Error: 569
+differential_PWM_output: -17
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 430.91
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 435.15
+Total path x: -11.52
+y_coordinate: -36.15
+x_coordinate: 433.54
+
+displacement_error:     564
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -49.90
+d_term_angle: 0.00
+Displacement Error: 564
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 435.15
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.40
+Angle: -0.08
+Total path y: 439.39
+Total path x: -11.11
+y_coordinate: -36.52
+x_coordinate: 437.77
+
+displacement_error:     560
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -50.37
+d_term_angle: 9.40
+Displacement Error: 560
+differential_PWM_output: -15
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 439.39
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.04
+Dx: 0.00
+Angle: -0.08
+Total path y: 443.43
+Total path x: -11.11
+y_coordinate: -36.86
+x_coordinate: 441.80
+
+displacement_error:     556
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -50.85
+d_term_angle: 0.00
+Displacement Error: 556
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 443.43
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.08
+Total path y: 447.68
+Total path x: -11.11
+y_coordinate: -37.21
+x_coordinate: 446.02
+
+displacement_error:     552
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -51.33
+d_term_angle: 0.00
+Displacement Error: 552
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 447.68
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.08
+Total path y: 451.92
+Total path x: -11.11
+y_coordinate: -37.57
+x_coordinate: 450.25
+
+displacement_error:     548
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -51.81
+d_term_angle: 0.00
+Displacement Error: 548
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 451.92
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.08
+Total path y: 456.16
+Total path x: -11.11
+y_coordinate: -37.93
+x_coordinate: 454.48
+
+displacement_error:     543
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -52.29
+d_term_angle: 0.00
+Displacement Error: 543
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 456.16
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.00
+Angle: -0.08
+Total path y: 460.20
+Total path x: -11.11
+y_coordinate: -38.27
+x_coordinate: 458.51
+
+displacement_error:     539
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -52.76
+d_term_angle: 0.00
+Displacement Error: 539
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 460.20
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.20
+Angle: -0.08
+Total path y: 464.24
+Total path x: -10.91
+y_coordinate: -38.60
+x_coordinate: 462.53
+
+displacement_error:     535
+Rover moving in straight line:
+Angular Error: -10.91
+p_term_angle: -10.91
+i_term_angle: -53.23
+d_term_angle: 4.70
+Displacement Error: 535
+differential_PWM_output: -18
+TOTAL_PATH_x: -10.91
+TOTAL_PATH_y: 464.24
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.24
+Dx: 0.00
+Angle: -0.08
+Total path y: 468.48
+Total path x: -10.91
+y_coordinate: -38.95
+x_coordinate: 466.76
+
+displacement_error:     531
+Rover moving in straight line:
+Angular Error: -10.91
+p_term_angle: -10.91
+i_term_angle: -53.70
+d_term_angle: 0.00
+Displacement Error: 531
+differential_PWM_output: -20
+TOTAL_PATH_x: -10.91
+TOTAL_PATH_y: 468.48
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 3.84
+Dx: 0.00
+Angle: -0.08
+Total path y: 472.32
+Total path x: -10.91
+y_coordinate: -39.27
+x_coordinate: 470.58
+
+displacement_error:     527
+Rover moving in straight line:
+Angular Error: -10.91
+p_term_angle: -10.91
+i_term_angle: -54.17
+d_term_angle: 0.00
+Displacement Error: 527
+differential_PWM_output: -20
+TOTAL_PATH_x: -10.91
+TOTAL_PATH_y: 472.32
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.08
+Total path y: 476.57
+Total path x: -10.91
+y_coordinate: -39.62
+x_coordinate: 474.81
+
+displacement_error:     523
+Rover moving in straight line:
+Angular Error: -10.91
+p_term_angle: -10.91
+i_term_angle: -54.64
+d_term_angle: 0.00
+Displacement Error: 523
+differential_PWM_output: -20
+TOTAL_PATH_x: -10.91
+TOTAL_PATH_y: 476.57
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: -0.40
+Angle: -0.09
+Total path y: 480.61
+Total path x: -11.31
+y_coordinate: -39.96
+x_coordinate: 478.84
+
+displacement_error:     519
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -55.13
+d_term_angle: -9.40
+Displacement Error: 519
+differential_PWM_output: -25
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 480.61
+MotorSpeedA: 103
+MotorSpeedB: 153
+Dy: 4.04
+Dx: -0.20
+Angle: -0.09
+Total path y: 484.65
+Total path x: -11.52
+y_coordinate: -40.31
+x_coordinate: 482.86
+
+displacement_error:     515
+Rover moving in straight line:
+Angular Error: -11.52
+p_term_angle: -11.52
+i_term_angle: -55.62
+d_term_angle: -4.69
+Displacement Error: 515
+differential_PWM_output: -23
+TOTAL_PATH_x: -11.52
+TOTAL_PATH_y: 484.65
+MotorSpeedA: 105
+MotorSpeedB: 151
+Dy: 4.24
+Dx: -0.20
+Angle: -0.09
+Total path y: 488.89
+Total path x: -11.72
+y_coordinate: -40.68
+x_coordinate: 487.09
+
+displacement_error:     511
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -56.13
+d_term_angle: -4.70
+Displacement Error: 511
+differential_PWM_output: -24
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 488.89
+MotorSpeedA: 104
+MotorSpeedB: 152
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 492.93
+Total path x: -11.72
+y_coordinate: -41.04
+x_coordinate: 491.11
+
+displacement_error:     507
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -56.63
+d_term_angle: 0.00
+Displacement Error: 507
+differential_PWM_output: -21
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 492.93
+MotorSpeedA: 107
+MotorSpeedB: 149
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 497.17
+Total path x: -11.72
+y_coordinate: -41.42
+x_coordinate: 495.34
+
+displacement_error:     502
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -57.13
+d_term_angle: 0.00
+Displacement Error: 502
+differential_PWM_output: -21
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 497.17
+MotorSpeedA: 107
+MotorSpeedB: 149
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 501.41
+Total path x: -11.72
+y_coordinate: -41.79
+x_coordinate: 499.57
+
+displacement_error:     498
+Rover moving in straight line:
+Angular Error: -11.72
+p_term_angle: -11.72
+i_term_angle: -57.64
+d_term_angle: 0.00
+Displacement Error: 498
+differential_PWM_output: -22
+TOTAL_PATH_x: -11.72
+TOTAL_PATH_y: 501.41
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.04
+Dx: -0.20
+Angle: -0.09
+Total path y: 505.45
+Total path x: -11.92
+y_coordinate: -42.15
+x_coordinate: 503.59
+
+displacement_error:     494
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -58.15
+d_term_angle: -4.70
+Displacement Error: 494
+differential_PWM_output: -24
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 505.45
+MotorSpeedA: 104
+MotorSpeedB: 152
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 509.70
+Total path x: -11.92
+y_coordinate: -42.54
+x_coordinate: 507.82
+
+displacement_error:     490
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -58.66
+d_term_angle: 0.00
+Displacement Error: 490
+differential_PWM_output: -22
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 509.70
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 513.94
+Total path x: -11.92
+y_coordinate: -42.92
+x_coordinate: 512.04
+
+displacement_error:     486
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -59.17
+d_term_angle: 0.00
+Displacement Error: 486
+differential_PWM_output: -22
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 513.94
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.44
+Dx: 0.00
+Angle: -0.09
+Total path y: 518.38
+Total path x: -11.92
+y_coordinate: -43.32
+x_coordinate: 516.47
+
+displacement_error:     481
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -59.69
+d_term_angle: 0.00
+Displacement Error: 481
+differential_PWM_output: -22
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 518.38
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 522.42
+Total path x: -11.92
+y_coordinate: -43.68
+x_coordinate: 520.49
+
+displacement_error:     477
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -60.20
+d_term_angle: 0.00
+Displacement Error: 477
+differential_PWM_output: -22
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 522.42
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 526.67
+Total path x: -11.92
+y_coordinate: -44.07
+x_coordinate: 524.72
+
+displacement_error:     473
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -60.71
+d_term_angle: 0.00
+Displacement Error: 473
+differential_PWM_output: -22
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 526.67
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 530.91
+Total path x: -11.92
+y_coordinate: -44.45
+x_coordinate: 528.94
+
+displacement_error:     469
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -61.22
+d_term_angle: 0.00
+Displacement Error: 469
+differential_PWM_output: -22
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 530.91
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.00
+Angle: -0.09
+Total path y: 535.15
+Total path x: -11.92
+y_coordinate: -44.83
+x_coordinate: 533.17
+
+displacement_error:     464
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -61.74
+d_term_angle: 0.00
+Displacement Error: 464
+differential_PWM_output: -23
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 535.15
+MotorSpeedA: 105
+MotorSpeedB: 151
+Dy: 4.44
+Dx: 0.00
+Angle: -0.09
+Total path y: 539.60
+Total path x: -11.92
+y_coordinate: -45.23
+x_coordinate: 537.59
+
+displacement_error:     460
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -62.25
+d_term_angle: 0.00
+Displacement Error: 460
+differential_PWM_output: -23
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 539.60
+MotorSpeedA: 105
+MotorSpeedB: 151
+Dy: 4.04
+Dx: 0.00
+Angle: -0.09
+Total path y: 543.64
+Total path x: -11.92
+y_coordinate: -45.60
+x_coordinate: 541.62
+
+displacement_error:     456
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -62.76
+d_term_angle: 0.00
+Displacement Error: 456
+differential_PWM_output: -23
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 543.64
+MotorSpeedA: 105
+MotorSpeedB: 151
+Dy: 4.65
+Dx: 0.00
+Angle: -0.09
+Total path y: 548.28
+Total path x: -11.92
+y_coordinate: -46.02
+x_coordinate: 546.24
+
+displacement_error:     451
+Rover moving in straight line:
+Angular Error: -11.92
+p_term_angle: -11.92
+i_term_angle: -63.27
+d_term_angle: 0.00
+Displacement Error: 451
+differential_PWM_output: -23
+TOTAL_PATH_x: -11.92
+TOTAL_PATH_y: 548.28
+MotorSpeedA: 105
+MotorSpeedB: 151
+Dy: 4.24
+Dx: 0.61
+Angle: -0.09
+Total path y: 552.53
+Total path x: -11.31
+y_coordinate: -46.39
+x_coordinate: 550.47
+
+displacement_error:     447
+Rover moving in straight line:
+Angular Error: -11.31
+p_term_angle: -11.31
+i_term_angle: -63.76
+d_term_angle: 14.09
+Displacement Error: 447
+differential_PWM_output: -15
+TOTAL_PATH_x: -11.31
+TOTAL_PATH_y: 552.53
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.44
+Dx: 0.20
+Angle: -0.08
+Total path y: 556.97
+Total path x: -11.11
+y_coordinate: -46.77
+x_coordinate: 554.90
+
+displacement_error:     443
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -64.24
+d_term_angle: 4.69
+Displacement Error: 443
+differential_PWM_output: -20
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 556.97
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.65
+Dx: 0.00
+Angle: -0.08
+Total path y: 561.62
+Total path x: -11.11
+y_coordinate: -47.16
+x_coordinate: 559.53
+
+displacement_error:     438
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -64.72
+d_term_angle: 0.00
+Displacement Error: 438
+differential_PWM_output: -22
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 561.62
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.00
+Angle: -0.08
+Total path y: 565.86
+Total path x: -11.11
+y_coordinate: -47.51
+x_coordinate: 563.76
+
+displacement_error:     434
+Rover moving in straight line:
+Angular Error: -11.11
+p_term_angle: -11.11
+i_term_angle: -65.19
+d_term_angle: 0.00
+Displacement Error: 434
+differential_PWM_output: -23
+TOTAL_PATH_x: -11.11
+TOTAL_PATH_y: 565.86
+MotorSpeedA: 105
+MotorSpeedB: 151
+Dy: 4.65
+Dx: 0.40
+Angle: -0.08
+Total path y: 570.51
+Total path x: -10.71
+y_coordinate: -47.90
+x_coordinate: 568.39
+
+displacement_error:     429
+Rover moving in straight line:
+Angular Error: -10.71
+p_term_angle: -10.71
+i_term_angle: -65.66
+d_term_angle: 9.40
+Displacement Error: 429
+differential_PWM_output: -18
+TOTAL_PATH_x: -10.71
+TOTAL_PATH_y: 570.51
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.44
+Dx: 0.00
+Angle: -0.08
+Total path y: 574.95
+Total path x: -10.71
+y_coordinate: -48.26
+x_coordinate: 572.82
+
+displacement_error:     425
+Rover moving in straight line:
+Angular Error: -10.71
+p_term_angle: -10.71
+i_term_angle: -66.12
+d_term_angle: 0.00
+Displacement Error: 425
+differential_PWM_output: -22
+TOTAL_PATH_x: -10.71
+TOTAL_PATH_y: 574.95
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.04
+Dx: 0.40
+Angle: -0.08
+Total path y: 578.99
+Total path x: -10.30
+y_coordinate: -48.58
+x_coordinate: 576.84
+
+displacement_error:     421
+Rover moving in straight line:
+Angular Error: -10.30
+p_term_angle: -10.30
+i_term_angle: -66.56
+d_term_angle: 9.40
+Displacement Error: 421
+differential_PWM_output: -17
+TOTAL_PATH_x: -10.30
+TOTAL_PATH_y: 578.99
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.44
+Dx: 0.40
+Angle: -0.07
+Total path y: 583.43
+Total path x: -9.90
+y_coordinate: -48.92
+x_coordinate: 581.28
+
+displacement_error:     416
+Rover moving in straight line:
+Angular Error: -9.90
+p_term_angle: -9.90
+i_term_angle: -66.98
+d_term_angle: 9.40
+Displacement Error: 416
+differential_PWM_output: -17
+TOTAL_PATH_x: -9.90
+TOTAL_PATH_y: 583.43
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.20
+Angle: -0.07
+Total path y: 587.68
+Total path x: -9.70
+y_coordinate: -49.23
+x_coordinate: 585.51
+
+displacement_error:     412
+Rover moving in straight line:
+Angular Error: -9.70
+p_term_angle: -9.70
+i_term_angle: -67.40
+d_term_angle: 4.70
+Displacement Error: 412
+differential_PWM_output: -19
+TOTAL_PATH_x: -9.70
+TOTAL_PATH_y: 587.68
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.07
+Total path y: 591.92
+Total path x: -9.70
+y_coordinate: -49.54
+x_coordinate: 589.74
+
+displacement_error:     408
+Rover moving in straight line:
+Angular Error: -9.70
+p_term_angle: -9.70
+i_term_angle: -67.82
+d_term_angle: 0.00
+Displacement Error: 408
+differential_PWM_output: -22
+TOTAL_PATH_x: -9.70
+TOTAL_PATH_y: 591.92
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.20
+Angle: -0.07
+Total path y: 596.16
+Total path x: -9.49
+y_coordinate: -49.85
+x_coordinate: 593.97
+
+displacement_error:     403
+Rover moving in straight line:
+Angular Error: -9.49
+p_term_angle: -9.49
+i_term_angle: -68.23
+d_term_angle: 4.70
+Displacement Error: 403
+differential_PWM_output: -19
+TOTAL_PATH_x: -9.49
+TOTAL_PATH_y: 596.16
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.20
+Angle: -0.07
+Total path y: 600.40
+Total path x: -9.29
+y_coordinate: -50.15
+x_coordinate: 598.20
+
+displacement_error:     399
+Rover moving in straight line:
+Angular Error: -9.29
+p_term_angle: -9.29
+i_term_angle: -68.63
+d_term_angle: 4.70
+Displacement Error: 399
+differential_PWM_output: -19
+TOTAL_PATH_x: -9.29
+TOTAL_PATH_y: 600.40
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.07
+Total path y: 604.65
+Total path x: -9.29
+y_coordinate: -50.45
+x_coordinate: 602.43
+
+displacement_error:     395
+Rover moving in straight line:
+Angular Error: -9.29
+p_term_angle: -9.29
+i_term_angle: -69.03
+d_term_angle: 0.00
+Displacement Error: 395
+differential_PWM_output: -22
+TOTAL_PATH_x: -9.29
+TOTAL_PATH_y: 604.65
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.00
+Angle: -0.07
+Total path y: 608.89
+Total path x: -9.29
+y_coordinate: -50.75
+x_coordinate: 606.66
+
+displacement_error:     391
+Rover moving in straight line:
+Angular Error: -9.29
+p_term_angle: -9.29
+i_term_angle: -69.43
+d_term_angle: 0.00
+Displacement Error: 391
+differential_PWM_output: -22
+TOTAL_PATH_x: -9.29
+TOTAL_PATH_y: 608.89
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.24
+Dx: 0.40
+Angle: -0.07
+Total path y: 613.13
+Total path x: -8.89
+y_coordinate: -51.04
+x_coordinate: 610.90
+
+displacement_error:     386
+Rover moving in straight line:
+Angular Error: -8.89
+p_term_angle: -8.89
+i_term_angle: -69.81
+d_term_angle: 9.40
+Displacement Error: 386
+differential_PWM_output: -17
+TOTAL_PATH_x: -8.89
+TOTAL_PATH_y: 613.13
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.04
+Dx: 0.00
+Angle: -0.07
+Total path y: 617.17
+Total path x: -8.89
+y_coordinate: -51.31
+x_coordinate: 614.93
+
+displacement_error:     382
+Rover moving in straight line:
+Angular Error: -8.89
+p_term_angle: -8.89
+i_term_angle: -70.19
+d_term_angle: 0.00
+Displacement Error: 382
+differential_PWM_output: -22
+TOTAL_PATH_x: -8.89
+TOTAL_PATH_y: 617.17
+MotorSpeedA: 106
+MotorSpeedB: 150
+Dy: 4.04
+Dx: 0.61
+Angle: -0.06
+Total path y: 621.21
+Total path x: -8.28
+y_coordinate: -51.58
+x_coordinate: 618.96
+
+displacement_error:     378
+Rover moving in straight line:
+Angular Error: -8.28
+p_term_angle: -8.28
+i_term_angle: -70.55
+d_term_angle: 14.09
+Displacement Error: 378
+differential_PWM_output: -14
+TOTAL_PATH_x: -8.28
+TOTAL_PATH_y: 621.21
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.44
+Dx: 0.20
+Angle: -0.06
+Total path y: 625.66
+Total path x: -8.08
+y_coordinate: -51.85
+x_coordinate: 623.40
+
+displacement_error:     374
+Rover moving in straight line:
+Angular Error: -8.08
+p_term_angle: -8.08
+i_term_angle: -70.89
+d_term_angle: 4.70
+Displacement Error: 374
+differential_PWM_output: -19
+TOTAL_PATH_x: -8.08
+TOTAL_PATH_y: 625.66
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.40
+Angle: -0.06
+Total path y: 629.90
+Total path x: -7.68
+y_coordinate: -52.11
+x_coordinate: 627.63
+
+displacement_error:     370
+Rover moving in straight line:
+Angular Error: -7.68
+p_term_angle: -7.68
+i_term_angle: -71.22
+d_term_angle: 9.40
+Displacement Error: 370
+differential_PWM_output: -16
+TOTAL_PATH_x: -7.68
+TOTAL_PATH_y: 629.90
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.24
+Dx: 0.20
+Angle: -0.06
+Total path y: 634.14
+Total path x: -7.47
+y_coordinate: -52.35
+x_coordinate: 631.87
+
+displacement_error:     365
+Rover moving in straight line:
+Angular Error: -7.47
+p_term_angle: -7.47
+i_term_angle: -71.55
+d_term_angle: 4.69
+Displacement Error: 365
+differential_PWM_output: -18
+TOTAL_PATH_x: -7.47
+TOTAL_PATH_y: 634.14
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.04
+Dx: 0.20
+Angle: -0.06
+Total path y: 638.18
+Total path x: -7.27
+y_coordinate: -52.57
+x_coordinate: 635.90
+
+displacement_error:     361
+Rover moving in straight line:
+Angular Error: -7.27
+p_term_angle: -7.27
+i_term_angle: -71.86
+d_term_angle: 4.71
+Displacement Error: 361
+differential_PWM_output: -18
+TOTAL_PATH_x: -7.27
+TOTAL_PATH_y: 638.18
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.04
+Dx: 0.00
+Angle: -0.06
+Total path y: 642.22
+Total path x: -7.27
+y_coordinate: -52.80
+x_coordinate: 639.93
+
+displacement_error:     357
+Rover moving in straight line:
+Angular Error: -7.27
+p_term_angle: -7.27
+i_term_angle: -72.17
+d_term_angle: 0.00
+Displacement Error: 357
+differential_PWM_output: -20
+TOTAL_PATH_x: -7.27
+TOTAL_PATH_y: 642.22
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.00
+Angle: -0.06
+Total path y: 646.26
+Total path x: -7.27
+y_coordinate: -53.02
+x_coordinate: 643.97
+
+displacement_error:     353
+Rover moving in straight line:
+Angular Error: -7.27
+p_term_angle: -7.27
+i_term_angle: -72.48
+d_term_angle: 0.00
+Displacement Error: 353
+differential_PWM_output: -21
+TOTAL_PATH_x: -7.27
+TOTAL_PATH_y: 646.26
+MotorSpeedA: 107
+MotorSpeedB: 149
+Dy: 4.04
+Dx: 0.00
+Angle: -0.06
+Total path y: 650.30
+Total path x: -7.27
+y_coordinate: -53.24
+x_coordinate: 648.00
+
+displacement_error:     349
+Rover moving in straight line:
+Angular Error: -7.27
+p_term_angle: -7.27
+i_term_angle: -72.80
+d_term_angle: 0.00
+Displacement Error: 349
+differential_PWM_output: -21
+TOTAL_PATH_x: -7.27
+TOTAL_PATH_y: 650.30
+MotorSpeedA: 107
+MotorSpeedB: 149
+Dy: 4.04
+Dx: 0.40
+Angle: -0.05
+Total path y: 654.34
+Total path x: -6.87
+y_coordinate: -53.46
+x_coordinate: 652.04
+
+displacement_error:     345
+Rover moving in straight line:
+Angular Error: -6.87
+p_term_angle: -6.87
+i_term_angle: -73.09
+d_term_angle: 9.40
+Displacement Error: 345
+differential_PWM_output: -16
+TOTAL_PATH_x: -6.87
+TOTAL_PATH_y: 654.34
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.04
+Dx: 0.20
+Angle: -0.05
+Total path y: 658.38
+Total path x: -6.67
+y_coordinate: -53.67
+x_coordinate: 656.07
+
+displacement_error:     341
+Rover moving in straight line:
+Angular Error: -6.67
+p_term_angle: -6.67
+i_term_angle: -73.38
+d_term_angle: 4.70
+Displacement Error: 341
+differential_PWM_output: -18
+TOTAL_PATH_x: -6.67
+TOTAL_PATH_y: 658.38
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 3.84
+Dx: 0.00
+Angle: -0.05
+Total path y: 662.22
+Total path x: -6.67
+y_coordinate: -53.86
+x_coordinate: 659.91
+
+displacement_error:     337
+Rover moving in straight line:
+Angular Error: -6.67
+p_term_angle: -6.67
+i_term_angle: -73.66
+d_term_angle: 0.00
+Displacement Error: 337
+differential_PWM_output: -20
+TOTAL_PATH_x: -6.67
+TOTAL_PATH_y: 662.22
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.05
+Total path y: 666.46
+Total path x: -6.67
+y_coordinate: -54.07
+x_coordinate: 664.14
+
+displacement_error:     333
+Rover moving in straight line:
+Angular Error: -6.67
+p_term_angle: -6.67
+i_term_angle: -73.95
+d_term_angle: 0.00
+Displacement Error: 333
+differential_PWM_output: -20
+TOTAL_PATH_x: -6.67
+TOTAL_PATH_y: 666.46
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 3.84
+Dx: 0.00
+Angle: -0.05
+Total path y: 670.30
+Total path x: -6.67
+y_coordinate: -54.27
+x_coordinate: 667.98
+
+displacement_error:     329
+Rover moving in straight line:
+Angular Error: -6.67
+p_term_angle: -6.67
+i_term_angle: -74.24
+d_term_angle: 0.00
+Displacement Error: 329
+differential_PWM_output: -20
+TOTAL_PATH_x: -6.67
+TOTAL_PATH_y: 670.30
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 3.43
+Dx: 0.20
+Angle: -0.05
+Total path y: 673.74
+Total path x: -6.46
+y_coordinate: -54.44
+x_coordinate: 671.41
+
+displacement_error:     326
+Rover moving in straight line:
+Angular Error: -6.46
+p_term_angle: -6.46
+i_term_angle: -74.52
+d_term_angle: 4.70
+Displacement Error: 326
+differential_PWM_output: -18
+TOTAL_PATH_x: -6.46
+TOTAL_PATH_y: 673.74
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.04
+Dx: 0.61
+Angle: -0.04
+Total path y: 677.78
+Total path x: -5.86
+y_coordinate: -54.63
+x_coordinate: 675.44
+
+displacement_error:     322
+Rover moving in straight line:
+Angular Error: -5.86
+p_term_angle: -5.86
+i_term_angle: -74.77
+d_term_angle: 14.09
+Displacement Error: 322
+differential_PWM_output: -13
+TOTAL_PATH_x: -5.86
+TOTAL_PATH_y: 677.78
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.04
+Dx: 0.20
+Angle: -0.04
+Total path y: 681.82
+Total path x: -5.66
+y_coordinate: -54.80
+x_coordinate: 679.48
+
+displacement_error:     318
+Rover moving in straight line:
+Angular Error: -5.66
+p_term_angle: -5.66
+i_term_angle: -75.01
+d_term_angle: 4.70
+Displacement Error: 318
+differential_PWM_output: -17
+TOTAL_PATH_x: -5.66
+TOTAL_PATH_y: 681.82
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 3.43
+Dx: 0.20
+Angle: -0.04
+Total path y: 685.25
+Total path x: -5.45
+y_coordinate: -54.95
+x_coordinate: 682.91
+
+displacement_error:     314
+Rover moving in straight line:
+Angular Error: -5.45
+p_term_angle: -5.45
+i_term_angle: -75.25
+d_term_angle: 4.70
+Displacement Error: 314
+differential_PWM_output: -17
+TOTAL_PATH_x: -5.45
+TOTAL_PATH_y: 685.25
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 689.49
+Total path x: -5.45
+y_coordinate: -55.12
+x_coordinate: 687.15
+
+displacement_error:     310
+Rover moving in straight line:
+Angular Error: -5.45
+p_term_angle: -5.45
+i_term_angle: -75.48
+d_term_angle: 0.00
+Displacement Error: 310
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.45
+TOTAL_PATH_y: 689.49
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.20
+Angle: -0.04
+Total path y: 693.74
+Total path x: -5.25
+y_coordinate: -55.29
+x_coordinate: 691.39
+
+displacement_error:     306
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -75.71
+d_term_angle: 4.70
+Displacement Error: 306
+differential_PWM_output: -17
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 693.74
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.04
+Dx: 0.00
+Angle: -0.04
+Total path y: 697.78
+Total path x: -5.25
+y_coordinate: -55.45
+x_coordinate: 695.43
+
+displacement_error:     302
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -75.93
+d_term_angle: 0.00
+Displacement Error: 302
+differential_PWM_output: -19
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 697.78
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.04
+Dx: 0.00
+Angle: -0.04
+Total path y: 701.82
+Total path x: -5.25
+y_coordinate: -55.62
+x_coordinate: 699.46
+
+displacement_error:     298
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -76.16
+d_term_angle: 0.00
+Displacement Error: 298
+differential_PWM_output: -19
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 701.82
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 706.06
+Total path x: -5.25
+y_coordinate: -55.78
+x_coordinate: 703.70
+
+displacement_error:     293
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -76.38
+d_term_angle: 0.00
+Displacement Error: 293
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 706.06
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.00
+Angle: -0.04
+Total path y: 710.10
+Total path x: -5.25
+y_coordinate: -55.95
+x_coordinate: 707.74
+
+displacement_error:     289
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -76.61
+d_term_angle: 0.00
+Displacement Error: 289
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 710.10
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 714.34
+Total path x: -5.25
+y_coordinate: -56.11
+x_coordinate: 711.98
+
+displacement_error:     285
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -76.84
+d_term_angle: 0.00
+Displacement Error: 285
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 714.34
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 718.59
+Total path x: -5.25
+y_coordinate: -56.28
+x_coordinate: 716.22
+
+displacement_error:     281
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -77.06
+d_term_angle: 0.00
+Displacement Error: 281
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 718.59
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 722.83
+Total path x: -5.25
+y_coordinate: -56.45
+x_coordinate: 720.46
+
+displacement_error:     277
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -77.29
+d_term_angle: 0.00
+Displacement Error: 277
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 722.83
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 727.07
+Total path x: -5.25
+y_coordinate: -56.62
+x_coordinate: 724.70
+
+displacement_error:     272
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -77.51
+d_term_angle: 0.00
+Displacement Error: 272
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 727.07
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.04
+Dx: 0.00
+Angle: -0.04
+Total path y: 731.11
+Total path x: -5.25
+y_coordinate: -56.78
+x_coordinate: 728.73
+
+displacement_error:     268
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -77.74
+d_term_angle: 0.00
+Displacement Error: 268
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 731.11
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 735.35
+Total path x: -5.25
+y_coordinate: -56.95
+x_coordinate: 732.97
+
+displacement_error:     264
+Rover moving in straight line:
+Angular Error: -5.25
+p_term_angle: -5.25
+i_term_angle: -77.96
+d_term_angle: 0.00
+Displacement Error: 264
+differential_PWM_output: -20
+TOTAL_PATH_x: -5.25
+TOTAL_PATH_y: 735.35
+MotorSpeedA: 108
+MotorSpeedB: 148
+Dy: 4.24
+Dx: 0.61
+Angle: -0.04
+Total path y: 739.60
+Total path x: -4.65
+y_coordinate: -57.11
+x_coordinate: 737.21
+
+displacement_error:     260
+Rover moving in straight line:
+Angular Error: -4.65
+p_term_angle: -4.65
+i_term_angle: -78.16
+d_term_angle: 14.10
+Displacement Error: 260
+differential_PWM_output: -12
+TOTAL_PATH_x: -4.65
+TOTAL_PATH_y: 739.60
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 743.84
+Total path x: -4.65
+y_coordinate: -57.26
+x_coordinate: 741.45
+
+displacement_error:     256
+Rover moving in straight line:
+Angular Error: -4.65
+p_term_angle: -4.65
+i_term_angle: -78.36
+d_term_angle: 0.00
+Displacement Error: 256
+differential_PWM_output: -19
+TOTAL_PATH_x: -4.65
+TOTAL_PATH_y: 743.84
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.04
+Dx: 0.00
+Angle: -0.04
+Total path y: 747.88
+Total path x: -4.65
+y_coordinate: -57.40
+x_coordinate: 745.49
+
+displacement_error:     252
+Rover moving in straight line:
+Angular Error: -4.65
+p_term_angle: -4.65
+i_term_angle: -78.56
+d_term_angle: 0.00
+Displacement Error: 252
+differential_PWM_output: -19
+TOTAL_PATH_x: -4.65
+TOTAL_PATH_y: 747.88
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 752.12
+Total path x: -4.65
+y_coordinate: -57.55
+x_coordinate: 749.73
+
+displacement_error:     247
+Rover moving in straight line:
+Angular Error: -4.65
+p_term_angle: -4.65
+i_term_angle: -78.76
+d_term_angle: 0.00
+Displacement Error: 247
+differential_PWM_output: -19
+TOTAL_PATH_x: -4.65
+TOTAL_PATH_y: 752.12
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.00
+Angle: -0.04
+Total path y: 756.36
+Total path x: -4.65
+y_coordinate: -57.70
+x_coordinate: 753.97
+
+displacement_error:     243
+Rover moving in straight line:
+Angular Error: -4.65
+p_term_angle: -4.65
+i_term_angle: -78.96
+d_term_angle: 0.00
+Displacement Error: 243
+differential_PWM_output: -19
+TOTAL_PATH_x: -4.65
+TOTAL_PATH_y: 756.36
+MotorSpeedA: 109
+MotorSpeedB: 147
+Dy: 4.24
+Dx: 0.20
+Angle: -0.03
+Total path y: 760.61
+Total path x: -4.44
+y_coordinate: -57.84
+x_coordinate: 758.21
+
+displacement_error:     239
+Rover moving in straight line:
+Angular Error: -4.44
+p_term_angle: -4.44
+i_term_angle: -79.15
+d_term_angle: 4.70
+Displacement Error: 239
+differential_PWM_output: -17
+TOTAL_PATH_x: -4.44
+TOTAL_PATH_y: 760.61
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.44
+Dx: 0.20
+Angle: -0.03
+Total path y: 765.05
+Total path x: -4.24
+y_coordinate: -57.99
+x_coordinate: 762.65
+
+displacement_error:     234
+Rover moving in straight line:
+Angular Error: -4.24
+p_term_angle: -4.24
+i_term_angle: -79.34
+d_term_angle: 4.70
+Displacement Error: 234
+differential_PWM_output: -17
+TOTAL_PATH_x: -4.24
+TOTAL_PATH_y: 765.05
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.44
+Dx: 0.40
+Angle: -0.03
+Total path y: 769.49
+Total path x: -3.84
+y_coordinate: -58.13
+x_coordinate: 767.09
+
+displacement_error:     230
+Rover moving in straight line:
+Angular Error: -3.84
+p_term_angle: -3.84
+i_term_angle: -79.50
+d_term_angle: 9.40
+Displacement Error: 230
+differential_PWM_output: -14
+TOTAL_PATH_x: -3.84
+TOTAL_PATH_y: 769.49
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.44
+Dx: 0.40
+Angle: -0.03
+Total path y: 773.94
+Total path x: -3.43
+y_coordinate: -58.25
+x_coordinate: 771.54
+
+displacement_error:     226
+Rover moving in straight line:
+Angular Error: -3.43
+p_term_angle: -3.43
+i_term_angle: -79.65
+d_term_angle: 9.40
+Displacement Error: 226
+differential_PWM_output: -14
+TOTAL_PATH_x: -3.43
+TOTAL_PATH_y: 773.94
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.20
+Angle: -0.02
+Total path y: 778.18
+Total path x: -3.23
+y_coordinate: -58.36
+x_coordinate: 775.78
+
+displacement_error:     221
+Rover moving in straight line:
+Angular Error: -3.23
+p_term_angle: -3.23
+i_term_angle: -79.79
+d_term_angle: 4.70
+Displacement Error: 221
+differential_PWM_output: -16
+TOTAL_PATH_x: -3.23
+TOTAL_PATH_y: 778.18
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.24
+Dx: 0.00
+Angle: -0.02
+Total path y: 782.42
+Total path x: -3.23
+y_coordinate: -58.46
+x_coordinate: 780.02
+
+displacement_error:     217
+Rover moving in straight line:
+Angular Error: -3.23
+p_term_angle: -3.23
+i_term_angle: -79.93
+d_term_angle: 0.00
+Displacement Error: 217
+differential_PWM_output: -18
+TOTAL_PATH_x: -3.23
+TOTAL_PATH_y: 782.42
+MotorSpeedA: 110
+MotorSpeedB: 146
+Dy: 4.44
+Dx: 0.20
+Angle: -0.02
+Total path y: 786.87
+Total path x: -3.03
+y_coordinate: -58.57
+x_coordinate: 784.46
+
+displacement_error:     213
+Rover moving in straight line:
+Angular Error: -3.03
+p_term_angle: -3.03
+i_term_angle: -80.06
+d_term_angle: 4.70
+Displacement Error: 213
+differential_PWM_output: -16
+TOTAL_PATH_x: -3.03
+TOTAL_PATH_y: 786.87
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.04
+Dx: 0.20
+Angle: -0.02
+Total path y: 790.91
+Total path x: -2.83
+y_coordinate: -58.66
+x_coordinate: 788.50
+
+displacement_error:     209
+Rover moving in straight line:
+Angular Error: -2.83
+p_term_angle: -2.83
+i_term_angle: -80.18
+d_term_angle: 4.70
+Displacement Error: 209
+differential_PWM_output: -16
+TOTAL_PATH_x: -2.83
+TOTAL_PATH_y: 790.91
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.44
+Dx: 0.20
+Angle: -0.02
+Total path y: 795.35
+Total path x: -2.63
+y_coordinate: -58.75
+x_coordinate: 792.94
+
+displacement_error:     204
+Rover moving in straight line:
+Angular Error: -2.63
+p_term_angle: -2.63
+i_term_angle: -80.29
+d_term_angle: 4.70
+Displacement Error: 204
+differential_PWM_output: -16
+TOTAL_PATH_x: -2.63
+TOTAL_PATH_y: 795.35
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.24
+Dx: 0.61
+Angle: -0.02
+Total path y: 799.60
+Total path x: -2.02
+y_coordinate: -58.82
+x_coordinate: 797.19
+
+displacement_error:     200
+Rover moving in straight line:
+Angular Error: -2.02
+p_term_angle: -2.02
+i_term_angle: -80.38
+d_term_angle: 14.09
+Displacement Error: 200
+differential_PWM_output: -10
+TOTAL_PATH_x: -2.02
+TOTAL_PATH_y: 799.60
+MotorSpeedA: 118
+MotorSpeedB: 138
+Dy: 4.24
+Dx: 0.00
+Angle: -0.02
+Total path y: 803.84
+Total path x: -2.02
+y_coordinate: -58.89
+x_coordinate: 801.43
+
+displacement_error:     196
+Rover moving in straight line:
+Angular Error: -2.02
+p_term_angle: -2.02
+i_term_angle: -80.47
+d_term_angle: 0.00
+Displacement Error: 196
+differential_PWM_output: -17
+TOTAL_PATH_x: -2.02
+TOTAL_PATH_y: 803.84
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.00
+Angle: -0.02
+Total path y: 808.08
+Total path x: -2.02
+y_coordinate: -58.95
+x_coordinate: 805.67
+
+displacement_error:     191
+Rover moving in straight line:
+Angular Error: -2.02
+p_term_angle: -2.02
+i_term_angle: -80.55
+d_term_angle: 0.00
+Displacement Error: 191
+differential_PWM_output: -17
+TOTAL_PATH_x: -2.02
+TOTAL_PATH_y: 808.08
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.04
+Dx: 0.00
+Angle: -0.02
+Total path y: 812.12
+Total path x: -2.02
+y_coordinate: -59.01
+x_coordinate: 809.71
+
+displacement_error:     187
+Rover moving in straight line:
+Angular Error: -2.02
+p_term_angle: -2.02
+i_term_angle: -80.64
+d_term_angle: 0.00
+Displacement Error: 187
+differential_PWM_output: -17
+TOTAL_PATH_x: -2.02
+TOTAL_PATH_y: 812.12
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.61
+Angle: -0.01
+Total path y: 816.36
+Total path x: -1.41
+y_coordinate: -59.07
+x_coordinate: 813.95
+
+displacement_error:     183
+Rover moving in straight line:
+Angular Error: -1.41
+p_term_angle: -1.41
+i_term_angle: -80.70
+d_term_angle: 14.09
+Displacement Error: 183
+differential_PWM_output: -10
+TOTAL_PATH_x: -1.41
+TOTAL_PATH_y: 816.36
+MotorSpeedA: 118
+MotorSpeedB: 138
+Dy: 4.04
+Dx: 0.20
+Angle: -0.01
+Total path y: 820.40
+Total path x: -1.21
+y_coordinate: -59.11
+x_coordinate: 817.99
+
+displacement_error:     179
+Rover moving in straight line:
+Angular Error: -1.21
+p_term_angle: -1.21
+i_term_angle: -80.75
+d_term_angle: 4.70
+Displacement Error: 179
+differential_PWM_output: -14
+TOTAL_PATH_x: -1.21
+TOTAL_PATH_y: 820.40
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: -0.01
+Total path y: 824.44
+Total path x: -1.21
+y_coordinate: -59.15
+x_coordinate: 822.03
+
+displacement_error:     175
+Rover moving in straight line:
+Angular Error: -1.21
+p_term_angle: -1.21
+i_term_angle: -80.81
+d_term_angle: 0.00
+Displacement Error: 175
+differential_PWM_output: -17
+TOTAL_PATH_x: -1.21
+TOTAL_PATH_y: 824.44
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.04
+Dx: 0.00
+Angle: -0.01
+Total path y: 828.48
+Total path x: -1.21
+y_coordinate: -59.18
+x_coordinate: 826.07
+
+displacement_error:     171
+Rover moving in straight line:
+Angular Error: -1.21
+p_term_angle: -1.21
+i_term_angle: -80.86
+d_term_angle: 0.00
+Displacement Error: 171
+differential_PWM_output: -17
+TOTAL_PATH_x: -1.21
+TOTAL_PATH_y: 828.48
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 3.84
+Dx: 0.00
+Angle: -0.01
+Total path y: 832.32
+Total path x: -1.21
+y_coordinate: -59.22
+x_coordinate: 829.91
+
+displacement_error:     167
+Rover moving in straight line:
+Angular Error: -1.21
+p_term_angle: -1.21
+i_term_angle: -80.91
+d_term_angle: 0.00
+Displacement Error: 167
+differential_PWM_output: -17
+TOTAL_PATH_x: -1.21
+TOTAL_PATH_y: 832.32
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.00
+Angle: -0.01
+Total path y: 836.57
+Total path x: -1.21
+y_coordinate: -59.26
+x_coordinate: 834.15
+
+displacement_error:     163
+Rover moving in straight line:
+Angular Error: -1.21
+p_term_angle: -1.21
+i_term_angle: -80.96
+d_term_angle: 0.00
+Displacement Error: 163
+differential_PWM_output: -17
+TOTAL_PATH_x: -1.21
+TOTAL_PATH_y: 836.57
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.04
+Dx: 0.00
+Angle: -0.01
+Total path y: 840.61
+Total path x: -1.21
+y_coordinate: -59.29
+x_coordinate: 838.19
+
+displacement_error:     159
+Rover moving in straight line:
+Angular Error: -1.21
+p_term_angle: -1.21
+i_term_angle: -81.01
+d_term_angle: 0.00
+Displacement Error: 159
+differential_PWM_output: -17
+TOTAL_PATH_x: -1.21
+TOTAL_PATH_y: 840.61
+MotorSpeedA: 111
+MotorSpeedB: 145
+Dy: 4.24
+Dx: 0.20
+Angle: -0.01
+Total path y: 844.85
+Total path x: -1.01
+y_coordinate: -59.33
+x_coordinate: 842.43
+
+displacement_error:     155
+Rover moving in straight line:
+Angular Error: -1.01
+p_term_angle: -1.01
+i_term_angle: -81.06
+d_term_angle: 4.70
+Displacement Error: 155
+differential_PWM_output: -14
+TOTAL_PATH_x: -1.01
+TOTAL_PATH_y: 844.85
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 3.84
+Dx: 0.20
+Angle: -0.01
+Total path y: 848.69
+Total path x: -0.81
+y_coordinate: -59.36
+x_coordinate: 846.27
+
+displacement_error:     151
+Rover moving in straight line:
+Angular Error: -0.81
+p_term_angle: -0.81
+i_term_angle: -81.09
+d_term_angle: 4.70
+Displacement Error: 151
+differential_PWM_output: -14
+TOTAL_PATH_x: -0.81
+TOTAL_PATH_y: 848.69
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.20
+Angle: -0.00
+Total path y: 852.73
+Total path x: -0.61
+y_coordinate: -59.38
+x_coordinate: 850.31
+
+displacement_error:     147
+Rover moving in straight line:
+Angular Error: -0.61
+p_term_angle: -0.61
+i_term_angle: -81.12
+d_term_angle: 4.70
+Displacement Error: 147
+differential_PWM_output: -14
+TOTAL_PATH_x: -0.61
+TOTAL_PATH_y: 852.73
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.40
+Angle: -0.00
+Total path y: 856.77
+Total path x: -0.20
+y_coordinate: -59.39
+x_coordinate: 854.35
+
+displacement_error:     143
+Rover moving in straight line:
+Angular Error: -0.20
+p_term_angle: -0.20
+i_term_angle: -81.13
+d_term_angle: 9.40
+Displacement Error: 143
+differential_PWM_output: -11
+TOTAL_PATH_x: -0.20
+TOTAL_PATH_y: 856.77
+MotorSpeedA: 117
+MotorSpeedB: 139
+Dy: 4.04
+Dx: 0.61
+Angle: 0.00
+Total path y: 860.81
+Total path x: 0.40
+y_coordinate: -59.39
+x_coordinate: 858.39
+
+displacement_error:     139
+Rover moving in straight line:
+Angular Error: 0.40
+p_term_angle: 0.40
+i_term_angle: -81.11
+d_term_angle: 14.09
+Displacement Error: 139
+differential_PWM_output: -8
+TOTAL_PATH_x: 0.40
+TOTAL_PATH_y: 860.81
+MotorSpeedA: 120
+MotorSpeedB: 136
+Dy: 4.04
+Dx: 0.40
+Angle: 0.01
+Total path y: 864.85
+Total path x: 0.81
+y_coordinate: -59.37
+x_coordinate: 862.43
+
+displacement_error:     135
+Rover moving in straight line:
+Angular Error: 0.81
+p_term_angle: 0.81
+i_term_angle: -81.07
+d_term_angle: 9.40
+Displacement Error: 135
+differential_PWM_output: -10
+TOTAL_PATH_x: 0.81
+TOTAL_PATH_y: 864.85
+MotorSpeedA: 118
+MotorSpeedB: 138
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 868.89
+Total path x: 0.81
+y_coordinate: -59.34
+x_coordinate: 866.47
+
+displacement_error:     131
+Rover moving in straight line:
+Angular Error: 0.81
+p_term_angle: 0.81
+i_term_angle: -81.04
+d_term_angle: 0.00
+Displacement Error: 131
+differential_PWM_output: -15
+TOTAL_PATH_x: 0.81
+TOTAL_PATH_y: 868.89
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 3.84
+Dx: 0.00
+Angle: 0.01
+Total path y: 872.73
+Total path x: 0.81
+y_coordinate: -59.32
+x_coordinate: 870.31
+
+displacement_error:     127
+Rover moving in straight line:
+Angular Error: 0.81
+p_term_angle: 0.81
+i_term_angle: -81.00
+d_term_angle: 0.00
+Displacement Error: 127
+differential_PWM_output: -15
+TOTAL_PATH_x: 0.81
+TOTAL_PATH_y: 872.73
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 876.77
+Total path x: 0.81
+y_coordinate: -59.30
+x_coordinate: 874.35
+
+displacement_error:     123
+Rover moving in straight line:
+Angular Error: 0.81
+p_term_angle: 0.81
+i_term_angle: -80.97
+d_term_angle: 0.00
+Displacement Error: 123
+differential_PWM_output: -15
+TOTAL_PATH_x: 0.81
+TOTAL_PATH_y: 876.77
+MotorSpeedA: 113
+MotorSpeedB: 143
+Dy: 3.84
+Dx: 0.40
+Angle: 0.01
+Total path y: 880.61
+Total path x: 1.21
+y_coordinate: -59.27
+x_coordinate: 878.19
+
+displacement_error:     119
+Rover moving in straight line:
+Angular Error: 1.21
+p_term_angle: 1.21
+i_term_angle: -80.92
+d_term_angle: 9.40
+Displacement Error: 119
+differential_PWM_output: -10
+TOTAL_PATH_x: 1.21
+TOTAL_PATH_y: 880.61
+MotorSpeedA: 118
+MotorSpeedB: 138
+Dy: 4.04
+Dx: 0.20
+Angle: 0.01
+Total path y: 884.65
+Total path x: 1.41
+y_coordinate: -59.23
+x_coordinate: 882.23
+
+displacement_error:     115
+Rover moving in straight line:
+Angular Error: 1.41
+p_term_angle: 1.41
+i_term_angle: -80.86
+d_term_angle: 4.70
+Displacement Error: 115
+differential_PWM_output: -12
+TOTAL_PATH_x: 1.41
+TOTAL_PATH_y: 884.65
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 3.84
+Dx: 0.00
+Angle: 0.01
+Total path y: 888.48
+Total path x: 1.41
+y_coordinate: -59.19
+x_coordinate: 886.07
+
+displacement_error:     111
+Rover moving in straight line:
+Angular Error: 1.41
+p_term_angle: 1.41
+i_term_angle: -80.80
+d_term_angle: 0.00
+Displacement Error: 111
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.41
+TOTAL_PATH_y: 888.48
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 892.53
+Total path x: 1.41
+y_coordinate: -59.14
+x_coordinate: 890.11
+
+displacement_error:     107
+Rover moving in straight line:
+Angular Error: 1.41
+p_term_angle: 1.41
+i_term_angle: -80.74
+d_term_angle: 0.00
+Displacement Error: 107
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.41
+TOTAL_PATH_y: 892.53
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 896.57
+Total path x: 1.41
+y_coordinate: -59.10
+x_coordinate: 894.15
+
+displacement_error:     103
+Rover moving in straight line:
+Angular Error: 1.41
+p_term_angle: 1.41
+i_term_angle: -80.67
+d_term_angle: 0.00
+Displacement Error: 103
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.41
+TOTAL_PATH_y: 896.57
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.00
+Angle: 0.01
+Total path y: 900.81
+Total path x: 1.41
+y_coordinate: -59.05
+x_coordinate: 898.39
+
+displacement_error:     99
+Rover moving in straight line:
+Angular Error: 1.41
+p_term_angle: 1.41
+i_term_angle: -80.61
+d_term_angle: 0.00
+Displacement Error: 99
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.41
+TOTAL_PATH_y: 900.81
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 3.84
+Dx: 0.20
+Angle: 0.01
+Total path y: 904.65
+Total path x: 1.62
+y_coordinate: -59.01
+x_coordinate: 902.23
+
+displacement_error:     95
+Rover moving in straight line:
+Angular Error: 1.62
+p_term_angle: 1.62
+i_term_angle: -80.54
+d_term_angle: 4.70
+Displacement Error: 95
+differential_PWM_output: -12
+TOTAL_PATH_x: 1.62
+TOTAL_PATH_y: 904.65
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 908.69
+Total path x: 1.62
+y_coordinate: -58.96
+x_coordinate: 906.27
+
+displacement_error:     91
+Rover moving in straight line:
+Angular Error: 1.62
+p_term_angle: 1.62
+i_term_angle: -80.47
+d_term_angle: 0.00
+Displacement Error: 91
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.62
+TOTAL_PATH_y: 908.69
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 912.73
+Total path x: 1.62
+y_coordinate: -58.91
+x_coordinate: 910.31
+
+displacement_error:     87
+Rover moving in straight line:
+Angular Error: 1.62
+p_term_angle: 1.62
+i_term_angle: -80.41
+d_term_angle: 0.00
+Displacement Error: 87
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.62
+TOTAL_PATH_y: 912.73
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 916.77
+Total path x: 1.62
+y_coordinate: -58.86
+x_coordinate: 914.35
+
+displacement_error:     83
+Rover moving in straight line:
+Angular Error: 1.62
+p_term_angle: 1.62
+i_term_angle: -80.34
+d_term_angle: 0.00
+Displacement Error: 83
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.62
+TOTAL_PATH_y: 916.77
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 1.01
+Dx: 0.20
+Angle: 0.01
+Total path y: 917.78
+Total path x: 1.82
+y_coordinate: -58.85
+x_coordinate: 915.36
+
+displacement_error:     82
+Rover moving in straight line:
+Angular Error: 1.82
+p_term_angle: 1.82
+i_term_angle: -80.26
+d_term_angle: 4.70
+Displacement Error: 82
+differential_PWM_output: -12
+TOTAL_PATH_x: 1.82
+TOTAL_PATH_y: 917.78
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 0.61
+Dx: -0.20
+Angle: 0.01
+Total path y: 918.38
+Total path x: 1.62
+y_coordinate: -58.84
+x_coordinate: 915.97
+
+displacement_error:     81
+Rover moving in straight line:
+Angular Error: 1.62
+p_term_angle: 1.62
+i_term_angle: -80.19
+d_term_angle: -4.70
+Displacement Error: 81
+differential_PWM_output: -16
+TOTAL_PATH_x: 1.62
+TOTAL_PATH_y: 918.38
+MotorSpeedA: 112
+MotorSpeedB: 144
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 922.42
+Total path x: 1.62
+y_coordinate: -58.79
+x_coordinate: 920.01
+
+displacement_error:     77
+Rover moving in straight line:
+Angular Error: 1.62
+p_term_angle: 1.62
+i_term_angle: -80.12
+d_term_angle: 0.00
+Displacement Error: 77
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.62
+TOTAL_PATH_y: 922.42
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 926.46
+Total path x: 1.62
+y_coordinate: -58.74
+x_coordinate: 924.05
+
+displacement_error:     73
+Rover moving in straight line:
+Angular Error: 1.62
+p_term_angle: 1.62
+i_term_angle: -80.05
+d_term_angle: 0.00
+Displacement Error: 73
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.62
+TOTAL_PATH_y: 926.46
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: 0.01
+Total path y: 930.51
+Total path x: 1.62
+y_coordinate: -58.69
+x_coordinate: 928.09
+
+displacement_error:     69
+Rover moving in straight line:
+Angular Error: 1.62
+p_term_angle: 1.62
+i_term_angle: -79.98
+d_term_angle: 0.00
+Displacement Error: 69
+differential_PWM_output: -14
+TOTAL_PATH_x: 1.62
+TOTAL_PATH_y: 930.51
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.40
+Angle: 0.02
+Total path y: 934.75
+Total path x: 2.02
+y_coordinate: -58.63
+x_coordinate: 932.33
+
+displacement_error:     65
+Rover moving in straight line:
+Angular Error: 2.02
+p_term_angle: 2.02
+i_term_angle: -79.89
+d_term_angle: 9.40
+Displacement Error: 65
+differential_PWM_output: -9
+TOTAL_PATH_x: 2.02
+TOTAL_PATH_y: 934.75
+MotorSpeedA: 119
+MotorSpeedB: 137
+Dy: 4.24
+Dx: 0.00
+Angle: 0.02
+Total path y: 938.99
+Total path x: 2.02
+y_coordinate: -58.57
+x_coordinate: 936.57
+
+displacement_error:     61
+Rover moving in straight line:
+Angular Error: 2.02
+p_term_angle: 2.02
+i_term_angle: -79.81
+d_term_angle: 0.00
+Displacement Error: 61
+differential_PWM_output: -14
+TOTAL_PATH_x: 2.02
+TOTAL_PATH_y: 938.99
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.04
+Dx: 0.00
+Angle: 0.02
+Total path y: 943.03
+Total path x: 2.02
+y_coordinate: -58.51
+x_coordinate: 940.61
+
+displacement_error:     56
+Rover moving in straight line:
+Angular Error: 2.02
+p_term_angle: 2.02
+i_term_angle: -79.72
+d_term_angle: 0.00
+Displacement Error: 56
+differential_PWM_output: -14
+TOTAL_PATH_x: 2.02
+TOTAL_PATH_y: 943.03
+MotorSpeedA: 114
+MotorSpeedB: 142
+Dy: 4.24
+Dx: 0.20
+Angle: 0.02
+Total path y: 947.27
+Total path x: 2.22
+y_coordinate: -58.44
+x_coordinate: 944.85
+
+displacement_error:     52
+Rover moving in straight line:
+Angular Error: 2.22
+p_term_angle: 2.22
+i_term_angle: -79.62
+d_term_angle: 4.70
+Displacement Error: 52
+differential_PWM_output: -11
+TOTAL_PATH_x: 2.22
+TOTAL_PATH_y: 947.27
+MotorSpeedA: 117
+MotorSpeedB: 139
+Dy: 4.44
+Dx: 0.00
+Angle: 0.02
+Total path y: 951.72
+Total path x: 2.22
+y_coordinate: -58.36
+x_coordinate: 949.30
+
+displacement_error:     48
+Rover moving in straight line:
+Angular Error: 2.22
+p_term_angle: 2.22
+i_term_angle: -79.53
+d_term_angle: 0.00
+Displacement Error: 48
+differential_PWM_output: -13
+TOTAL_PATH_x: 2.22
+TOTAL_PATH_y: 951.72
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.24
+Dx: 0.20
+Angle: 0.02
+Total path y: 955.96
+Total path x: 2.42
+y_coordinate: -58.29
+x_coordinate: 953.54
+
+displacement_error:     44
+Rover moving in straight line:
+Angular Error: 2.42
+p_term_angle: 2.42
+i_term_angle: -79.42
+d_term_angle: 4.70
+Displacement Error: 44
+differential_PWM_output: -11
+TOTAL_PATH_x: 2.42
+TOTAL_PATH_y: 955.96
+MotorSpeedA: 117
+MotorSpeedB: 139
+Dy: 4.44
+Dx: 0.40
+Angle: 0.02
+Total path y: 960.40
+Total path x: 2.83
+y_coordinate: -58.20
+x_coordinate: 957.98
+
+displacement_error:     39
+Rover moving in straight line:
+Angular Error: 2.83
+p_term_angle: 2.83
+i_term_angle: -79.30
+d_term_angle: 9.40
+Displacement Error: 39
+differential_PWM_output: -8
+TOTAL_PATH_x: 2.83
+TOTAL_PATH_y: 960.40
+MotorSpeedA: 120
+MotorSpeedB: 136
+Dy: 4.44
+Dx: 0.20
+Angle: 0.02
+Total path y: 964.85
+Total path x: 3.03
+y_coordinate: -58.10
+x_coordinate: 962.43
+
+displacement_error:     35
+Rover moving in straight line:
+Angular Error: 3.03
+p_term_angle: 3.03
+i_term_angle: -79.17
+d_term_angle: 4.70
+Displacement Error: 35
+differential_PWM_output: -10
+TOTAL_PATH_x: 3.03
+TOTAL_PATH_y: 964.85
+MotorSpeedA: 118
+MotorSpeedB: 138
+Dy: 4.24
+Dx: 0.00
+Angle: 0.02
+Total path y: 969.09
+Total path x: 3.03
+y_coordinate: -58.00
+x_coordinate: 966.67
+
+displacement_error:     30
+Rover moving in straight line:
+Angular Error: 3.03
+p_term_angle: 3.03
+i_term_angle: -79.04
+d_term_angle: 0.00
+Displacement Error: 30
+differential_PWM_output: -13
+TOTAL_PATH_x: 3.03
+TOTAL_PATH_y: 969.09
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.24
+Dx: 0.00
+Angle: 0.02
+Total path y: 973.33
+Total path x: 3.03
+y_coordinate: -57.91
+x_coordinate: 970.91
+
+displacement_error:     26
+Rover moving in straight line:
+Angular Error: 3.03
+p_term_angle: 3.03
+i_term_angle: -78.91
+d_term_angle: 0.00
+Displacement Error: 26
+differential_PWM_output: -13
+TOTAL_PATH_x: 3.03
+TOTAL_PATH_y: 973.33
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.24
+Dx: 0.00
+Angle: 0.02
+Total path y: 977.58
+Total path x: 3.03
+y_coordinate: -57.81
+x_coordinate: 975.15
+
+displacement_error:     22
+Rover moving in straight line:
+Angular Error: 3.03
+p_term_angle: 3.03
+i_term_angle: -78.78
+d_term_angle: 0.00
+Displacement Error: 22
+differential_PWM_output: -13
+TOTAL_PATH_x: 3.03
+TOTAL_PATH_y: 977.58
+MotorSpeedA: 115
+MotorSpeedB: 141
+Dy: 4.44
+Dx: 0.61
+Angle: 0.03
+Total path y: 982.02
+Total path x: 3.64
+y_coordinate: -57.70
+x_coordinate: 979.59
+
+displacement_error:     17
+Rover moving in straight line:
+Angular Error: 3.64
+p_term_angle: 3.64
+i_term_angle: -78.62
+d_term_angle: 14.09
+Displacement Error: 17
+differential_PWM_output: -5
+TOTAL_PATH_x: 3.64
+TOTAL_PATH_y: 982.02
+MotorSpeedA: 123
+MotorSpeedB: 133
+Dy: 4.24
+Dx: 0.00
+Angle: 0.03
+Total path y: 986.26
+Total path x: 3.64
+y_coordinate: -57.58
+x_coordinate: 983.83
+
+displacement_error:     13
+Rover moving in straight line:
+Angular Error: 3.64
+p_term_angle: 3.64
+i_term_angle: -78.47
+d_term_angle: 0.00
+Displacement Error: 13
+differential_PWM_output: -12
+TOTAL_PATH_x: 3.64
+TOTAL_PATH_y: 986.26
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.24
+Dx: 0.20
+Angle: 0.03
+Total path y: 990.51
+Total path x: 3.84
+y_coordinate: -57.46
+x_coordinate: 988.07
+
+displacement_error:     9
+Rover moving in straight line:
+Angular Error: 3.84
+p_term_angle: 3.84
+i_term_angle: -78.30
+d_term_angle: 4.70
+Displacement Error: 9
+differential_PWM_output: -9
+TOTAL_PATH_x: 3.84
+TOTAL_PATH_y: 990.51
+MotorSpeedA: 119
+MotorSpeedB: 137
+Dy: 4.04
+Dx: 0.00
+Angle: 0.03
+Total path y: 994.55
+Total path x: 3.84
+y_coordinate: -57.34
+x_coordinate: 992.11
+
+displacement_error:     5
+Rover moving in straight line:
+Angular Error: 3.84
+p_term_angle: 3.84
+i_term_angle: -78.18
+d_term_angle: 0.00
+Displacement Error: 5
+differential_PWM_output: -12
+TOTAL_PATH_x: 3.84
+TOTAL_PATH_y: 994.55
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 3.23
+Dx: 0.00
+Angle: 0.03
+Total path y: 997.78
+Total path x: 3.84
+y_coordinate: -57.25
+x_coordinate: 995.34
+
+displacement_error:     2
+Rover moving in straight line:
+Angular Error: 3.84
+p_term_angle: 3.84
+i_term_angle: -78.01
+d_term_angle: 0.00
+Displacement Error: 2
+differential_PWM_output: -12
+TOTAL_PATH_x: 3.84
+TOTAL_PATH_y: 997.78
+MotorSpeedA: 116
+MotorSpeedB: 140
+Dy: 4.04
+Dx: 0.00
+Angle: 0.03
+Total path y: 1001.82
+Total path x: 3.84
+y_coordinate: -57.13
+x_coordinate: 999.38
+
+Rover moving in straight line:
+Angular Error: 3.84
+p_term_angle: 0.00
+i_term_angle: 0.00
+d_term_angle: 0.00
+Displacement Error: -1
+differential_PWM_output: 0
+TOTAL_PATH_x: 0.00
+TOTAL_PATH_y: 0.00
+MotorSpeedA: 116
+MotorSpeedB: 140

@@ -59,7 +59,7 @@
 // Current position and angle
   float current_x = 100;
   float current_y = 100;
-  float current_angle = 0;
+  float current_angle = -0.5*PI;
 
   float prev_x = current_x;
   float prev_y = current_y;
@@ -100,7 +100,7 @@
 //  Angle Control: rotation
   float offset_error = 0;
   float offset_error_prev = 0;
-  float target_angle = -0.5*PI;  // target angle, starting from 90 degrees
+  float target_angle = 0;  // target angle, starting from 90 degrees
 
   float p_term_angle;
   float i_term_angle;
@@ -242,7 +242,7 @@ double total_path_x_R = 0;
 double total_path_y_R = 0;
 double x_coordinate_R = 0;
 double y_coordinate_R = 0;
-double angle_R = 0;
+double angle_R = -PI/2;
 
 void OFS_Readings
             (            
@@ -477,7 +477,7 @@ void loop()
         // Serial.println("in !turning_complete");
         // simplistic dead reckoning
         //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
-          Serial.println("offset_error:\t" + String(offset_error));
+          Serial.println("offset_error:\t" + String(angle_R - target_angle));
         if (0.9*abs(angle_R - target_angle) < 0.05) {
             Serial.println("in error good");
             // brake

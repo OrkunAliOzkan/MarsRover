@@ -2,7 +2,6 @@
 #include <SPI.h>
 #include <Wire.h>
 #include <WiFi.h>
-#include <vector>
 
 #define RADIUS 132
 /////////////////////////////////////////////////////////////////
@@ -378,48 +377,60 @@ void updateTargets(double * B_x, double * B_y, double * current_x, double * curr
 /////////////////////////////////////////////////////////////////
 //  automation parameters
   int counter = 0;
-  #define ARENA_WIDTH           1050
-  #define ARENA_HEIGHT          250
-  #define X_DISPLACEMENT_AMOUNT 300 //  TODO: Play with coefficients
-  #define WIDTH_ERROR           200 //  TODO: Play with coefficients
-  #define DISPLACEMENT_ERROR    150 //  TODO: Play with coefficients
-  #define HEIGHT_ERROR          200 //  TODO: Play with coefficients
-  #define Y_DISPLACEMENT_AMOUNT 300 //  TODO: Play with coefficients
-  int state = 0;  
-  int avoidance_counter = 0;        //  Is to determine the emergancy counter
+  #define ARENA_WIDTH         1050
+  #define ARENA_HEIGHT        250
+  #define SIDE_SECTION_SPANS  2
+  #define MID_SECTION_SPANS   2
+  bool skipLoop = 0;
+  bool returning = 0;
+  //  x_des is B_x
+  //  y_des is B_y
+  //  target_angle is target_angle
+  //  x_pos is current_x
+  //  y_pos is current_y
+/*
+  functin call exampleS
+  automation(
+      &counter,
+      current_x, current_y,
+      &B_x, &B_y, &target_angle
+  )
+*/
 
-//some function that creates an array
-int automation(int state, double * destination_x, double * destination_y, double current_x, double current_y)
+//  automation function
+void automation(
+    int * counter,
+    double x_pos, double y_pos,
+    double * x_des, double * y_des,/*, double * target_angle*/
+    bool returning
+)
 {
-    switch(counter){
-      case(0):{
-          //  x
-          *destination_x = current_x + X_DISPLACEMENT_AMOUNT;
-          break;
-      }
-      case(1):{
-          //  y
-          *destination_y = current_y + (ARENA_HEIGHT - 2*RADIUS); //  have y avoid the walls by a rover width
-          break;
-      }
-      case(2):{
-          //  x
-          *destination_x = current_x + X_DISPLACEMENT_AMOUNT;
-          break;
-      }
-      case(3):{
-          //  y
-          *destination_y = current_y - (ARENA_HEIGHT - 2*RADIUS); //  have y avoid the walls by a rover width
-          break;
-      }
-      default:{
-          Serial.println("Shouldn't be here.");
-          break;
-      }        
+    double x =   ARENA_WIDTH / (2*(2*SIDE_SECTION_SPANS + MID_SECTION_SPANS));
+    double append = 0;
+    x *= (
+            ((*counter / 4) > SIDE_SECTION_SPANS) && 
+            ((*counter / 4) < MID_SECTION_SPANS + SIDE_SECTION_SPANS)
+        ) ? 
+            (MID_SECTION_SPANS) : (SIDE_SECTION_SPANS);
+
+    if(!returning){
+        append = -x;
     }
-    counter++;
-    counter %= 4;
-    return 1;
+    else{
+        append = x;
+    }
+    if(*counter % 2 == 0){
+        *x_des -= append;
+    }
+    else{
+        if(*counter % 4 == 1){
+            *y_des -= ARENA_HEIGHT;
+        }
+        else if(*counter % 4 == 3){
+            *y_des += ARENA_HEIGHT;
+        }
+    }
+        *counter += 1;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -446,10 +457,10 @@ void setup()
     pinMode(BIN2, OUTPUT);
     /////////////////////////////////////////////////////////////////
     // Pinouts for OFS
-    pinMode(PIN_SS,OUTPUT);   //(CHIP SELECT)
-    pinMode(PIN_MISO,INPUT);  //(MASTER IN, SLAVE OUT)
+    pinMode(PIN_SS,OUTPUT); //(CHIP SELECT)
+    pinMode(PIN_MISO,INPUT); //(MASTER IN, SLAVE OUT)
     pinMode(PIN_MOSI,OUTPUT); //(MASTER OUT, SLAVE IN)
-    pinMode(PIN_SCK,OUTPUT);  //(CLOCK)
+    pinMode(PIN_SCK,OUTPUT); //(CLOCK)
     /////////////////////////////////////////////////////////////////
     //  SPI Initialisation
     SPI.begin();
@@ -483,13 +494,33 @@ void setup()
     Serial.println(WiFi.localIP());
 
     delay(500);
-
+    /////////////////////////////////////////////////////////////////
+    // //  Connecting to TCP Server
+    // if (!client.connect(host, port)) {
+    //     Serial.println("Connection to TCP Server failed");
+    //     Serial.println("Trying again in 500ms...");
+    //     delay(500);
+    // }
+    // Serial.println("Connected to Server\n");
+    // // // wait for mission start
+    // String start_message = "";
+    // while(client.available() < 5){
+    //     Serial.println("Waiting for Mission Start");
+    //     delay(500);
+    // }
+    // tcp_received = client.readStringUntil('\r');
+    // tcp_parse(tcp_received, &B_x, &B_y, &mode_);
+    
     mode_ = "A";
 
-    if (mode_ == "A") {
-      // update position to travel to
-      automation(state, &B_x, &B_y, current_x, current_y);
-    }
+    // if (mode_ == "A") {
+    //   // update position to travel to
+    //   automation(
+    //       &counter,
+    //       current_x, current_y,
+    //       &B_x, &B_y, returning
+    //   );
+    // }
 
     // update target angle
     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
@@ -499,119 +530,284 @@ void setup()
     Serial.println("cy: " + String(current_y));
     Serial.println("bx: " + String(B_x));
     Serial.println("by: " + String(B_y));
-    // Serial.println("current angle: " + String(current_angle));   
-    // Serial.println("target displacement: " + String(target_displacement));
-    // Serial.println("target angle: " + String(target_angle));
-    // Serial.println("actual angle: " + String(target_angle));
+    Serial.println("current angle: " + String(current_angle));   
+    Serial.println("target displacement: " + String(target_displacement));
+    Serial.println("target angle: " + String(target_angle));
+    Serial.println("actual angle: " + String(target_angle));
 
     turning_complete = 1;
     straight_line_complete = 1;
 
 }
 
+
 /////////////////////////////////////////////////////////////////
 
 void loop()
 {
-  Serial.println("Made it here");
-    // if in auto mode and ready to travel to next waypoint
-    if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
 
-        // get next waypoint
-        automation(state, &B_x, &B_y, current_x, current_y);
-        // update target angle
+    // //-------- Measure Loop Period --------//
+    //Serial.println(micros() - lastCycle);
+    //lastCycle = micros();
+    // //-----------------------------------------------//
+
+    //  //-------- Uncomment to ensure reliability --------//
+//     // check if connected to WIFI
+//     if (WiFi.status() == WL_CONNECTED) {
+//         // check if connected to server
+//         if (client.connected()) {
+//         } else if(millis() - wifi_last_connect_attempt > wifi_connect_timeout) {
+//         }
+//     } else if (millis() - wifi_last_connect_attempt > wifi_connect_timeout) {
+//         WiFiMulti.run();
+//         wifi_connect_timeout = millis();
+//     }
+//     //-----------------------------------------------//
+
+    //  //-------- Periodically send data back to server --------//
+    //     if (millis() - last_TCP_send > TCP_post_period) {
+    //         tcp_send = "{\"time\":" + String(millis()) + 
+    //                         ",\"type\": \"rover\"," + 
+    //                         "\"data\":"  + 
+    //                         "{\"posX\": " + String(current_x) + 
+    //                         ",\"posY\": " + String(current_y) + 
+    //                         ",\"angle\": " + String(current_angle) + 
+    //                         "}" + 
+    //                         "}@";
+    //         Serial.println("----------------------");
+    //         Serial.println(tcp_send);
+    //         Serial.println("----------------------");
+    //         client.print(tcp_send);
+    //         last_TCP_send = millis();
+    //     }
+    //     //-----------------------------------------------//
+    
+    // //-------- if in manual mode and new input incoming --------//
+    if (mode_ == "M" && client.available() > 5) {
+        // brake
+        analogWrite(PWMA, 0); 
+        analogWrite(PWMB, 0);
+
+        // read server input
+        tcp_received = "";
+        char c = client.read();
+        while(c != 255){
+            tcp_received += c;
+            c = client.read();
+        }
+
+        //  parse data recieved
+        tcp_parse(tcp_received, &B_x, &B_y, &mode_);
+
+        //  update target angle
         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+        
+        Serial.println("////////////////////MANUAL////////////////////");
+        Serial.println("x_des:\t" + String(B_x));
+        Serial.println("y_des:\t" + String(B_y));
+        Serial.println("x_pos:\t" + String(current_x));
+        Serial.println("y_pos:\t" + String(current_y));
+        Serial.println("current_angle:\t" + String(current_angle));
+        Serial.println("target_angle:\t" + String(target_angle));
+        Serial.println("target_displacement:\t" + String(target_displacement));
 
+        // prepare to rotate and go straight
+        turning_complete = 0;
+        straight_line_complete = 0; 
+    }
+    // if in auto mode and ready to travel to next waypoint
+    else if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
+        // brake
+        analogWrite(PWMA, 0); 
+        analogWrite(PWMB, 0);
+
+        // // get next waypoint
+        // automation(
+        //     &counter,
+        //     current_x, current_y,
+        //     &B_x, &B_y, returning
+        // );
+
+        //  update target angle
+        updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+        
         Serial.println("////////////////////AUTO////////////////////");
         Serial.println("counter:\t" + String(counter));
         Serial.println("x_des:\t" + String(B_x));
         Serial.println("y_des:\t" + String(B_y));
         Serial.println("x_pos:\t" + String(current_x));
         Serial.println("y_pos:\t" + String(current_y));
-
-        /*
-        if(coodinate is same as final coodinate of automation_coodinate array){
-          complete = 1;
-        }
-        */
+        Serial.println("current_angle:\t" + String(current_angle));
+        Serial.println("target_angle:\t" + String(target_angle));
+        Serial.println("target_displacement:\t" + String(target_displacement));
             
         turning_complete = 0;
         straight_line_complete = 0;
     }
 
     if (!turning_complete) {
+        // Rotation Logic
+        OFS_Readings
+            (            
+            md, 
+            & total_path_x, 
+            & total_path_y, 
+            & current_x, 
+            & current_y,
+            & current_angle
+            );
+
+        angular_error = (current_angle - target_angle);
+        // rotation_deviation_error = total_path_y;
+
+        if (abs(angular_error) < 0.018) {
+            // brake
+            analogWrite(PWMA, 0); 
+            analogWrite(PWMB, 0);
+
             turning_complete = 1;
+            mode_ = "";
             differential_PWM_output = 0; 
-            Serial.println("Turning Complete\n");
-    } 
-    else if (!straight_line_complete) {
             
-            //  If there is an object inbound, needed to be avoided. TEMPORARY, KNOW IT NEEDS TO BE CHANGED
-            if(camera_readings(&type, &angle, &displacement)){  
-              if((avoidance_counter == 0) && (displacment *cos(angle) < WIDTH_ERROR) && (displacment *cos(angle) < DISPLACEMENT_ERROR)){
-              switch(state){
-                case(0):{
-                  B_y = (B_y - current_y > HEIGHT_ERROR) ? 
-                          (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT)) 
-                          : 
-                          (current_y + Y_DISPLACEMENT_AMOUNT);  
-                  break;
-                }
-                case(1):{
-                  B_x = (B_x - current_x > WIDTH_ERROR) ? 
-                          (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
-                          : 
-                          (current_x + X_DISPLACEMENT_AMOUNT);                  
-                  break;
-                }
-                case(2):{
-                  B_y = (current_y - B_y > HEIGHT_ERROR) ? 
-                          (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
-                          : 
-                          (current_y + Y_DISPLACEMENT_AMOUNT);  
-                  break; 
-                }
-                case(3):{
-                  B_x = (B_x - current_x > WIDTH_ERROR) ? 
-                          (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
-                          : 
-                          (current_x - X_DISPLACEMENT_AMOUNT);
-                  break; 
-                }
-              }
-              //  stop motors <---- TODO: Add this
-              //  restart motion
-              turning_complete = 1;
-              straight_line_complete = 1;
-              //  set to a value 
-              avoidance_counter = 1;;
+            // resetting PID variables
+            prevT = 0;
+            p_term_angle = 0;
+            i_term_angle = 0;
+            d_term_angle = 0;
+            
+            // resetting OFS readings
+            total_path_x = 0;
+            total_path_y = 0;
+            
+            // tcp_send = "---\n";
+            // tcp_send += ("Turning Complete\n");
+        } else {
+            // turning not complete
+            currT = micros();
+            deltaT = ((double) (currT-prevT))/1.0e6;
+            
+            p_term_angle = angular_error;
+            i_term_angle += angular_error * deltaT;
+            d_term_angle = (angular_error - angular_error_prev)/deltaT;
+
+            differential_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
+
+            // guards to keep output within bounds
+            if (differential_PWM_output > MAX_ROTATION_PWM) {
+                differential_PWM_output = MAX_ROTATION_PWM;
             }
-            else if(avoidance_counter == 1){
-              switch(state){
-                case(0):{
-                  B_x += X_DISPLACEMENT_AMOUNT;
-                  break;
-                }
-                case(1):{
-                  B_y = ARENA_WIDTH;
-                  break;
-                }
-                case(2):{
-                  B_x += X_DISPLACEMENT_AMOUNT;
-                  break;
-                }
-                case(3):{
-                  B_y = 0;
-                  break;
-                }
-              }
-              avoidance_counter = 0;
+            else if (differential_PWM_output < MIN_ROTATION_PWM) {
+                differential_PWM_output = MIN_ROTATION_PWM;
             }
 
+            // if you want to go left
+            if (angular_error <= 0) {
+                digitalWrite(AIN1, HIGH); digitalWrite(AIN2, LOW); //LW_CW  // ACW Rover
+                digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CW
+            } else {
+                digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CCW  // CW Rover
+                digitalWrite(BIN1, LOW); digitalWrite(BIN2, HIGH); //RW_CCW
+            }
+
+            // power the motors
+            analogWrite(PWMA, differential_PWM_output);  
+            analogWrite(PWMB, differential_PWM_output);
+
+            // update variables for next cycle
+            prevT = currT;
+            angular_error_prev = angular_error;
+        }
+
+        // Debugging Messages
+        Serial.println("Rover is turning");
+        Serial.println("target_angle: " + String(target_angle));
+        Serial.println("angular error: " + String(angular_error));
+        Serial.println("TOTAL_PATH_x: " + String(total_path_x));
+        Serial.println("TOTAL_PATH_y: " + String(total_path_y));
+    } 
+    else if (!straight_line_complete) {
+        // Straight Line Logic
+        OFS_Readings
+            (            
+            md, 
+            & total_path_x,
+            & total_path_y,
+            & current_x,
+            & current_y,
+            & current_angle
+            );
+        displacement_error = target_displacement - total_path_y;
+        angular_error = total_path_x;
+        
+        if (abs(displacement_error) <= 1) {
+            // brake when reached
+            analogWrite(PWMA, 0);  
+            analogWrite(PWMB, 0);
+
             straight_line_complete = 1;
-            current_x = B_x;
-            current_y = B_y;
-            Serial.println("Straight Complete\n");
+            differential_PWM_output = 0; 
+
+            // resetting PID variables
+            prevT = 0;
+            p_term_angle = 0;
+            i_term_angle = 0;
+            d_term_angle = 0;
+
+            // resetting total path readings
+            total_path_x = 0;
+            total_path_y = 0;
+
+            // tcp_send = "---\n";
+            // tcp_send += ("Straight Line Complete\n");
+        } else {
+            //  displacement error for debugging
+            Serial.println("displacement_error:\t" + String(displacement_error));
+
+            // deviation pid controller
+            currT = micros();
+            deltaT = ((double) (currT-prevT))/1.0e6;
+
+            p_term_angle =  (angular_error);
+            i_term_angle += (angular_error*deltaT);
+            d_term_angle =  (angular_error - angular_error_prev)/deltaT;
+            differential_PWM_output = p_term_angle * Kp_deviation + i_term_angle * Ki_deviation + d_term_angle * Kd_deviation; //0.3 is good, 0.33 decent
+
+            MotorSpeedA = STRAIGHT_PWM_L + differential_PWM_output;
+            MotorSpeedB = STRAIGHT_PWM_R - differential_PWM_output;
+
+        //  guards
+            if (MotorSpeedA < 0)    { MotorSpeedA = 0;   }
+            if (MotorSpeedA > 255)  { MotorSpeedA = 255; }
+
+            if (MotorSpeedB < 0)    { MotorSpeedB = 0;   }
+            if (MotorSpeedB > 255)  { MotorSpeedB = 255; }
+
+        //  inform the motors which way they are rotating
+            digitalWrite(AIN1, LOW); digitalWrite(AIN2, HIGH); //LW_CW  // ACW Rover
+            digitalWrite(BIN1, HIGH); digitalWrite(BIN2, LOW); //RW_CCW
+
+        //  write PWMs to the motors
+            analogWrite(PWMA, MotorSpeedA);
+            analogWrite(PWMB, MotorSpeedB);
+
+        //  update variables for next cycle
+            angular_error_prev = angular_error;
+            prevT = currT;
+
+            delay(10);
+        }
+
+    //  debug content
+        Serial.println("Rover moving in straight line:");
+        Serial.println("Angular Error: " + String(angular_error));
+        Serial.println("p_term_angle: " + String(p_term_angle));
+        Serial.println("i_term_angle: " + String(i_term_angle));
+        Serial.println("d_term_angle: " + String(d_term_angle));
+        Serial.println("Displacement Error: " + String(displacement_error));
+        Serial.println("differential_PWM_output: " + String(differential_PWM_output));
+        Serial.println("TOTAL_PATH_x: " + String(total_path_x));
+        Serial.println("TOTAL_PATH_y: " + String(total_path_y));
+        Serial.println("MotorSpeedA: " + String(MotorSpeedA));
+        Serial.println("MotorSpeedB: " + String(MotorSpeedB));
     }
-    delay(1000);
 }

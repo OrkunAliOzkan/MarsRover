@@ -34,9 +34,9 @@
 /////////////////////////////////////////////////////////////////
 
 //  Name of network
-    #define WIFI_SSID       "bet-hotspot"    
+    #define WIFI_SSID       "ooo20"    
 //  Password
-    #define WIFI_PASSWORD   "helloworld"
+    #define WIFI_PASSWORD   "naber_lan"
 /*  
   //  Name of network
   //    #define WIFI_SSID       "NOWTVII8F7"    
@@ -132,6 +132,8 @@
 /////////////////////////////////////////////////////////////////
 
 //  PID for turning
+
+  float rotation_controller_p = 0.9;
   float Kp_rotation = 4;
   float Ki_rotation = 0.02;
   float Kd_rotation = 0.2;
@@ -406,7 +408,7 @@ void updateTargets( float * B_x, float * B_y,
 //  automation parameters
 int counter = 0;
 #define ARENA_WIDTH         1050
-#define ARENA_HEIGHT        250
+#define ARENA_HEIGHT        220
 #define SIDE_SECTION_SPANS  2
 #define MID_SECTION_SPANS   2
 bool skipLoop = 0;
@@ -754,6 +756,8 @@ void loop()
 
         //  update target angle
         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+        target_angle += current_angle;
+
         
         Serial.println("counter:\t" + String(counter));
         Serial.println("x_des:\t" + String(B_x));
@@ -761,6 +765,7 @@ void loop()
         Serial.println("x_pos:\t" + String(current_x));
         Serial.println("y_pos:\t" + String(current_y));
         Serial.println("target_angle:\t" + String(target_angle));
+        Serial.println("angle_R:\t" + String(angle_R));
             
         turning_complete = 0;
         straight_line_complete = 0;
@@ -992,7 +997,7 @@ void loop()
         // Serial.println("in !turning_complete");
         // simplistic dead reckoning
         //current_angle = ((float) totalpath_x_int) / RADIUS + prev_angle;
-        if (0.9*abs(angle_R - target_angle) < 0.05) {
+        if (abs(rotation_controller_p*angle_R - target_angle) < 0.05) {
             Serial.println("in error good");
             // brake
             analogWrite(PWMA, 0); 
@@ -1000,7 +1005,7 @@ void loop()
 
             total_path_x_R = 0;
             total_path_y_R = 0;
-
+            current_angle = rotation_controller_p*angle_R;    //  Set the current angle
             turning_complete = 1;
             differential_PWM_output = 0; 
             offset_PWM_output = 0; 
@@ -1025,7 +1030,7 @@ void loop()
             
             p_term_angle = offset_error;
             i_term_angle += offset_error * deltaT;
-            d_term_angle = (offset_error - offset_error_prev)/deltaT;
+            // d_term_angle = (offset_error - offset_error_prev)/deltaT;
 
             offset_PWM_output = abs(Kp_rotation * p_term_angle + Ki_rotation * i_term_angle);
 
@@ -1065,7 +1070,7 @@ void loop()
         current_x = prev_x + totalpath_y_int * cos(current_angle);
         current_y = prev_y + totalpath_y_int * sin(current_angle);
         
-        if (abs(displacement_error) < 4) {
+        if (abs(displacement_error) <= 1) {
             // brake when reached
             analogWrite(PWMA, 0);  
             analogWrite(PWMB, 0);
