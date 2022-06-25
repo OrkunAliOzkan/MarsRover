@@ -14,6 +14,7 @@
     height: 100vh;
     background-color: black;
     transition: 1s;
+    text-align: center;
 }
 
 .logo-header{
@@ -52,6 +53,7 @@
     background-position: center;
     background-size: cover;
     position: relative;
+    filter: brightness(120%);
 }
 
 nav{
@@ -114,6 +116,7 @@ nav img{
 
 .text-box h1{
     font-size: 62px;
+    color: bisque;
 }
 
 .text-box p{
