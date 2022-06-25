@@ -1,3 +1,5 @@
+/*Arena dimensions 2337 x 3555mm*/
+
 *{
     margin: 0;
     padding: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-    background-color: #779dca;
+    background-color: black;
 }
 
 /*All header stuff*/
@@ -88,6 +90,10 @@ nav img{
 
 nav .fa{            /*Hide icons for larger devices*/
     display: none;
+}
+
+.control-panel {
+    color: white;
 }
 
 /*Fixing for smaller devices*/

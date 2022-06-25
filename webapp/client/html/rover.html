@@ -4,18 +4,22 @@
 
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Mars Rover | Command Centre</title>
+    
+    
+    <!-- Custom CSS -->
+    <link rel = "stylesheet" type = "text/css" href = "../css/subpage.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/canvas.css">
 
-    <link rel = "stylesheet" type = "text/css" href = "../css/rover.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/keyboard.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+    <!-- Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
@@ -23,80 +27,53 @@
         <nav>
             <a href="home.html"><img src="../images/team.png"></a>
             <div class="nav-link-wrapper" id="navLinks">
-
                 <i class="fa fa-times" onclick="hideMenu()"></i>              
                 <ul>
                     <li> <a href="home.html">HOME</a> </li>
                     <li> <a href="database.html">DATABASE</a> </li>
                     <li> <a href="rover.html">ROVER</a> </li>
-                    <li> <a href="https://github.com/OrkunAliOzkan/MarsRover">SPECIFICATION</a> </li>
+                    <li> <a href="https://github.com/OrkunAliOzkan/MarsRover/blob/main/doc/Second_Year_Summer_Project_Report.pdf">SPECIFICATION</a> </li>
                 </ul>            
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
     </section>
 
-    <h1>Testing</h1>
-    <div>
-        <canvas id="mapCanvas" width="600" height="600" style="background:#a06d44; display: block; margin-left: auto; margin-right: auto;">
-        </canvas>
-        <h3 id="rover_angle">Rover Angle: 0</h3>
-        <h3 id="rover_x">Rover x: 0</h3>
-        <h3 id="rover_y">Rover y: 0</h3>
-        
-    </div>
-    <div style="margin-left: auto; margin-right: auto;">
-        <button type="button" class="btn btn-primary btn-lg" id ="auto">Automatic Control</button>
-        <button type="button" class="btn btn-secondary btn-lg" id ="manual">Manual Control</button>
-        <button type="button" class="btn btn-success btn-lg" id ="start">Start</button>
-    </div>
-    <div>
-        <h3>Angle</h3>
-        <input type="text" id="angle">
-    </div>
-    <div>
-        <h3>Distance</h3>
-        <input type="text" id="distance">
-        <input type="button" value="Enter data" id="data_btn">
-    </div>
-    <div>
-        <h3>x coordinate</h3>
-        <input type="text" id="x">
-        <h3>y coordinate</h3>
-        <input type="text" id="y">
-        <input type="button" value="Enter coordinates" id="c_btn">
-    </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="rover.js"></script>
-
-    <!-- <img src="../map/map.jpg" id="theText"> -->
-    
-    <!-- <div class="keyboard">
-        <form id = "data_input">
-            <div class="keyboard_keys">
-                <button onmousedown="startUP()" onmouseup="endUP()" id="upButton" type="submit" class="keyboard_key">
-                    <i class="material-icons">arrow_circle_up</i>
-                    <p id="counterUP"></p>
-                </button>
-                <button onmousedown="startLEFT()" onmouseup="endLEFT()" id="leftButton" type="submit" class="keyboard_key">
-                    <i class="material-icons">arrow_circle_left</i>
-                    <p id="counterLEFT"></p>
-                </button>
-                <button onmousedown="startDOWN()" onmouseup="endDOWN()" id="downButton" type="submit" class="keyboard_key">
-                    <i class="material-icons">arrow_circle_down</i>
-                    <p id="counterDOWN"></p>
-                </button>
-                <button onmousedown="startRIGHT()" onmouseup="endRIGHT()" id="rightButton" type="submit" class="keyboard_key">
-                    <i class="material-icons">arrow_circle_right</i>
-                    <p id="counterRIGHT"></p>
-                </button>
+    <div class="row">
+        <div class="col left">
+            <div class="control-panel">
+                <h3>Rover</h3>
+                <h5 id="rover_angle">Angle: 0</h3>
+                <h5 id="rover_x">x: 0</h3>
+                <h5 id="rover_y">y: 0</h3>
             </div>
-        </form>
+        </div>
+        <div class="col mid">
+            <canvas id="mapCanvas" width="600"></canvas>
+        </div>
+        <div class="col right">
+            <div class="control-panel">
+                <h3>Angle</h3>
+                <input type="text" id="angle">
+                <h3>x coordinate</h3>
+                <input type="text" id="x">
+                <h3>y coordinate</h3>
+                <input type="text" id="y">
+            </div>
+            <div style="margin-left: auto; margin-right: auto;">
+                <button type="button" class="btn btn-primary btn-lg" id ="auto">Automatic Control</button>
+                <button type="button" class="btn btn-secondary btn-lg" id ="manual">Manual Control</button>
+                <button type="button" class="btn btn-success btn-lg" id ="start">Start</button>
+            </div>
+        </div>
     </div>
-    
-    <script src="../js/holdButton.js"></script>
-    <script src="../js/updateImage.js"></script> -->
+
+    <!-- importing socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- importing socket.io -->
+    <script src="rover.js"></script>
 </body>
 
 </html>
