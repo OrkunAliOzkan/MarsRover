@@ -37,8 +37,8 @@ module EEE_IMGPROC(
 //
 parameter IMAGE_W = 11'd640;
 parameter IMAGE_H = 11'd480;
-parameter MESSAGE_BUF_MAX = 1024;
-parameter MSG_INTERVAL = 32;
+parameter MESSAGE_BUF_MAX = 2048;
+parameter MSG_INTERVAL = 64;
 parameter BB_COL_DEFAULT = 24'h4CFF00;
 parameter edge_row = 11'd215; //only row to be analysed for edges
 
