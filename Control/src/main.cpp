@@ -4,8 +4,8 @@
 #include <WiFi.h>
 #include <vector>
 
-#define RADIUS 132
-/////////////////////////////////////////////////////////////////
+// #define RADIUS 132
+// /////////////////////////////////////////////////////////////////
 
 //  Optical flow sensor parameters
 //slave select/chip select (ESP32 pin number)
@@ -32,7 +32,7 @@
 //read and write
   #define ADNS3080_FRAME_CAPTURE  0x13 
 
-/////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////
 
 // Motor Controller Pin mappings
   #define PWMA 17
@@ -42,7 +42,7 @@
   #define BIN1 4
   #define BIN2 15
 
-/////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////
 
 //  Name of network
     #define WIFI_SSID       "ooo20"    
@@ -67,7 +67,7 @@
   //  #define WIFI_PASSWORD   "gxqxs3c3fs" 
 */
 
-/////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////
 
 //  OFS Functions and Variables
 struct MD
@@ -515,9 +515,9 @@ void loop()
         }
         */
             
-        turning_complete = 0;
-        straight_line_complete = 0;
-    }
+//         turning_complete = 0;
+//         straight_line_complete = 0;
+//     }
 
     if (!turning_complete) {
         angular_error = (current_angle - target_angle);
@@ -528,8 +528,8 @@ void loop()
             analogWrite(PWMA, 0); 
             analogWrite(PWMB, 0);
 
-            turning_complete = 1;
-            differential_PWM_output = 0; 
+//             turning_complete = 1;
+//             differential_PWM_output = 0; 
             
             prevT = 0;
             
@@ -623,20 +623,20 @@ void loop()
 
         displacement_error = target_displacement - total_path_y;
         
-        if (abs(displacement_error) <= 1) {
-            // brake when reached
-            analogWrite(PWMA, 0);  
-            analogWrite(PWMB, 0);
+//         if (abs(displacement_error) <= 1) {
+//             // brake when reached
+//             analogWrite(PWMA, 0);  
+//             analogWrite(PWMB, 0);
 
-            straight_line_complete = 1;
-            differential_PWM_output = 0; 
+//             straight_line_complete = 1;
+//             differential_PWM_output = 0; 
 
             // resetting PID variables
             prevT = 0;
 
-            // resetting total path readings
-            total_path_x = 0;
-            total_path_y = 0;
+//             // resetting total path readings
+//             total_path_x = 0;
+//             total_path_y = 0;
 
             //  adjusting the position SIMULATION ONLY
             current_x = B_x;
