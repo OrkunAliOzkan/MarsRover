@@ -315,7 +315,7 @@ void updateTargets(double * B_x, double * B_y, double * current_x, double * curr
 
 /////////////////////////////////////////////////////////////////
 //  automation parameters
-  int counter = 0;
+  int counter = -1;
   #define ARENA_WIDTH           1050
   #define ARENA_HEIGHT          250
   #define X_DISPLACEMENT_AMOUNT 300 //  TODO: Play with coefficients
@@ -355,9 +355,9 @@ int automation(int * state, double * destination_x, double * destination_y, doub
           break;
       }        
     }
-    (*state)++;
-    (*state) %= 4;
     Serial.println("counter:\t" + String(*state));
+    // (*state)++;
+    // (*state) %= 4;
     return 1;
 }
 
@@ -462,7 +462,7 @@ void setup()
 
     // if (mode_ == "A") {
     //   // update position to travel to
-    //   // automation(state, &B_x, &B_y, current_x, current_y);
+      // automation(state, &B_x, &B_y, current_x, current_y);
     // }
 
     // update target angle
@@ -500,6 +500,7 @@ void loop()
     if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
         Serial.println("////////////////////AUTO////////////////////");
         // get next waypoint
+        counter = (counter = -1) ? (0) : (counter + 1);
         automation(&counter, &B_x, &B_y, current_x, current_y);
         // update target angle
         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
