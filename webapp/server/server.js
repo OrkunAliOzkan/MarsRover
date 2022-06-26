@@ -26,75 +26,7 @@ server.on('error', (err) => {
 });
 
 server.listen(http_port,'0.0.0.0', () => {
-    print('Server is running on port 3000', 0)
-});
-
-//--------Initialising Socket.io (client-side communication)--------//
-const socketio = require('socket.io');
-const io = socketio(server); 
-
-// var socketio_list = [];
-
-io.on('connection', (sock) => {
-    print("Client connected", 0);
-    // socketio_list.push(sock);
-    sock.on('waypoint', ({ x, y }) => {
-        print(`waypoint placed at x: ${x}, y: ${600 - y}`, 0);
-
-        // map canvas coordinates to arena coordinates
-        const mars_x = Math.floor(x + 100);
-        const mars_y = Math.floor(600 - y + 100);
-        const waypoint_data = `${mars_x},${mars_y},M`;
-
-        // send the waypoint data to the rover over TCP
-        if (rover_connected) {
-            rover_socket.write(waypoint_data);
-            console.log(`Waypoint sent`);
-        } else {
-            console.log(`Can't send waypoint, rover is not connected`);
-        }
-
-        // send ack to webpage to render
-        const packet_json = {
-            "time": 1002,
-            "type": "waypoint",
-            "data": {
-                "posX": x,
-                "posY": y, 
-            }
-        }
-        io.emit('update', packet_json);
-    });
-
-    sock.on('auto', (data) => {
-        print(`Rover set to Automatic Mode`, 0);
-        const tcp_send = `0,0,A`;
-        // send the waypoint data to the rover over TCP
-        if (rover_connected) {
-            rover_socket.write(tcp_send);
-            console.log(`Command sent`);
-        } else {
-            console.log(`Can't send, rover is not connected`);
-        }
-    });
-
-    sock.on('start_mission', (msg) => {
-        print(`Mission Start`, 0);
-    });
-
-    sock.on('test', ({ x, y }) => {
-        print(`test point set at x: ${x}, y: ${y}`, 0);
-        const time_string = (new Date()).toISOString();
-        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
-        const waypoint_data = `${x + 100},${y + 100},M`;
-        // send the waypoint data to the rover over TCP
-        if (rover_connected) {
-            rover_socket.write(waypoint_data);
-        } else {
-            console.log(`Can't send waypoint, rover is not connected`);
-        }
-    });
-    
+    print(`Server is running on port ${http_port}`, 0)
 });
 
 //--------Initialising TCP server for Rover--------//
@@ -152,6 +84,90 @@ rover_server.on('connection', (socket) => {
     });      
 });
 
+// //--------Clock--------//
+// var counter = 0;
+// const interval = setInterval(() => {
+//     console.log(counter);
+//     counter++;
+// }, 400);
+
+//--------Initialising Socket.io (client-side communication)--------//
+const socketio = require('socket.io');
+const io = socketio(server); 
+
+// var socketio_list = [];
+
+const canvas_height = 600;
+const canvas_width = 913;
+
+function map_to_arena(_x, _y) {
+    return {mars_x: _x, mars_y: canvas_height - _y};
+}
+
+io.on('connection', (sock) => {
+    print("Client connected", 0);
+    // socketio_list.push(sock);
+    sock.on('waypoint', ({ x, y }) => {
+        const {mars_x, mars_y} = map_to_arena(x, y); 
+        print(`waypoint placed at x: ${mars_x}, y: ${mars_y}`, 0);
+
+        // // map canvas coordinates to arena coordinates
+        // const mars_x = Math.floor(x + 100);
+        // const mars_y = Math.floor(y + 100);
+        const waypoint_data = `${mars_x},${mars_y},M`;
+
+        // send the waypoint data to the rover over TCP
+        if (rover_connected) {
+            rover_socket.write(waypoint_data);
+            console.log(`Waypoint sent`);
+        } else {
+            console.log(`Can't send waypoint, rover is not connected`);
+        }
+
+        // send ack to webpage to render
+        const packet_json = {
+            "time": 1002,
+            "type": "waypoint",
+            "data": {
+                "posX": x,
+                "posY": y, 
+            }
+        }
+        io.emit('update', packet_json);
+    });
+
+    sock.on('auto', (data) => {
+        print(`Rover set to Automatic Mode`, 0);
+        const tcp_send = `0,0,A`;
+        // send the waypoint data to the rover over TCP
+        if (rover_connected) {
+            rover_socket.write(tcp_send);
+            console.log(`Command sent`);
+        } else {
+            console.log(`Can't send, rover is not connected`);
+        }
+    });
+
+    sock.on('start_mission', (msg) => {
+        print(`Mission Start`, 0);
+    });
+
+    sock.on('test', ({ x, y }) => {
+        print(`test point set at x: ${x}, y: ${y}`, 0);
+        const time_string = (new Date()).toISOString();
+        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
+        const waypoint_data = `${x + 100},${y + 100},M`;
+        // send the waypoint data to the rover over TCP
+        if (rover_connected) {
+            rover_socket.write(waypoint_data);
+        } else {
+            console.log(`Can't send waypoint, rover is not connected`);
+        }
+    });
+    
+});
+
+
 // shutdown server gracefully
 const shutdown = async () => {
     console.log('Closing HTTP server');
@@ -170,7 +186,6 @@ process.on('SIGTERM', () => {
     console.log('SIGTERM signal received');
     shutdown();
 });
-
 
 // var state = {
 //     "rover": {

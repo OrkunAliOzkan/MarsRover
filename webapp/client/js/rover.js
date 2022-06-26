@@ -1,5 +1,28 @@
-canvas = document.getElementById('mapCanvas');
-ctx = canvas.getContext("2d");
+"use strict";
+
+var key_states = {
+    "w": false,
+    "a": false,
+    "s": false,
+    "d": false
+}
+
+const keyHandler = e => {
+    console.log(e.key);
+    document.removeEventListener(document, keyHandler)
+}
+
+document.addEventListener('keydown', keyHandler);
+
+document.addEventListener('keyup', event => {
+    document.addEventListener('keydown', event => {
+        console.log(e.key);
+    }, {once: true});
+});
+
+
+const canvas = document.getElementById('mapCanvas');
+const ctx = canvas.getContext("2d");
 
 const canvas_height = 600;
 const canvas_width = 913;
@@ -70,8 +93,8 @@ const _alien = {
     }
 }
 
-rover_width = 50;
-rover_height = 40;
+const rover_width = 50;
+const rover_height = 40;
 
 var rover = new Image(rover_width, rover_height);
 var flag = new Image();
@@ -89,7 +112,6 @@ rover.onload = () => {
 function arena_to_map(_x, _y) {
     return {x: _x, y: canvas_height - _y};
 }
-
 
 function drawPointer(x, y) {
     ctx.beginPath();
@@ -194,6 +216,7 @@ function updateState(state, packet) {
     } else if (packet.type == "alien") {
         state.alien[packet.colour] = packet.data;
     } else if (packet.type == "building") {
+        state.building.push(packet.data);
     } else if (packet.type == "waypoint") {
         state.waypoint = packet.data;
     }
@@ -246,8 +269,8 @@ function genPacketsSmall() {
     const sock = io();
 
     const onClick = (e) => {
-        console.log("onClick");
         const { x, y } = getClickCoordinates(canvas, e);
+        console.log(x, y);
         sock.emit('waypoint', { x, y });
     };
     canvas.addEventListener('click', onClick)
@@ -262,42 +285,42 @@ function genPacketsSmall() {
         console.log("waypoint");
     });
 
-    const start_btn = document.getElementById("start");
-    start_btn.addEventListener('click', (event) => {
-        console.log("Start Mission");
-        sock.emit('start_mission', "");
-    })
+    // const start_btn = document.getElementById("start");
+    // start_btn.addEventListener('click', (event) => {
+    //     console.log("Start Mission");
+    //     sock.emit('start_mission', "");
+    // })
 
-    const auto_btn = document.getElementById("auto");
-    auto_btn.addEventListener('click', (event) => {
-        console.log("Auto Mode");
-        sock.emit('auto', "");
-    })
+    // const auto_btn = document.getElementById("auto");
+    // auto_btn.addEventListener('click', (event) => {
+    //     console.log("Auto Mode");
+    //     sock.emit('auto', "");
+    // })
 
-    const data_btn = document.getElementById("data_btn");
-    data_btn.addEventListener('click', (event) => {
-        const angle = Math.floor(document.getElementById("angle").value) / 180 * Math.PI;
-        const distance = Math.floor(document.getElementById("distance").value);
-        const x = distance * Math.cos(angle);
-        const y = distance * Math.sin(angle);
-        console.log(`x: ${x}, y: ${y}`);
-        sock.emit('test', {x, y});
-    })
+    // const data_btn = document.getElementById("data_btn");
+    // data_btn.addEventListener('click', (event) => {
+    //     const angle = Math.floor(document.getElementById("angle").value) / 180 * Math.PI;
+    //     const distance = Math.floor(document.getElementById("distance").value);
+    //     const x = distance * Math.cos(angle);
+    //     const y = distance * Math.sin(angle);
+    //     console.log(`x: ${x}, y: ${y}`);
+    //     sock.emit('test', {x, y});
+    // })
 
-    const c_btn = document.getElementById("c_btn");
-    c_btn.addEventListener('click', (event) => {
-        const x = Math.floor(document.getElementById("x").value);
-        const y = Math.floor(document.getElementById("y").value);
-        console.log(`x: ${x}, y: ${y}`);
-        sock.emit('test', {x, y});
-    })
+    // const c_btn = document.getElementById("c_btn");
+    // c_btn.addEventListener('click', (event) => {
+    //     const x = Math.floor(document.getElementById("x").value);
+    //     const y = Math.floor(document.getElementById("y").value);
+    //     console.log(`x: ${x}, y: ${y}`);
+    //     sock.emit('test', {x, y});
+    // })
 
-    const replay_btn = document.getElementById("replay");
-    replay_btn.addEventListener('click', (event) => {
-        const replay_text = document.getElementById("title");
-        replay_text.innerHTML = "Testing - Replay begin";
-        console.log("Replay begin");
-    })
+    // const replay_btn = document.getElementById("replay");
+    // replay_btn.addEventListener('click', (event) => {
+    //     const replay_text = document.getElementById("title");
+    //     replay_text.innerHTML = "Testing - Replay begin";
+    //     console.log("Replay begin");
+    // })
 
     // updateState(state, _alien);
 
@@ -321,4 +344,29 @@ function genPacketsSmall() {
     //     }
     // }, 50);
 })();
+
+function openCity(evt, cityName) {
+    console.log(cityName);
+    // Declare all variables
+    var i, tabcontent, tablinks, tabmap;
+  
+    // // Get all elements with class="tabcontent" and hide them
+    // tabcontent = document.getElementsByClassName("tabcontent");
+    // tabmap = document.getElementsByClassName("tabmap");
+    // for (i = 0; i < tabcontent.length; i++) {
+    //   tabcontent[i].style.display = "none";
+    //   tabmap[i].style.display = "none";
+    // }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    // document.getElementById(cityName + "Map").style.display = "block";
+    evt.currentTarget.className += " active";
+  }
 

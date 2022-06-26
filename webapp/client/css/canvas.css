@@ -1,11 +1,10 @@
 /*Arena dimensions 2337 x 3555mm*/
 
 #mapCanvas{
-    width: 913px;
-    height: 600px;
     background-color: #a06d44;
     display: block;
     margin: auto;
+    background-image: url("../images/mars_bg.jpeg");
     /* margin-left: auto;
     margin-right: auto; */
 }
