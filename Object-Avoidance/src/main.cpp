@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <WiFiClientSecure.h>
 #include <SPI.h>
 #include <Wire.h>
 #include <WiFi.h>
@@ -8,39 +9,39 @@
 
 //  Optical flow sensor parameters
 //slave select/chip select (ESP32 pin number)
-  #define PIN_SS                  5 
+#define PIN_SS                  5 
 //output data from mouse sensor (ESP32 pin number)
-  #define PIN_MISO                19 
+#define PIN_MISO                19 
 //input data to mouse sensor (ESP32 pin number)
-  #define PIN_MOSI                23 
+#define PIN_MOSI                23 
 //synchronous clock (ESP32 pin number)
-  #define PIN_SCK                 18 
+#define PIN_SCK                 18 
 //reset (ESP32 pin number)
-  #define PIN_MOUSECAM_RESET      32 ////changed from 35! 
+#define PIN_MOUSECAM_RESET      32 ////changed from 35! 
 //chip select (ESP32 pin number again)
-  #define PIN_MOUSECAM_CS         5 
+#define PIN_MOUSECAM_CS         5 
 #define ADNS3080_PIXEL_SUM      0x06
 //constant for x-axis pixel count 
-  #define ADNS3080_PIXELS_X       30 
+#define ADNS3080_PIXELS_X       30 
 //constant for y-axis pixel count 
-  #define ADNS3080_PIXELS_Y       30 
+#define ADNS3080_PIXELS_Y       30 
 //  Quick access registers that store pixel data
-  #define ADNS3080_PIXEL_BURST    0x40 
+#define ADNS3080_PIXEL_BURST    0x40 
 //  Quick access registers that store motion data
-  #define ADNS3080_MOTION_BURST   0x50
+#define ADNS3080_MOTION_BURST   0x50
 //read and write
-  #define ADNS3080_FRAME_CAPTURE  0x13 
+#define ADNS3080_FRAME_CAPTURE  0x13 
 
 // /////////////////////////////////////////////////////////////////
 
 // Motor Controller Pin mappings
-  #define PWMA 17
-  #define PWMB 2
-  #define AIN1 14
-  #define AIN2 16
-  #define BIN1 4
-  #define BIN2 15
-  #define RADIUS 132
+#define PWMA 17
+#define PWMB 2
+#define AIN1 14
+#define AIN2 16
+#define BIN1 4
+#define BIN2 15
+#define RADIUS 132
 
 /////////////////////////////////////////////////////////////////
 
@@ -49,44 +50,44 @@
 //  Password
     #define WIFI_PASSWORD   "naber_lan"
 /*  
-  //  Name of network
-  //    #define WIFI_SSID       "NOWTVII8F7"    
-  //  Password
-  //    #define WIFI_PASSWORD   "smuqjz6jYsNW"     
-  //  Name of network
-  //      #define WIFI_SSID       "SIVA_LAPTOP"    
-  //  Password
-  //      #define WIFI_PASSWORD   "sivashanth"
-  //  Name of network
-  //    #define WIFI_SSID       "Orkun's Laptop"    
-  //  Password
-  //    #define WIFI_PASSWORD   "484f17Ya"
-  //  Name of network
-  //    #define WIFI_SSID       "CommunityFibre10Gb_003D7"    
-  //  Password
-  //  #define WIFI_PASSWORD   "gxqxs3c3fs" 
+//  Name of network
+//    #define WIFI_SSID       "NOWTVII8F7"    
+//  Password
+//    #define WIFI_PASSWORD   "smuqjz6jYsNW"     
+//  Name of network
+//      #define WIFI_SSID       "SIVA_LAPTOP"    
+//  Password
+//      #define WIFI_PASSWORD   "sivashanth"
+//  Name of network
+//    #define WIFI_SSID       "Orkun's Laptop"    
+//  Password
+//    #define WIFI_PASSWORD   "484f17Ya"
+//  Name of network
+//    #define WIFI_SSID       "CommunityFibre10Gb_003D7"    
+//  Password
+//  #define WIFI_PASSWORD   "gxqxs3c3fs" 
 */
 
 /////////////////////////////////////////////////////////////////
 
 //  OFS Functions and Variables
 struct MD
-  {
-      byte motion;
-      char dx, dy;
-      byte squal;
-      word shutter;
-      byte max_pix;
-  };
-  
-  MD md;
+{
+    byte motion;
+    char dx, dy;
+    byte squal;
+    word shutter;
+    byte max_pix;
+};
+
+MD md;
 
 int convTwosComp(int b)
 {
     //Convert from 2's complement
     if(b & 0x80)
     {
-      b = -1 * ((b ^ 0xff) + 1);
+    b = -1 * ((b ^ 0xff) + 1);
     }
     return b;
 }
@@ -146,7 +147,7 @@ void OFS_Readings
             double * angle
             )
 {
-  //  Optical sensor readings
+//  Optical sensor readings
     mousecam_read_motion(&md);
 
     double dx = convTwosComp(md.dx) / 4.95;
@@ -181,14 +182,14 @@ const uint16_t port = 8080;
 const char * host = "146.169.171.197"; // ip or dns
 
 // WiFi timeout variables (reliability)
-  long wifi_last_connect_attempt = 0;
-  long wifi_connect_timeout = 3000;
+long wifi_last_connect_attempt = 0;
+long wifi_connect_timeout = 3000;
 // tcp timeout variables (reliability)
-  long tcp_last_connect_attempt = 0;
-  long tcp_connect_timeout = 3000;
-  
-  long last_TCP_send = 0;
-  long TCP_post_period = 50;
+long tcp_last_connect_attempt = 0;
+long tcp_connect_timeout = 3000;
+
+long last_TCP_send = 0;
+long TCP_post_period = 50;
 
 /////////////////////////////////////////////////////////////////
 
@@ -200,79 +201,79 @@ String tcp_send = "";
 
 int tcp_parse(String tcp_data, double * B_x, double * B_y, String * mode_)
 {
-  String tmp = tcp_data;
-  /*
-  data = "x,y,mode"
-  */
-  *B_x = (tcp_data.substring(0, tcp_data.indexOf(","))).toDouble();
-  tmp = tcp_data.substring(tcp_data.indexOf(",") + 1);
-  *B_y = (tmp.substring(0, tmp.indexOf(","))).toDouble();
-  *mode_ = tmp.substring(tmp.indexOf(",") + 1);
+String tmp = tcp_data;
+/*
+data = "x,y,mode"
+*/
+*B_x = (tcp_data.substring(0, tcp_data.indexOf(","))).toDouble();
+tmp = tcp_data.substring(tcp_data.indexOf(",") + 1);
+*B_y = (tmp.substring(0, tmp.indexOf(","))).toDouble();
+*mode_ = tmp.substring(tmp.indexOf(",") + 1);
 
-  return 1;
+return 1;
 }
 
 /////////////////////////////////////////////////////////////////
 
 //  Control Loop
-  long currT = 0;
-  long prevT = 0;
-  double deltaT = 0;
+long currT = 0;
+long prevT = 0;
+double deltaT = 0;
 
 /////////////////////////////////////////////////////////////////
 
 // Drive parameters
-  #define MIN_ROTATION_PWM 90 
-  #define MAX_ROTATION_PWM 220
+#define MIN_ROTATION_PWM 90 
+#define MAX_ROTATION_PWM 220
 
-  #define STRAIGHT_PWM_L 128
-  #define STRAIGHT_PWM_R 154
+#define STRAIGHT_PWM_L 128
+#define STRAIGHT_PWM_R 154
 
-  int MotorSpeedA = 0; //  Final input to motors
-  int MotorSpeedB = 0; //  Final input to motors
+int MotorSpeedA = 0; //  Final input to motors
+int MotorSpeedB = 0; //  Final input to motors
 
 /////////////////////////////////////////////////////////////////
 
 //  Angle Control: rotation
-  double angular_error = 0;
-  double angular_error_prev = 0;
-  double target_angle = 0;
+double angular_error = 0;
+double angular_error_prev = 0;
+double target_angle = 0;
 
-  double p_term_angle;
-  double i_term_angle;
-  double d_term_angle;
+double p_term_angle;
+double i_term_angle;
+double d_term_angle;
 
-  double Kp_rotation = 4;
-  double Ki_rotation = 0.02;
-  double Kd_rotation = 0.2;
+double Kp_rotation = 4;
+double Ki_rotation = 0.02;
+double Kd_rotation = 0.2;
 
 //  Angle Control: rotation deviation
-  double rotation_deviation_error = 0;
-  double p_term_rot_deviation;
+double rotation_deviation_error = 0;
+double p_term_rot_deviation;
 
-  double Kp_rot_deviation = 4;
+double Kp_rot_deviation = 4;
 
 /////////////////////////////////////////////////////////////////
 
 // Destination coordinates
-  double B_x = 0;
-  double B_y = 0;
+double B_x = 0;
+double B_y = 0;
 
 // Current position and angle
-  double current_x = 0;
-  double current_y = 0;
-  double current_angle = 0;
+double current_x = 0;
+double current_y = 0;
+double current_angle = 0;
 
 /////////////////////////////////////////////////////////////////
 
 // PID for deviation (during straight line motion)
-  // double Kp_deviation = 0.9;
-  // double Ki_deviation = -0.1;
-  // double Kd_deviation = 1.5;
+// double Kp_deviation = 0.9;
+// double Ki_deviation = -0.1;
+// double Kd_deviation = 1.5;
 
-  double Kp_deviation = 0.21;
-  double Ki_deviation = 0.0002;
-  double Kd_deviation = 0.005;
+double Kp_deviation = 0.21;
+double Ki_deviation = 0.0002;
+double Kd_deviation = 0.005;
 
 /////////////////////////////////////////////////////////////////
 
@@ -281,11 +282,11 @@ int tcp_parse(String tcp_data, double * B_x, double * B_y, String * mode_)
 //   double Ki_displacement = 0;
 //   double Kd_displacement = 0.05;
 
-  int displacement_error = 0;
-  
-  //  PWM output
-  int differential_PWM_output = 0;
-  int target_displacement = 0;
+int displacement_error = 0;
+
+//  PWM output
+int differential_PWM_output = 0;
+int target_displacement = 0;
 
 /////////////////////////////////////////////////////////////////
 void updateTargets(double * B_x, double * B_y, double * current_x, double * current_y, double * current_angle, int * target_displacement, double * target_angle){
@@ -295,7 +296,7 @@ void updateTargets(double * B_x, double * B_y, double * current_x, double * curr
 
     *target_angle = atan2( dy, dx);
     //  converts from angle to angle
-      
+    
     if((*target_angle) > PI){
         *target_angle -= 2 * PI;
     }
@@ -303,7 +304,7 @@ void updateTargets(double * B_x, double * B_y, double * current_x, double * curr
         *target_angle += 2 * PI;
     }
 
-   // update target displacement
+// update target displacement
     *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
 //    Serial.println("Target Displacement: " + String(*target_displacement));
 //    Serial.println("Final Angle: " + String(atan2( dy, dx )));
@@ -315,45 +316,45 @@ void updateTargets(double * B_x, double * B_y, double * current_x, double * curr
 
 /////////////////////////////////////////////////////////////////
 //  automation parameters
-  int counter = 0;
-  #define ARENA_WIDTH           1050
-  #define ARENA_HEIGHT          250
-  #define X_DISPLACEMENT_AMOUNT 300 //  TODO: Play with coefficients
-  #define WIDTH_ERROR           200 //  TODO: Play with coefficients
-  #define DISPLACEMENT_ERROR    150 //  TODO: Play with coefficients
-  #define HEIGHT_ERROR          200 //  TODO: Play with coefficients
-  #define Y_DISPLACEMENT_AMOUNT 300 //  TODO: Play with coefficients
-  int state = 0;  
-  int avoidance_counter = 0;        //  Is to determine the emergancy counter
+int counter = 0;
+#define ARENA_WIDTH           1050
+#define ARENA_HEIGHT          250
+#define X_DISPLACEMENT_AMOUNT 300 //  TODO: Play with coefficients
+#define WIDTH_ERROR           200 //  TODO: Play with coefficients
+#define DISPLACEMENT_ERROR    150 //  TODO: Play with coefficients
+#define HEIGHT_ERROR          200 //  TODO: Play with coefficients
+#define Y_DISPLACEMENT_AMOUNT 300 //  TODO: Play with coefficients
+int state = 0;  
+int avoidance_counter = 0;        //  Is to determine the emergancy counter
 
 //some function that creates an array
 int automation(int * state, double * destination_x, double * destination_y, double current_x, double current_y)
 {
     switch(*state){
-      case(0):{
-          //  x
-          *destination_x = current_x + X_DISPLACEMENT_AMOUNT;
-          break;
-      }
-      case(1):{
-          //  y
-          *destination_y = current_y + (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
-          break;
-      }
-      case(2):{
-          //  x
-          *destination_x = current_x + X_DISPLACEMENT_AMOUNT;
-          break;
-      }
-      case(3):{
-          //  y
-          *destination_y = current_y - (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
-          break;
-      }
-      default:{
-          Serial.println("Shouldn't be here.");
-          break;
-      }        
+    case(0):{
+        //  x
+        *destination_x = current_x + X_DISPLACEMENT_AMOUNT;
+        break;
+    }
+    case(1):{
+        //  y
+        *destination_y = current_y + (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
+        break;
+    }
+    case(2):{
+        //  x
+        *destination_x = current_x + X_DISPLACEMENT_AMOUNT;
+        break;
+    }
+    case(3):{
+        //  y
+        *destination_y = current_y - (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
+        break;
+    }
+    default:{
+        Serial.println("Shouldn't be here.");
+        break;
+    }        
     }
     (*state)++;
     (*state) %= 4;
@@ -367,17 +368,17 @@ int automation(int * state, double * destination_x, double * destination_y, doub
 
 //  camera readings
 bool camera_readings(int *camera_readings_type, double *camera_readings_displacemet, double *camera_readings_angle, double current_x, double current_y) {
-  //  TEMPORARY OBJECT TO TEST AVOIDANCE
+//  TEMPORARY OBJECT TO TEST AVOIDANCE
     double avoidance_x = 75;
     double avoidance_y = 100;
 
-  *camera_readings_type = 7;
+*camera_readings_type = 7;
 
-  //  object is at (100, 100)
-  *camera_readings_displacemet = sqrt(pow(avoidance_x - current_x, 2) + pow(avoidance_y - current_y, 2));
-  *camera_readings_angle = atan2(avoidance_y - current_y, avoidance_x - current_x);
-  // return (*camera_readings_displacemet < 800);
-  return 0;
+//  object is at (100, 100)
+*camera_readings_displacemet = sqrt(pow(avoidance_x - current_x, 2) + pow(avoidance_y - current_y, 2));
+*camera_readings_angle = atan2(avoidance_y - current_y, avoidance_x - current_x);
+return (*camera_readings_displacemet < 600);
+// return 0;
 }
 
 //  radius of an A2 base at its widest
@@ -399,8 +400,8 @@ double  camera_readings_angle = 0;
 /////////////////////////////////////////////////////////////////
 
 //  state mashine parameters for the drive process (stop turn go)
-  int turning_complete = 1;
-  int straight_line_complete = 1;
+int turning_complete = 1;
+int straight_line_complete = 1;
 
 long lastCycle = 0;
 
@@ -487,15 +488,15 @@ void setup()
 
 void loop()
 {
-  // Serial.println("Made it here");
+// Serial.println("Made it here");
     // if in auto mode and ready to travel to next waypoint
     if(current_x > 1000)  //  Motion complete TODO: Improve
     {
-      mode_ = "";
-      turning_complete = 1;
-      straight_line_complete = 1;
-      Serial.println("reached end");
-      
+    mode_ = "";
+    turning_complete = 1;
+    straight_line_complete = 1;
+    Serial.println("reached end");
+    
     }
     if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
         Serial.println("////////////////////AUTO////////////////////");
@@ -514,143 +515,188 @@ void loop()
         turning_complete = 0;
         straight_line_complete = 0;
     }
+    else if((mode_ == "AVOID") && (turning_complete) && (straight_line_complete)){
+        turning_complete = 0;
+        straight_line_complete = 0;
 
-    if (!turning_complete) {
-      Serial.println("Turning");
-      angular_error = (target_angle - current_angle);
-      // rotation_deviation_error = total_path_y;
+        if(avoidance_counter == 0){
+            Serial.println("avoidance counter at 0");
+            switch(state){
+                case(0):{
+                    Serial.println("We are in 0");
+                B_y = (B_y - current_y > HEIGHT_ERROR) ? 
+                        (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT)) 
+                        : 
+                        (current_y + Y_DISPLACEMENT_AMOUNT);  
+                break;
+                }
+                case(1):{
+                    Serial.println("We are in 1");
+                B_x = (B_x - current_x > WIDTH_ERROR) ? 
+                        (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
+                        : 
+                        (current_x + X_DISPLACEMENT_AMOUNT);                  
+                break;
+                }
+                case(2):{
+                    Serial.println("We are in 2");
+                B_y = (current_y - B_y > HEIGHT_ERROR) ? 
+                        (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
+                        : 
+                        (current_y + Y_DISPLACEMENT_AMOUNT);  
+                break; 
+                }
+                case(3):{
+                    Serial.println("We are in 3");
+                B_x = (B_x - current_x > WIDTH_ERROR) ? 
+                        (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
+                        : 
+                        (current_x - X_DISPLACEMENT_AMOUNT);
+                break; 
+                }
+            }
+            //  stop motors <---- TODO: Add this
+            //  restart motion
+            // turning_complete = 1;
+            // straight_line_complete = 1;
 
-      if (abs(angular_error) < 0.018) {
-          // brake
-
-          turning_complete = 1;
-          differential_PWM_output = 0; 
-          
-          prevT = 0;
-          current_angle = target_angle;
-          
-          // resetting OFS readings
-          total_path_x = 0;
-          total_path_y = 0;
-          Serial.println("Rover has turned. Rotated by:\t" + String(target_angle));
-          Serial.println("straight_line_complete:\t" + String(straight_line_complete));
-          Serial.println("------------");
-      } else {
-          Serial.println("Still turning");
-          Serial.println("angular_error:\t" + String(angular_error));
-          Serial.println("current_angle:\t" + String(current_angle));
-          Serial.println("target_angle:\t" + String(target_angle));
-          // turning not complete
-          currT = micros();
-          deltaT = ((double) (currT-prevT))/1.0e6;
-          
-          current_angle += (angular_error > 0) ? (0.01) : (-0.01);
-      }
-      delay(5);
-    } 
-    else if (!straight_line_complete) {
-      Serial.println("Going straight");
-            //  If there is an object inbound, needed to be avoided. TEMPORARY, KNOW IT NEEDS TO BE CHANGED
-      if(camera_readings( &camera_readings_type, &camera_readings_displacemet, &camera_readings_angle, 
-                          current_x, current_y)){  
-        Serial.println("Obstacle avoidance");
-        if( (avoidance_counter == 0) && 
-            (camera_readings_displacemet *cos(camera_readings_angle) < WIDTH_ERROR) && 
-            (camera_readings_displacemet *cos(camera_readings_angle) < DISPLACEMENT_ERROR)
-          )
-        {
-          Serial.println("avoidance counter at 0");
-          switch(state){
-            case(0):{
-              B_y = (B_y - current_y > HEIGHT_ERROR) ? 
-                      (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT)) 
-                      : 
-                      (current_y + Y_DISPLACEMENT_AMOUNT);  
-              break;
-            }
-            case(1):{
-              B_x = (B_x - current_x > WIDTH_ERROR) ? 
-                      (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
-                      : 
-                      (current_x + X_DISPLACEMENT_AMOUNT);                  
-              break;
-            }
-            case(2):{
-              B_y = (current_y - B_y > HEIGHT_ERROR) ? 
-                      (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
-                      : 
-                      (current_y + Y_DISPLACEMENT_AMOUNT);  
-              break; 
-            }
-            case(3):{
-              B_x = (B_x - current_x > WIDTH_ERROR) ? 
-                      (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
-                      : 
-                      (current_x - X_DISPLACEMENT_AMOUNT);
-              break; 
-            }
-          }
-          //  stop motors <---- TODO: Add this
-          //  restart motion
-          turning_complete = 1;
-          straight_line_complete = 1;
-          //  set to a value 
-          avoidance_counter = 1;
+            //  set to a value 
+            Serial.println("wagwan 0");
+            Serial.println("B_x:\t" + String(B_x));
+            Serial.println("B_y:\t" + String(B_y));
         }
-          else if(avoidance_counter == 1){
+        else if(avoidance_counter == 1){
             Serial.println("avoidance counter at 1");
             switch(state){
-              case(0):{
-                B_x += X_DISPLACEMENT_AMOUNT;
-                break;
-              }
-              case(1):{
-                B_y = ARENA_WIDTH;
-                break;
-              }
-              case(2):{
-                B_x += X_DISPLACEMENT_AMOUNT;
-                break;
-              }
-              case(3):{
-                B_y = 0;
-                break;
-              }
+                case(0):{
+                    Serial.println("We are in 0");
+                    B_x += X_DISPLACEMENT_AMOUNT;
+                    break;
+                }
+                case(1):{
+                    Serial.println("We are in 1");
+                    B_y = ARENA_WIDTH;
+                    break;
+                }
+                case(2):{
+                    Serial.println("We are in 2");
+                    B_x += X_DISPLACEMENT_AMOUNT;
+                    break;
+                }
+                case(3):{
+                    Serial.println("We are in 3");
+                    B_y = 0;
+                    break;
+                }
             }
-          avoidance_counter = 0;
+        Serial.println("wagwan 1");
+        Serial.println("B_x:\t" + String(B_x));
+        Serial.println("B_y:\t" + String(B_y));
         }
-      }
-      else{
-        displacement_error = target_displacement - total_path_y;
-        Serial.println("Still going straight");
-        if (abs(displacement_error) <= 1) {
-            // brake when reached
+        avoidance_counter += 1;
+        avoidance_counter %= 2;
 
-            straight_line_complete = 1;
-            differential_PWM_output = 0; 
+        // update target angle
+        updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
 
-            // resetting PID variables
-            prevT = 0;
+        Serial.println("x_des:\t" + String(B_x));
+        Serial.println("y_des:\t" + String(B_y));
+        Serial.println("x_pos:\t" + String(current_x));
+        Serial.println("y_pos:\t" + String(current_y));
+        Serial.println("current_angle:\t" + String(current_angle));
+        Serial.println("target_angle:\t" + String(target_angle));
+            
+        turning_complete = 0;
+        straight_line_complete = 0;
+    }
 
-            // resetting total path readings
-            total_path_x = 0;
-            total_path_y = 0;
+    if (!turning_complete) {
+    Serial.println("Turning");
+    angular_error = (target_angle - current_angle);
+    // rotation_deviation_error = total_path_y;
 
-            //  adjusting the position SIMULATION ONLY
-            current_x = B_x;
-            current_y = B_y;
+    if (abs(angular_error) < 0.018) {
+        // brake
 
-            Serial.println("Rover moving in straight line:");
-            Serial.println("B_x: " + String(B_x));
-            Serial.println("B_y: " + String(B_y));
-            Serial.println("------------");
+        turning_complete = 1;
+        differential_PWM_output = 0; 
+        
+        prevT = 0;
+        current_angle = target_angle;
+        
+        // resetting OFS readings
+        total_path_x = 0;
+        total_path_y = 0;
+        Serial.println("Rover has turned. Rotated by:\t" + String(target_angle));
+        Serial.println("straight_line_complete:\t" + String(straight_line_complete));
+        Serial.println("------------");
+    } else {
+        Serial.println("Still turning");
+        Serial.println("angular_error:\t" + String(angular_error));
+        Serial.println("current_angle:\t" + String(current_angle));
+        Serial.println("target_angle:\t" + String(target_angle));
+        // turning not complete
+        currT = micros();
+        deltaT = ((double) (currT-prevT))/1.0e6;
+        
+        current_angle += (angular_error > 0) ? (0.01) : (-0.01);
+    }
+    delay(5);
+    } 
+    else if (!straight_line_complete) {
+        Serial.println("Going straight");
+                //  If there is an object inbound, needed to be avoided. TEMPORARY, KNOW IT NEEDS TO BE CHANGED
+        if((mode_ == "A") && camera_readings( &camera_readings_type, &camera_readings_displacemet, &camera_readings_angle, 
+                            current_x, current_y)){  
+            Serial.println("Obstacle avoidance");
+            if( (avoidance_counter == 0) && 
+                (camera_readings_displacemet *cos(camera_readings_angle) < WIDTH_ERROR) && 
+                (camera_readings_displacemet *cos(camera_readings_angle) < DISPLACEMENT_ERROR)
+            )
+            {
+                //  we have finished this straight
+                turning_complete = 1;
+                straight_line_complete = 1;
+            //  stop motors <---- TODO: Add this
+            //  set to avoid mode
+            mode_ = "AVOID";
+            //  set to a value 
+            }
+        }
+        else{
+            displacement_error = target_displacement - total_path_y;
+            Serial.println("Still going straight");
+            if (abs(displacement_error) <= 1) {
+                // brake when reached
 
-        } else {
-            Serial.println("Still going straight but in else");
-            //  displacement error for debugging
-            total_path_y += 1;
-            // delay(5);
-        }            
-      }
+                straight_line_complete = 1;
+                differential_PWM_output = 0; 
+
+                // resetting PID variables
+                prevT = 0;
+
+                // resetting total path readings
+                total_path_x = 0;
+                total_path_y = 0;
+
+                //  adjusting the position SIMULATION ONLY
+                current_x = B_x;
+                current_y = B_y;
+
+                Serial.println("Rover moving in straight line:");
+                Serial.println("B_x: " + String(B_x));
+                Serial.println("B_y: " + String(B_y));
+                Serial.println("------------");
+                if(mode_ == "AVOID"){
+                    mode_ = "A";
+                }
+
+            } else {
+                Serial.println("Still going straight but in else");
+                //  displacement error for debugging
+                total_path_y += 1;
+                // delay(5);
+            }            
+        }
     }
 }
