@@ -12,6 +12,7 @@ function print(output, id) {
 }
 
 //--------Initialising Server--------//
+const http_port = 8000;
 const http = require('http');
 
 const express = require('express');
@@ -24,37 +25,19 @@ server.on('error', (err) => {
     console.error(err)
 });
 
-server.listen(3000,'0.0.0.0', () => {
+server.listen(http_port,'0.0.0.0', () => {
     print('Server is running on port 3000', 0)
 });
-
-// var count = 0;
-
-// var interval
-// interval = setInterval(() => {
-//         console.log(count);
-//         count++;
-//     }, 500);
-
-//--------Initialising Python Control Script--------//
-// const {spawn} = require('child_process');
-// const control_script = spawn('python', ['main.py']);
-// print("Control Script started", 0)
-
-// control_script.stdout.on('data', (data) => {
-//     print(`${data}`, 1);
-// })
-// control_script.on('close', (code) => {
-//     print(`Control Script ended with code ${code}`, 0)
-// })
 
 //--------Initialising Socket.io (client-side communication)--------//
 const socketio = require('socket.io');
 const io = socketio(server); 
 
+// var socketio_list = [];
+
 io.on('connection', (sock) => {
     print("Client connected", 0);
-
+    // socketio_list.push(sock);
     sock.on('waypoint', ({ x, y }) => {
         print(`waypoint placed at x: ${x}, y: ${600 - y}`, 0);
 
@@ -135,23 +118,28 @@ rover_server.on('connection', (socket) => {
     socket.on('data', function(chunk) {
         console.log(`Rover Data:`);
         const rover_string = chunk.toString();
-        const packet_list = rover_string.split('@');
-        let packet_json;
-        packet_list.forEach(item => {
-            if (item != '') {
-                try {
-                    packet_json = JSON.parse(item);
-                    // console.log(packet_json);
-                    io.emit('update', packet_json);
-                } catch (error) {
-                    console.log("Not JSON:");
-                    console.log(rover_string);
-                }
-            }
-        });
-        // const rover_json = JSON.parse(rover_string);
-        // console.log(`${rover_string}`);
+        console.log(rover_string);
     });
+
+    // socket.on('data', function(chunk) {
+    //     console.log(`Rover Data:`);
+    //     const rover_string = chunk.toString();
+    //     const packet_list = rover_string.split('@');
+    //     console.log(packet_list.length);
+    //     let packet_json;
+    //     packet_list.forEach(item => {
+    //         if (item != '') {
+    //             try {
+    //                 packet_json = JSON.parse(item);
+    //                 //console.log(packet_json);
+    //                 //io.emit('update', packet_json);
+    //             } catch (error) {
+    //                 console.log(rover_string, "(not JSON)");
+    //             }
+    //         }
+    //     });
+    //     console.log("finish");
+    // });
 
     // When the client requests to end the TCP connection with the server, the server
     // ends the connection.
@@ -161,8 +149,28 @@ rover_server.on('connection', (socket) => {
 
     socket.on('error', function(err) {
         console.log(`Error: ${err}`);
-    });
+    });      
 });
+
+// shutdown server gracefully
+const shutdown = async () => {
+    console.log('Closing HTTP server');
+    await io.close();
+    console.log('Closing TCP server');
+    await rover_server.close();
+    process.exit(0);
+};
+
+process.on('SIGINT', () => {
+    console.log('SIGINT signal received');
+    shutdown();
+});
+
+process.on('SIGTERM', () => {
+    console.log('SIGTERM signal received');
+    shutdown();
+});
+
 
 // var state = {
 //     "rover": {
@@ -202,3 +210,23 @@ rover_server.on('connection', (socket) => {
 //         } 
 //     ]
 // }
+
+// var count = 0;
+
+// var interval
+// interval = setInterval(() => {
+//         console.log(count);
+//         count++;
+//     }, 500);
+
+//--------Initialising Python Control Script--------//
+// const {spawn} = require('child_process');
+// const control_script = spawn('python', ['main.py']);
+// print("Control Script started", 0)
+
+// control_script.stdout.on('data', (data) => {
+//     print(`${data}`, 1);
+// })
+// control_script.on('close', (code) => {
+//     print(`Control Script ended with code ${code}`, 0)
+// })

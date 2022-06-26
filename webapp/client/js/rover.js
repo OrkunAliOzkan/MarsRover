@@ -2,51 +2,19 @@ canvas = document.getElementById('mapCanvas');
 ctx = canvas.getContext("2d");
 
 const canvas_height = 600;
-const canvas_width = 600;
+const canvas_width = 913;
 
 function toRadians(degrees) {
     return Math.PI / 180 * degrees;
 }
 
-rover_width = 50;
-rover_height = 40;
-
-var rover = new Image(rover_width, rover_height);
-var flag = new Image();
-
-const alienRadius = 10;
-const buildingRadius = 20
-
-rover.src = "rover_3.png";   // load image
-flag.src = "flag.png";
-
-function initRover(){
-    drawRover({posX: 60, posY: 60, angle: 0});
-    drawPointer(60, 600 - 60); 
-}
-
-function arena_to_map(_x, _y) {
-    return {x: _x, y: 600 - _y};
-}
-
-
-function drawPointer(x, y) {
-    ctx.beginPath();
-    ctx.arc(x, y, 3, 0, 2 * Math.PI, false);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.stroke();
-}
-
-rover.onload = initRover;
-
 var state;
 
 state = {
     "rover": {
-        "posX": 200,
-        "posY": 200,
-        "angle": 45  
+        "posX": 60, 
+        "posY": 60, 
+        "angle": 0
     },
     "alien": {
         "red": {
@@ -75,7 +43,11 @@ state = {
             "posX": 250,
             "posY": 300
         } 
-    ]
+    ],
+    "fan": {
+        "posX": 50,
+        "posY": 300
+    }
 }
 
 const _rover = {
@@ -98,14 +70,44 @@ const _alien = {
     }
 }
 
+rover_width = 50;
+rover_height = 40;
+
+var rover = new Image(rover_width, rover_height);
+var flag = new Image();
+
+const alienRadius = 10;
+const buildingRadius = 20
+
+rover.src = "../images/rover_3.png";   // load image
+flag.src = "../images/flag.png";
+
+rover.onload = () => {
+    redrawCanvas(state);
+}
+    
+function arena_to_map(_x, _y) {
+    return {x: _x, y: canvas_height - _y};
+}
+
+
+function drawPointer(x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, 3, 0, 2 * Math.PI, false);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.stroke();
+}
+
 function drawRover(roverEntity) {
     const {x, y} = arena_to_map(roverEntity.posX, roverEntity.posY);
     const img_x = x - rover.width/2;
     const img_y = y - rover.height/2;
+    const rover_angle = (roverEntity.angle * -1 + Math.PI / 2);
 
     // move and rotate
     ctx.translate(x, y);
-    ctx.rotate(roverEntity.angle * Math.PI / 180);
+    ctx.rotate(rover_angle);
     ctx.translate(-x, -y);       
 
     // draw
@@ -113,7 +115,7 @@ function drawRover(roverEntity) {
 
     // reverse
     ctx.translate(x, y);
-    ctx.rotate(-roverEntity.angle * Math.PI / 180);
+    ctx.rotate(-rover_angle);
     ctx.translate(-x, -y);  
 }
 
@@ -147,34 +149,32 @@ function drawBuilding(buildingEntity) {
     ctx.fill();
 }
 
+function drawWaypoint(waypointEntity) {
+    ctx.drawImage(flag, waypointEntity.posX, waypointEntity.posY - flag.height);
+}
+
 function redrawCanvas(entity) {
     console.log("redraw");
     //var entityData = JSON.parse(entity);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawRover(entity.rover);
 
+    // draw aliens
     for (let a in entity.alien){
         drawAlien(entity.alien[a], a);
     }
 
-    // for (let i = 0; i < entity.alien.length; i++){
-    //     drawAlien(entity.alien[i]);
-    // }
-
+    // draw buildings
     for (let i = 0; i < entity.building.length; i++){
         drawBuilding(entity.building[i]);
     }
 
-    //requestAnimationFrame(updatePosition)
+    // draw rover
+    drawRover(entity.rover);
 
-    (()=>{
-        const {x, y} = arena_to_map(200, 200);
-        ctx.beginPath();
-        ctx.arc(x, y, 3, 0, 2 * Math.PI, false);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.stroke();
-    })();
+    // draw waypoint
+    if (entity.waypoint != null) {
+        drawWaypoint(entity.waypoint);
+    }
 }
 
 const rover_x = document.getElementById("rover_x");
@@ -187,13 +187,15 @@ function updateDashboard(data) {
     rover_angle.innerHTML = `Rover angle: ${data.angle / Math.PI * 180.0}`;
 }
 
-function updateState(packet) {
+function updateState(state, packet) {
     if (packet.type == "rover") {
         state.rover = packet.data;
         updateDashboard(packet.data);
     } else if (packet.type == "alien") {
         state.alien[packet.colour] = packet.data;
-    } else if (packet.type == "building"){
+    } else if (packet.type == "building") {
+    } else if (packet.type == "waypoint") {
+        state.waypoint = packet.data;
     }
     console.log("updated");
 }
@@ -207,6 +209,39 @@ const getClickCoordinates = (element, ev) => {
     };
 };
 
+function genPacketsSmall() {
+    // generate small 60 packets
+    const duration = 3000;
+    const packet_period = 50;
+    let packet_list = [];
+
+    const num_packets = Math.floor(duration / packet_period)
+    for (let i = 0; i < num_packets; i++){
+        let tmp = {
+            "time": i,
+            "type": "rover",
+            "data": {
+                "posX": 50 + 450 / num_packets * i,
+                "posY": 50 + 450 / num_packets * i,
+                "angle": i * 2 * Math.PI / num_packets  
+            }
+        }
+        let packet_json = JSON.stringify(tmp);
+        packet_list.push(packet_json);
+    }
+
+    packet_list.forEach(item => console.log(item));
+    return packet_list;
+}
+
+// function replay_driver (intervalID, state, replay_data, curr_frame) {
+//     if (curr_frame < replay_data.length) {
+
+//     } else {
+
+//     }
+// }
+
 (() => {
     const sock = io();
 
@@ -214,19 +249,17 @@ const getClickCoordinates = (element, ev) => {
         console.log("onClick");
         const { x, y } = getClickCoordinates(canvas, e);
         sock.emit('waypoint', { x, y });
-
     };
     canvas.addEventListener('click', onClick)
 
     sock.on('update', (packet) => {
         console.log(packet);
-        updateState(packet);
+        updateState(state, packet);
+        redrawCanvas(state);
     });
 
     sock.on('waypoint', ({x, y}) => {
         console.log("waypoint");
-        redrawCanvas(state);
-        ctx.drawImage(flag, x, y - flag.height);
     });
 
     const start_btn = document.getElementById("start");
@@ -259,7 +292,33 @@ const getClickCoordinates = (element, ev) => {
         sock.emit('test', {x, y});
     })
 
-    updateState(_alien);
-    
+    const replay_btn = document.getElementById("replay");
+    replay_btn.addEventListener('click', (event) => {
+        const replay_text = document.getElementById("title");
+        replay_text.innerHTML = "Testing - Replay begin";
+        console.log("Replay begin");
+    })
+
+    // updateState(state, _alien);
+
+    // const replay_data_string = genPacketsSmall();
+    // let replay_data_json = [];
+    // for (let i = 0; i < replay_data_string.length; i++){
+    //     replay_data_json.push(JSON.parse(replay_data_string[i]));
+    // }
+    // // replay_data_json.forEach(item => console.log(item));
+
+    // var curr_replay_frame = 0;
+
+    // var replay_interval;
+    // replay_interval = setInterval(() => {
+    //     if (curr_replay_frame < replay_data_json.length) {
+    //         updateState(state, replay_data_json[curr_replay_frame]);
+    //         redrawCanvas(state);
+    //         curr_replay_frame++;
+    //     } else {
+    //         clearInterval(replay_interval);
+    //     }
+    // }, 50);
 })();
 

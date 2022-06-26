@@ -5,6 +5,7 @@
     height: 600px;
     background-color: #a06d44;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 }

@@ -5,15 +5,18 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Mars Rover | Command Centre</title>
     
+    <!-- Buttons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     
     <!-- Custom CSS -->
     <link rel = "stylesheet" type = "text/css" href = "../css/subpage.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/rover.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/canvas.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
+    
     <!-- Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -39,32 +42,58 @@
         </nav>
     </section>
 
-    <div class="row">
-        <div class="col left">
-            <div class="control-panel">
-                <h3>Rover</h3>
-                <h5 id="rover_angle">Angle: 0</h3>
-                <h5 id="rover_x">x: 0</h3>
-                <h5 id="rover_y">y: 0</h3>
+    <div class="_row">
+        <div class="_column left">
+            <div class="dashboard">
+                <h1 class="col-header">Rover</h1>
+                <div class="dash-row">
+                    <div class="dash-col left">
+                        <h3 id="rover_angle">Angle:</h3>
+                    </div>
+                    <div class="dash-col right">
+                        <h3 id="rover_angle">- <span class="unit">(deg)</span></h3>
+                    </div>
+                </div>
+                <div class="dash-row">
+                    <div class="dash-col left">
+                        <h3 id="rover_angle">x:</h3>
+                    </div>
+                    <div class="dash-col right">
+                        <h3 id="rover_x">- <span class="unit">(mm)</span></h3>
+                    </div>
+                </div>
+                
+                <!-- <h3 id="rover_angle">Angle: - <span class="unit">(deg)</span></h3>
+                <h3 id="rover_x"><span class="unit">(mm)</span></h3>
+                <h3 id="rover_y"><span class="unit">(mm)</span></h3> -->
             </div>
         </div>
-        <div class="col mid">
+        <div class="_column mid">
             <canvas id="mapCanvas" width="600"></canvas>
         </div>
-        <div class="col right">
+        <div class="_column right">
+            <h1 class="col-header">Setup</h1>
             <div class="control-panel">
-                <h3>Angle</h3>
-                <input type="text" id="angle">
-                <h3>x coordinate</h3>
-                <input type="text" id="x">
-                <h3>y coordinate</h3>
-                <input type="text" id="y">
+                <div>
+                    <label for="angle">Angle (deg):</label><input type="text" size="5">
+                </div>
+                <div>
+                    <label for="x">x (mm):</label><input type="text" id="x" size="5">
+                </div>
+                <div>
+                    <label for="y">y (mm):</label><input type="text" id="y" size="5">
+                </div>
+            </div>
+            <div class="tab">
+                <button class="tablinks" onclick="openCity(event, 'Trip1')" id="defaultOpen">Automatic</button>
+                <button class="tablinks" onclick="openCity(event, 'Trip2')">Manual</button>
             </div>
             <div style="margin-left: auto; margin-right: auto;">
                 <button type="button" class="btn btn-primary btn-lg" id ="auto">Automatic Control</button>
                 <button type="button" class="btn btn-secondary btn-lg" id ="manual">Manual Control</button>
                 <button type="button" class="btn btn-success btn-lg" id ="start">Start</button>
             </div>
+
         </div>
     </div>
 
@@ -73,7 +102,7 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- importing socket.io -->
-    <script src="rover.js"></script>
+    <script src="../js/rover.js"></script>
 </body>
 
 </html>
