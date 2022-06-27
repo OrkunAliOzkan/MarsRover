@@ -337,6 +337,7 @@ int automation(int * state, double * destination_x, double * destination_y, doub
 {
     switch(*state){
     case(0):{
+        Serial.println("in 0 for auto");
         //  x
         *destination_x = current_x + (ARENA_WIDTH / 10);
         *destination_y = current_y;
@@ -344,6 +345,7 @@ int automation(int * state, double * destination_x, double * destination_y, doub
     }
     case(1):{
         //  y
+        Serial.println("in 1 for auto");
         *destination_x = current_x;
         *destination_y = /*current_y + */ (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
         // *destination_y = current_y + (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
@@ -351,14 +353,16 @@ int automation(int * state, double * destination_x, double * destination_y, doub
     }
     case(2):{
         //  x
+        Serial.println("in 2 for auto");
         *destination_x = current_x + (ARENA_WIDTH / 10);
         *destination_y = current_y;
         break;
     }
     case(3):{
         //  y
+        Serial.println("in 3 for auto");
         *destination_x = current_x;
-        *destination_y = /*current_y - */ (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
+        *destination_y = /*current_y - */ (0 /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
         // *destination_y = current_y - (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
         break;
     }
@@ -379,8 +383,8 @@ int automation(int * state, double * destination_x, double * destination_y, doub
 //  camera readings
 bool camera_readings(int *camera_readings_type, double *camera_readings_displacemet, double *camera_readings_angle, double current_x, double current_y) {
 //  TEMPORARY OBJECT TO TEST AVOIDANCE
-    double avoidance_x = 300;
-    double avoidance_y = 75;
+    double avoidance_x = 730;
+    double avoidance_y = 1050;
 
 *camera_readings_type = 7;
 
@@ -536,7 +540,7 @@ void loop()
             case(0):{
                 switch(state){
                     case(0):{
-                        // Serial.println("We are in 0");
+                        Serial.println("We are in 0");
                     B_y = (B_y - current_y > HEIGHT_ERROR) ? 
                             (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT))   
                             : 
@@ -547,7 +551,7 @@ void loop()
                     break;
                     }
                     case(1):{
-                        // Serial.println("We are in 1");
+                        Serial.println("We are in 1");
                     B_x = (B_x - current_x > WIDTH_ERROR) ? 
                             (min(B_x, current_x + (ARENA_WIDTH / 10))) 
                             : 
@@ -557,7 +561,7 @@ void loop()
                     break;
                     }
                     case(2):{
-                        // Serial.println("We are in 2");
+                        Serial.println("We are in 2");
                     B_y = (current_y - B_y > HEIGHT_ERROR) ? 
                             (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
                             : 
@@ -568,7 +572,7 @@ void loop()
                     break; 
                     }
                     case(3):{
-                        // Serial.println("We are in 3");
+                        Serial.println("We are in 3");
                     B_x = (B_x - current_x > WIDTH_ERROR) ? 
                             (min(B_x, current_x + (ARENA_WIDTH / 10))) 
                             : 
@@ -595,25 +599,25 @@ void loop()
                 // Serial.println("avoidance counter at 1");
                 switch(state){
                     case(0):{
-                        // Serial.println("We are in 0");
+                        Serial.println("We are in 0");
                         B_x += (ARENA_WIDTH / 10);
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
                     case(1):{
-                        // Serial.println("We are in 1");
+                        Serial.println("We are in 1");
                         B_y = ARENA_WIDTH;
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
                     case(2):{
-                        // Serial.println("We are in 2");
+                        Serial.println("We are in 2");
                         B_x += (ARENA_WIDTH / 10);
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
                     case(3):{
-                        // Serial.println("We are in 3");
+                        Serial.println("We are in 3");
                         B_y = 0;
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
