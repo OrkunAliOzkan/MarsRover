@@ -628,7 +628,7 @@ void loop()
         Serial.println("I made it here to where avoidance_counter goes from " + String(avoidance_counter) + "to");
         mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
         // mode_ = (avoidance_counter == 1)? ("A") : (mode_);
-        avoidance_counter  = (avoidance_counter == 1) ? (-1) : (avoidance_counter + 1);
+        // avoidance_counter  = (avoidance_counter == 1) ? (-1) : (avoidance_counter + 1);
         Serial.println(String(avoidance_counter) + "---///---\n");
         // avoidance_counter %= 2;
 
@@ -645,7 +645,7 @@ void loop()
     }
 
     if (!turning_complete) {
-    Serial.println("Turning");
+    // Serial.println("Turning");
     angular_error = (target_angle - current_angle);
     // rotation_deviation_error = total_path_y;
 
@@ -663,12 +663,13 @@ void loop()
         total_path_y = 0;
         Serial.println("Rover has turned. Rotated by:\t" + String(target_angle));
         Serial.println("straight_line_complete:\t" + String(straight_line_complete));
+        Serial.println("current_angle:\t" + String(current_angle));
         Serial.println("------------");
     } else {
-        Serial.println("Still turning");
-        Serial.println("angular_error:\t" + String(angular_error));
-        Serial.println("current_angle:\t" + String(current_angle));
-        Serial.println("target_angle:\t" + String(target_angle));
+        // Serial.println("Still turning");
+        // Serial.println("angular_error:\t" + String(angular_error));
+        // Serial.println("current_angle:\t" + String(current_angle));
+        // Serial.println("target_angle:\t" + String(target_angle));
         // turning not complete
         currT = micros();
         deltaT = ((double) (currT-prevT))/1.0e6;
@@ -678,11 +679,11 @@ void loop()
     delay(5);
     } 
     else if (!straight_line_complete) {
-        Serial.println("Going straight");
-        Serial.println("mode_:\t" + String(mode_));
+        // Serial.println("Going straight");
+        // Serial.println("mode_:\t" + String(mode_));
                 //  If there is an object inbound, needed to be avoided. TEMPORARY, KNOW IT NEEDS TO BE CHANGED
         if((mode_ == "A") && camera_readings( &camera_readings_type, &camera_readings_displacemet, &camera_readings_angle, 
-                            current_x, current_y)){  
+                            current_x, current_y) && (avoidance_counter )){  
             Serial.println("Obstacle avoidance");
             if( (avoidance_counter == -1) && 
                 (camera_readings_displacemet *cos(camera_readings_angle) < WIDTH_ERROR) && 
@@ -695,17 +696,17 @@ void loop()
             //  stop motors <---- TODO: Add this
             //  set to avoid mode
             mode_ = "AVOID";
-            // avoidance_counter = (avoidance_counter == -1) ? (0) : (avoidance_counter);
-            avoidance_counter = 0;
+            avoidance_counter = (avoidance_counter == -1) ? (0) : (avoidance_counter + 1);
+            // avoidance_counter = 0;
             //  set to a value 
             }
         }
         else{
             // displacement_error = target_displacement - total_path_y;
             displacement_error = target_displacement - total_path_y;
-            Serial.println("Still going straight");
-            Serial.println("displacement_error:\t" + String(displacement_error));
-            Serial.println("target_displacement:\t" + String(target_displacement));
+            // Serial.println("Still going straight");
+            // Serial.println("displacement_error:\t" + String(displacement_error));
+            // Serial.println("target_displacement:\t" + String(target_displacement));
             if (abs(displacement_error) <= 1) {
                 // brake when reached
 
@@ -723,19 +724,22 @@ void loop()
                 // avoidance_counter = ((mode_ == "AVOID") && (avoidance_counter == 1))? (-1) : (avoidance_counter);
 
                 Serial.println("Rover moving in straight line:");
+                Serial.println("mode_:\t" + String(mode_));
                 Serial.println("B_x: " + String(B_x));
                 Serial.println("B_y: " + String(B_y));
+                Serial.println("current_x:\t" + String(current_x));
+                Serial.println("current_y:\t" + String(current_y));
                 Serial.println("------------");
 
             } else {
-                Serial.println("Still going straight but in else");
+                // Serial.println("Still going straight but in else");
                 //  displacement error for debugging
                 total_path_y += 1;
 
                 current_x += (1 * cos(current_angle));
                 current_y += (1 * sin(current_angle));
-                Serial.println("current_x:\t" + String(current_x));
-                Serial.println("current_y:\t" + String(current_y));
+                // Serial.println("current_x:\t" + String(current_x));
+                // Serial.println("current_y:\t" + String(current_y));
                 // delay(5);
             }            
         }
