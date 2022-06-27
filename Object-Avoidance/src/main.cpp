@@ -345,7 +345,8 @@ int automation(int * state, double * destination_x, double * destination_y, doub
     case(1):{
         //  y
         *destination_x = current_x;
-        *destination_y = current_y + (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
+        *destination_y = /*current_y + */ (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
+        // *destination_y = current_y + (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
         break;
     }
     case(2):{
@@ -357,7 +358,8 @@ int automation(int * state, double * destination_x, double * destination_y, doub
     case(3):{
         //  y
         *destination_x = current_x;
-        *destination_y = current_y - (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
+        *destination_y = /*current_y - */ (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
+        // *destination_y = current_y - (ARENA_HEIGHT /*- 2*RADIUS*/); //  have y avoid the walls by a rover width
         break;
     }
     default:{
@@ -498,15 +500,16 @@ void loop()
 {
 // Serial.println("Made it here");
     // if in auto mode and ready to travel to next waypoint
-    {
+    if((mode_ == "A" || mode_ == "AVOID") && (current_x > 0.9*ARENA_WIDTH)){
     mode_ = "";
     turning_complete = 1;
     straight_line_complete = 1;
     // Serial.println("reached end");
     
     }
-    if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
+    else if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
         // Serial.println("////////////////////AUTO////////////////////");
+        // Serial.println("If in automation process");
         // get next waypoint
         automation(&counter, &B_x, &B_y, current_x, current_y);
         // update target angle
@@ -527,6 +530,7 @@ void loop()
         straight_line_complete = 0;
 
         // avoidance_counter  = (avoidance_counter == 0) ? (1) : (avoidance_counter);
+        // Serial.println("If in avoiding process");
 
         switch(avoidance_counter){
             case(0):{
@@ -536,7 +540,8 @@ void loop()
                     B_y = (B_y - current_y > HEIGHT_ERROR) ? 
                             (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT))   
                             : 
-                            (B_y + Y_DISPLACEMENT_AMOUNT);      //  TODO: replace min with max
+                            (B_y + Y_DISPLACEMENT_AMOUNT);      //  min because we dont wanna hit the wall
+                                                                //  TODO: TEST IF THIS WORKS
                     B_x = current_x;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break;
@@ -556,7 +561,8 @@ void loop()
                     B_y = (current_y - B_y > HEIGHT_ERROR) ? 
                             (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
                             : 
-                            (current_y + Y_DISPLACEMENT_AMOUNT);        //  TODO: replace min with max
+                            (current_y + Y_DISPLACEMENT_AMOUNT);        //  min because we dont wanna hit the wall
+                                                                        //  TODO: TEST IF THIS WORKS
                     B_x = B_x;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break; 
@@ -638,6 +644,7 @@ void loop()
     }
 
     if (!turning_complete) {
+    // Serial.println("not turning_complete");
     // Serial.println("Turning");
     angular_error = (target_angle - current_angle);
     // rotation_deviation_error = total_path_y;
@@ -670,14 +677,16 @@ void loop()
         
         current_angle += (angular_error > 0) ? (0.01) : (-0.01);
     }
-    delay(5);
+    // delay(5);
     } 
     else if (!straight_line_complete) {
+        // Serial.println("not straight_line_complete");
         // Serial.println("Going straight");
         // Serial.println("mode_:\t" + String(mode_));
                 //  If there is an object inbound, needed to be avoided. TEMPORARY, KNOW IT NEEDS TO BE CHANGED
         if((mode_ == "A") && camera_readings( &camera_readings_type, &camera_readings_displacemet, &camera_readings_angle, 
                             current_x, current_y) && (avoidance_counter == -1)){  
+            // Serial.println("If mode is A and an object is detected");
             // Serial.println("Obstacle avoidance");
             if( (avoidance_counter == -1) && 
                 (camera_readings_displacemet *cos(camera_readings_angle) < WIDTH_ERROR) && 
@@ -696,6 +705,7 @@ void loop()
             }
         }
         else{
+            // Serial.println("If actually moving");
             // displacement_error = target_displacement - total_path_y;
             displacement_error = target_displacement - total_path_y;
             // Serial.println("Still going straight");
@@ -717,13 +727,13 @@ void loop()
 
                 // mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
                 // avoidance_counter = ((mode_ == "AVOID") && (avoidance_counter == 1))? (-1) : (avoidance_counter);
-                // Serial.println("------------");
                 // Serial.println("Rover moving in straight line:");
-                // Serial.println("mode_:\t" + String(mode_));
+                Serial.println("------------");
+                Serial.println("mode_:\t" + String(mode_));
                 // Serial.println("B_x: " + String(B_x));
                 // Serial.println("B_y: " + String(B_y));
-                // Serial.println("current_x:\t" + String(current_x));
-                // Serial.println("current_y:\t" + String(current_y));
+                Serial.println("current_x:\t" + String(current_x));
+                Serial.println("current_y:\t" + String(current_y));
 
             } else {
                 // Serial.println("Still going straight but in else");
