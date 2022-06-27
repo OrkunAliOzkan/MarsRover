@@ -627,6 +627,7 @@ void loop()
         }
         Serial.println("I made it here to where avoidance_counter goes from " + String(avoidance_counter) + "to");
         mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
+        // mode_ = (avoidance_counter == 1)? ("A") : (mode_);
         avoidance_counter  = (avoidance_counter == 1) ? (-1) : (avoidance_counter + 1);
         Serial.println(String(avoidance_counter) + "---///---\n");
         // avoidance_counter %= 2;
@@ -694,6 +695,7 @@ void loop()
             //  stop motors <---- TODO: Add this
             //  set to avoid mode
             mode_ = "AVOID";
+            // avoidance_counter = (avoidance_counter == -1) ? (0) : (avoidance_counter);
             avoidance_counter = 0;
             //  set to a value 
             }
@@ -718,7 +720,7 @@ void loop()
                 total_path_y = 0;
 
                 // mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
-                avoidance_counter = ((mode_ == "AVOID") && (avoidance_counter == 1))? (-1) : (avoidance_counter);
+                // avoidance_counter = ((mode_ == "AVOID") && (avoidance_counter == 1))? (-1) : (avoidance_counter);
 
                 Serial.println("Rover moving in straight line:");
                 Serial.println("B_x: " + String(B_x));
