@@ -373,7 +373,7 @@ int automation(int * state, double * destination_x, double * destination_y, doub
     }
     (*state)++;
     (*state) %= 4;
-    // Serial.println("counter:\t" + String(*state));
+    Serial.println("counter:\t" + String(*state));
     return 1;
 }
 
@@ -383,8 +383,8 @@ int automation(int * state, double * destination_x, double * destination_y, doub
 //  camera readings
 bool camera_readings(int *camera_readings_type, double *camera_readings_displacemet, double *camera_readings_angle, double current_x, double current_y) {
 //  TEMPORARY OBJECT TO TEST AVOIDANCE
-    double avoidance_x = 730;
-    double avoidance_y = 1050;
+    double avoidance_x = 500;
+    double avoidance_y = ARENA_HEIGHT;
 
 *camera_readings_type = 7;
 
@@ -534,52 +534,52 @@ void loop()
         straight_line_complete = 0;
 
         // avoidance_counter  = (avoidance_counter == 0) ? (1) : (avoidance_counter);
-        // Serial.println("If in avoiding process");
+        Serial.println("If in avoiding process");
 
         switch(avoidance_counter){
             case(0):{
                 switch(state){
                     case(0):{
                         Serial.println("We are in 0");
-                    B_y = (B_y - current_y > HEIGHT_ERROR) ? 
-                            (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT))   
-                            : 
-                            (B_y + Y_DISPLACEMENT_AMOUNT);      //  min because we dont wanna hit the wall
-                                                                //  TODO: TEST IF THIS WORKS
-                    B_x = current_x;
-                    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
-                    break;
+                        B_y = (B_y - current_y > HEIGHT_ERROR) ? 
+                        (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT))   
+                        : 
+                        (B_y + Y_DISPLACEMENT_AMOUNT);      //  min because we dont wanna hit the wall
+                                                            //  TODO: TEST IF THIS WORKS
+                        B_x = current_x;
+                        updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+                        break;
                     }
                     case(1):{
                         Serial.println("We are in 1");
-                    B_x = (B_x - current_x > WIDTH_ERROR) ? 
-                            (min(B_x, current_x + (ARENA_WIDTH / 10))) 
-                            : 
-                            (current_x + (ARENA_WIDTH / 10));        //  TODO: replace min with max
-                    B_y = B_y;
-                    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
-                    break;
+                        B_x = (B_x - current_x > WIDTH_ERROR) ? 
+                        (min(B_x, current_x + (ARENA_WIDTH / 10))) 
+                        : 
+                        (current_x + (ARENA_WIDTH / 10));        //  TODO: replace min with max
+                        B_y = B_y;
+                        updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+                        break;
                     }
                     case(2):{
                         Serial.println("We are in 2");
-                    B_y = (current_y - B_y > HEIGHT_ERROR) ? 
-                            (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
-                            : 
-                            (current_y + Y_DISPLACEMENT_AMOUNT);        //  min because we dont wanna hit the wall
-                                                                        //  TODO: TEST IF THIS WORKS
-                    B_x = B_x;
-                    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
-                    break; 
+                        B_y = (current_y - B_y > HEIGHT_ERROR) ? 
+                        (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
+                        : 
+                        (current_y + Y_DISPLACEMENT_AMOUNT);        //  min because we dont wanna hit the wall
+                                                                    //  TODO: TEST IF THIS WORKS
+                        B_x = B_x;
+                        updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+                        break; 
                     }
                     case(3):{
                         Serial.println("We are in 3");
-                    B_x = (B_x - current_x > WIDTH_ERROR) ? 
-                            (min(B_x, current_x + (ARENA_WIDTH / 10))) 
-                            : 
-                            (current_x - (ARENA_WIDTH / 10));      //  TODO: replace min with max
-                    B_y = B_y;
-                    updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
-                    break; 
+                        B_x = (B_x - current_x > WIDTH_ERROR) ? 
+                        (min(B_x, current_x + (ARENA_WIDTH / 10))) 
+                        : 
+                        (current_x - (ARENA_WIDTH / 10));      //  TODO: replace min with max
+                        B_y = B_y;
+                        updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
+                        break; 
                     }
                 }
                 //  stop motors <---- TODO: Add this
