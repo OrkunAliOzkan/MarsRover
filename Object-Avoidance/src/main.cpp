@@ -324,7 +324,8 @@ void updateTargets(double * B_x, double * B_y, double * current_x, double * curr
 //  automation parameters
 int counter = 0;
 #define ARENA_WIDTH           3555
-#define ARENA_HEIGHT          2337
+#define ARENA_HEIGHT          970
+// #define ARENA_HEIGHT          2337
 #define WIDTH_ERROR           200 //  TODO: Play with coefficients
 #define DISPLACEMENT_ERROR    150 //  TODO: Play with coefficients
 #define HEIGHT_ERROR          200 //  TODO: Play with coefficients
@@ -383,8 +384,12 @@ int automation(int * state, double * destination_x, double * destination_y, doub
 //  camera readings
 bool camera_readings(int *camera_readings_type, double *camera_readings_displacemet, double *camera_readings_angle, double current_x, double current_y) {
 //  TEMPORARY OBJECT TO TEST AVOIDANCE
-    double avoidance_x = 500;
-    double avoidance_y = ARENA_HEIGHT;
+    //  second last state
+    // double avoidance_x = 500;
+    // double avoidance_y = ARENA_HEIGHT;
+    //   last state
+    double avoidance_x = ARENA_WIDTH / 5;
+    double avoidance_y = ARENA_HEIGHT/2;
 
 *camera_readings_type = 7;
 
@@ -505,11 +510,11 @@ void loop()
 // Serial.println("Made it here");
     // if in auto mode and ready to travel to next waypoint
     if((mode_ == "A" || mode_ == "AVOID") && (current_x > 0.9*ARENA_WIDTH)){
-    mode_ = "";
-    turning_complete = 1;
-    straight_line_complete = 1;
-    // Serial.println("reached end");
-    
+        mode_ = "";
+        turning_complete = 1;
+        straight_line_complete = 1;
+        // Serial.println("reached end");
+        
     }
     else if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
         // Serial.println("////////////////////AUTO////////////////////");
@@ -538,6 +543,7 @@ void loop()
 
         switch(avoidance_counter){
             case(0):{
+                Serial.println("avoidance_counter & 0");
                 switch(state){
                     case(0):{
                         Serial.println("We are in 0");
@@ -596,7 +602,7 @@ void loop()
                 break;
             }
             case(1):{
-                // Serial.println("avoidance counter at 1");
+                Serial.println("avoidance_counter & 1");
                 switch(state){
                     case(0):{
                         Serial.println("We are in 0");

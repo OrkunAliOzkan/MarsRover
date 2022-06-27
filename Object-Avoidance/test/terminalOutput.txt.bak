@@ -1,1 +1,123 @@
-                Serial.println("------------");
+in 0 for auto
+counter:        1
+A354.00 0.00
+------------
+mode_:  A
+current_x:      354.00
+current_y:      0.00
+in 1 for auto
+counter:        2
+A354.00 2336.00
+------------
+mode_:  A
+current_x:      354.00
+current_y:      2336.00
+in 2 for auto
+counter:        3
+If in avoiding process
+We are in 0
+AVOID401.00 2635.00
+------------
+mode_:  AVOID
+current_x:      401.00
+current_y:      2635.00
+If in avoiding process
+We are in 0
+A755.00 2636.00
+------------
+mode_:  A
+current_x:      755.00
+current_y:      2636.00
+in 3 for auto
+counter:        0
+A755.00 2.00
+------------
+mode_:  A
+current_x:      755.00
+current_y:      2.00
+in 0 for auto
+counter:        1
+A1109.00 2.00
+------------
+mode_:  A
+current_x:      1109.00
+current_y:      2.00
+in 1 for auto
+counter:        2
+A1109.00 2336.00
+------------
+mode_:  A
+current_x:      1109.00
+current_y:      2336.00
+in 2 for auto
+counter:        3
+A1463.00 2336.00
+------------
+mode_:  A
+current_x:      1463.00
+current_y:      2336.00
+in 3 for auto
+counter:        0
+A1463.00 2.00
+------------
+mode_:  A
+current_x:      1463.00
+current_y:      2.00
+in 0 for auto
+counter:        1
+A1817.00 2.00
+------------
+mode_:  A
+current_x:      1817.00
+current_y:      2.00
+in 1 for auto
+counter:        2
+A1817.00 2336.00
+------------
+mode_:  A
+current_x:      1817.00
+current_y:      2336.00
+in 2 for auto
+counter:        3
+A2170.00 2336.00
+------------
+mode_:  A
+current_x:      2170.00
+current_y:      2336.00
+in 3 for auto
+counter:        0
+A2170.00 2.00
+------------
+mode_:  A
+current_x:      2170.00
+current_y:      2.00
+in 0 for auto
+counter:        1
+A2524.00 2.00
+------------
+mode_:  A
+current_x:      2524.00
+current_y:      2.00
+in 1 for auto
+counter:        2
+A2524.00 2336.00
+------------
+mode_:  A
+current_x:      2524.00
+current_y:      2336.00
+in 2 for auto
+counter:        3
+A2878.00 2336.00
+------------
+mode_:  A
+current_x:      2878.00
+current_y:      2336.00
+in 3 for auto
+counter:        0
+A2878.00 2.00
+------------
+mode_:  A
+current_x:      2878.00
+current_y:      2.00
+in 0 for auto
+counter:        1
