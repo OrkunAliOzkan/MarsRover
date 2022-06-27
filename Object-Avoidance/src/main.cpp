@@ -164,14 +164,14 @@ void OFS_Readings
     *x_coordinate += dy * cos(tmp_angle);
     *y_coordinate += dy * sin(tmp_angle);
 
-    Serial.println("Dy: " + String(dy));
-    Serial.println("Dx: " + String(dx));
-    Serial.println("Angle: " + String(*angle));
-    Serial.println("Total path y: " + String(*total_path_y));
-    Serial.println("Total path x: " + String(*total_path_x));
-    Serial.println("y_coordinate: " + String(*y_coordinate));
-    Serial.println("x_coordinate: " + String(*x_coordinate));
-    Serial.println();
+    // Serial.println("Dy: " + String(dy));
+    // Serial.println("Dx: " + String(dx));
+    // Serial.println("Angle: " + String(*angle));
+    // Serial.println("Total path y: " + String(*total_path_y));
+    // Serial.println("Total path x: " + String(*total_path_x));
+    // Serial.println("y_coordinate: " + String(*y_coordinate));
+    // Serial.println("x_coordinate: " + String(*x_coordinate));
+    // Serial.println();
 }
 /////////////////////////////////////////////////////////////////
 
@@ -306,13 +306,13 @@ void updateTargets(double * B_x, double * B_y, double * current_x, double * curr
 
 // update target displacement
     *target_displacement = (int) sqrt(pow(dy, 2) + pow(dx, 2));
-    Serial.println("...................");
-    Serial.println("B_x:\t" + String(*B_x));
-    Serial.println("B_y:\t" + String(*B_y));
-    Serial.println("current_x:\t" + String(*current_x));
-    Serial.println("current_y:\t" + String(*current_y));
-   Serial.println("Target Displacement: " + String(*target_displacement));
-    Serial.println("...................");
+//     Serial.println("...................");
+//     Serial.println("B_x:\t" + String(*B_x));
+//     Serial.println("B_y:\t" + String(*B_y));
+//     Serial.println("current_x:\t" + String(*current_x));
+//     Serial.println("current_y:\t" + String(*current_y));
+//    Serial.println("Target Displacement: " + String(*target_displacement));
+//     Serial.println("...................");
 //    Serial.println("Final Angle: " + String(atan2( dy, dx )));
 //    Serial.println("Target Angle: " + String(*target_angle));
 //
@@ -367,7 +367,7 @@ int automation(int * state, double * destination_x, double * destination_y, doub
     }
     (*state)++;
     (*state) %= 4;
-    Serial.println("counter:\t" + String(*state));
+    // Serial.println("counter:\t" + String(*state));
     return 1;
 }
 
@@ -377,16 +377,16 @@ int automation(int * state, double * destination_x, double * destination_y, doub
 //  camera readings
 bool camera_readings(int *camera_readings_type, double *camera_readings_displacemet, double *camera_readings_angle, double current_x, double current_y) {
 //  TEMPORARY OBJECT TO TEST AVOIDANCE
-    double avoidance_x = 75;
-    double avoidance_y = 100;
+    double avoidance_x = 300;
+    double avoidance_y = 75;
 
 *camera_readings_type = 7;
 
 //  object is at (100, 100)
 *camera_readings_displacemet = sqrt(pow(avoidance_x - current_x, 2) + pow(avoidance_y - current_y, 2));
 *camera_readings_angle = atan2(avoidance_y - current_y, avoidance_x - current_x);
-// return (*camera_readings_displacemet < 100);
-return 0;
+return (*camera_readings_displacemet < 100);
+// return 0;
 }
 
 //  radius of an A2 base at its widest
@@ -498,7 +498,6 @@ void loop()
 {
 // Serial.println("Made it here");
     // if in auto mode and ready to travel to next waypoint
-    if(current_x > (ARENA_WIDTH - (2*RADIUS)))  //  Motion complete TODO: Improve
     {
     mode_ = "";
     turning_complete = 1;
@@ -507,18 +506,18 @@ void loop()
     
     }
     if((mode_ == "A") && (turning_complete) && (straight_line_complete)){
-        Serial.println("////////////////////AUTO////////////////////");
+        // Serial.println("////////////////////AUTO////////////////////");
         // get next waypoint
         automation(&counter, &B_x, &B_y, current_x, current_y);
         // update target angle
         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
 
-        Serial.println("x_des:\t" + String(B_x));
-        Serial.println("y_des:\t" + String(B_y));
-        Serial.println("x_pos:\t" + String(current_x));
-        Serial.println("y_pos:\t" + String(current_y));
-        Serial.println("current_angle:\t" + String(current_angle));
-        Serial.println("target_angle:\t" + String(target_angle));
+        // Serial.println("x_des:\t" + String(B_x));
+        // Serial.println("y_des:\t" + String(B_y));
+        // Serial.println("x_pos:\t" + String(current_x));
+        // Serial.println("y_pos:\t" + String(current_y));
+        // Serial.println("current_angle:\t" + String(current_angle));
+        // Serial.println("target_angle:\t" + String(target_angle));
             
         turning_complete = 0;
         straight_line_complete = 0;
@@ -533,41 +532,41 @@ void loop()
             case(0):{
                 switch(state){
                     case(0):{
-                        Serial.println("We are in 0");
+                        // Serial.println("We are in 0");
                     B_y = (B_y - current_y > HEIGHT_ERROR) ? 
-                            (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT)) 
+                            (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT))   
                             : 
-                            (B_y + Y_DISPLACEMENT_AMOUNT);  
+                            (B_y + Y_DISPLACEMENT_AMOUNT);      //  TODO: replace min with max
                     B_x = current_x;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break;
                     }
                     case(1):{
-                        Serial.println("We are in 1");
+                        // Serial.println("We are in 1");
                     B_x = (B_x - current_x > WIDTH_ERROR) ? 
                             (min(B_x, current_x + (ARENA_WIDTH / 10))) 
                             : 
-                            (current_x + (ARENA_WIDTH / 10));  
+                            (current_x + (ARENA_WIDTH / 10));        //  TODO: replace min with max
                     B_y = B_y;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break;
                     }
                     case(2):{
-                        Serial.println("We are in 2");
+                        // Serial.println("We are in 2");
                     B_y = (current_y - B_y > HEIGHT_ERROR) ? 
                             (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
                             : 
-                            (current_y + Y_DISPLACEMENT_AMOUNT);  
+                            (current_y + Y_DISPLACEMENT_AMOUNT);        //  TODO: replace min with max
                     B_x = B_x;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break; 
                     }
                     case(3):{
-                        Serial.println("We are in 3");
+                        // Serial.println("We are in 3");
                     B_x = (B_x - current_x > WIDTH_ERROR) ? 
                             (min(B_x, current_x + (ARENA_WIDTH / 10))) 
                             : 
-                            (current_x - (ARENA_WIDTH / 10));
+                            (current_x - (ARENA_WIDTH / 10));      //  TODO: replace min with max
                     B_y = B_y;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break; 
@@ -580,44 +579,44 @@ void loop()
 
                 //  set to a value 
 
-                Serial.println("-------------");
-                Serial.println("wagwan 0");
-                Serial.println("B_x:\t" + String(B_x));
-                Serial.println("B_y:\t" + String(B_y));
+                // Serial.println("-------------");
+                // Serial.println("wagwan 0");
+                // Serial.println("B_x:\t" + String(B_x));
+                // Serial.println("B_y:\t" + String(B_y));
                 break;
             }
             case(1):{
-                Serial.println("avoidance counter at 1");
+                // Serial.println("avoidance counter at 1");
                 switch(state){
                     case(0):{
-                        Serial.println("We are in 0");
+                        // Serial.println("We are in 0");
                         B_x += (ARENA_WIDTH / 10);
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
                     case(1):{
-                        Serial.println("We are in 1");
+                        // Serial.println("We are in 1");
                         B_y = ARENA_WIDTH;
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
                     case(2):{
-                        Serial.println("We are in 2");
+                        // Serial.println("We are in 2");
                         B_x += (ARENA_WIDTH / 10);
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
                     case(3):{
-                        Serial.println("We are in 3");
+                        // Serial.println("We are in 3");
                         B_y = 0;
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
                 }
-                Serial.println("-------------");
-                Serial.println("wagwan 1");
-                Serial.println("B_x:\t" + String(B_x));
-                Serial.println("B_y:\t" + String(B_y));
+                // Serial.println("-------------");
+                // Serial.println("wagwan 1");
+                // Serial.println("B_x:\t" + String(B_x));
+                // Serial.println("B_y:\t" + String(B_y));
                 break;
             }
             default:{
@@ -629,13 +628,13 @@ void loop()
         mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
         avoidance_counter  = (avoidance_counter == 1) ? (-1) : (avoidance_counter + 1);
 
-        Serial.println("uwu");
-        Serial.println("x_des:\t" + String(B_x));
-        Serial.println("y_des:\t" + String(B_y));
-        Serial.println("x_pos:\t" + String(current_x));
-        Serial.println("y_pos:\t" + String(current_y));
-        Serial.println("current_angle:\t" + String(current_angle));
-        Serial.println("target_angle:\t" + String(target_angle));
+        // Serial.println("uwu");
+        // Serial.println("x_des:\t" + String(B_x));
+        // Serial.println("y_des:\t" + String(B_y));
+        // Serial.println("x_pos:\t" + String(current_x));
+        // Serial.println("y_pos:\t" + String(current_y));
+        // Serial.println("current_angle:\t" + String(current_angle));
+        // Serial.println("target_angle:\t" + String(target_angle));
     }
 
     if (!turning_complete) {
@@ -655,10 +654,11 @@ void loop()
         // resetting OFS readings
         total_path_x = 0;
         total_path_y = 0;
-        Serial.println("Rover has turned. Rotated by:\t" + String(target_angle));
-        Serial.println("straight_line_complete:\t" + String(straight_line_complete));
-        Serial.println("current_angle:\t" + String(current_angle));
-        Serial.println("------------");
+
+        // Serial.println("------------");
+        // Serial.println("Rover has turned. Rotated by:\t" + String(target_angle));
+        // Serial.println("straight_line_complete:\t" + String(straight_line_complete));
+        // Serial.println("current_angle:\t" + String(current_angle));
     } else {
         // Serial.println("Still turning");
         // Serial.println("angular_error:\t" + String(angular_error));
@@ -678,7 +678,7 @@ void loop()
                 //  If there is an object inbound, needed to be avoided. TEMPORARY, KNOW IT NEEDS TO BE CHANGED
         if((mode_ == "A") && camera_readings( &camera_readings_type, &camera_readings_displacemet, &camera_readings_angle, 
                             current_x, current_y) && (avoidance_counter == -1)){  
-            Serial.println("Obstacle avoidance");
+            // Serial.println("Obstacle avoidance");
             if( (avoidance_counter == -1) && 
                 (camera_readings_displacemet *cos(camera_readings_angle) < WIDTH_ERROR) && 
                 (camera_readings_displacemet *sin(camera_readings_angle) < DISPLACEMENT_ERROR)
@@ -713,17 +713,17 @@ void loop()
                 // resetting total path readings
                 total_path_x = 0;
                 total_path_y = 0;
+                Serial.println(mode_ +  String(current_x) + " " + String(current_y));
 
                 // mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
                 // avoidance_counter = ((mode_ == "AVOID") && (avoidance_counter == 1))? (-1) : (avoidance_counter);
-                Serial.println("------------");
-                Serial.println("Rover moving in straight line:");
-                Serial.println("mode_:\t" + String(mode_));
-                Serial.println("B_x: " + String(B_x));
-                Serial.println("B_y: " + String(B_y));
-                Serial.println("current_x:\t" + String(current_x));
-                Serial.println("current_y:\t" + String(current_y));
-                Serial.println("------------");
+                // Serial.println("------------");
+                // Serial.println("Rover moving in straight line:");
+                // Serial.println("mode_:\t" + String(mode_));
+                // Serial.println("B_x: " + String(B_x));
+                // Serial.println("B_y: " + String(B_y));
+                // Serial.println("current_x:\t" + String(current_x));
+                // Serial.println("current_y:\t" + String(current_y));
 
             } else {
                 // Serial.println("Still going straight but in else");
@@ -732,8 +732,7 @@ void loop()
 
                 current_x += (1 * cos(current_angle));
                 current_y += (1 * sin(current_angle));
-                // Serial.println("current_x:\t" + String(current_x));
-                // Serial.println("current_y:\t" + String(current_y));
+                // Serial.println(String(current_x) + " " + String(current_y));
                 // delay(5);
             }            
         }
