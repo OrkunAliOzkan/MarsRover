@@ -528,7 +528,10 @@ void loop()
         turning_complete = 0;
         straight_line_complete = 0;
 
-        // avoidance_counter  = (avoidance_counter == 1) ? (-1) : (avoidance_counter + 1);
+        // avoidance_counter  = (avoidance_counter == 0) ? (1) : (avoidance_counter);
+            if(avoidance_counter != -1){
+                Serial.println("This code is fucked 2");
+            }
 
         switch(avoidance_counter){
             case(0):{
@@ -539,7 +542,7 @@ void loop()
                     B_y = (B_y - current_y > HEIGHT_ERROR) ? 
                             (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT)) 
                             : 
-                            (current_y + Y_DISPLACEMENT_AMOUNT);  
+                            (B_y + Y_DISPLACEMENT_AMOUNT);  
                     B_x = current_x;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break;
@@ -550,7 +553,7 @@ void loop()
                             (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
                             : 
                             (current_x + X_DISPLACEMENT_AMOUNT);  
-                    B_y = current_y;
+                    B_y = B_y;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break;
                     }
@@ -560,7 +563,7 @@ void loop()
                             (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
                             : 
                             (current_y + Y_DISPLACEMENT_AMOUNT);  
-                    B_x = current_x;
+                    B_x = B_x;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break; 
                     }
@@ -570,7 +573,7 @@ void loop()
                             (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
                             : 
                             (current_x - X_DISPLACEMENT_AMOUNT);
-                    B_y = current_y;
+                    B_y = B_y;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break; 
                     }
@@ -628,7 +631,7 @@ void loop()
         Serial.println("I made it here to where avoidance_counter goes from " + String(avoidance_counter) + "to");
         mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
         // mode_ = (avoidance_counter == 1)? ("A") : (mode_);
-        // avoidance_counter  = (avoidance_counter == 1) ? (-1) : (avoidance_counter + 1);
+        avoidance_counter  = (avoidance_counter == 1) ? (-1) : (avoidance_counter + 1);
         Serial.println(String(avoidance_counter) + "---///---\n");
         // avoidance_counter %= 2;
 
@@ -683,7 +686,7 @@ void loop()
         // Serial.println("mode_:\t" + String(mode_));
                 //  If there is an object inbound, needed to be avoided. TEMPORARY, KNOW IT NEEDS TO BE CHANGED
         if((mode_ == "A") && camera_readings( &camera_readings_type, &camera_readings_displacemet, &camera_readings_angle, 
-                            current_x, current_y) && (avoidance_counter )){  
+                            current_x, current_y) && (avoidance_counter == -1)){  
             Serial.println("Obstacle avoidance");
             if( (avoidance_counter == -1) && 
                 (camera_readings_displacemet *cos(camera_readings_angle) < WIDTH_ERROR) && 
@@ -696,7 +699,10 @@ void loop()
             //  stop motors <---- TODO: Add this
             //  set to avoid mode
             mode_ = "AVOID";
-            avoidance_counter = (avoidance_counter == -1) ? (0) : (avoidance_counter + 1);
+            avoidance_counter = (avoidance_counter == -1) ? (0) : (avoidance_counter);
+            if(avoidance_counter != -1){
+                Serial.println("This code is fucked");
+            }
             // avoidance_counter = 0;
             //  set to a value 
             }
