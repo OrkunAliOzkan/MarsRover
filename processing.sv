@@ -108,7 +108,7 @@ assign Hue = (Hue_0<0) ? Hue_0 + 360 :
 			 (Hue_0>360) ? Hue_0 - 360 : Hue_0;
 
 assign red_sector = (Hue>10 && Hue<30) && (Sat>50);
-assign green_sector = (Hue>165 && Hue<180) && (Sat>35);
+assign green_sector = (Hue>165 && Hue<185) && (Sat>35);
 assign blue_sector = (Hue>210 && Hue<240) && (Sat>30) && (Val>10 && Val<200);
 assign lime_sector = (Hue>125 && Hue<150) && (Sat>20) && (Val>220);
 assign yellow_sector = (Hue>55 && Hue<65) && (Sat>40) && (Val>230);
