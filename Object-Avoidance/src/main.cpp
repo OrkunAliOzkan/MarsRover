@@ -365,7 +365,6 @@ int automation(int * state, double * destination_x, double * destination_y, doub
 /////////////////////////////////////////////////////////////////
 
 //  obstacle avoidance
-
 //  camera readings
 bool camera_readings(int *camera_readings_type, double *camera_readings_displacemet, double *camera_readings_angle, double current_x, double current_y) {
 //  TEMPORARY OBJECT TO TEST AVOIDANCE
@@ -377,8 +376,8 @@ bool camera_readings(int *camera_readings_type, double *camera_readings_displace
 //  object is at (100, 100)
 *camera_readings_displacemet = sqrt(pow(avoidance_x - current_x, 2) + pow(avoidance_y - current_y, 2));
 *camera_readings_angle = atan2(avoidance_y - current_y, avoidance_x - current_x);
-return (*camera_readings_displacemet < 600);
-// return 0;
+// return (*camera_readings_displacemet < 600);
+return 0;
 }
 
 //  radius of an A2 base at its widest
@@ -528,6 +527,7 @@ void loop()
                         (min(B_y, current_y + Y_DISPLACEMENT_AMOUNT)) 
                         : 
                         (current_y + Y_DISPLACEMENT_AMOUNT);  
+                B_x = current_x;
                 break;
                 }
                 case(1):{
@@ -535,7 +535,8 @@ void loop()
                 B_x = (B_x - current_x > WIDTH_ERROR) ? 
                         (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
                         : 
-                        (current_x + X_DISPLACEMENT_AMOUNT);                  
+                        (current_x + X_DISPLACEMENT_AMOUNT);  
+                B_y = current_y;
                 break;
                 }
                 case(2):{
@@ -544,6 +545,7 @@ void loop()
                         (min(B_y, current_y - Y_DISPLACEMENT_AMOUNT)) 
                         : 
                         (current_y + Y_DISPLACEMENT_AMOUNT);  
+                B_x = current_x;
                 break; 
                 }
                 case(3):{
@@ -552,6 +554,7 @@ void loop()
                         (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
                         : 
                         (current_x - X_DISPLACEMENT_AMOUNT);
+                B_y = current_y;
                 break; 
                 }
             }
@@ -664,8 +667,11 @@ void loop()
             }
         }
         else{
+            // displacement_error = target_displacement - total_path_y;
             displacement_error = target_displacement - total_path_y;
             Serial.println("Still going straight");
+            Serial.println("displacement_error:\t" + String(displacement_error));
+            Serial.println("target_displacement:\t" + String(target_displacement));
             if (abs(displacement_error) <= 1) {
                 // brake when reached
 
@@ -695,6 +701,11 @@ void loop()
                 Serial.println("Still going straight but in else");
                 //  displacement error for debugging
                 total_path_y += 1;
+
+                current_x += (1 * cos(current_angle));
+                current_y += (1 * sin(current_angle));
+                Serial.println("current_x:\t" + String(current_x));
+                Serial.println("current_y:\t" + String(current_y));
                 // delay(5);
             }            
         }
