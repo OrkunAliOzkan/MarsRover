@@ -1,0 +1,5517 @@
+////////////////////AUTO////////////////////
+counter:        1
+...................
+B_x:    300.00
+B_y:    0.00
+current_x:      0.00
+current_y:      0.00
+Target Displacement: 300
+...................
+x_des:  300.00
+y_des:  0.00
+x_pos:  0.00
+y_pos:  0.00
+current_angle:  0.00
+target_angle:   0.00
+Turning
+Rover has turned. Rotated by:   0.00
+straight_line_complete: 0
+------------
+Going straight
+mode_:  A
+Obstacle avoidance
+avoidance counter at 0
+We are in 0
+...................
+B_x:    0.00
+B_y:    300.00
+current_x:      0.00
+current_y:      0.00
+Target Displacement: 300
+...................
+wagwan 0
+B_x:    0.00
+B_y:    300.00
+I made it here to where avoidance_counter goes from 0to
+1---///---
+
+uwu
+x_des:  0.00
+y_des:  300.00
+x_pos:  0.00
+y_pos:  0.00
+current_angle:  0.00
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.57
+current_angle:  0.00
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.56
+current_angle:  0.01
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.55
+current_angle:  0.02
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.54
+current_angle:  0.03
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.53
+current_angle:  0.04
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.52
+current_angle:  0.05
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.51
+current_angle:  0.06
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.50
+current_angle:  0.07
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.49
+current_angle:  0.08
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.48
+current_angle:  0.09
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.47
+current_angle:  0.10
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.46
+current_angle:  0.11
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.45
+current_angle:  0.12
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.44
+current_angle:  0.13
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.43
+current_angle:  0.14
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.42
+current_angle:  0.15
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.41
+current_angle:  0.16
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.40
+current_angle:  0.17
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.39
+current_angle:  0.18
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.38
+current_angle:  0.19
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.37
+current_angle:  0.20
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.36
+current_angle:  0.21
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.35
+current_angle:  0.22
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.34
+current_angle:  0.23
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.33
+current_angle:  0.24
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.32
+current_angle:  0.25
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.31
+current_angle:  0.26
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.30
+current_angle:  0.27
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.29
+current_angle:  0.28
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.28
+current_angle:  0.29
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.27
+current_angle:  0.30
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.26
+current_angle:  0.31
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.25
+current_angle:  0.32
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.24
+current_angle:  0.33
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.23
+current_angle:  0.34
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.22
+current_angle:  0.35
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.21
+current_angle:  0.36
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.20
+current_angle:  0.37
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.19
+current_angle:  0.38
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.18
+current_angle:  0.39
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.17
+current_angle:  0.40
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.16
+current_angle:  0.41
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.15
+current_angle:  0.42
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.14
+current_angle:  0.43
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.13
+current_angle:  0.44
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.12
+current_angle:  0.45
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.11
+current_angle:  0.46
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.10
+current_angle:  0.47
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.09
+current_angle:  0.48
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.08
+current_angle:  0.49
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.07
+current_angle:  0.50
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.06
+current_angle:  0.51
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.05
+current_angle:  0.52
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.04
+current_angle:  0.53
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.03
+current_angle:  0.54
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.02
+current_angle:  0.55
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.01
+current_angle:  0.56
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  1.00
+current_angle:  0.57
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.99
+current_angle:  0.58
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.98
+current_angle:  0.59
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.97
+current_angle:  0.60
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.96
+current_angle:  0.61
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.95
+current_angle:  0.62
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.94
+current_angle:  0.63
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.93
+current_angle:  0.64
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.92
+current_angle:  0.65
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.91
+current_angle:  0.66
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.90
+current_angle:  0.67
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.89
+current_angle:  0.68
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.88
+current_angle:  0.69
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.87
+current_angle:  0.70
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.86
+current_angle:  0.71
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.85
+current_angle:  0.72
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.84
+current_angle:  0.73
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.83
+current_angle:  0.74
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.82
+current_angle:  0.75
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.81
+current_angle:  0.76
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.80
+current_angle:  0.77
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.79
+current_angle:  0.78
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.78
+current_angle:  0.79
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.77
+current_angle:  0.80
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.76
+current_angle:  0.81
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.75
+current_angle:  0.82
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.74
+current_angle:  0.83
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.73
+current_angle:  0.84
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.72
+current_angle:  0.85
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.71
+current_angle:  0.86
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.70
+current_angle:  0.87
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.69
+current_angle:  0.88
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.68
+current_angle:  0.89
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.67
+current_angle:  0.90
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.66
+current_angle:  0.91
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.65
+current_angle:  0.92
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.64
+current_angle:  0.93
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.63
+current_angle:  0.94
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.62
+current_angle:  0.95
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.61
+current_angle:  0.96
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.60
+current_angle:  0.97
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.59
+current_angle:  0.98
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.58
+current_angle:  0.99
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.57
+current_angle:  1.00
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.56
+current_angle:  1.01
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.55
+current_angle:  1.02
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.54
+current_angle:  1.03
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.53
+current_angle:  1.04
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.52
+current_angle:  1.05
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.51
+current_angle:  1.06
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.50
+current_angle:  1.07
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.49
+current_angle:  1.08
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.48
+current_angle:  1.09
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.47
+current_angle:  1.10
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.46
+current_angle:  1.11
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.45
+current_angle:  1.12
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.44
+current_angle:  1.13
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.43
+current_angle:  1.14
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.42
+current_angle:  1.15
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.41
+current_angle:  1.16
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.40
+current_angle:  1.17
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.39
+current_angle:  1.18
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.38
+current_angle:  1.19
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.37
+current_angle:  1.20
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.36
+current_angle:  1.21
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.35
+current_angle:  1.22
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.34
+current_angle:  1.23
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.33
+current_angle:  1.24
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.32
+current_angle:  1.25
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.31
+current_angle:  1.26
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.30
+current_angle:  1.27
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.29
+current_angle:  1.28
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.28
+current_angle:  1.29
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.27
+current_angle:  1.30
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.26
+current_angle:  1.31
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.25
+current_angle:  1.32
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.24
+current_angle:  1.33
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.23
+current_angle:  1.34
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.22
+current_angle:  1.35
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.21
+current_angle:  1.36
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.20
+current_angle:  1.37
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.19
+current_angle:  1.38
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.18
+current_angle:  1.39
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.17
+current_angle:  1.40
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.16
+current_angle:  1.41
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.15
+current_angle:  1.42
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.14
+current_angle:  1.43
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.13
+current_angle:  1.44
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.12
+current_angle:  1.45
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.11
+current_angle:  1.46
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.10
+current_angle:  1.47
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.09
+current_angle:  1.48
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.08
+current_angle:  1.49
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.07
+current_angle:  1.50
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.06
+current_angle:  1.51
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.05
+current_angle:  1.52
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.04
+current_angle:  1.53
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.03
+current_angle:  1.54
+target_angle:   1.57
+Turning
+Still turning
+angular_error:  0.02
+current_angle:  1.55
+target_angle:   1.57
+Turning
+Rover has turned. Rotated by:   1.57
+straight_line_complete: 0
+------------
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     300
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      1.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     299
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      2.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     298
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      3.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     297
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      4.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     296
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      5.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     295
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      6.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     294
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      7.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     293
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      8.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     292
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      9.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     291
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      10.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     290
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      11.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     289
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      12.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     288
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      13.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     287
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      14.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     286
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      15.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     285
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      16.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     284
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      17.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     283
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      18.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     282
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      19.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     281
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      20.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     280
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      21.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     279
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      22.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     278
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      23.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     277
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      24.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     276
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      25.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     275
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      26.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     274
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      27.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     273
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      28.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     272
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      29.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     271
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      30.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     270
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      31.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     269
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      32.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     268
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      33.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     267
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      34.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     266
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      35.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     265
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      36.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     264
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      37.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     263
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      38.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     262
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      39.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     261
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      40.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     260
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      41.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     259
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      42.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     258
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      43.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     257
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      44.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     256
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      45.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     255
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      46.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     254
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      47.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     253
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      48.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     252
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      49.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     251
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      50.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     250
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      51.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     249
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      52.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     248
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      53.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     247
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      54.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     246
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      55.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     245
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      56.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     244
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      57.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     243
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      58.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     242
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      59.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     241
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      60.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     240
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      61.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     239
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      62.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     238
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      63.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     237
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      64.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     236
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      65.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     235
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      66.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     234
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      67.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     233
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      68.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     232
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      69.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     231
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      70.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     230
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      71.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     229
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      72.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     228
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      73.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     227
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      74.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     226
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      75.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     225
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      76.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     224
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      77.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     223
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      78.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     222
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      79.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     221
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      80.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     220
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      81.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     219
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      82.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     218
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      83.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     217
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      84.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     216
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      85.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     215
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      86.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     214
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      87.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     213
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      88.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     212
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      89.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     211
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      90.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     210
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      91.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     209
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      92.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     208
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      93.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     207
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      94.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     206
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      95.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     205
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      96.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     204
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      97.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     203
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      98.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     202
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      99.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     201
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      100.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     200
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      101.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     199
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      102.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     198
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      103.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     197
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      104.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     196
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      105.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     195
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      106.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     194
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      107.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     193
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      108.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     192
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      109.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     191
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      110.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     190
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      111.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     189
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      112.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     188
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      113.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     187
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      114.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     186
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      115.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     185
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      116.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     184
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      117.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     183
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      118.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     182
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      119.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     181
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      120.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     180
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      121.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     179
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      122.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     178
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      123.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     177
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      124.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     176
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      125.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     175
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      126.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     174
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      127.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     173
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      128.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     172
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      129.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     171
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      130.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     170
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      131.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     169
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      132.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     168
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      133.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     167
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      134.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     166
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      135.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     165
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      136.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     164
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      137.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     163
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      138.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     162
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      139.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     161
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      140.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     160
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      141.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     159
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      142.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     158
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      143.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     157
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      144.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     156
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      145.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     155
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      146.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     154
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      147.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     153
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      148.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     152
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      149.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     151
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      150.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     150
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      151.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     149
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      152.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     148
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      153.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     147
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      154.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     146
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      155.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     145
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      156.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     144
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      157.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     143
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      158.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     142
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      159.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     141
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      160.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     140
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      161.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     139
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      162.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     138
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      163.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     137
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      164.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     136
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      165.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     135
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      166.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     134
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      167.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     133
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      168.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     132
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      169.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     131
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      170.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     130
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      171.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     129
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      172.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     128
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      173.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     127
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      174.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     126
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      175.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     125
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      176.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     124
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      177.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     123
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      178.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     122
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      179.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     121
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      180.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     120
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      181.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     119
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      182.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     118
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      183.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     117
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      184.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     116
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      185.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     115
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      186.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     114
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      187.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     113
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      188.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     112
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      189.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     111
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      190.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     110
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      191.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     109
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      192.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     108
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      193.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     107
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      194.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     106
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      195.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     105
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      196.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     104
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      197.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     103
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      198.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     102
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      199.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     101
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      200.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     100
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      201.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     99
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      202.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     98
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      203.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     97
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      204.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     96
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      205.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     95
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      206.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     94
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      207.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     93
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      208.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     92
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      209.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     91
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      210.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     90
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      211.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     89
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      212.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     88
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      213.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     87
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      214.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     86
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      215.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     85
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      216.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     84
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      217.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     83
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      218.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     82
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      219.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     81
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      220.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     80
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      221.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     79
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      222.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     78
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      223.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     77
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      224.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     76
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      225.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     75
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      226.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     74
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      227.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     73
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      228.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     72
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      229.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     71
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      230.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     70
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      231.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     69
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      232.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     68
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      233.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     67
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      234.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     66
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      235.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     65
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      236.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     64
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      237.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     63
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      238.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     62
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      239.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     61
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      240.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     60
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      241.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     59
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      242.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     58
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      243.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     57
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      244.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     56
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      245.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     55
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      246.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     54
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      247.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     53
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      248.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     52
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      249.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     51
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      250.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     50
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      251.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     49
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      252.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     48
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      253.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     47
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      254.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     46
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      255.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     45
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      256.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     44
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      257.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     43
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      258.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     42
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      259.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     41
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      260.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     40
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      261.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     39
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      262.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     38
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      263.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     37
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      264.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     36
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      265.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     35
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      266.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     34
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      267.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     33
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      268.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     32
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      269.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     31
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      270.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     30
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      271.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     29
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      272.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     28
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      273.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     27
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      274.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     26
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      275.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     25
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      276.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     24
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      277.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     23
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      278.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     22
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      279.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     21
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      280.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     20
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      281.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     19
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      282.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     18
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      283.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     17
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      284.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     16
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      285.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     15
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      286.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     14
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      287.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     13
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      288.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     12
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      289.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     11
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      290.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     10
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      291.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     9
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      292.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     8
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      293.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     7
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      294.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     6
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      295.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     5
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      296.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     4
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      297.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     3
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      298.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     2
+target_displacement:    300
+Still going straight but in else
+current_x:      0.00
+current_y:      299.00
+Going straight
+mode_:  AVOID
+Still going straight
+displacement_error:     1
+target_displacement:    300
+Rover moving in straight line:
+B_x: 0.00
+B_y: 300.00
+------------
+////////////////////AUTO////////////////////
+counter:        2
+...................
+B_x:    0.00
+B_y:    549.00
+current_x:      0.00
+current_y:      299.00
+Target Displacement: 250
+...................
+x_des:  0.00
+y_des:  549.00
+x_pos:  0.00
+y_pos:  299.00
+current_angle:  1.57
+target_angle:   1.57
+Turning
+Rover has turned. Rotated by:   1.57
+straight_line_complete: 0
+------------
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
+mode_:  A
+Obstacle avoidance
+Going straight
