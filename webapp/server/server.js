@@ -50,31 +50,30 @@ rover_server.on('connection', (socket) => {
     rover_connected = true;
     console.log('Rover Connected');
 
-    socket.on('data', function(chunk) {
-        console.log(`Rover Data:`);
-        const rover_string = chunk.toString();
-        console.log(rover_string);
-    });
-
     // socket.on('data', function(chunk) {
     //     console.log(`Rover Data:`);
     //     const rover_string = chunk.toString();
-    //     const packet_list = rover_string.split('@');
-    //     console.log(packet_list.length);
-    //     let packet_json;
-    //     packet_list.forEach(item => {
-    //         if (item != '') {
-    //             try {
-    //                 packet_json = JSON.parse(item);
-    //                 //console.log(packet_json);
-    //                 //io.emit('update', packet_json);
-    //             } catch (error) {
-    //                 console.log(rover_string, "(not JSON)");
-    //             }
-    //         }
-    //     });
-    //     console.log("finish");
+    //     console.log(rover_string);
     // });
+
+    socket.on('data', function(chunk) {
+        console.log(`Rover Data:`);
+        const rover_string = chunk.toString();
+        const packet_list = rover_string.split('@');
+        console.log(packet_list.length);
+        let packet_json;
+        packet_list.forEach(item => {
+            if (item != '') {
+                try {
+                    packet_json = JSON.parse(item);
+                    console.log(packet_json);
+                    io.emit('update', packet_json);
+                } catch (error) {
+                    console.log(rover_string, "(not JSON)");
+                }
+            }
+        });
+    });
 
     // When the client requests to end the TCP connection with the server, the server
     // ends the connection.
@@ -155,18 +154,18 @@ io.on('connection', (sock) => {
         print(`Mission Start`, 0);
     });
 
-    sock.on('test', ({ x, y }) => {
-        print(`test point set at x: ${x}, y: ${y}`, 0);
-        const time_string = (new Date()).toISOString();
-        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
-        const waypoint_data = `${x + 100},${y + 100},M`;
-        // send the waypoint data to the rover over TCP
-        if (rover_connected) {
-            rover_socket.write(waypoint_data);
-        } else {
-            console.log(`Can't send waypoint, rover is not connected`);
-        }
-    });
+    // sock.on('test', ({ x, y }) => {
+    //     print(`test point set at x: ${x}, y: ${y}`, 0);
+    //     const time_string = (new Date()).toISOString();
+    //     // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
+    //     const waypoint_data = `${x + 100},${y + 100},M`;
+    //     // send the waypoint data to the rover over TCP
+    //     if (rover_connected) {
+    //         rover_socket.write(waypoint_data);
+    //     } else {
+    //         console.log(`Can't send waypoint, rover is not connected`);
+    //     }
+    // });
     
 });
 

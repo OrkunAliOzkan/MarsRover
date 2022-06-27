@@ -1,24 +1,24 @@
 "use strict";
 
-var key_states = {
-    "w": false,
-    "a": false,
-    "s": false,
-    "d": false
-}
+// var key_states = {
+//     "w": false,
+//     "a": false,
+//     "s": false,
+//     "d": false
+// }
 
-const keyHandler = e => {
-    console.log(e.key);
-    document.removeEventListener(document, keyHandler)
-}
+// const keyHandler = e => {
+//     console.log(e.key);
+//     document.removeEventListener(document, keyHandler)
+// }
 
-document.addEventListener('keydown', keyHandler);
+// document.addEventListener('keydown', keyHandler);
 
-document.addEventListener('keyup', event => {
-    document.addEventListener('keydown', event => {
-        console.log(e.key);
-    }, {once: true});
-});
+// document.addEventListener('keyup', event => {
+//     document.addEventListener('keydown', event => {
+//         console.log(e.key);
+//     }, {once: true});
+// });
 
 
 const canvas = document.getElementById('mapCanvas');
