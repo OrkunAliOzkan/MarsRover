@@ -32,12 +32,11 @@ function toRadians(degrees) {
 }
 
 var state;
-
 state = {
     "rover": {
         "posX": 60, 
         "posY": 60, 
-        "angle": 0
+        "angle": Math.PI / 2
     },
     "alien": {
         "red": {
@@ -99,9 +98,6 @@ const rover_height = 40;
 var rover = new Image(rover_width, rover_height);
 var flag = new Image();
 
-const alienRadius = 10;
-const buildingRadius = 20
-
 rover.src = "../images/rover_3.png";   // load image
 flag.src = "../images/flag.png";
 
@@ -142,18 +138,26 @@ function drawRover(roverEntity) {
 }
 
 function drawAlien(alienEntity, colour) {
+    const alienRadius = 10;
+    if (alienEntity.posX < 0 || alienEntity.posY < 0) {
+        // dont draw if alien is offscreen
+        return
+    }
     const {x, y} = arena_to_map(alienEntity.posX, alienEntity.posY);
     ctx.beginPath();
     ctx.arc(x, y, alienRadius, 0, 2 * Math.PI, false);
     ctx.fillStyle = colour;
     ctx.fill();
-    // ctx.lineWidth = 5;
-    // ctx.strokeStyle = '#003300';
     ctx.stroke();
 }
 
 function drawBuilding(buildingEntity) {
+    if (buildingEntity.posX < 0 || buildingEntity.posY < 0) {
+        // dont draw if building is offscreen
+        return
+    }
     const {x, y} = arena_to_map(buildingEntity.posX, buildingEntity.posY);
+    const buildingRadius = buildingEntity.width / 2;
     for (let i = 0; i < 12; i++){
         ctx.fillStyle = i % 2 == 0 ? "black": "white";
         ctx.beginPath();
@@ -210,13 +214,17 @@ function updateDashboard(data) {
 }
 
 function updateState(state, packet) {
+    // TODO: Implement SLAM basically
+    const max_building_width = 800;
     if (packet.type == "rover") {
         state.rover = packet.data;
         updateDashboard(packet.data);
     } else if (packet.type == "alien") {
         state.alien[packet.colour] = packet.data;
     } else if (packet.type == "building") {
-        state.building.push(packet.data);
+        if (packet.width <= max_building_width) {
+            state.building.push(packet.data);
+        }
     } else if (packet.type == "waypoint") {
         state.waypoint = packet.data;
     }
