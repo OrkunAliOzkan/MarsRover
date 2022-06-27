@@ -2,7 +2,7 @@
 #include <SPI.h>
 #include <Wire.h>
 #include <WiFi.h>
-#include <WiFiClientSecure.h>
+#include <vector>
 
 // /////////////////////////////////////////////////////////////////
 
@@ -592,7 +592,7 @@ void loop()
 
             // power the motors
             analogWrite(PWMA, differential_PWM_output);  
-            analogWrite(PWMB, (STRAIGHT_PWM_R/STRAIGHT_PWM_L)*differential_PWM_output);
+            analogWrite(PWMB, differential_PWM_output);
 
             // update variables for next cycle
             prevT = currT;
@@ -709,7 +709,7 @@ void loop()
                 & current_angle
                 );
             displacement_error = target_displacement - total_path_y;
-            angular_error = total_path_x - 14 ;
+            angular_error = total_path_x - 18 ;
             
             if (abs(displacement_error) <= 1) {
                 // brake when reached
