@@ -41,7 +41,7 @@
 .tab {
     float: left;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    background-color: #577cf3;
     margin: auto;
   }
   
@@ -58,10 +58,6 @@
     transition: 0.3s;
   }
 
-  .auto {
-    background-color: rgb(105, 105, 226);
-  }
-  
   /* Change background color of buttons on hover */
   .tab button:hover {
     background-color: #ddd;
@@ -85,39 +81,44 @@
     float: left;
 }
 
+
 /* Style the form - display items horizontally */
 .control-panel {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-  }
-  
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-bottom: 20px;
+}
+.control-item {
+  padding-bottom: 5px;
+}
+
 /* Add some margins for each label */
 .control-panel label {
-    margin: 5px 10px 5px 0;
-    height: 20px;
+  margin: 5px 10px 5px 0;
+  height: 20px;
 }
-  
-  /* Style the input fields */
+
+/* Style the input fields */
 .control-panel input {
-    vertical-align: middle;
-    /* margin: 5px 10px 5px 0;
-    padding: 10px; */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    height: 20px;
+  vertical-align: middle;
+  /* margin: 5px 10px 5px 0;
+  padding: 10px; */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  height: 20px;
 }
 
 .control-col {
-    float: left;
+  float: left;
 }
 
-/* .control-row {
-  height: 40px;
-} */
+.dashboard {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin-bottom: 20px;
+}
 
-._dash-column left {
-    float: left;
+.control-item {
 }
 
 .img-wrapper {
@@ -154,3 +155,5 @@
       align-items: stretch;
     }
   }  */
+
+  

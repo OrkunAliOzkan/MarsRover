@@ -5,16 +5,10 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Mars Rover | Command Centre</title>
     
-    <!-- Buttons -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    
     <!-- Custom CSS -->
     <link rel = "stylesheet" type = "text/css" href = "../css/subpage.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/rover.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/canvas.css">
-
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     
     <!-- Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -43,18 +37,25 @@
 
     <div class="_row">
         <div class="_column left">
+            <h1 class="col-header">Telemetry</h1>
             <div class="dashboard">
-                <h1 class="col-header">Rover Feed</h1>
-                <!-- <div class="_dash-column left"></div>
-                <div class="_dash-column left"></div> -->
-                <div class="_dash-row">
-                    <h2 id="rover_angle">θ <span class="unit">(deg)</span> : -</h2>
+                <div class="dash-row">
+                    <h2>θ <span class="unit">(deg)</span> :</h2>
                 </div>
-                <div class="_dash-row">
-                    <h2 id="rover_x">x <span class="unit">(mm)</span> : -</h2>
+                <div class="dash-row">
+                    <h2 id="rover_angle">-</span>
                 </div>
-                <div class="_dash-row">
-                    <h2 id="rover_y">y <span class="unit">(mm)</span> : -</h2>
+                <div class="dash-row">
+                    <h2 id="rover_x">x <span class="unit">(mm)</span> :</h2>
+                </div>
+                <div class="dash-row">
+                    <h2 id="rover_x">-</h2>
+                </div>
+                <div class="dash-row">
+                    <h2 id="rover_y">y <span class="unit">(mm)</span> :</h2>
+                </div>
+                <div class="dash-row">
+                    <h2 id="rover_y">-</h2>
                 </div>
             </div>
             <div class="img-wrapper">
@@ -67,17 +68,12 @@
         <div class="_column right">
             <h1 class="col-header">Setup</h1>
             <div class="control-panel">
-                <div class='control-col'>
-                    <div class='control-row'>
-                        <label for="angle">θ (deg):</label><input type="text" id="angle" size="5">
-                    </div>
-                    <div class='control-row'>
-                        <label for="x">x (mm):</label><input type="text" id="x" size="5">
-                    </div>
-                    <div class='control-row'>
-                        <label for="y">y (mm):</label><input type="text" id="y" size="5">
-                    </div>
-                </div>
+                <div class="control-item"><label for="angle">θ (deg):</label></div>
+                <div class="control-item"><input type="text" id="angle" size="5"></div>
+                <div class="control-item"><label for="x">x (mm):</label></div>  
+                <div class="control-item"><input type="text" id="x" size="5"></div>
+                <div class="control-item"><label for="y">y (mm):</label></div>
+                <div class="control-item"><input type="text" id="y" size="5"></div>  
             </div>
             <div>
                 <div class="tab">
@@ -85,16 +81,10 @@
                     <button class="tablinks" onclick="openCity(event, 'manual')" id="manual">Manual</button>
                 </div>
             </div>
-            <!-- <div>
-                <button type="button" class="btn btn-primary btn-lg btn-block" id ="auto">Automatic Control</button>
-                <button type="button" class="btn btn-secondary btn-lg btn-block" id ="manual">Manual Control</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id ="start">Start</button>
-            </div> -->
+            
         </div>
     </div>
-    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" id ="auto">Automatic Control</button>
-                <button type="button" class="btn btn-secondary btn-lg btn-block" id ="manual">Manual Control</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id ="start">Start</button> -->
+    
     <!-- importing socket.io -->
     <script src="/socket.io/socket.io.js"></script>
     <!-- Bootstrap -->

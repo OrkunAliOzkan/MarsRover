@@ -227,8 +227,8 @@ const getClickCoordinates = (element, ev) => {
     const { top, left } = element.getBoundingClientRect();
     const { clientX, clientY } = ev;
     return {
-        x: clientX - left,
-        y: clientY - top
+        x: Math.floor(clientX - left),
+        y: Math.floor(clientY - top)
     };
 };
 
@@ -343,6 +343,8 @@ function genPacketsSmall() {
     //         clearInterval(replay_interval);
     //     }
     // }, 50);
+
+    rover_angle.innerHTML = `100`;
 })();
 
 function openCity(evt, cityName) {

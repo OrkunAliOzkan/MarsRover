@@ -31,18 +31,21 @@ server.listen(http_port,'0.0.0.0', () => {
 
 //--------Initialising TCP server for Rover--------//
 const Net = require('net');
-const port = 8080;
+const port = 8001;
 
 const rover_server = new Net.Server();
 var rover_connected = false;
 var rover_socket;
 
 rover_server.listen(port, () => {
-    console.log(`Rover server listening on port ${port}`);
+     console.log(`Rover server listening on port ${port}`);
 });
 
 rover_server.on('connection', (socket) => {
     // set the global variable
+    if (rover_connected == true) {
+        rover_socket.destroy();
+    }
     rover_socket = socket;
     rover_connected = true;
     console.log('Rover Connected');
@@ -167,6 +170,17 @@ io.on('connection', (sock) => {
     
 });
 
+// //--------Initialising Python Control Script--------//
+// const {spawn} = require('child_process');
+// const control_script = spawn('python', ['main.py']);
+// print("Control Script started", 0)
+
+// control_script.stdout.on('data', (data) => {
+//     print(`${data}`, 1);
+// })
+// control_script.on('close', (code) => {
+//     print(`Control Script ended with code ${code}`, 0)
+// })
 
 // shutdown server gracefully
 const shutdown = async () => {
@@ -174,6 +188,11 @@ const shutdown = async () => {
     await io.close();
     console.log('Closing TCP server');
     await rover_server.close();
+    if (rover_connected) {
+        console.log('Closing rover socket')
+        rover_socket.destroy();
+        console.log(rover_socket.destroyed)
+    }
     process.exit(0);
 };
 
@@ -225,23 +244,3 @@ process.on('SIGTERM', () => {
 //         } 
 //     ]
 // }
-
-// var count = 0;
-
-// var interval
-// interval = setInterval(() => {
-//         console.log(count);
-//         count++;
-//     }, 500);
-
-//--------Initialising Python Control Script--------//
-// const {spawn} = require('child_process');
-// const control_script = spawn('python', ['main.py']);
-// print("Control Script started", 0)
-
-// control_script.stdout.on('data', (data) => {
-//     print(`${data}`, 1);
-// })
-// control_script.on('close', (code) => {
-//     print(`Control Script ended with code ${code}`, 0)
-// })
