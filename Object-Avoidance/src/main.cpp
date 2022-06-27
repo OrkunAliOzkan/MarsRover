@@ -386,7 +386,7 @@ bool camera_readings(int *camera_readings_type, double *camera_readings_displace
 //  object is at (100, 100)
 *camera_readings_displacemet = sqrt(pow(avoidance_x - current_x, 2) + pow(avoidance_y - current_y, 2));
 *camera_readings_angle = atan2(avoidance_y - current_y, avoidance_x - current_x);
-return (*camera_readings_displacemet < 300);
+return (*camera_readings_displacemet < 100);
 // return 0;
 }
 
