@@ -93,8 +93,30 @@ io.on('connection', (sock) => {
         }
     });
 
+    sock.on('auto', (data) => {
+        print(`Rover set to Automatic Mode`, 0);
+        const tcp_send = `0,0,A`;
+        // send the waypoint data to the rover over TCP
+        if (rover_connected) {
+            rover_socket.write(tcp_send);
+            console.log(`Command sent`);
+        } else {
+            console.log(`Can't send, rover is not connected`);
+        }
+    });
+
     sock.on('start_mission', (msg) => {
         print(`Mission Start`, 0);
+        if (rover_connected) {
+            // TODO: send start to rover
+            // rover_socket.write(waypoint_data);
+        } else {
+            console.log(`Can't start mission, rover is not connected`);
+        }
+    });
+
+    sock.on('end_mission', msg => {
+        print(`Mission End`, 0);
     });
 
     sock.on('test', ({ x, y }) => {
@@ -132,6 +154,7 @@ rover_server.on('connection', (socket) => {
     rover_socket = socket;
     rover_connected = true;
     console.log('Rover Connected');
+    io.emit('rover_connected', "");
     
     // socket.on('data', function(chunk) {
     //     console.log(`Rover Data:`);
@@ -149,8 +172,7 @@ rover_server.on('connection', (socket) => {
             if (item != '') {
                 try {
                     packet_json = JSON.parse(item);
-                    //console.log(packet_json);
-                    //io.emit('update', packet_json);
+                    io.emit('update', packet_json);
                 } catch (error) {
                     console.log(rover_string, "(not JSON)");
                 }

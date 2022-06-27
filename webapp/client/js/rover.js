@@ -264,6 +264,28 @@ function genPacketsSmall() {
 //     }
 // }
 
+var mode_global = "auto";
+var mission_global = false;
+
+function openCity(evt, cityName) {
+    console.log(cityName);
+    // Declare all variables
+    var i, tabcontent, tablinks, tabmap;
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    // document.getElementById(cityName + "Map").style.display = "block";
+    evt.currentTarget.className += " active";
+
+    mode_global = cityName;
+  }
+
 (() => {
     const sock = io();
 
@@ -284,13 +306,17 @@ function genPacketsSmall() {
         console.log("waypoint");
     });
 
-    const start_btn = document.getElementsByClassName("start");
-    start_btn.addEventListener('click', (event) => {
-        console.log("Start Mission");
-        sock.emit('start_mission', "");
+    sock.on('rover_connected', () => {
+        document.getElementById("rover_status").innerHTML = "Online"; 
     });
 
-    const end_btn = document.getElementsByClassName("end");
+    const start_btn = document.getElementById("start");
+    start_btn.addEventListener('click', (event) => {
+        console.log("Start Mission");
+        sock.emit('start_mission', mode_global);
+    });
+
+    const end_btn = document.getElementById("end");
     end_btn.addEventListener('click', (event) => {
         console.log("End Mission");
         sock.emit('end_mission', "");
@@ -320,26 +346,3 @@ function genPacketsSmall() {
 
     updateDashboard({posX: 124.1235, posY: 425.21, angle: 1.57});
 })();
-
-var mode_global = "auto";
-var mission_global = false;
-
-function openCity(evt, cityName) {
-    console.log(cityName);
-    // Declare all variables
-    var i, tabcontent, tablinks, tabmap;
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-  
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(cityName).style.display = "block";
-    // document.getElementById(cityName + "Map").style.display = "block";
-    evt.currentTarget.className += " active";
-
-    mode_global = cityName;
-  }
-
