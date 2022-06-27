@@ -119,18 +119,18 @@ io.on('connection', (sock) => {
         print(`Mission End`, 0);
     });
 
-    sock.on('test', ({ x, y }) => {
-        print(`test point set at x: ${x}, y: ${y}`, 0);
-        const time_string = (new Date()).toISOString();
-        // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
-        const waypoint_data = `${x + 100},${y + 100},M`;
-        // send the waypoint data to the rover over TCP
-        if (rover_connected) {
-            rover_socket.write(waypoint_data);
-        } else {
-            console.log(`Can't send waypoint, rover is not connected`);
-        }
-    });
+    // sock.on('test', ({ x, y }) => {
+    //     print(`test point set at x: ${x}, y: ${y}`, 0);
+    //     const time_string = (new Date()).toISOString();
+    //     // const waypoint_data = JSON.stringify({time: time_string, x: 100, y: 120, mode: 'M'});
+    //     const waypoint_data = `${x + 100},${y + 100},M`;
+    //     // send the waypoint data to the rover over TCP
+    //     if (rover_connected) {
+    //         rover_socket.write(waypoint_data);
+    //     } else {
+    //         console.log(`Can't send waypoint, rover is not connected`);
+    //     }
+    // });
     
 });
 
