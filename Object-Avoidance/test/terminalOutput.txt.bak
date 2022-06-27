@@ -1,3 +1,24 @@
+> Executing task: C:\Users\Orkun\.platformio\penv\Scripts\platformio.exe device monitor <
+
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Miniterm on COM4  115200,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:12784
+load:0x40080400,len:3032
+entry 0x400805e4
+Waiting for WiFi... .
+
+WiFi connected
+IP address: 
+192.168.137.169
 ////////////////////AUTO////////////////////
 counter:        1
 ...................
@@ -17,152 +38,26 @@ Rover has turned. Rotated by:   0.00
 straight_line_complete: 0
 current_angle:  0.00
 ------------
-Obstacle avoidance
-This code is fucked
-This code is fucked 2
-avoidance counter at 0
-We are in 0
-...................
-B_x:    0.00
-B_y:    300.00
-current_x:      0.00
-current_y:      0.00
-Target Displacement: 300
-...................
-wagwan 0
-B_x:    0.00
-B_y:    300.00
-I made it here to where avoidance_counter goes from 0to
-1---///---
-
-uwu
-x_des:  0.00
-y_des:  300.00
-x_pos:  0.00
-y_pos:  0.00
-current_angle:  0.00
-target_angle:   1.57
-Rover has turned. Rotated by:   1.57
-straight_line_complete: 0
-current_angle:  1.57
-------------
-Rover moving in straight line:
-mode_:  AVOID
-B_x: 0.00
-B_y: 300.00
-current_x:      0.00
-current_y:      299.00
-------------
-This code is fucked 2
-avoidance counter at 1
-We are in 0
-...................
-B_x:    300.00
-B_y:    300.00
-current_x:      0.00
-current_y:      299.00
-Target Displacement: 300
-...................
-wagwan 1
-B_x:    300.00
-B_y:    300.00
-I made it here to where avoidance_counter goes from 1to
--1---///---
-
-uwu
-x_des:  300.00
-y_des:  300.00
-x_pos:  0.00
-y_pos:  299.00
-current_angle:  1.57
-target_angle:   0.00
-Rover has turned. Rotated by:   0.00
-straight_line_complete: 0
-current_angle:  0.00
-------------
-Obstacle avoidance
-This code is fucked
-This code is fucked 2
-avoidance counter at 0
-We are in 0
-...................
-B_x:    0.00
-B_y:    600.00
-current_x:      0.00
-current_y:      299.00
-Target Displacement: 301
-...................
-wagwan 0
-B_x:    0.00
-B_y:    600.00
-I made it here to where avoidance_counter goes from 0to
-1---///---
-
-uwu
-x_des:  0.00
-y_des:  600.00
-x_pos:  0.00
-y_pos:  299.00
-current_angle:  0.00
-target_angle:   1.57
-Rover has turned. Rotated by:   1.57
-straight_line_complete: 0
-current_angle:  1.57
-------------
-Rover moving in straight line:
-mode_:  AVOID
-B_x: 0.00
-B_y: 600.00
-current_x:      0.00
-current_y:      599.00
-------------
-This code is fucked 2
-avoidance counter at 1
-We are in 0
-...................
-B_x:    300.00
-B_y:    600.00
-current_x:      0.00
-current_y:      599.00
-Target Displacement: 300
-...................
-wagwan 1
-B_x:    300.00
-B_y:    600.00
-I made it here to where avoidance_counter goes from 1to
--1---///---
-
-uwu
-x_des:  300.00
-y_des:  600.00
-x_pos:  0.00
-y_pos:  599.00
-current_angle:  1.57
-target_angle:   0.00
-Rover has turned. Rotated by:   0.00
-straight_line_complete: 0
-current_angle:  0.00
-------------
 Rover moving in straight line:
 mode_:  A
 B_x: 300.00
-B_y: 600.00
+B_y: 0.00
 current_x:      299.00
-current_y:      600.00
+current_y:      0.00
 ------------
 ////////////////////AUTO////////////////////
 counter:        2
 ...................
 B_x:    299.00
-B_y:    850.00
+B_y:    250.00
 current_x:      299.00
-current_y:      600.00
+current_y:      0.00
 Target Displacement: 250
 ...................
 x_des:  299.00
-y_des:  850.00
+y_des:  250.00
 x_pos:  299.00
-y_pos:  600.00
+y_pos:  0.00
 current_angle:  0.00
 target_angle:   1.57
 Rover has turned. Rotated by:   1.57
@@ -172,23 +67,23 @@ current_angle:  1.57
 Rover moving in straight line:
 mode_:  A
 B_x: 299.00
-B_y: 850.00
+B_y: 250.00
 current_x:      299.00
-current_y:      849.00
+current_y:      249.00
 ------------
 ////////////////////AUTO////////////////////
 counter:        3
 ...................
 B_x:    599.00
-B_y:    849.00
+B_y:    249.00
 current_x:      299.00
-current_y:      849.00
-Target Displacement: 299
+current_y:      249.00
+Target Displacement: 300
 ...................
 x_des:  599.00
-y_des:  849.00
+y_des:  249.00
 x_pos:  299.00
-y_pos:  849.00
+y_pos:  249.00
 current_angle:  1.57
 target_angle:   0.00
 Rover has turned. Rotated by:   0.00
@@ -198,23 +93,23 @@ current_angle:  0.00
 Rover moving in straight line:
 mode_:  A
 B_x: 599.00
-B_y: 849.00
-current_x:      597.00
-current_y:      849.00
+B_y: 249.00
+current_x:      598.00
+current_y:      249.00
 ------------
 ////////////////////AUTO////////////////////
 counter:        0
 ...................
-B_x:    597.00
-B_y:    599.00
-current_x:      597.00
-current_y:      849.00
+B_x:    598.00
+B_y:    -1.00
+current_x:      598.00
+current_y:      249.00
 Target Displacement: 250
 ...................
-x_des:  597.00
-y_des:  599.00
-x_pos:  597.00
-y_pos:  849.00
+x_des:  598.00
+y_des:  -1.00
+x_pos:  598.00
+y_pos:  249.00
 current_angle:  0.00
 target_angle:   -1.57
 Rover has turned. Rotated by:   -1.57
@@ -223,24 +118,24 @@ current_angle:  -1.57
 ------------
 Rover moving in straight line:
 mode_:  A
-B_x: 597.00
-B_y: 599.00
-current_x:      597.00
-current_y:      600.00
+B_x: 598.00
+B_y: -1.00
+current_x:      598.00
+current_y:      0.00
 ------------
 ////////////////////AUTO////////////////////
 counter:        1
 ...................
-B_x:    897.00
-B_y:    600.00
-current_x:      597.00
-current_y:      600.00
+B_x:    898.00
+B_y:    0.00
+current_x:      598.00
+current_y:      0.00
 Target Displacement: 300
 ...................
-x_des:  897.00
-y_des:  600.00
-x_pos:  597.00
-y_pos:  600.00
+x_des:  898.00
+y_des:  0.00
+x_pos:  598.00
+y_pos:  0.00
 current_angle:  -1.57
 target_angle:   0.00
 Rover has turned. Rotated by:   0.00
@@ -249,24 +144,24 @@ current_angle:  0.00
 ------------
 Rover moving in straight line:
 mode_:  A
-B_x: 897.00
-B_y: 600.00
-current_x:      896.00
-current_y:      600.00
+B_x: 898.00
+B_y: 0.00
+current_x:      897.00
+current_y:      0.00
 ------------
 ////////////////////AUTO////////////////////
 counter:        2
 ...................
-B_x:    896.00
-B_y:    850.00
-current_x:      896.00
-current_y:      600.00
+B_x:    897.00
+B_y:    250.00
+current_x:      897.00
+current_y:      0.00
 Target Displacement: 250
 ...................
-x_des:  896.00
-y_des:  850.00
-x_pos:  896.00
-y_pos:  600.00
+x_des:  897.00
+y_des:  250.00
+x_pos:  897.00
+y_pos:  0.00
 current_angle:  0.00
 target_angle:   1.57
 Rover has turned. Rotated by:   1.57
@@ -275,24 +170,24 @@ current_angle:  1.57
 ------------
 Rover moving in straight line:
 mode_:  A
-B_x: 896.00
-B_y: 850.00
-current_x:      896.00
-current_y:      849.00
+B_x: 897.00
+B_y: 250.00
+current_x:      897.00
+current_y:      249.00
 ------------
 ////////////////////AUTO////////////////////
 counter:        3
 ...................
-B_x:    1196.00
-B_y:    849.00
-current_x:      896.00
-current_y:      849.00
+B_x:    1197.00
+B_y:    249.00
+current_x:      897.00
+current_y:      249.00
 Target Displacement: 300
 ...................
-x_des:  1196.00
-y_des:  849.00
-x_pos:  896.00
-y_pos:  849.00
+x_des:  1197.00
+y_des:  249.00
+x_pos:  897.00
+y_pos:  249.00
 current_angle:  1.57
 target_angle:   0.00
 Rover has turned. Rotated by:   0.00

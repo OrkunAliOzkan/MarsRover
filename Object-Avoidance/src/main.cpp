@@ -323,9 +323,8 @@ void updateTargets(double * B_x, double * B_y, double * current_x, double * curr
 /////////////////////////////////////////////////////////////////
 //  automation parameters
 int counter = 0;
-#define ARENA_WIDTH           1050
-#define ARENA_HEIGHT          250
-#define X_DISPLACEMENT_AMOUNT 300 //  TODO: Play with coefficients
+#define ARENA_WIDTH           3555
+#define ARENA_HEIGHT          2337
 #define WIDTH_ERROR           200 //  TODO: Play with coefficients
 #define DISPLACEMENT_ERROR    150 //  TODO: Play with coefficients
 #define HEIGHT_ERROR          200 //  TODO: Play with coefficients
@@ -339,7 +338,7 @@ int automation(int * state, double * destination_x, double * destination_y, doub
     switch(*state){
     case(0):{
         //  x
-        *destination_x = current_x + X_DISPLACEMENT_AMOUNT;
+        *destination_x = current_x + (ARENA_WIDTH / 10);
         *destination_y = current_y;
         break;
     }
@@ -351,7 +350,7 @@ int automation(int * state, double * destination_x, double * destination_y, doub
     }
     case(2):{
         //  x
-        *destination_x = current_x + X_DISPLACEMENT_AMOUNT;
+        *destination_x = current_x + (ARENA_WIDTH / 10);
         *destination_y = current_y;
         break;
     }
@@ -386,8 +385,8 @@ bool camera_readings(int *camera_readings_type, double *camera_readings_displace
 //  object is at (100, 100)
 *camera_readings_displacemet = sqrt(pow(avoidance_x - current_x, 2) + pow(avoidance_y - current_y, 2));
 *camera_readings_angle = atan2(avoidance_y - current_y, avoidance_x - current_x);
-return (*camera_readings_displacemet < 100);
-// return 0;
+// return (*camera_readings_displacemet < 100);
+return 0;
 }
 
 //  radius of an A2 base at its widest
@@ -499,7 +498,7 @@ void loop()
 {
 // Serial.println("Made it here");
     // if in auto mode and ready to travel to next waypoint
-    if(current_x > 1000)  //  Motion complete TODO: Improve
+    if(current_x > (ARENA_WIDTH - (2*RADIUS)))  //  Motion complete TODO: Improve
     {
     mode_ = "";
     turning_complete = 1;
@@ -529,13 +528,9 @@ void loop()
         straight_line_complete = 0;
 
         // avoidance_counter  = (avoidance_counter == 0) ? (1) : (avoidance_counter);
-            if(avoidance_counter != -1){
-                Serial.println("This code is fucked 2");
-            }
 
         switch(avoidance_counter){
             case(0):{
-                Serial.println("avoidance counter at 0");
                 switch(state){
                     case(0):{
                         Serial.println("We are in 0");
@@ -550,9 +545,9 @@ void loop()
                     case(1):{
                         Serial.println("We are in 1");
                     B_x = (B_x - current_x > WIDTH_ERROR) ? 
-                            (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
+                            (min(B_x, current_x + (ARENA_WIDTH / 10))) 
                             : 
-                            (current_x + X_DISPLACEMENT_AMOUNT);  
+                            (current_x + (ARENA_WIDTH / 10));  
                     B_y = B_y;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break;
@@ -570,9 +565,9 @@ void loop()
                     case(3):{
                         Serial.println("We are in 3");
                     B_x = (B_x - current_x > WIDTH_ERROR) ? 
-                            (min(B_x, current_x + X_DISPLACEMENT_AMOUNT)) 
+                            (min(B_x, current_x + (ARENA_WIDTH / 10))) 
                             : 
-                            (current_x - X_DISPLACEMENT_AMOUNT);
+                            (current_x - (ARENA_WIDTH / 10));
                     B_y = B_y;
                     updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                     break; 
@@ -584,6 +579,8 @@ void loop()
                 // straight_line_complete = 1;
 
                 //  set to a value 
+
+                Serial.println("-------------");
                 Serial.println("wagwan 0");
                 Serial.println("B_x:\t" + String(B_x));
                 Serial.println("B_y:\t" + String(B_y));
@@ -594,7 +591,7 @@ void loop()
                 switch(state){
                     case(0):{
                         Serial.println("We are in 0");
-                        B_x += X_DISPLACEMENT_AMOUNT;
+                        B_x += (ARENA_WIDTH / 10);
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
@@ -606,7 +603,7 @@ void loop()
                     }
                     case(2):{
                         Serial.println("We are in 2");
-                        B_x += X_DISPLACEMENT_AMOUNT;
+                        B_x += (ARENA_WIDTH / 10);
                         updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
                         break;
                     }
@@ -617,6 +614,7 @@ void loop()
                         break;
                     }
                 }
+                Serial.println("-------------");
                 Serial.println("wagwan 1");
                 Serial.println("B_x:\t" + String(B_x));
                 Serial.println("B_y:\t" + String(B_y));
@@ -628,15 +626,8 @@ void loop()
 
             }
         }
-        Serial.println("I made it here to where avoidance_counter goes from " + String(avoidance_counter) + "to");
         mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
-        // mode_ = (avoidance_counter == 1)? ("A") : (mode_);
         avoidance_counter  = (avoidance_counter == 1) ? (-1) : (avoidance_counter + 1);
-        Serial.println(String(avoidance_counter) + "---///---\n");
-        // avoidance_counter %= 2;
-
-        // update target angle
-        // updateTargets(&B_x, &B_y, &current_x, &current_y, &current_angle, &target_displacement, &target_angle);
 
         Serial.println("uwu");
         Serial.println("x_des:\t" + String(B_x));
@@ -700,9 +691,6 @@ void loop()
             //  set to avoid mode
             mode_ = "AVOID";
             avoidance_counter = (avoidance_counter == -1) ? (0) : (avoidance_counter);
-            if(avoidance_counter != -1){
-                Serial.println("This code is fucked");
-            }
             // avoidance_counter = 0;
             //  set to a value 
             }
@@ -728,7 +716,7 @@ void loop()
 
                 // mode_ = ((mode_ == "AVOID") && (avoidance_counter == 1))? ("A") : (mode_);
                 // avoidance_counter = ((mode_ == "AVOID") && (avoidance_counter == 1))? (-1) : (avoidance_counter);
-
+                Serial.println("------------");
                 Serial.println("Rover moving in straight line:");
                 Serial.println("mode_:\t" + String(mode_));
                 Serial.println("B_x: " + String(B_x));

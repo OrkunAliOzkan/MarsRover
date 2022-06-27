@@ -1,200 +1,135 @@
-> Executing task: C:\Users\Orkun\.platformio\penv\Scripts\platformio.exe device monitor <
 
---- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
---- More details at https://bit.ly/pio-monitor-filters
---- Miniterm on COM4  115200,8,N,1 ---
---- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
-ets Jun  8 2016 00:22:57
-
-rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
-configsip: 0, SPIWP:0xee
-clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
-mode:DIO, clock div:2
-load:0x3fff0030,len:1184
-load:0x40078000,len:12784
-load:0x40080400,len:3032
-entry 0x400805e4
-Waiting for WiFi... .
-
-WiFi connected
-IP address: 
-192.168.137.169
 ////////////////////AUTO////////////////////
 counter:        1
 ...................
-B_x:    300.00
+B_x:    355.00
 B_y:    0.00
 current_x:      0.00
 current_y:      0.00
-Target Displacement: 300
-...................
-x_des:  300.00
-y_des:  0.00
-x_pos:  0.00
-y_pos:  0.00
-current_angle:  0.00
-target_angle:   0.00
-Rover has turned. Rotated by:   0.00
-straight_line_complete: 0
-current_angle:  0.00
-------------
-Rover moving in straight line:
-mode_:  A
-B_x: 300.00
-B_y: 0.00
-current_x:      299.00
-current_y:      0.00
-------------
 ////////////////////AUTO////////////////////
 counter:        2
 ...................
-B_x:    299.00
-B_y:    250.00
-current_x:      299.00
+B_x:    354.00
+B_y:    2337.00
+current_x:      354.00
 current_y:      0.00
-Target Displacement: 250
-...................
-x_des:  299.00
-y_des:  250.00
-x_pos:  299.00
-y_pos:  0.00
-current_angle:  0.00
-target_angle:   1.57
-Rover has turned. Rotated by:   1.57
-straight_line_complete: 0
-current_angle:  1.57
-------------
-Rover moving in straight line:
-mode_:  A
-B_x: 299.00
-B_y: 250.00
-current_x:      299.00
-current_y:      249.00
-------------
 ////////////////////AUTO////////////////////
 counter:        3
 ...................
-B_x:    599.00
-B_y:    249.00
-current_x:      299.00
-current_y:      249.00
-Target Displacement: 300
-...................
-x_des:  599.00
-y_des:  249.00
-x_pos:  299.00
-y_pos:  249.00
-current_angle:  1.57
-target_angle:   0.00
-Rover has turned. Rotated by:   0.00
-straight_line_complete: 0
-current_angle:  0.00
-------------
-Rover moving in straight line:
-mode_:  A
-B_x: 599.00
-B_y: 249.00
-current_x:      598.00
-current_y:      249.00
-------------
+B_x:    709.00
+B_y:    2336.00
+current_x:      354.00
+current_y:      2336.00
 ////////////////////AUTO////////////////////
 counter:        0
 ...................
-B_x:    598.00
+B_x:    708.00
 B_y:    -1.00
-current_x:      598.00
-current_y:      249.00
-Target Displacement: 250
-...................
-x_des:  598.00
-y_des:  -1.00
-x_pos:  598.00
-y_pos:  249.00
-current_angle:  0.00
-target_angle:   -1.57
-Rover has turned. Rotated by:   -1.57
-straight_line_complete: 0
-current_angle:  -1.57
-------------
-Rover moving in straight line:
-mode_:  A
-B_x: 598.00
-B_y: -1.00
-current_x:      598.00
-current_y:      0.00
-------------
+current_x:      708.00
+current_y:      2336.00
 ////////////////////AUTO////////////////////
 counter:        1
 ...................
-B_x:    898.00
+B_x:    1063.00
 B_y:    0.00
-current_x:      598.00
+current_x:      708.00
 current_y:      0.00
-Target Displacement: 300
-...................
-x_des:  898.00
-y_des:  0.00
-x_pos:  598.00
-y_pos:  0.00
-current_angle:  -1.57
-target_angle:   0.00
-Rover has turned. Rotated by:   0.00
-straight_line_complete: 0
-current_angle:  0.00
-------------
-Rover moving in straight line:
-mode_:  A
-B_x: 898.00
-B_y: 0.00
-current_x:      897.00
-current_y:      0.00
-------------
 ////////////////////AUTO////////////////////
 counter:        2
 ...................
-B_x:    897.00
-B_y:    250.00
-current_x:      897.00
+B_x:    1062.00
+B_y:    2337.00
+current_x:      1062.00
 current_y:      0.00
-Target Displacement: 250
-...................
-x_des:  897.00
-y_des:  250.00
-x_pos:  897.00
-y_pos:  0.00
-current_angle:  0.00
-target_angle:   1.57
-Rover has turned. Rotated by:   1.57
-straight_line_complete: 0
-current_angle:  1.57
-------------
-Rover moving in straight line:
-mode_:  A
-B_x: 897.00
-B_y: 250.00
-current_x:      897.00
-current_y:      249.00
-------------
 ////////////////////AUTO////////////////////
 counter:        3
 ...................
-B_x:    1197.00
-B_y:    249.00
-current_x:      897.00
-current_y:      249.00
-Target Displacement: 300
+B_x:    1417.00
+B_y:    2336.00
+current_x:      1062.00
+current_y:      2336.00
+////////////////////AUTO////////////////////
+counter:        0
 ...................
-x_des:  1197.00
-y_des:  249.00
-x_pos:  897.00
-y_pos:  249.00
-current_angle:  1.57
-target_angle:   0.00
-Rover has turned. Rotated by:   0.00
-straight_line_complete: 0
-current_angle:  0.00
-------------
+B_x:    1416.00
+B_y:    -1.00
+current_x:      1416.00
+current_y:      2336.00
+////////////////////AUTO////////////////////
+counter:        1
+...................
+B_x:    1771.00
+B_y:    0.00
+current_x:      1416.00
+current_y:      0.00
+////////////////////AUTO////////////////////
+counter:        2
+...................
+B_x:    1770.00
+B_y:    2337.00
+current_x:      1770.00
+current_y:      0.00
+////////////////////AUTO////////////////////
+counter:        3
+...................
+B_x:    2125.00
+B_y:    2336.00
+current_x:      1770.00
+current_y:      2336.00
+////////////////////AUTO////////////////////
+counter:        0
+...................
+B_x:    2124.00
+B_y:    -1.00
+current_x:      2124.00
+current_y:      2336.00
+////////////////////AUTO////////////////////
+counter:        1
+...................
+B_x:    2479.00
+B_y:    0.00
+current_x:      2124.00
+current_y:      0.00
+////////////////////AUTO////////////////////
+counter:        2
+...................
+B_x:    2478.00
+B_y:    2337.00
+current_x:      2478.00
+current_y:      0.00
+////////////////////AUTO////////////////////
+counter:        3
+...................
+B_x:    2833.00
+B_y:    2336.00
+current_x:      2478.00
+current_y:      2336.00
+////////////////////AUTO////////////////////
+counter:        0
+...................
+B_x:    2832.00
+B_y:    -1.00
+current_x:      2832.00
+current_y:      2336.00
 
---- exit ---
-
-Terminal will be reused by tasks, press any key to close it.
+////////////////////AUTO////////////////////
+counter:        1
+...................
+B_x:    3187.00
+B_y:    0.00
+current_x:      2832.00
+current_y:      0.00
+////////////////////AUTO////////////////////
+counter:        2
+...................
+B_x:    3186.00
+B_y:    2337.00
+current_x:      3186.00
+current_y:      0.00
+////////////////////AUTO////////////////////
+counter:        3
+...................
+B_x:    3541.00
+B_y:    2336.00
+current_x:      3186.00
+current_y:      2336.00
