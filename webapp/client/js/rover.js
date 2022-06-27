@@ -1,25 +1,24 @@
-"use strict";
+//"use strict";
 
-var key_states = {
-    "w": false,
-    "a": false,
-    "s": false,
-    "d": false
-}
+// var key_states = {
+//     "w": false,
+//     "a": false,
+//     "s": false,
+//     "d": false
+// }
 
-const keyHandler = e => {
-    console.log(e.key);
-    document.removeEventListener(document, keyHandler)
-}
+// const keyHandler = e => {
+//     console.log(e.key);
+//     document.removeEventListener(document, keyHandler)
+// }
 
-document.addEventListener('keydown', keyHandler);
+// document.addEventListener('keydown', keyHandler);
 
-document.addEventListener('keyup', event => {
-    document.addEventListener('keydown', event => {
-        console.log(e.key);
-    }, {once: true});
-});
-
+// document.addEventListener('keyup', event => {
+//     document.addEventListener('keydown', event => {
+//         console.log(e.key);
+//     }, {once: true});
+// });
 
 const canvas = document.getElementById('mapCanvas');
 const ctx = canvas.getContext("2d");
@@ -204,9 +203,9 @@ const rover_y = document.getElementById("rover_y");
 const rover_angle = document.getElementById("rover_angle");
 
 function updateDashboard(data) {
-    rover_x.innerHTML = `Rover x: ${data.posX}`;
-    rover_y.innerHTML = `Rover y: ${data.posY}`;
-    rover_angle.innerHTML = `Rover angle: ${data.angle / Math.PI * 180.0}`;
+    rover_x.innerHTML = `${data.posX.toFixed(3)}`;
+    rover_y.innerHTML = `${data.posY.toFixed(3)}`;
+    rover_angle.innerHTML = `${(data.angle / Math.PI * 180.0).toFixed(3)}`;
 }
 
 function updateState(state, packet) {
@@ -285,42 +284,17 @@ function genPacketsSmall() {
         console.log("waypoint");
     });
 
-    // const start_btn = document.getElementById("start");
-    // start_btn.addEventListener('click', (event) => {
-    //     console.log("Start Mission");
-    //     sock.emit('start_mission', "");
-    // })
+    const start_btn = document.getElementsByClassName("start");
+    start_btn.addEventListener('click', (event) => {
+        console.log("Start Mission");
+        sock.emit('start_mission', "");
+    });
 
-    // const auto_btn = document.getElementById("auto");
-    // auto_btn.addEventListener('click', (event) => {
-    //     console.log("Auto Mode");
-    //     sock.emit('auto', "");
-    // })
-
-    // const data_btn = document.getElementById("data_btn");
-    // data_btn.addEventListener('click', (event) => {
-    //     const angle = Math.floor(document.getElementById("angle").value) / 180 * Math.PI;
-    //     const distance = Math.floor(document.getElementById("distance").value);
-    //     const x = distance * Math.cos(angle);
-    //     const y = distance * Math.sin(angle);
-    //     console.log(`x: ${x}, y: ${y}`);
-    //     sock.emit('test', {x, y});
-    // })
-
-    // const c_btn = document.getElementById("c_btn");
-    // c_btn.addEventListener('click', (event) => {
-    //     const x = Math.floor(document.getElementById("x").value);
-    //     const y = Math.floor(document.getElementById("y").value);
-    //     console.log(`x: ${x}, y: ${y}`);
-    //     sock.emit('test', {x, y});
-    // })
-
-    // const replay_btn = document.getElementById("replay");
-    // replay_btn.addEventListener('click', (event) => {
-    //     const replay_text = document.getElementById("title");
-    //     replay_text.innerHTML = "Testing - Replay begin";
-    //     console.log("Replay begin");
-    // })
+    const end_btn = document.getElementsByClassName("end");
+    end_btn.addEventListener('click', (event) => {
+        console.log("End Mission");
+        sock.emit('end_mission', "");
+    });
 
     // updateState(state, _alien);
 
@@ -344,22 +318,17 @@ function genPacketsSmall() {
     //     }
     // }, 50);
 
-    rover_angle.innerHTML = `100`;
+    updateDashboard({posX: 124.1235, posY: 425.21, angle: 1.57});
 })();
+
+var mode_global = "auto";
+var mission_global = false;
 
 function openCity(evt, cityName) {
     console.log(cityName);
     // Declare all variables
     var i, tabcontent, tablinks, tabmap;
-  
-    // // Get all elements with class="tabcontent" and hide them
-    // tabcontent = document.getElementsByClassName("tabcontent");
-    // tabmap = document.getElementsByClassName("tabmap");
-    // for (i = 0; i < tabcontent.length; i++) {
-    //   tabcontent[i].style.display = "none";
-    //   tabmap[i].style.display = "none";
-    // }
-  
+
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
@@ -370,5 +339,7 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     // document.getElementById(cityName + "Map").style.display = "block";
     evt.currentTarget.className += " active";
+
+    mode_global = cityName;
   }
 

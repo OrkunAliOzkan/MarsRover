@@ -29,64 +29,6 @@ server.listen(http_port,'0.0.0.0', () => {
     print(`Server is running on port ${http_port}`, 0)
 });
 
-//--------Initialising TCP server for Rover--------//
-const Net = require('net');
-const port = 8001;
-
-const rover_server = new Net.Server();
-var rover_connected = false;
-var rover_socket;
-
-rover_server.listen(port, () => {
-     console.log(`Rover server listening on port ${port}`);
-});
-
-rover_server.on('connection', (socket) => {
-    // set the global variable
-    if (rover_connected == true) {
-        rover_socket.destroy();
-    }
-    rover_socket = socket;
-    rover_connected = true;
-    console.log('Rover Connected');
-
-    socket.on('data', function(chunk) {
-        console.log(`Rover Data:`);
-        const rover_string = chunk.toString();
-        console.log(rover_string);
-    });
-
-    // socket.on('data', function(chunk) {
-    //     console.log(`Rover Data:`);
-    //     const rover_string = chunk.toString();
-    //     const packet_list = rover_string.split('@');
-    //     console.log(packet_list.length);
-    //     let packet_json;
-    //     packet_list.forEach(item => {
-    //         if (item != '') {
-    //             try {
-    //                 packet_json = JSON.parse(item);
-    //                 //console.log(packet_json);
-    //                 //io.emit('update', packet_json);
-    //             } catch (error) {
-    //                 console.log(rover_string, "(not JSON)");
-    //             }
-    //         }
-    //     });
-    //     console.log("finish");
-    // });
-
-    // When the client requests to end the TCP connection with the server, the server
-    // ends the connection.
-    socket.on('end', function() {
-        console.log('Closing connection with rover');
-    });
-
-    socket.on('error', function(err) {
-        console.log(`Error: ${err}`);
-    });      
-});
-
 // //--------Clock--------//
 // var counter = 0;
 // const interval = setInterval(() => {
@@ -168,6 +110,63 @@ io.on('connection', (sock) => {
         }
     });
     
+});
+
+//--------Initialising TCP server for Rover--------//
+const Net = require('net');
+const port = 8001;
+
+const rover_server = new Net.Server();
+var rover_connected = false;
+var rover_socket;
+
+rover_server.listen(port, () => {
+     console.log(`Rover server listening on port ${port}`);
+});
+
+rover_server.on('connection', (socket) => {
+    // set the global variable
+    if (rover_connected == true) {
+        rover_socket.destroy();
+    }
+    rover_socket = socket;
+    rover_connected = true;
+    console.log('Rover Connected');
+    
+    // socket.on('data', function(chunk) {
+    //     console.log(`Rover Data:`);
+    //     const rover_string = chunk.toString();
+    //     console.log(rover_string);
+    // });
+
+    socket.on('data', function(chunk) {
+        console.log(`Rover Data:`);
+        const rover_string = chunk.toString();
+        const packet_list = rover_string.split('@');
+        console.log(packet_list.length);
+        let packet_json;
+        packet_list.forEach(item => {
+            if (item != '') {
+                try {
+                    packet_json = JSON.parse(item);
+                    //console.log(packet_json);
+                    //io.emit('update', packet_json);
+                } catch (error) {
+                    console.log(rover_string, "(not JSON)");
+                }
+            }
+        });
+    });
+
+    // When the client requests to end the TCP connection with the server, the server
+    // ends the connection.
+    socket.on('end', function() {
+        console.log('Closing connection with rover');
+    });
+
+    socket.on('error', function(err) {
+        console.log(`Error: ${err}`);
+    });      
 });
 
 // //--------Initialising Python Control Script--------//

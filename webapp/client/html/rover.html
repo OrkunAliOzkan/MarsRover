@@ -37,7 +37,7 @@
 
     <div class="_row">
         <div class="_column left">
-            <h1 class="col-header">Telemetry</h1>
+            <h1 class="col-header">Rover Data</h1>
             <div class="dashboard">
                 <div class="dash-row">
                     <h2>θ <span class="unit">(deg)</span> :</h2>
@@ -46,16 +46,22 @@
                     <h2 id="rover_angle">-</span>
                 </div>
                 <div class="dash-row">
-                    <h2 id="rover_x">x <span class="unit">(mm)</span> :</h2>
+                    <h2>x <span class="unit">(mm)</span> :</h2>
                 </div>
                 <div class="dash-row">
                     <h2 id="rover_x">-</h2>
                 </div>
                 <div class="dash-row">
-                    <h2 id="rover_y">y <span class="unit">(mm)</span> :</h2>
+                    <h2>y <span class="unit">(mm)</span> :</h2>
                 </div>
                 <div class="dash-row">
                     <h2 id="rover_y">-</h2>
+                </div>
+                <div class="dash-row">
+                    <h2>Status:</h2>
+                </div>
+                <div class="dash-row">
+                    <h2 id="rover_status">Offline</h2>
                 </div>
             </div>
             <div class="img-wrapper">
@@ -80,6 +86,10 @@
                     <button class="tablinks" onclick="openCity(event, 'auto')" id="auto">Automatic</button>
                     <button class="tablinks" onclick="openCity(event, 'manual')" id="manual">Manual</button>
                 </div>
+                <div class="mission-control">
+                    <button class="start">Start Mission</button>
+                    <button class="end">End Mission</button>
+                </div>  
             </div>
             
         </div>
