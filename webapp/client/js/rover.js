@@ -1,5 +1,7 @@
 //"use strict";
 
+const e = require("express");
+
 // var key_states = {
 //     "w": false,
 //     "a": false,
@@ -7,18 +9,18 @@
 //     "d": false
 // }
 
-const keyHandler = e => {
-    console.log(e.key);
-    document.removeEventListener(document, keyHandler)
-}
+// const keyHandler = e => {
+//     console.log(e.key);
+//     document.removeEventListener(document, keyHandler)
+// }
 
-document.addEventListener('keydown', keyHandler);
+// document.addEventListener('keydown', keyHandler);
 
-document.addEventListener('keyup', event => {
-    document.addEventListener('keydown', event => {
-        console.log(e.key);
-    }, {once: true});
-});
+// document.addEventListener('keyup', event => {
+//     document.addEventListener('keydown', event => {
+//         console.log(e.key);
+//     }, {once: true});
+// });
 
 const canvas = document.getElementById('mapCanvas');
 const ctx = canvas.getContext("2d");
@@ -304,7 +306,7 @@ function genPacketsSmall() {
 //     }
 // }
 
-var mode_global = "auto";
+var mode_global = "A";
 var mission_global = false;
 
 function openCity(evt, cityName) {
@@ -323,7 +325,11 @@ function openCity(evt, cityName) {
     // document.getElementById(cityName + "Map").style.display = "block";
     evt.currentTarget.className += " active";
 
-    mode_global = cityName;
+    if (cityName == "auto") {
+        mode_global = "A";
+    } else {
+        mode_global = "M";
+    }
   }
 
 (() => {

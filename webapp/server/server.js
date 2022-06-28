@@ -109,9 +109,12 @@ io.on('connection', (sock) => {
         print(`Mission Start`, 0);
         if (rover_connected) {
             // TODO: send start to rover
-            // rover_socket.write(waypoint_data);
+            const data = {
+                mode: msg
+            }
+            rover_socket.write(waypoint_data);
         } else {
-            console.log(`Can't start mission, rover is not connected`);
+            console.log(`Can't start mission, rover is not connected (${msg})`);
         }
     });
 

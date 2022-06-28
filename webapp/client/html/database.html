@@ -37,25 +37,27 @@
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
     </section>
-    <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'Trip1')" id="defaultOpen">Trip1</button>
-        <button class="tablinks" onclick="openCity(event, 'Trip2')">Trip2</button>
-        <button class="tablinks" onclick="openCity(event, 'Trip3')">Trip3</button>
-        <button class="tablinks" onclick="openCity(event, 'Trip4')">Trip4</button>
-        <button class="tablinks" onclick="openCity(event, 'Trip5')">Trip5</button>
-        <button class="tablinks" onclick="openCity(event, 'Trip6')">Trip6</button>
-        <button class="tablinks" onclick="openCity(event, 'Trip7')">Trip7</button>
-        <button class="tablinks" onclick="openCity(event, 'Trip8')">Trip8</button>
-        <button class="tablinks" onclick="openCity(event, 'Trip9')">Trip9</button>
+    <div class="container">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Trip1')" id="defaultOpen">Trip1</button>
+            <button class="tablinks" onclick="openCity(event, 'Trip2')">Trip2</button>
+            <button class="tablinks" onclick="openCity(event, 'Trip3')">Trip3</button>
+            <button class="tablinks" onclick="openCity(event, 'Trip4')">Trip4</button>
+            <button class="tablinks" onclick="openCity(event, 'Trip5')">Trip5</button>
+            <button class="tablinks" onclick="openCity(event, 'Trip6')">Trip6</button>
+            <button class="tablinks" onclick="openCity(event, 'Trip7')">Trip7</button>
+            <button class="tablinks" onclick="openCity(event, 'Trip8')">Trip8</button>
+            <button class="tablinks" onclick="openCity(event, 'Trip9')">Trip9</button>
+        </div>
+        <div id="Trip1" class="tabcontent">
+            <h3>Trip1</h3>
+            <p>Content yadayada.</p>
+        </div>
+        <div id="Trip1Map" class="tabmap">
+            <canvas id = "mapCanvas" width="600" height="600" style="background:red;"></canvas>
+        </div>
     </div>
-      
-    <div id="Trip1" class="tabcontent">
-        <h3>Trip1</h3>
-        <p>Content yadayada.</p>
-    </div>
-    <div id="Trip1Map" class="tabmap">
-        <canvas id = "mapCanvas" width="600" height="600" style="background:red;"></canvas>
-    </div>
+    
 
     <div id="Trip2" class="tabcontent">
         <h3>Trip2</h3>
