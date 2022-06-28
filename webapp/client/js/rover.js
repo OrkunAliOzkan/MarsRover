@@ -41,6 +41,8 @@ var state = {
         "posY": 400, 
         "angle": Math.PI / 2
     },
+    "alien": {},
+    "building": {}
 };
 var _state = {
     "rover": {
@@ -167,8 +169,9 @@ function drawBuilding(buildingEntity) {
         // dont draw if building is offscreen
         return
     }
+    console.log(`Drawn building: ${buildingEntity}`);
     const {x, y} = arena_to_map(buildingEntity.posX, buildingEntity.posY);
-    const buildingRadius = buildingEntity.width / 2;
+    const buildingRadius = buildingEntity.width * scale_factor / 2;
     for (let i = 0; i < 12; i++){
         ctx.fillStyle = i % 2 == 0 ? "black": "white";
         ctx.beginPath();
@@ -197,7 +200,7 @@ function redrawCanvas(entity) {
 
     // draw buildings
     for (let b in entity.building){
-        drawBuilding(b);
+        drawBuilding(entity.building[b]);
     }
 
     // draw aliens
@@ -215,7 +218,7 @@ function redrawCanvas(entity) {
 }
 
 function calc_quadrant(posX, posY) {
-    return posY % (arena_height / 2) + posX % (arena_width / 3) * 2;
+    return Math.floor(posY / (arena_height / 2)) + Math.floor(posX / (arena_width / 3)) * 2;
 }
 
 // 1 3 5
@@ -234,6 +237,9 @@ function updateDashboard(data) {
 function updateState(state, packet) {
     // TODO: Implement SLAM basically
     const max_building_width = 800;
+    if (packet.data.posX <= 0 || packet.data.posY <= 0) {
+        return;
+    }
     if (packet.type == "rover") {
         state.rover = packet.data;
         updateDashboard(packet.data);
@@ -254,14 +260,18 @@ function updateState(state, packet) {
         }
         state.alien[packet.colour].posX = sum_x / num;
         state.alien[packet.colour].posY = sum_y / num;
+        console.log(`Avg Pos: x: ${state.alien[packet.colour].posX} y: ${state.alien[packet.colour].posY}`);
+        console.log(`Frame Pos: x: ${packet.data.posX} y: ${packet.data.posY}`);
     } else if (packet.type == "building") {
-        if (packet.width <= max_building_width) {
+        if (packet.data.width <= max_building_width) {
             const building_quadrant = calc_quadrant(packet.data.posX, packet.data.posY);
             state.building[building_quadrant] = packet.data;
+            console.log(`Updated building state:`, state.building);
         }
     } else if (packet.type == "waypoint") {
         state.waypoint = packet.data;
     }
+    console.log(state);
     console.log("updated");
 }
 
@@ -340,7 +350,7 @@ function openCity(evt, cityName) {
     canvas.addEventListener('click', onClick)
 
     sock.on('update', (packet) => {
-        console.log(packet);
+        console.log(`Packet received:`, packet);
         updateState(state, packet);
         redrawCanvas(state);
     });
@@ -365,7 +375,12 @@ function openCity(evt, cityName) {
         sock.emit('end_mission', "");
     });
 
-    // updateState(state, _alien);
+    const _building = {
+        type: "building",
+        data: {posX: 708.4698842, posY: 430.762486, width: 110}
+    }
+
+    updateState(state, _building);
 
     // const replay_data_string = genPacketsSmall();
     // let replay_data_json = [];
