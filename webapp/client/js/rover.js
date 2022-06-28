@@ -254,7 +254,7 @@ function updateState(state, packet) {
     } else if (packet.type == "building") {
         if (packet.width <= max_building_width) {
             const building_quadrant = calc_quadrant(packet.data.posX, packet.data.posY);
-            
+            state.building[building_quadrant] = packet.data;
         }
     } else if (packet.type == "waypoint") {
         state.waypoint = packet.data;
