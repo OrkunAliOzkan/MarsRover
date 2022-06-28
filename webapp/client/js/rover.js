@@ -105,7 +105,8 @@ rover.onload = () => {
 }
     
 function arena_to_map(_x, _y) {
-    return {x: _x, y: canvas_height - _y};
+    const scale_factor = 600 / 2337;
+    return {x: _x * scale_factor, y: canvas_height - _y * scale_factor};
 }
 
 function drawPointer(x, y) {
