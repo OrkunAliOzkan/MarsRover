@@ -33,8 +33,6 @@ const arena_width = 3555;
 
 const scale_factor = 600 / 2337;
 
-
-
 function toRadians(degrees) {
     return Math.PI / 180 * degrees;
 }
