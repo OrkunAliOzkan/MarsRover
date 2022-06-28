@@ -7,24 +7,27 @@
 //     "d": false
 // }
 
-// const keyHandler = e => {
-//     console.log(e.key);
-//     document.removeEventListener(document, keyHandler)
-// }
+const keyHandler = e => {
+    console.log(e.key);
+    document.removeEventListener(document, keyHandler)
+}
 
-// document.addEventListener('keydown', keyHandler);
+document.addEventListener('keydown', keyHandler);
 
-// document.addEventListener('keyup', event => {
-//     document.addEventListener('keydown', event => {
-//         console.log(e.key);
-//     }, {once: true});
-// });
+document.addEventListener('keyup', event => {
+    document.addEventListener('keydown', event => {
+        console.log(e.key);
+    }, {once: true});
+});
 
 const canvas = document.getElementById('mapCanvas');
 const ctx = canvas.getContext("2d");
 
 const canvas_height = 600;
 const canvas_width = 913;
+
+const arena_height = 2333;
+const arena_width = 2333;
 
 function toRadians(degrees) {
     return Math.PI / 180 * degrees;
@@ -40,7 +43,8 @@ state = {
     "alien": {
         "red": {
             "posX": 100,
-            "posY": 500
+            "posY": 500,
+            "past_data": []
         },
         "blue": {
             "posX": 200,
@@ -203,6 +207,13 @@ function redrawCanvas(entity) {
     }
 }
 
+function calc_quadrant(posX, posY) {
+    return posY % (arena_height / 2) + posX % (arena_width / 3) * 2;
+}
+
+// 1 3 5
+// 0 2 4
+
 const rover_x = document.getElementById("rover_x");
 const rover_y = document.getElementById("rover_y");
 const rover_angle = document.getElementById("rover_angle");
@@ -220,7 +231,17 @@ function updateState(state, packet) {
         state.rover = packet.data;
         updateDashboard(packet.data);
     } else if (packet.type == "alien") {
-        state.alien[packet.colour] = packet.data;
+        // calculate the weighted average of all past position
+        state.alien[packet.colour].past_data.push(packet.data);
+        let sum_x = 0;
+        let sum_y = 0;
+        const num = state.alien[packet.colour].past_data.length
+        for(let i = 0; i < num; i++) {
+            sum_x += state.alien[packet.colour].past_data[i].posX;
+            sum_y += state.alien[packet.colour].past_data[i].posY;
+        }
+        state.alien[packet.colour].posX = sum_x / num;
+        state.alien[packet.colour].posY = sum_y / num;
     } else if (packet.type == "building") {
         if (packet.width <= max_building_width) {
             state.building.push(packet.data);
