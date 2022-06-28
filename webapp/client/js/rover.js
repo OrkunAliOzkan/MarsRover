@@ -27,14 +27,24 @@ const canvas_height = 600;
 const canvas_width = 913;
 
 const arena_height = 2333;
-const arena_width = 2333;
+const arena_width = 3555;
+
+const scale_factor = 600 / 2337;
+
+
 
 function toRadians(degrees) {
     return Math.PI / 180 * degrees;
 }
 
-var state;
-state = {
+var state = {
+    "rover": {
+        "posX": 400, 
+        "posY": 400, 
+        "angle": Math.PI / 2
+    },
+};
+var _state = {
     "rover": {
         "posX": 60, 
         "posY": 60, 
@@ -55,20 +65,20 @@ state = {
             "posY": 500
         }
     },
-    "building": [
-        {
+    "building": {
+        "0": {
             "posX": 50,
             "posY": 300
         },
-        {
+        "1": {
             "posX": 150,
             "posY": 300
         },
-        {
+        "2": {
             "posX": 250,
             "posY": 300
-        } 
-    ],
+        }
+    },
     "fan": {
         "posX": 50,
         "posY": 300
@@ -109,7 +119,6 @@ rover.onload = () => {
 }
     
 function arena_to_map(_x, _y) {
-    const scale_factor = 600 / 2337;
     return {x: _x * scale_factor, y: canvas_height - _y * scale_factor};
 }
 
@@ -188,14 +197,14 @@ function redrawCanvas(entity) {
     //var entityData = JSON.parse(entity);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // draw buildings
+    for (let b in entity.building){
+        drawBuilding(b);
+    }
+
     // draw aliens
     for (let a in entity.alien){
         drawAlien(entity.alien[a], a);
-    }
-
-    // draw buildings
-    for (let i = 0; i < entity.building.length; i++){
-        drawBuilding(entity.building[i]);
     }
 
     // draw rover
@@ -244,7 +253,8 @@ function updateState(state, packet) {
         state.alien[packet.colour].posY = sum_y / num;
     } else if (packet.type == "building") {
         if (packet.width <= max_building_width) {
-            state.building.push(packet.data);
+            const building_quadrant = calc_quadrant(packet.data.posX, packet.data.posY);
+            
         }
     } else if (packet.type == "waypoint") {
         state.waypoint = packet.data;
