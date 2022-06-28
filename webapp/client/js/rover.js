@@ -31,8 +31,6 @@ const arena_width = 3555;
 
 const scale_factor = 600 / 2337;
 
-
-
 function toRadians(degrees) {
     return Math.PI / 180 * degrees;
 }
@@ -240,7 +238,12 @@ function updateState(state, packet) {
         state.rover = packet.data;
         updateDashboard(packet.data);
     } else if (packet.type == "alien") {
-        // calculate the weighted average of all past position
+        // calculate the weighted average of all past positions
+        // initialise alien if not in state already
+        if (!(packet.colour in state.alien)){
+            state.alien[packet.colour] = packet.data;
+            state.alien[packet.colour].past_data = [];
+        }
         state.alien[packet.colour].past_data.push(packet.data);
         let sum_x = 0;
         let sum_y = 0;

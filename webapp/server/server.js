@@ -172,6 +172,7 @@ rover_server.on('connection', (socket) => {
             if (item != '') {
                 try {
                     packet_json = JSON.parse(item);
+                    console.log(packet_json);
                     io.emit('update', packet_json);
                 } catch (error) {
                     console.log(rover_string, "(not JSON)");
